@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import LazyContactForm from '@/components/islands/LazyContactForm.tsx';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import { Mail, Phone, MapPin } from '@/components/ui/icons';
+import { Toaster } from '@/components/ui/toast.tsx';
+---
+
+<BaseLayout 
+  title="Contact Us - Markosh"
+  description="Get in touch with Markosh. Let's discuss how we can help your business grow with our IT staffing and software development services."
+  canonical="https://markosh.com/contact/"
+>
+  <Header />
+  <main>
+    <FadeInSection client:visible>
+    <section class="bg-secondary">
+      <div class="container mx-auto text-center py-16">
+        <h1 class="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">Contact Us</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          We'd love to hear from you. Let's discuss how we can help your business grow.
+        </p>
+      </div>
+    </section>
+  </FadeInSection>
+
+  <FadeInSection client:visible>
+    <section class="py-16">
+      <div class="container mx-auto grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="font-headline text-3xl font-bold mb-6">Get in Touch</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Email</h3>
+                <p class="text-muted-foreground">General Inquiries</p>
+                <a href="mailto:business@markosh.com" class="text-primary hover:underline">
+                  business@markosh.com
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                <Phone className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Phone</h3>
+                <p class="text-muted-foreground">Mon-Fri from 9am to 5pm</p>
+                <a href="tel:+919408494084" class="text-primary hover:underline">
+                  +91 94084 94084
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Office</h3>
+                <p class="text-muted-foreground">Saket</p>
+                <p class="text-muted-foreground">New Delhi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <LazyContactForm client:load />
+      </div>
+    </section>
+  </FadeInSection>
+  
+  <!-- Toast container for notifications -->
+  <Toaster client:load />
+  </main>
+  <Footer />
+</BaseLayout>

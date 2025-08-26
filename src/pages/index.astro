@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import ServicesOverview from '@/components/sections/ServicesOverview.astro';
+import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+import IndustriesSection from '@/components/sections/IndustriesSection.astro';
+import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
+import CtaSection from '@/components/sections/CtaSection.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+---
+
+<BaseLayout 
+  title="Markosh - Elite Tech Talent & Custom Software Development"
+  description="Accelerate your growth with Markosh's top-tier IT staffing and custom software development services. Connect with pre-vetted professionals and build scalable solutions."
+  canonical="https://markosh.com/"
+  type="website"
+>
+  <Header />
+  <main>
+    <FadeInSection client:visible>
+      <HeroSection />
+    </FadeInSection>
+    <FadeInSection client:visible>
+      <ServicesOverview />
+    </FadeInSection>
+    <FadeInSection client:visible>
+      <WhyChooseUs />
+    </FadeInSection>
+    <FadeInSection client:visible>
+      <IndustriesSection />
+    </FadeInSection>
+    <FadeInSection client:visible>
+      <TestimonialsSection />
+    </FadeInSection>
+    <FadeInSection client:visible>
+      <CtaSection />
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>

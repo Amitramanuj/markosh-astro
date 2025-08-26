@@ -1,0 +1,92 @@
+---
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CardHeader from '@/components/ui/CardHeader.astro';
+import CardTitle from '@/components/ui/CardTitle.astro';
+import CardDescription from '@/components/ui/CardDescription.astro';
+import Button from '@/components/ui/Button.astro';
+
+const services = [
+  {
+    icon: 'users',
+    title: 'IT Staffing Services',
+    description: 'Connect with our pool of vetted, top-tier tech professionals to augment your team for any project duration.',
+    link: '/services',
+  },
+  {
+    icon: 'code',
+    title: 'Custom Software Development',
+    description: 'From concept to launch, we build scalable and secure custom web and mobile applications to meet your objectives.',
+    link: '/services',
+  },
+  {
+    icon: 'brain-circuit',
+    title: 'AI & Machine Learning',
+    description: 'Unlock insights and automate processes with custom AI models, NLP, and computer vision solutions.',
+    link: '/services',
+  },
+  {
+    icon: 'bot',
+    title: 'Agentic AI Development',
+    description: 'Build sophisticated AI agents that can reason, plan, and execute complex tasks to work alongside your team.',
+    link: '/services',
+  },
+];
+
+// SVG icons as inline components
+const getIcon = (iconName: string) => {
+  const icons = {
+    users: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+    </svg>`,
+    code: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+    </svg>`,
+    'brain-circuit': `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+    </svg>`,
+    bot: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+    </svg>`
+  };
+  return icons[iconName as keyof typeof icons] || icons.code;
+};
+---
+
+<section class="bg-background">
+  <div class="container mx-auto">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-primary">Our Services</h2>
+      <p class="mt-2 font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+        What We Do
+      </p>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+        We provide comprehensive solutions to power your digital transformation, from sourcing expert talent to building bespoke software.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      {services.map((service) => (
+        <Card class="group flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <CardHeader class="flex-row items-start gap-4">
+            <div class="bg-primary/10 text-primary p-3 rounded-lg">
+              <Fragment set:html={getIcon(service.icon)} />
+            </div>
+            <div>
+              <CardTitle class="font-headline text-xl">{service.title}</CardTitle>
+              <CardDescription class="text-base mt-2">{service.description}</CardDescription>
+            </div>
+          </CardHeader>
+          <CardContent class="flex-grow flex items-end">
+            <Button href={service.link} variant="ghost" class="p-0 h-auto text-primary">
+              Learn More 
+              <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

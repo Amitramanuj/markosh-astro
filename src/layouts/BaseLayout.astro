@@ -1,0 +1,191 @@
+---
+import '../styles/globals.css';
+import TaskadeWidget from '../components/islands/TaskadeWidget.tsx';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+}
+
+const { 
+  title = 'Markosh', 
+  description = 'Markosh provides top-tier IT staffing and custom software development services to help your business scale.',
+  image = '/markosh-logo.png',
+  canonical,
+  noindex = false,
+  type = 'website'
+} = Astro.props;
+
+// Construct full title
+const fullTitle = title === 'Markosh' ? title : `${title} | Markosh`;
+
+// Construct canonical URL
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+
+// Construct full image URL for social sharing
+const fullImageURL = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="!scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonicalURL} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageURL} />
+    <meta property="og:site_name" content="Markosh" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullImageURL} />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M10 85 L10 15 L30 15 L50 55 L70 15 L90 15 L90 85 L75 85 L75 40 L60 75 L40 75 L25 40 L25 85 Z' fill='%232563eb' transform='translate(3,3)'/><path d='M7 82 L7 12 L27 12 L47 52 L67 12 L87 12 L87 82 L72 82 L72 37 L57 72 L37 72 L22 37 L22 82 Z' fill='%237c3aed'/></svg>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/markosh-logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/markosh-logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/markosh-logo.png" />
+    
+    <!-- Performance and SEO optimizations -->
+    <meta name="theme-color" content="#4338CA" />
+    <meta name="color-scheme" content="light dark" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://placehold.co" />
+    <link rel="dns-prefetch" href="https://via.placeholder.com" />
+    
+
+    
+    <!-- Optimized font loading with font-display: swap for better performance -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- Critical CSS inlined for above-the-fold content -->
+    <style>
+      /* Critical CSS for immediate rendering */
+      :root {
+        --background: 240 50% 98%;
+        --foreground: 224 39% 10%;
+        --primary: 243 55% 58%;
+        --primary-foreground: 0 0% 100%;
+        --accent: 239 85% 66%;
+        --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+        --font-poppins: 'Poppins', system-ui, -apple-system, sans-serif;
+      }
+      
+      .dark {
+        --background: 224 39% 10%;
+        --foreground: 0 0% 98%;
+        --primary: 239 85% 66%;
+        --primary-foreground: 224 39% 10%;
+        --accent: 245 58% 52%;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+        font-family: var(--font-inter);
+      }
+      
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: var(--font-inter);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Critical layout styles */
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      /* Font family utilities */
+      .font-body {
+        font-family: var(--font-inter);
+      }
+      
+      .font-headline {
+        font-family: var(--font-poppins);
+      }
+      
+      /* Critical button styles */
+      .btn-gradient {
+        background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+        color: hsl(var(--primary-foreground));
+      }
+      
+      /* Prevent layout shift during font loading */
+      .font-loading {
+        font-display: swap;
+      }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Markosh",
+        "description": "Top-tier IT staffing and custom software development services",
+        "url": "https://markosh.com",
+        "logo": "https://markosh.com/markosh-logo.png",
+        "sameAs": [
+          "https://linkedin.com/company/markosh",
+          "https://twitter.com/markosh"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-555-0123",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        },
+        "foundingDate": "2020",
+        "numberOfEmployees": "50-100",
+        "industry": "Information Technology"
+      }
+    </script>
+  </head>
+  <body class="min-h-screen font-body antialiased">
+    <slot />
+    <!-- Taskade Widget -->
+    <TaskadeWidget client:idle />
+  </body>
+</html>

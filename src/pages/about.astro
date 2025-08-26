@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import { Lightbulb, Gem, Handshake } from '@/components/ui/icons';
+
+const teamMembers = [
+  { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: 'https://placehold.co/100x100.png' },
+  { name: 'Amit Ramanuj', title: 'Co-founder', avatar: 'https://placehold.co/100x100.png' },
+];
+
+const values = [
+  { icon: Lightbulb, title: 'Innovation', description: 'We constantly seek better ways to solve problems and deliver value.' },
+  { icon: Gem, title: 'Quality', description: 'We are committed to excellence and the highest standards in everything we do.' },
+  { icon: Handshake, title: 'Partnership', description: 'We build lasting relationships based on trust, transparency, and mutual success.' },
+];
+---
+
+<BaseLayout 
+  title="About Markosh"
+  description="We are a team of passionate technologists and talent specialists dedicated to helping businesses thrive in the digital age."
+  canonical="https://markosh.com/about/"
+>
+  <Header />
+  <main>
+    <FadeInSection client:visible>
+      <section class="bg-secondary">
+        <div class="container mx-auto text-center py-16">
+          <h1 class="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">About Markosh</h1>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            We are a team of passionate technologists and talent specialists dedicated to helping businesses thrive in the digital age.
+          </p>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="font-headline text-3xl font-bold mb-4">Our Story</h2>
+            <p class="text-muted-foreground text-lg mb-4">
+              Founded in 2025, Markosh was born from a desire to bridge the gap between exceptional tech talent and the companies that need them most. We saw the challenges businesses faced in building and scaling their technology teams and set out to create a better way.
+            </p>
+            <p class="text-muted-foreground text-lg">
+              Today, we are a trusted partner to startups and enterprises alike, providing both the people and the technical expertise to turn ambitious visions into reality.
+            </p>
+          </div>
+          <Image
+            src="https://images.unsplash.com/photo-1458014854819-1a40aa70211c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBZGQlMjBncm93dGglMjBzdG9yeXxlbnwwfHx8fDE3NTM5ODM4NzV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Our team working"
+            width={600}
+            height={450}
+            class="rounded-lg shadow-md"
+            loading="lazy"
+            format="webp"
+            quality={85}
+          />
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="bg-secondary py-16">
+        <div class="container mx-auto text-center">
+          <h2 class="font-headline text-3xl font-bold">Our Values</h2>
+          <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map(value => (
+              <div>
+                <div class="flex items-center justify-center mx-auto h-16 w-16 rounded-full bg-primary/10 text-primary">
+                  <value.icon className="w-8 h-8" />
+                </div>
+                <h3 class="font-headline text-xl mt-4">{value.title}</h3>
+                <p class="text-muted-foreground mt-2">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+    
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto text-center">
+          <h2 class="font-headline text-3xl font-bold">Meet the Team</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            The passionate individuals leading Markosh forward.
+          </p>
+          <div class="mt-12 grid grid-cols-2 md:grid-cols-2 gap-8">
+            {teamMembers.map((member) => (
+              <div class="flex flex-col items-center">
+                <div class="w-24 h-24 mb-4 rounded-full overflow-hidden bg-gray-200">
+                  <img 
+                    src={member.avatar} 
+                    alt={member.name}
+                    class="w-full h-full object-cover"
+                    data-ai-hint="professional headshot"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 class="font-semibold">{member.name}</h3>
+                <p class="text-sm text-primary">{member.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>

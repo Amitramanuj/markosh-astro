@@ -1,0 +1,8 @@
+---
+import HeaderIsland from '@/components/islands/Header.tsx';
+
+// Get the current path from Astro.url
+const currentPath = Astro.url.pathname;
+---
+
+<HeaderIsland client:load currentPath={currentPath} />

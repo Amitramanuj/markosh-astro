@@ -1,0 +1,71 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card.tsx";
+import { FileText, BookOpen, Newspaper } from "@/components/ui/icons";
+---
+
+<BaseLayout 
+  title="Resources - Markosh"
+  description="Explore our insights, research, and success stories."
+  canonical="https://markosh.com/resources/"
+>
+  <Header />
+  <main>
+    <FadeInSection client:visible>
+      <section class="bg-secondary">
+        <div class="container mx-auto text-center py-16">
+          <h1 class="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">Resources</h1>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            Explore our insights, research, and success stories.
+          </p>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="text-center">
+              <CardHeader>
+                <FileText className="w-12 h-12 text-primary mx-auto mb-4" />
+                <CardTitle>Case Studies</CardTitle>
+                <CardDescription>Real-world examples of how we've helped our clients succeed.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p class="text-muted-foreground">Our case studies are coming soon. Check back later to see our success stories.</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center">
+              <CardHeader>
+                <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
+                <CardTitle>White Papers</CardTitle>
+                <CardDescription>In-depth reports on industry trends and technologies.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p class="text-muted-foreground">We are currently preparing insightful white papers for you. Stay tuned.</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center">
+              <CardHeader>
+                <Newspaper className="w-12 h-12 text-primary mx-auto mb-4" />
+                <CardTitle>Blog</CardTitle>
+                <CardDescription>Articles on software development, IT staffing, and business growth.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p class="text-muted-foreground">Our blog is launching soon. Get ready for expert articles and tips.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+export interface Props {
+  for?: string;
+  class?: string;
+}
+
+const { 
+  for: htmlFor, 
+  class: className = "",
+  ...rest 
+} = Astro.props;
+
+const labelClasses = `
+  text-sm font-medium leading-none peer-disabled:cursor-not-allowed 
+  peer-disabled:opacity-70 ${className}
+`.trim();
+---
+
+<label 
+  for={htmlFor}
+  class={labelClasses}
+  {...rest}
+>
+  <slot />
+</label>

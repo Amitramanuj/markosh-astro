@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import Button from '@/components/ui/Button.astro';
+---
+
+<section class="bg-background pt-8 pb-16 md:pt-16 md:pb-24">
+  <div class="container mx-auto grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+    <div class="max-w-xl text-center md:text-left">
+      <h1 class="font-headline text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+        Accelerate Your Growth with Elite Tech Talent
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-muted-foreground">
+        Markosh connects innovative companies with top-tier developers, designers, and project managers. Build your dream team and deliver outstanding software products, faster.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6 md:justify-start">
+        <Button href="/contact" size="lg" class="btn-gradient font-semibold shadow-lg">
+          Hire Talent 
+          <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </Button>
+        <Button href="/services" size="lg" variant="outline">
+          Our Services
+        </Button>
+      </div>
+    </div>
+    <div class="relative flex justify-center">
+      <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent opacity-10 blur-3xl rounded-full"></div>
+      <Image
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc1Mzk4MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080"
+        alt="Team collaboration"
+        width={600}
+        height={400}
+        class="rounded-xl shadow-2xl z-10"
+        loading="eager"
+        format="webp"
+        quality={85}
+      />
+    </div>
+  </div>
+</section>

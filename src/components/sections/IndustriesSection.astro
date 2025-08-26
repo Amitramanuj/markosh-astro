@@ -1,0 +1,33 @@
+---
+import Badge from '@/components/ui/Badge.astro';
+
+const industries = [
+  'E-commerce',
+  'SaaS',
+  'Healthcare',
+  'Finance',
+  'Education',
+  'Manufacturing',
+  'FinTech',
+  'Logistics',
+];
+---
+
+<section class="bg-background">
+  <div class="container mx-auto text-center">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-primary">Our Expertise</h2>
+    <p class="mt-2 font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+      Industries We Serve
+    </p>
+    <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+      We have a proven track record of success across a wide range of industries, delivering tailored solutions that meet unique sector challenges.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      {industries.map((industry) => (
+        <Badge variant="outline" class="text-lg px-6 py-2 rounded-full border-primary/20 bg-primary/5 text-primary">
+          {industry}
+        </Badge>
+      ))}
+    </div>
+  </div>
+</section>

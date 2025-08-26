@@ -1,0 +1,61 @@
+---
+const features = [
+  {
+    icon: 'target',
+    title: 'Expert Talent Network',
+    description: 'Access a curated network of top-tier IT professionals with proven track records in their respective fields.',
+  },
+  {
+    icon: 'zap',
+    title: 'Agile & Efficient Process',
+    description: 'Our streamlined processes ensure rapid team integration and project kick-offs, saving you time and resources.',
+  },
+  {
+    icon: 'shield-check',
+    title: 'Quality & Reliability',
+    description: 'We are committed to delivering high-quality solutions and fostering long-term partnerships built on trust and results.',
+  },
+];
+
+// SVG icons as inline components
+const getIcon = (iconName: string) => {
+  const icons = {
+    target: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>`,
+    zap: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+    </svg>`,
+    'shield-check': `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+    </svg>`
+  };
+  return icons[iconName as keyof typeof icons] || icons.target;
+};
+---
+
+<section class="bg-secondary">
+  <div class="container mx-auto">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-primary">Why Markosh</h2>
+      <p class="mt-2 font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Your Strategic Partner for Growth
+      </p>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+        We go beyond simple staffing. We integrate with your team to provide strategic value, ensuring your projects succeed and your business thrives.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-10 md:grid-cols-3">
+      {features.map((feature) => (
+        <div class="text-center">
+          <div class="flex items-center justify-center mx-auto h-16 w-16 rounded-full bg-primary/10 text-primary">
+            <Fragment set:html={getIcon(feature.icon)} />
+          </div>
+          <h3 class="mt-6 font-headline text-lg font-medium">{feature.title}</h3>
+          <p class="mt-2 text-base text-muted-foreground">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
