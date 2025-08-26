@@ -10,7 +10,10 @@
     "check": "astro check",
     "type-check": "astro check && tsc --noEmit",
     "clean": "rm -rf dist .astro",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "analyze": "astro build --analyze",
+    "lint": "astro check",
+    "test:performance": "node scripts/test-performance.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

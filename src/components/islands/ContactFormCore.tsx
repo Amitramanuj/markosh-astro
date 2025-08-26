@@ -1,87 +1,99 @@
-import { useState, useCallback } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-
+import { useState, useCallback, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
+import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { validateForm, submitForm, contactFormRules, type ValidationError } from '@/lib/form-utils';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
-const formSchema = z.object({
-  name: z.string()
-    .min(2, { message: 'Name must be at least 2 characters.' })
-    .max(50, { message: 'Name must be less than 50 characters.' })
-    .regex(/^[a-zA-Z\s]+$/, { message: 'Name can only contain letters and spaces.' }),
-  email: z.string()
-    .email({ message: 'Please enter a valid email address.' })
-    .max(100, { message: 'Email must be less than 100 characters.' }),
-  company: z.string()
-    .max(100, { message: 'Company name must be less than 100 characters.' })
-    .optional(),
-  message: z.string()
-    .min(10, { message: 'Message must be at least 10 characters.' })
-    .max(1000, { message: 'Message must be less than 1000 characters.' }),
-});
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 /**
- * Core contact form component with all heavy dependencies
- * This is lazy-loaded to reduce initial bundle size
+ * Optimized contact form component with lightweight validation
+ * Replaces heavy dependencies for better performance
  */
-export default function ContactFormCore() {
+function ContactFormCore() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      company: '',
-      message: '',
-    },
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
   });
 
-  const onSubmit = useCallback(async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true);
+  const handleInputChange = useCallback((field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
     
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
+    }
+  }, [errors]);
+
+  const handleSubmit = useCallback(async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrors({});
+
+    // Validate form
+    const fieldsToValidate = [
+      { name: 'name', value: formData.name, rules: contactFormRules.name },
+      { name: 'email', value: formData.email, rules: contactFormRules.email },
+      { name: 'company', value: formData.company, rules: contactFormRules.company },
+      { name: 'message', value: formData.message, rules: contactFormRules.message },
+    ];
+
+    const validationErrors = validateForm(fieldsToValidate);
+
+    if (validationErrors.length > 0) {
+      const errorMap = validationErrors.reduce((acc, error) => {
+        acc[error.field] = error.message;
+        return acc;
+      }, {} as Record<string, string>);
+      
+      setErrors(errorMap);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Simulate form submission - in real implementation, this would be an API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const result = await submitForm(formData);
       
-      // Log form data for development
-      console.log('Form submitted:', values);
-      
-      // Show success toast
-      toast({
-        title: 'Message Sent Successfully!',
-        description: "Thanks for reaching out. We'll get back to you within 24 hours.",
-      });
-      
-      // Reset form after successful submission
-      form.reset();
+      if (result.success) {
+        toast({
+          title: 'Message Sent Successfully!',
+          description: result.message,
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        throw new Error(result.message);
+      }
     } catch (error) {
-      // Handle submission errors
-      console.error('Form submission error:', error);
-      
       toast({
         title: 'Submission Failed',
-        description: 'There was an error sending your message. Please try again.',
+        description: error instanceof Error ? error.message : 'Please try again.',
         variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
     }
-  }, [toast, form]);
+  }, [formData, toast]);
 
   return (
     <Card className="bg-secondary/50">
@@ -90,75 +102,116 @@ export default function ContactFormCore() {
         <CardDescription>Fill out the form and we will get back to you shortly.</CardDescription>
       </CardHeader>
       <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="John Doe" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          <div>
+            <Label htmlFor="name">Full Name *</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="John Doe"
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? 'name-error' : undefined}
+              className={errors.name ? 'border-destructive' : ''}
             />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email Address</FormLabel>
-                  <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            {errors.name && (
+              <p id="name-error" className="mt-1 text-sm text-destructive">
+                {errors.name}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="email">Email Address *</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              className={errors.email ? 'border-destructive' : ''}
             />
-            <FormField
-              control={form.control}
-              name="company"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your Company Inc." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            {errors.email && (
+              <p id="email-error" className="mt-1 text-sm text-destructive">
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="company">Company (Optional)</Label>
+            <Input
+              id="company"
+              type="text"
+              placeholder="Your Company Inc."
+              value={formData.company}
+              onChange={(e) => handleInputChange('company', e.target.value)}
+              aria-invalid={!!errors.company}
+              aria-describedby={errors.company ? 'company-error' : undefined}
+              className={errors.company ? 'border-destructive' : ''}
             />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Your Message</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Tell us about your project or staffing needs..."
-                      className="min-h-[120px]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            {errors.company && (
+              <p id="company-error" className="mt-1 text-sm text-destructive">
+                {errors.company}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="message">Your Message *</Label>
+            <Textarea
+              id="message"
+              placeholder="Tell us about your project or staffing needs..."
+              className={`min-h-[120px] ${errors.message ? 'border-destructive' : ''}`}
+              value={formData.message}
+              onChange={(e) => handleInputChange('message', e.target.value)}
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? 'message-error' : undefined}
             />
-            <Button 
-              type="submit" 
-              className="w-full btn-gradient font-semibold" 
-              size="lg"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </Button>
-          </form>
-        </Form>
+            {errors.message && (
+              <p id="message-error" className="mt-1 text-sm text-destructive">
+                {errors.message}
+              </p>
+            )}
+          </div>
+
+          <Button 
+            type="submit" 
+            className="w-full btn-gradient font-semibold" 
+            size="lg"
+            disabled={isSubmitting}
+            aria-describedby="submit-status"
+          >
+            {isSubmitting ? (
+              <>
+                <span className="animate-spin mr-2">⏳</span>
+                Sending...
+              </>
+            ) : (
+              'Send Message'
+            )}
+          </Button>
+          
+          <div id="submit-status" className="sr-only" aria-live="polite">
+            {isSubmitting ? 'Submitting form...' : 'Form ready to submit'}
+          </div>
+        </form>
       </CardContent>
     </Card>
   );
 }
+
+// Export component with error boundary
+export default withErrorBoundary(ContactFormCore, 
+  <Card className="bg-destructive/10 border-destructive/20">
+    <CardContent className="p-6 text-center">
+      <h3 className="text-lg font-semibold text-destructive mb-2">Form Unavailable</h3>
+      <p className="text-sm text-muted-foreground">
+        The contact form is currently unavailable. Please refresh the page or contact us directly.
+      </p>
+    </CardContent>
+  </Card>
+);

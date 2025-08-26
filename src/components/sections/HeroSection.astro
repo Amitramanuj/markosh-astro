@@ -28,13 +28,16 @@ import Button from '@/components/ui/Button.astro';
       <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent opacity-10 blur-3xl rounded-full"></div>
       <Image
         src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc1Mzk4MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080"
-        alt="Team collaboration"
+        alt="Professional software development team collaborating on innovative technology solutions"
         width={600}
         height={400}
+        densities={[1, 2]}
+        sizes="(max-width: 768px) 100vw, 600px"
         class="rounded-xl shadow-2xl z-10"
         loading="eager"
-        format="webp"
-        quality={85}
+        format={['avif', 'webp', 'jpg']}
+        quality={80}
+        fetchpriority="high"
       />
     </div>
   </div>

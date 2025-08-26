@@ -1,1 +1,169 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 50% 98%; /* #F0F0FA */
+    --foreground: 224 39% 10%;
+    --card: 240 50% 98%;
+    --card-foreground: 224 39% 10%;
+    --popover: 240 50% 98%;
+    --popover-foreground: 224 39% 10%;
+    --primary: 243 55% 58%; /* #4338CA */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 17% 98%;
+    --secondary-foreground: 224 39% 10%;
+    --muted: 220 17% 98%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 239 85% 66%; /* #6366F1 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 243 55% 58%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 39% 10%;
+    --foreground: 0 0% 98%;
+    --card: 224 39% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 224 39% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 239 85% 66%;
+    --primary-foreground: 224 39% 10%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 4% 65%;
+    --accent: 245 58% 52%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 239 85% 66%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+}
+
+@layer components {
+  .btn-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] text-primary-foreground;
+    @apply border-none rounded-[var(--radius)] px-6 py-3 font-semibold;
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .btn-gradient:hover {
+    @apply transform -translate-y-0.5 shadow-lg;
+    box-shadow: 0 10px 25px -5px rgba(67, 56, 202, 0.25);
+  }
+  
+  /* Container utility with responsive padding */
+  .container {
+    @apply w-full max-w-6xl mx-auto px-4;
+  }
+  
+  @screen sm {
+    .container {
+      @apply px-6;
+    }
+  }
+  
+  @screen lg {
+    .container {
+      @apply px-8;
+    }
+  }
+  
+  /* Animation utilities */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+  
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+}
+
+/* Keyframes for animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Third-party Widget Customization */
+@layer utilities {
+  /* Taskade Widget Styling */
+  .taskade-chat-button {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%) !important;
+    box-shadow: 0 10px 25px -5px rgba(67, 56, 202, 0.25) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+    z-index: 9999 !important;
+  }
+  
+  .taskade-chat-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 35px -5px rgba(67, 56, 202, 0.35) !important;
+  }
+  
+  .taskade-chat-popup {
+    border-radius: 12px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid hsl(var(--border)) !important;
+  }
+  
+  /* Force consistent light theme across widgets */
+  .taskade-embed-container,
+  .taskade-chat-container,
+  .taskade-agent-chat,
+  [data-theme="dark"],
+  iframe[src*="taskade.com"] {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  
+  .taskade-widget-popup input,
+  .taskade-widget-popup textarea {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #e0e0e0 !important;
+  }
+  
+  /* Performance optimizations */
+  .scroll-smooth {
+    @apply scroll-smooth;
+  }
+  
+  .font-display-swap {
+    font-display: swap;
+  }
+}

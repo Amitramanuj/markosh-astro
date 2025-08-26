@@ -68,6 +68,20 @@ export default defineConfig({
       alias: {
         '@': path.resolve('./src')
       }
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom'],
+            'form-utils': ['@/lib/form-utils'],
+            'seo-utils': ['@/lib/seo-utils']
+          }
+        }
+      }
+    },
+    ssr: {
+      noExternal: ['@astrojs/react']
     }
   },
   
@@ -78,5 +92,16 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
+  },
+
+  // Experimental optimizations
+  experimental: {
+    optimizeHoistedScript: true,
+    contentIntellisense: true
+  },
+
+  // Security configuration
+  security: {
+    checkOrigin: true
   }
 });

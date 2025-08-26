@@ -9,31 +9,34 @@ import IndustriesSection from '@/components/sections/IndustriesSection.astro';
 import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
 import CtaSection from '@/components/sections/CtaSection.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import { pageSEO } from '@/lib/seo-utils';
 ---
 
-<BaseLayout 
-  title="Markosh - Elite Tech Talent & Custom Software Development"
-  description="Accelerate your growth with Markosh's top-tier IT staffing and custom software development services. Connect with pre-vetted professionals and build scalable solutions."
-  canonical="https://markosh.com/"
-  type="website"
->
+<BaseLayout {...pageSEO.home}>
   <Header />
-  <main>
-    <FadeInSection client:visible>
+  <main id="main-content">
+    <!-- Hero section loads immediately for LCP -->
+    <FadeInSection client:load>
       <HeroSection />
     </FadeInSection>
+    
+    <!-- Services section loads when visible -->
     <FadeInSection client:visible>
       <ServicesOverview />
     </FadeInSection>
-    <FadeInSection client:visible>
+    
+    <!-- Non-critical sections load when idle -->
+    <FadeInSection client:idle>
       <WhyChooseUs />
     </FadeInSection>
-    <FadeInSection client:visible>
+    <FadeInSection client:idle>
       <IndustriesSection />
     </FadeInSection>
-    <FadeInSection client:visible>
+    <FadeInSection client:idle>
       <TestimonialsSection />
     </FadeInSection>
+    
+    <!-- CTA section visible for conversions -->
     <FadeInSection client:visible>
       <CtaSection />
     </FadeInSection>
