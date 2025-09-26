@@ -60,7 +60,8 @@ const ToastClose = React.forwardRef<
     onClick={onClose}
     {...props}
   >
-    ×
+    <span aria-hidden="true">×</span>
+    <span className="sr-only">Dismiss notification</span>
   </button>
 ))
 ToastClose.displayName = "ToastClose"

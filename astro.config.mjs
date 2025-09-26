@@ -94,11 +94,6 @@ export default defineConfig({
     defaultStrategy: 'viewport'
   },
 
-  // Experimental optimizations
-  experimental: {
-    optimizeHoistedScript: true,
-    contentIntellisense: true
-  },
 
   // Security configuration
   security: {

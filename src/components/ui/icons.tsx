@@ -8,23 +8,6 @@ interface IconProps {
   size?: number;
 }
 
-export const MoveRight = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M18 8L22 12L18 16" />
-    <path d="M2 12H22" />
-  </svg>
-);
-
 export const Mail = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -41,7 +24,6 @@ export const Mail = ({ className = "", size = 24 }: IconProps) => (
     <polyline points="22,6 12,13 2,6" />
   </svg>
 );
-
 export const Phone = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -57,7 +39,6 @@ export const Phone = ({ className = "", size = 24 }: IconProps) => (
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
   </svg>
 );
-
 export const MapPin = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -74,7 +55,6 @@ export const MapPin = ({ className = "", size = 24 }: IconProps) => (
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
-
 export const Menu = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -92,72 +72,6 @@ export const Menu = ({ className = "", size = 24 }: IconProps) => (
     <line x1="4" x2="20" y1="18" y2="18" />
   </svg>
 );
-
-export const X = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M18 6 6 18" />
-    <path d="M6 6l12 12" />
-  </svg>
-);
-
-export const ChevronDown = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="m6 9 6 6 6-6" />
-  </svg>
-);
-
-export const Check = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
-
-export const Star = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-  </svg>
-);
-
 export const Users = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -176,7 +90,6 @@ export const Users = ({ className = "", size = 24 }: IconProps) => (
     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
   </svg>
 );
-
 export const Code = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -193,57 +106,6 @@ export const Code = ({ className = "", size = 24 }: IconProps) => (
     <polyline points="8,6 2,12 8,18" />
   </svg>
 );
-
-export const Zap = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" />
-  </svg>
-);
-
-export const Shield = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
-
-export const Globe = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="2" x2="22" y1="12" y2="12" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
-);
-
 export const CheckCircle = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -260,7 +122,6 @@ export const CheckCircle = ({ className = "", size = 24 }: IconProps) => (
     <polyline points="22,4 12,14.01 9,11.01" />
   </svg>
 );
-
 export const Cpu = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -285,7 +146,6 @@ export const Cpu = ({ className = "", size = 24 }: IconProps) => (
     <path d="M9 20v2" />
   </svg>
 );
-
 export const Workflow = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -303,7 +163,6 @@ export const Workflow = ({ className = "", size = 24 }: IconProps) => (
     <rect width="8" height="8" x="13" y="13" rx="2" />
   </svg>
 );
-
 export const BrainCircuit = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -331,7 +190,6 @@ export const BrainCircuit = ({ className = "", size = 24 }: IconProps) => (
     <circle cx="20" cy="8" r=".5" />
   </svg>
 );
-
 export const Bot = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -352,7 +210,6 @@ export const Bot = ({ className = "", size = 24 }: IconProps) => (
     <path d="M9 13v2" />
   </svg>
 );
-
 export const CloudCog = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -377,7 +234,6 @@ export const CloudCog = ({ className = "", size = 24 }: IconProps) => (
     <path d="m14.7 15.8 1-.4" />
   </svg>
 );
-
 export const Smartphone = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -394,7 +250,6 @@ export const Smartphone = ({ className = "", size = 24 }: IconProps) => (
     <path d="M12 18h.01" />
   </svg>
 );
-
 export const ShoppingCart = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -412,7 +267,6 @@ export const ShoppingCart = ({ className = "", size = 24 }: IconProps) => (
     <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
   </svg>
 );
-
 export const Cloud = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -428,7 +282,6 @@ export const Cloud = ({ className = "", size = 24 }: IconProps) => (
     <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
   </svg>
 );
-
 export const HeartPulse = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -445,7 +298,6 @@ export const HeartPulse = ({ className = "", size = 24 }: IconProps) => (
     <path d="M12 5L8 21l4-7 4 7-4-16" />
   </svg>
 );
-
 export const Banknote = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -463,7 +315,6 @@ export const Banknote = ({ className = "", size = 24 }: IconProps) => (
     <path d="M6 12h.01M18 12h.01" />
   </svg>
 );
-
 export const GraduationCap = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -481,7 +332,6 @@ export const GraduationCap = ({ className = "", size = 24 }: IconProps) => (
     <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
   </svg>
 );
-
 export const Factory = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -500,7 +350,6 @@ export const Factory = ({ className = "", size = 24 }: IconProps) => (
     <path d="M7 18h1" />
   </svg>
 );
-
 export const Lightbulb = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -518,7 +367,6 @@ export const Lightbulb = ({ className = "", size = 24 }: IconProps) => (
     <path d="M10 22h4" />
   </svg>
 );
-
 export const Gem = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -536,7 +384,6 @@ export const Gem = ({ className = "", size = 24 }: IconProps) => (
     <path d="M2 9h20" />
   </svg>
 );
-
 export const Handshake = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -554,7 +401,6 @@ export const Handshake = ({ className = "", size = 24 }: IconProps) => (
     <path d="M21 22v-7a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v7" />
   </svg>
 );
-
 export const FileText = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -574,7 +420,6 @@ export const FileText = ({ className = "", size = 24 }: IconProps) => (
     <path d="M16 17H8" />
   </svg>
 );
-
 export const BookOpen = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -591,7 +436,6 @@ export const BookOpen = ({ className = "", size = 24 }: IconProps) => (
     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
   </svg>
 );
-
 export const Newspaper = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}

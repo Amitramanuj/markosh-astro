@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import LazyContactForm from '@/components/islands/LazyContactForm.tsx';
+import ContactForm from '@/components/islands/ContactFormCore.tsx';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { Mail, Phone, MapPin } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast.tsx';
@@ -68,7 +68,7 @@ import { Toaster } from '@/components/ui/toast.tsx';
             </div>
           </div>
         </div>
-        <LazyContactForm client:load />
+        <ContactForm client:load />
       </div>
     </section>
   </FadeInSection>

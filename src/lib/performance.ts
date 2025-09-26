@@ -103,7 +103,7 @@ export class PerformanceMonitor {
    */
   public logMetrics(): void {
     if (process.env.NODE_ENV === 'development') {
-      console.group('🚀 Performance Metrics');
+      console.group('Performance Metrics');
       console.table(this.metrics);
       console.groupEnd();
     }
@@ -112,14 +112,13 @@ export class PerformanceMonitor {
   /**
    * Send metrics to analytics service
    */
-  public sendMetrics(endpoint: string = '/api/analytics'): void {
-    if (Object.keys(this.metrics).length === 0) return;
+  public sendMetrics(endpoint?: string): void {
+    if (!endpoint || Object.keys(this.metrics).length === 0) return;
+    if (typeof fetch !== 'function') return;
 
-    // Only send if we have meaningful data
     const hasValidMetrics = this.metrics.fcp && this.metrics.lcp;
     if (!hasValidMetrics) return;
 
-    // Send to analytics endpoint (replace with your service)
     fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -131,7 +130,7 @@ export class PerformanceMonitor {
         userAgent: navigator.userAgent,
         timestamp: Date.now(),
       }),
-    }).catch(error => {
+    }).catch((error) => {
       if (process.env.NODE_ENV === 'development') {
         console.warn('Failed to send metrics:', error);
       }
@@ -226,7 +225,7 @@ export function analyzeResourceTiming(): void {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    console.group('📊 Resource Analysis');
+    console.group('Resource Analysis');
     console.log('Total Resources:', analysis.totalResources);
     console.log('Total Transfer Size:', `${(analysis.totalTransferSize / 1024).toFixed(2)} KB`);
     
@@ -241,3 +240,4 @@ export function analyzeResourceTiming(): void {
     console.groupEnd();
   }
 }
+

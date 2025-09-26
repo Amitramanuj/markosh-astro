@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import performanceScript from '../scripts/init-performance.ts?url';
 import TaskadeWidget from '../components/islands/TaskadeWidget.tsx';
 import { generateOrganizationStructuredData, mergeSEOConfig, type SEOConfig } from '../lib/seo-utils';
 
@@ -13,7 +14,6 @@ const structuredData = generateOrganizationStructuredData();
 <html lang="en" class="!scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Primary Meta Tags -->
@@ -54,7 +54,7 @@ const structuredData = generateOrganizationStructuredData();
     <meta name="color-scheme" content="light dark" />
     
     <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' fonts.gstatic.com fonts.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; script-src 'self'; connect-src 'self'; frame-src 'self' https://taskade.com;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' fonts.gstatic.com fonts.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://assets.taskade.com; connect-src 'self' https://taskade.com https://assets.taskade.com; frame-src 'self' https://taskade.com;" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -70,10 +70,7 @@ const structuredData = generateOrganizationStructuredData();
     <link rel="dns-prefetch" href="https://via.placeholder.com" />
     
 
-    
     <!-- Optimized font loading with resource hints and reduced weights -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" 
       rel="stylesheet" 
@@ -87,7 +84,7 @@ const structuredData = generateOrganizationStructuredData();
       />
     </noscript>
     
-    <!-- Critical CSS inlined from critical.css for above-the-fold performance -->
+    <!-- Critical CSS inlined for above-the-fold performance -->
     <style>
       /* Essential CSS loaded inline to prevent FOUC */
       :root {
@@ -134,18 +131,7 @@ const structuredData = generateOrganizationStructuredData();
     <TaskadeWidget client:idle />
     
     <!-- Performance monitoring script -->
-    <script>
-      // Initialize performance monitoring
-      if (typeof window !== 'undefined') {
-        import('/src/lib/performance.ts').then(({ initPerformanceMonitoring, analyzeResourceTiming }) => {
-          initPerformanceMonitoring();
-          
-          // Analyze resources after load
-          window.addEventListener('load', () => {
-            setTimeout(analyzeResourceTiming, 2000);
-          });
-        });
-      }
-    </script>
+    <script type="module" src={performanceScript}></script>
   </body>
 </html>
+

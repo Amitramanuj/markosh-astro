@@ -159,9 +159,6 @@
   }
   
   /* Performance optimizations */
-  .scroll-smooth {
-    @apply scroll-smooth;
-  }
   
   .font-display-swap {
     font-display: swap;
