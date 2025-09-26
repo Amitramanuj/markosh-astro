@@ -5,10 +5,12 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { Lightbulb, Gem, Handshake } from '@/components/ui/icons';
+import AnveshaAvatar from '../../Anvesha.png';
+import AmitAvatar from '../../Amit.png';
 
 const teamMembers = [
-  { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: 'https://placehold.co/100x100.png' },
-  { name: 'Amit Ramanuj', title: 'Co-founder', avatar: 'https://placehold.co/100x100.png' },
+  { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: AnveshaAvatar },
+  { name: 'Amit Ramanuj', title: 'Co-founder', avatar: AmitAvatar },
 ];
 
 const values = [
@@ -91,12 +93,16 @@ const values = [
           <div class="mt-12 grid grid-cols-2 md:grid-cols-2 gap-8">
             {teamMembers.map((member) => (
               <div class="flex flex-col items-center">
-                <div class="w-24 h-24 mb-4 rounded-full overflow-hidden bg-gray-200">
-                  <img 
-                    src={member.avatar} 
+                <div class="w-32 h-32 md:w-36 md:h-36 mb-4 rounded-full overflow-hidden bg-gray-200">
+                  <Image
+                    src={member.avatar}
                     alt={member.name}
-                    class="w-full h-full object-cover"
+                    width={member.avatar.width}
+                    height={member.avatar.height}
+                    class="h-full w-full object-cover"
                     data-ai-hint="professional headshot"
+                    formats={["avif", "webp", "png"]}
+                    sizes="(min-width: 768px) 144px, 128px"
                     loading="lazy"
                   />
                 </div>
