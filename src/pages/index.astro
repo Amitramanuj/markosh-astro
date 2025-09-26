@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
@@ -8,6 +8,7 @@ import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
 import IndustriesSection from '@/components/sections/IndustriesSection.astro';
 import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
 import CtaSection from '@/components/sections/CtaSection.astro';
+import CareerSection from '@/components/sections/CareerSection.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { pageSEO } from '@/lib/seo-utils';
 ---
@@ -34,6 +35,10 @@ import { pageSEO } from '@/lib/seo-utils';
     </FadeInSection>
     <FadeInSection client:idle>
       <TestimonialsSection />
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <CareerSection />
     </FadeInSection>
     
     <!-- CTA section visible for conversions -->

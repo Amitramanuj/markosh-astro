@@ -1,0 +1,149 @@
+﻿---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import Button from '@/components/ui/Button.astro';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card.tsx';
+import { CheckCircle } from '@/components/ui/icons';
+import { Image } from 'astro:assets';
+import careerIllustration from '../../career.png';
+
+const upcomingRoles = [
+  {
+    title: 'Senior Full-Stack Engineer',
+    description: 'Lead product squads across modern web stacks, cloud services, and AI-assisted tooling.',
+  },
+  {
+    title: 'Product Designer',
+    description: 'Craft intuitive experiences for global software platforms and enterprise applications.',
+  },
+  {
+    title: 'Technical Project Manager',
+    description: 'Orchestrate distributed teams and deliver critical milestones for high-growth clients.',
+  },
+];
+
+const talentHighlights = [
+  'Access exclusive contract and full-time engagements',
+  'Collaborate with global teams building category-defining products',
+  'Get early visibility into openings that match your craft',
+];
+---
+
+<BaseLayout 
+  title="Careers at Markosh"
+  description="Stay updated on upcoming career opportunities and join the Markosh talent network for exclusive roles."
+  canonical="https://markosh.com/career/"
+>
+  <Header />
+  <main class="bg-background" id="main-content">
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
+          <div class="space-y-6 order-2 md:order-1">
+            <span class="text-sm font-semibold uppercase tracking-widest text-primary">Careers</span>
+            <h1 class="font-headline text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
+              Stay Updated for the Opportunities
+            </h1>
+            <p class="text-muted-foreground text-lg">
+              We are expanding our roster of engineers, designers, and product leaders. Join the Markosh talent network to get notified when new openings go live and match your expertise.
+            </p>
+            <ul class="space-y-3">
+              {talentHighlights.map((item) => (
+                <li class="flex items-start gap-3 text-muted-foreground">
+                  <CheckCircle className="mt-1 h-5 w-5 text-primary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-4 pt-4 sm:flex-row">
+              <Button href="/contact" size="lg" class="btn-gradient font-semibold shadow-lg">
+                Join the Talent Network
+              </Button>
+              <Button href="mailto:talent@markosh.com" size="lg" variant="outline">
+                Email Our Team
+              </Button>
+            </div>
+          </div>
+          <div class="relative order-1 flex justify-center md:order-2">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-accent opacity-20 blur-3xl"></div>
+            <Image
+              src={careerIllustration}
+              alt="Professionals exploring career opportunities at Markosh"
+              width={620}
+              height={480}
+              class="relative z-10 w-full max-w-lg rounded-xl shadow-2xl"
+              loading="eager"
+              format="webp"
+              quality={85}
+            />
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:idle>
+      <section class="bg-secondary py-16">
+        <div class="container mx-auto">
+          <div class="max-w-2xl text-center mx-auto">
+            <h2 class="font-headline text-3xl font-bold text-gray-900 dark:text-white">
+              Upcoming Roles
+            </h2>
+            <p class="mt-4 text-muted-foreground">
+              These highlighted opportunities are in planning and will open soon. Express your interest now to be among the first to interview.
+            </p>
+          </div>
+          <div class="mt-12 grid gap-8 md:grid-cols-3">
+            {upcomingRoles.map((role) => (
+              <Card className="bg-background">
+                <CardHeader>
+                  <CardTitle className="text-xl font-semibold">{role.title}</CardTitle>
+                  <CardDescription>Opening soon</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{role.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
+          <div class="space-y-5">
+            <h2 class="font-headline text-3xl font-bold text-gray-900 dark:text-white">
+              How the Talent Network Works
+            </h2>
+            <p class="text-muted-foreground">
+              Share your portfolio, preferred roles, and availability. Our team will keep you posted on tailored opportunities, interview timelines, and curated updates.
+            </p>
+            <p class="text-muted-foreground">
+              We respect your time; only relevant roles hit your inbox, and you can opt out anytime.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-secondary p-8 shadow-lg">
+            <h3 class="font-headline text-2xl font-semibold text-gray-900 dark:text-white">
+              Be first in line
+            </h3>
+            <p class="mt-3 text-muted-foreground">
+              Send us a quick note with your latest CV or portfolio link and the types of challenges you love solving.
+            </p>
+            <div class="mt-6 flex flex-col gap-4 sm:flex-row">
+              <Button href="mailto:talent@markosh.com" size="lg" class="btn-gradient font-semibold shadow-lg">
+                Share My Profile
+              </Button>
+              <Button href="/contact" size="lg" variant="outline">
+                Schedule a Call
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>

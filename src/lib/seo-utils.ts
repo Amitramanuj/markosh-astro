@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SEO utilities for consistent metadata management
  * Provides helpers for generating SEO-optimized metadata across pages
  */
@@ -92,6 +92,11 @@ export const pageSEO = {
   resources: {
     title: 'Resources - Case Studies, White Papers & Blog',
     description: 'Explore Markosh\'s resources including case studies, white papers, and blog articles on software development, IT staffing, and business growth.',
+    type: 'website' as const
+  },
+  career: {
+    title: 'Careers at Markosh',
+    description: 'Stay updated on upcoming career opportunities and join the Markosh talent network for exclusive roles.',
     type: 'website' as const
   }
 } as const;

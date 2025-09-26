@@ -1,4 +1,4 @@
----
+﻿---
 import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
 ---
@@ -12,7 +12,7 @@ import Button from '@/components/ui/Button.astro';
       <p class="mt-6 text-lg leading-8 text-muted-foreground">
         Markosh connects innovative companies with top-tier developers, designers, and project managers. Build your dream team and deliver outstanding software products, faster.
       </p>
-      <div class="mt-10 flex items-center justify-center gap-x-6 md:justify-start">
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
         <Button href="/contact" size="lg" class="btn-gradient font-semibold shadow-lg">
           Hire Talent 
           <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -21,6 +21,9 @@ import Button from '@/components/ui/Button.astro';
         </Button>
         <Button href="/services" size="lg" variant="outline">
           Our Services
+        </Button>
+        <Button href="/career" size="lg" variant="ghost" class="text-primary">
+          Careers
         </Button>
       </div>
     </div>

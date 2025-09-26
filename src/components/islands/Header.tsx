@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu } from '@/components/ui/icons';
 
@@ -6,6 +6,7 @@ const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/industries', label: 'Industries' },
   { href: '/resources', label: 'Resources' },
+  { href: '/career', label: 'Careers' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
