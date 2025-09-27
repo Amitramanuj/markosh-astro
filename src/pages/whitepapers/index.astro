@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx';
+import { whitepapers } from '@/lib/whitepapers';
+import { BookOpen } from '@/components/ui/icons';
+
+const papers = [...whitepapers].sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+---
+
+<BaseLayout
+  title="White Papers - Markosh Research"
+  description="Explore research-backed insights on AI-assisted development, engineering operations, and the economics of autonomous delivery."
+  canonical="https://markosh.com/whitepapers/"
+>
+  <Header />
+  <main id="main-content" class="bg-background">
+    <FadeInSection client:visible>
+      <section class="bg-secondary">
+        <div class="container mx-auto flex flex-col items-center gap-6 py-16 text-center">
+          <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
+            <BookOpen className="h-4 w-4" />
+            Research Library
+          </span>
+          <h1 class="max-w-3xl font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Strategy-led white papers for modern engineering leaders
+          </h1>
+          <p class="max-w-2xl text-lg text-muted-foreground">
+            Our experts synthesize market signals, platform economics, and frontline delivery lessons so you can steer AI-assisted development programs with confidence.
+          </p>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {papers.map((paper) => (
+              <a
+                href={`/whitepapers/${paper.slug}/`}
+                class="group block h-full rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              >
+                <Card className="flex h-full flex-col justify-between overflow-hidden border-border/70 bg-background transition-shadow duration-200 group-hover:-translate-y-1 group-hover:shadow-xl">
+                  <CardHeader className="space-y-4 pb-0 text-left">
+                    <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                      {paper.category}
+                    </span>
+                    <CardTitle className="font-headline text-2xl leading-snug">
+                      {paper.title}
+                    </CardTitle>
+                    <CardDescription className="text-base leading-relaxed text-muted-foreground">
+                      {paper.summary}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="mt-6 flex flex-col gap-6 border-t border-border/60 pt-6 text-sm">
+                    <div class="flex flex-wrap items-center gap-3 text-muted-foreground">
+                      <span class="inline-flex items-center gap-2">
+                        <span class="font-semibold text-foreground">
+                          {formatDate(paper.updated ?? paper.published)}
+                        </span>
+                        <span class="hidden sm:inline" aria-hidden="true">•</span>
+                        <span>Read time ~{paper.readTimeMinutes} min</span>
+                      </span>
+                    </div>
+                    <span class="inline-flex w-fit items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
+                      View insights
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <line x1="5" x2="19" y1="12" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </CardContent>
+                </Card>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>

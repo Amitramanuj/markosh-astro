@@ -41,16 +41,42 @@ import { FileText, BookOpen, Newspaper } from "@/components/ui/icons";
               </CardContent>
             </Card>
             
-            <Card className="text-center">
-              <CardHeader>
-                <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle>White Papers</CardTitle>
-                <CardDescription>In-depth reports on industry trends and technologies.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p class="text-muted-foreground">We are currently preparing insightful white papers for you. Stay tuned.</p>
-              </CardContent>
-            </Card>
+            <a
+              href="/whitepapers/"
+              class="group block h-full rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              aria-label="Explore our latest white papers"
+            >
+              <Card className="text-center h-full transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
+                <CardHeader>
+                  <BookOpen className="w-12 h-12 text-primary mx-auto mb-4 transition-colors duration-200 group-hover:text-primary" />
+                  <CardTitle>White Papers</CardTitle>
+                  <CardDescription>In-depth reports on industry trends and technologies.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p class="text-muted-foreground">
+                    Access strategy-led research on AI-assisted development systems, operations, and economics.
+                  </p>
+                  <div class="mt-6 flex justify-center">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
+                      Explore white papers
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <line x1="5" x2="19" y1="12" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
             
             <Card className="text-center">
               <CardHeader>
