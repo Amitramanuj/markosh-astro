@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card.tsx';
+
+import { whitepapers } from '@/lib/data/whitepapers';
+---
+
+<BaseLayout
+  title="White Papers - Markosh"
+  description="Explore our latest research on AI-assisted development systems, operations, and economics."
+  canonical="https://markosh.com/whitepapers/"
+>
+  <Header />
+  <main>
+    <FadeInSection client:visible>
+      <section class="bg-secondary">
+        <div class="container mx-auto text-center py-16 space-y-6">
+          <p class="inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">Research Library</p>
+          <h1 class="font-headline text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+            White Papers
+          </h1>
+          <p class="max-w-2xl mx-auto text-lg text-muted-foreground">
+            System-first perspectives on building productive, governed AI development programs.
+          </p>
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <section class="py-16">
+        <div class="container mx-auto grid gap-8 md:grid-cols-2">
+          {whitepapers.map((paper) => (
+            <Card className="h-full flex flex-col justify-between">
+              <CardHeader className="space-y-4">
+                <CardTitle className="font-headline text-2xl text-foreground">
+                  {paper.title}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {paper.summary}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div class="flex items-center justify-between border-t border-border/60 pt-6">
+                  <span class="text-sm uppercase tracking-wide text-muted-foreground">Read time ~8 min</span>
+                  <a
+                    href={`/whitepapers/${paper.slug}/`}
+                    class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Read white paper
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </FadeInSection>
+  </main>
+  <Footer />
+</BaseLayout>
+
+

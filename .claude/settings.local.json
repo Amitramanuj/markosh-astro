@@ -37,7 +37,22 @@
       "Bash(taskkill:*)",
       "Bash(cmd /c:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project create markosh-com-new --source=github --repo=Amitramanuj/markosh-astro --production-branch=main)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project --help)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages deployment --help)",
+      "Bash(git branch:*)",
+      "Bash(git config:*)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages --help)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages download --help)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project create markosh-main --compatibility-date=2024-01-01)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project create markosh-main --production-branch=main)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project delete markosh-main)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" --version)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project create markosh-github --production-branch=main)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(npm update:*)",
+      "Bash(\"C:\\Users\\amitr\\AppData\\Roaming\\npm\\wrangler.cmd\" pages project create markosh-auto --production-branch=main --repo=Amitramanuj/markosh-astro)"
     ],
     "deny": [],
     "ask": []
