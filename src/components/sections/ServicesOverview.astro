@@ -1,4 +1,4 @@
----
+﻿---
 const services = [
   {
     num: '01',
@@ -53,9 +53,9 @@ const getIcon = (iconName: string) => {
   <div class="container mx-auto">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
-        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Our Services</h2>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Our Services</h2>
         <p class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-          What we <span class="text-gradient">build &amp; deliver</span>
+          What we <span class="text-primary">build &amp; deliver</span>
         </p>
       </div>
       <p class="max-w-md text-lg text-muted-foreground">
@@ -72,7 +72,7 @@ const getIcon = (iconName: string) => {
           </div>
           <h3 class="mt-6 font-headline text-2xl font-bold">{service.title}</h3>
           <p class="mt-3 flex-grow text-muted-foreground">{service.description}</p>
-          <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+          <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
             Learn more
             <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -83,3 +83,4 @@ const getIcon = (iconName: string) => {
     </div>
   </div>
 </section>
+

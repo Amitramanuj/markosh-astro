@@ -1,31 +1,30 @@
 ---
-const features = [
+const steps = [
   {
     step: '01',
-    title: 'Expert Talent Network',
-    description: 'Access a curated network of top-tier IT professionals with proven track records in their respective fields.',
+    title: 'Discover',
+    description: 'We start with your roadmap, not a résumé pile. A short discovery call maps the skills, seniority, and team fit your project actually needs.',
   },
   {
     step: '02',
-    title: 'Agile & Efficient Process',
-    description: 'Our streamlined processes ensure rapid team integration and project kick-offs, saving you time and resources.',
+    title: 'Staff',
+    description: 'Within days, you meet pre-vetted engineers matched to your stack and culture. They embed directly in your team and tools — no agency middle layer.',
   },
   {
     step: '03',
-    title: 'Quality & Reliability',
-    description: 'We are committed to delivering high-quality solutions and fostering long-term partnerships built on trust and results.',
+    title: 'Ship',
+    description: 'We stay accountable for outcomes, not hours. Regular check-ins keep delivery on track, and we scale the team up or down as your roadmap evolves.',
   },
 ];
 ---
 
-<section class="relative isolate overflow-hidden bg-secondary">
-  <div class="absolute bottom-0 left-[-10rem] -z-10 h-[20rem] w-[30rem] rounded-full bg-primary/10 blur-[110px]" aria-hidden="true"></div>
+<section class="bg-secondary">
   <div class="container mx-auto">
     <div class="grid gap-14 lg:grid-cols-[1fr,1.4fr] lg:items-start">
       <div class="lg:sticky lg:top-28">
-        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Why Markosh</h2>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">How We Work</h2>
         <p class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-          Your strategic partner <span class="text-gradient">for growth</span>
+          A partner through the <span class="text-primary">whole engagement</span>
         </p>
         <p class="mt-5 text-lg text-muted-foreground">
           We go beyond simple staffing. We integrate with your team to provide strategic value, ensuring your projects succeed and your business thrives.
@@ -33,12 +32,12 @@ const features = [
       </div>
 
       <ol class="space-y-6">
-        {features.map((feature) => (
+        {steps.map((item) => (
           <li class="glass-card flex gap-6 p-8">
-            <span class="font-headline text-xl font-bold text-gradient" aria-hidden="true">{feature.step}</span>
+            <span class="font-headline text-xl font-bold text-primary" aria-hidden="true">{item.step}</span>
             <div>
-              <h3 class="font-headline text-xl font-bold">{feature.title}</h3>
-              <p class="mt-2 text-muted-foreground">{feature.description}</p>
+              <h3 class="font-headline text-xl font-bold">{item.title}</h3>
+              <p class="mt-2 text-muted-foreground">{item.description}</p>
             </div>
           </li>
         ))}

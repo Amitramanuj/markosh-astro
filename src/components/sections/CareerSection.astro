@@ -1,4 +1,4 @@
----
+﻿---
 import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
 import { CheckCircle } from '@/components/ui/icons';
@@ -12,12 +12,12 @@ const highlights = [
 ---
 
 <section class="relative isolate overflow-hidden bg-secondary">
-  <div class="absolute top-0 right-[-12rem] -z-10 h-[24rem] w-[30rem] rounded-full bg-accent/10 blur-[110px]" aria-hidden="true"></div>
+  <div class="absolute top-0 right-[-12rem] -z-10 h-[24rem] w-[30rem] rounded-full bg-primary/5 blur-[110px]" aria-hidden="true"></div>
   <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
     <div class="space-y-6 text-center md:text-left">
-      <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Careers</h2>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Careers</h2>
       <p class="font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-        Shape your next chapter <span class="text-gradient">with Markosh</span>
+        Shape your next chapter <span class="text-primary">with Markosh</span>
       </p>
       <p class="text-lg text-muted-foreground">
         Stay in the loop as we assemble new project teams and announce open roles across engineering, product, and design.
@@ -25,7 +25,7 @@ const highlights = [
       <ul class="space-y-3 text-left">
         {highlights.map((item) => (
           <li class="flex items-start gap-3 text-muted-foreground">
-            <CheckCircle className="mt-1 h-5 w-5 text-accent" />
+            <CheckCircle className="mt-1 h-5 w-5 text-primary" />
             <span>{item}</span>
           </li>
         ))}
@@ -40,7 +40,7 @@ const highlights = [
       </div>
     </div>
     <div class="relative flex justify-center">
-      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-accent/20 opacity-60 blur-3xl" aria-hidden="true"></div>
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/5 opacity-60 blur-3xl" aria-hidden="true"></div>
       <Image
         src={careerIllustration}
         alt="Team collaborating at Markosh"
@@ -54,3 +54,5 @@ const highlights = [
     </div>
   </div>
 </section>
+
+

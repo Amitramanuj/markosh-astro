@@ -55,14 +55,14 @@ export default function Header({ currentPath }: HeaderProps) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 rounded-full border border-border bg-card/60 px-2 py-1.5 backdrop-blur md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className={cn(
-                'rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
-                currentPath === link.href && 'bg-primary/15 text-foreground'
+                'text-sm font-medium text-muted-foreground underline-offset-8 transition-colors hover:text-foreground',
+                currentPath === link.href && 'text-primary underline decoration-2'
               )}
             >
               {link.label}
@@ -87,7 +87,7 @@ export default function Header({ currentPath }: HeaderProps) {
             aria-label="Open mobile menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/60 backdrop-blur transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
           >
             <Menu className="h-6 w-6" />
             <span className="sr-only">Open menu</span>
@@ -136,7 +136,7 @@ export default function Header({ currentPath }: HeaderProps) {
                         onClick={closeMobileMenu}
                         className={cn(
                           'font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
-                          currentPath === link.href && 'text-gradient'
+                          currentPath === link.href && 'text-primary'
                         )}
                       >
                         {link.label}
