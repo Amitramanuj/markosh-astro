@@ -23,7 +23,7 @@ export interface SEOConfig {
 export const defaultSEO: Required<Omit<SEOConfig, 'publishedTime' | 'modifiedTime' | 'author' | 'section' | 'tags'>> = {
   title: 'Markosh',
   description: 'Markosh provides top-tier IT staffing and custom software development services to help your business scale.',
-  image: '/markosh-logo.png',
+  image: '/og-image.png',
   canonical: '',
   noindex: false,
   type: 'website'
@@ -167,6 +167,62 @@ export function generateServiceStructuredData(serviceName: string, description: 
     },
     "serviceType": "Technology Services",
     "areaServed": "Worldwide"
+  };
+}
+
+/**
+ * Generate structured data for an article (white papers, blog posts)
+ */
+export function generateArticleStructuredData(article: {
+  title: string;
+  description: string;
+  url: string;
+  publishedTime: string;
+  modifiedTime?: string;
+  section?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.description,
+    "url": article.url,
+    "datePublished": article.publishedTime,
+    "dateModified": article.modifiedTime || article.publishedTime,
+    ...(article.section ? { "articleSection": article.section } : {}),
+    "author": {
+      "@type": "Organization",
+      "name": "Markosh",
+      "url": "https://markosh.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Markosh",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://markosh.com/markosh-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": article.url
+    }
+  };
+}
+
+/**
+ * Generate breadcrumb structured data from an ordered list of crumbs
+ */
+export function generateBreadcrumbStructuredData(crumbs: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": crumb.name,
+      "item": crumb.url
+    }))
   };
 }
 

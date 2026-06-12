@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { whitepapers } from '@/lib/whitepapers';
 import type { Whitepaper } from '@/lib/whitepapers';
+import { generateArticleStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
 export async function getStaticPaths() {
   return whitepapers.map((paper) => ({
@@ -23,6 +24,23 @@ const formatDate = (iso: string) =>
     day: 'numeric',
     year: 'numeric'
   });
+
+const pageUrl = `https://markosh.com/whitepapers/${paper.slug}/`;
+const extraSchemas = [
+  generateArticleStructuredData({
+    title: paper.title,
+    description: paper.heroSummary,
+    url: pageUrl,
+    publishedTime: paper.published,
+    modifiedTime: updatedDate,
+    section: paper.category
+  }),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'White Papers', url: 'https://markosh.com/whitepapers/' },
+    { name: paper.title, url: pageUrl }
+  ])
+];
 ---
 
 <BaseLayout
@@ -33,6 +51,7 @@ const formatDate = (iso: string) =>
   publishedTime={paper.published}
   modifiedTime={updatedDate}
   section={paper.category}
+  extraSchemas={extraSchemas}
 >
   <Header />
   <main id="main-content" class="bg-background">

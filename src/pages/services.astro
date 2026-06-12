@@ -6,6 +6,7 @@ import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
 import { CheckCircle, Users, Code, Cpu, Workflow, BrainCircuit, Bot, CloudCog, Smartphone } from '@/components/ui/icons';
 import { Image } from 'astro:assets';
+import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
 const services = [
   {
@@ -91,12 +92,21 @@ const services = [
 const techStack = [
   'React', 'Next.js', 'Node.js', 'Python', 'Genkit', 'LangChain', 'TensorFlow', 'PyTorch', 'Java', 'Go', 'iOS', 'Android', 'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes'
 ];
+
+const extraSchemas = [
+  ...services.map((service) => generateServiceStructuredData(service.title, service.description)),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'Services', url: 'https://markosh.com/services/' }
+  ])
+];
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Our Services - Markosh"
   description="Tailored solutions to meet your unique business needs, from finding the right talent to building world-class software."
   canonical="https://markosh.com/services/"
+  extraSchemas={extraSchemas}
 >
   <Header />
   <main class="bg-background">

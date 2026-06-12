@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
+import heroTeam from '@/assets/hero-team.jpg';
 
 const stats = [
   { value: '120+', label: 'Engineers placed' },
@@ -45,7 +46,7 @@ const stats = [
         <!-- Offset editorial frame -->
         <div class="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-primary/30" aria-hidden="true"></div>
         <Image
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc1Mzk4MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080"
+          src={heroTeam}
           alt="Markosh engineers collaborating with a client team"
           width={600}
           height={400}
