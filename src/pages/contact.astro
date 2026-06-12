@@ -6,75 +6,99 @@ import ContactForm from '@/components/islands/ContactFormCore.tsx';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { Mail, Phone, MapPin } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast.tsx';
+
+const expectations = [
+  'A reply within one business day',
+  'A 30-minute discovery call — no sales pitch',
+  'We sign your NDA before any detailed discussion',
+];
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Contact Us - Markosh"
   description="Get in touch with Markosh. Let's discuss how we can help your business grow with our IT staffing and software development services."
   canonical="https://markosh.com/contact/"
 >
   <Header />
-  <main>
-    <FadeInSection client:visible>
-    <section class="bg-secondary">
-      <div class="container mx-auto text-center py-16">
-        <h1 class="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">Contact Us</h1>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          We'd love to hear from you. Let's discuss how we can help your business grow.
-        </p>
+  <main id="main-content">
+    <!-- Editorial hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Contact</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Let's talk about <span class="text-primary">your roadmap</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            We'd love to hear from you. Let's discuss how we can help your business grow.
+          </p>
+        </div>
       </div>
     </section>
-  </FadeInSection>
 
-  <FadeInSection client:visible>
-    <section class="py-16">
-      <div class="container mx-auto grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 class="font-headline text-3xl font-bold mb-6">Get in Touch</h2>
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
-                <Mail className="w-6 h-6" />
+    <FadeInSection client:visible>
+      <section class="bg-secondary">
+        <div class="container mx-auto grid gap-12 md:grid-cols-2">
+          <div>
+            <h2 class="font-headline text-3xl font-bold tracking-tight">Get in touch</h2>
+            <div class="mt-8 space-y-4">
+              <div class="glass-card flex items-start gap-4 p-6">
+                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 class="font-headline text-lg font-bold">Email</h3>
+                  <p class="text-sm text-muted-foreground">General Inquiries</p>
+                  <a href="mailto:business@markosh.com" class="font-semibold text-primary hover:underline">
+                    business@markosh.com
+                  </a>
+                </div>
               </div>
-              <div>
-                <h3 class="font-semibold text-lg">Email</h3>
-                <p class="text-muted-foreground">General Inquiries</p>
-                <a href="mailto:business@markosh.com" class="text-primary hover:underline">
-                  business@markosh.com
-                </a>
+              <div class="glass-card flex items-start gap-4 p-6">
+                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 class="font-headline text-lg font-bold">Phone</h3>
+                  <p class="text-sm text-muted-foreground">Mon-Fri from 9am to 5pm</p>
+                  <a href="tel:+919408494084" class="font-semibold text-primary hover:underline">
+                    +91 94084 94084
+                  </a>
+                </div>
+              </div>
+              <div class="glass-card flex items-start gap-4 p-6">
+                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 class="font-headline text-lg font-bold">Office</h3>
+                  <p class="text-muted-foreground">Saket, New Delhi</p>
+                </div>
               </div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 class="font-semibold text-lg">Phone</h3>
-                <p class="text-muted-foreground">Mon-Fri from 9am to 5pm</p>
-                <a href="tel:+919408494084" class="text-primary hover:underline">
-                  +91 94084 94084
-                </a>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 class="font-semibold text-lg">Office</h3>
-                <p class="text-muted-foreground">Saket</p>
-                <p class="text-muted-foreground">New Delhi</p>
-              </div>
+
+            <div class="mt-8">
+              <h3 class="font-headline text-lg font-bold">What happens next</h3>
+              <ul class="mt-4 space-y-3">
+                {expectations.map((item) => (
+                  <li class="flex items-start gap-3 text-muted-foreground">
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+          <div class="glass-card p-8">
+            <ContactForm client:load />
+          </div>
         </div>
-        <ContactForm client:load />
-      </div>
-    </section>
-  </FadeInSection>
-  
-  <!-- Toast container for notifications -->
-  <Toaster client:load />
+      </section>
+    </FadeInSection>
+
+    <!-- Toast container for notifications -->
+    <Toaster client:load />
   </main>
   <Footer />
 </BaseLayout>
