@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu } from '@/components/ui/icons';
 
@@ -76,7 +76,7 @@ export default function Header({ currentPath }: HeaderProps) {
             href="/contact"
             className="btn-gradient inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
           >
-            Get Free Consulting
+            Book a Call
           </a>
         </div>
 
@@ -149,7 +149,7 @@ export default function Header({ currentPath }: HeaderProps) {
                     onClick={closeMobileMenu}
                     className="btn-gradient mt-10 inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-8 font-semibold"
                   >
-                    Get Free Consulting
+                    Book a Call
                   </a>
                 </div>
               </div>
@@ -160,3 +160,4 @@ export default function Header({ currentPath }: HeaderProps) {
     </header>
   );
 }
+

@@ -1,0 +1,36 @@
+---
+import { whitepapers } from '@/lib/whitepapers';
+
+const featured = whitepapers.slice(0, 3);
+---
+
+<section class="bg-background">
+  <div class="container mx-auto">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Research</p>
+        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+          How we think about <span class="text-primary">software &amp; AI</span>
+        </h2>
+      </div>
+      <a href="/whitepapers/" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+        All white papers
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      {featured.map((paper) => (
+        <a href={`/whitepapers/${paper.slug}/`} class="glass-card group flex flex-col p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-primary">{paper.category}</p>
+          <h3 class="mt-3 flex-grow font-headline text-lg font-bold leading-snug group-hover:text-primary">
+            {paper.title}
+          </h3>
+          <p class="mt-4 text-sm text-muted-foreground">~{paper.readTimeMinutes} min read</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

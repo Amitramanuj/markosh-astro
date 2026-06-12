@@ -6,6 +6,9 @@ import HeroSection from '@/components/sections/HeroSection.astro';
 import ServicesOverview from '@/components/sections/ServicesOverview.astro';
 import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
 import IndustriesSection from '@/components/sections/IndustriesSection.astro';
+import CaseStudiesSection from '@/components/sections/CaseStudiesSection.astro';
+import TrustSection from '@/components/sections/TrustSection.astro';
+import WhitepapersTeaser from '@/components/sections/WhitepapersTeaser.astro';
 import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
 import CtaSection from '@/components/sections/CtaSection.astro';
 import CareerSection from '@/components/sections/CareerSection.astro';
@@ -28,13 +31,22 @@ import { pageSEO } from '@/lib/seo-utils';
     
     <!-- Non-critical sections load when idle -->
     <FadeInSection client:idle>
+      <CaseStudiesSection />
+    </FadeInSection>
+    <FadeInSection client:idle>
       <WhyChooseUs />
+    </FadeInSection>
+    <FadeInSection client:idle>
+      <TrustSection />
     </FadeInSection>
     <FadeInSection client:idle>
       <IndustriesSection />
     </FadeInSection>
     <FadeInSection client:idle>
       <TestimonialsSection />
+    </FadeInSection>
+    <FadeInSection client:idle>
+      <WhitepapersTeaser />
     </FadeInSection>
 
     <FadeInSection client:visible>
