@@ -1,0 +1,46 @@
+---
+// FAQ answers an outsourcing buyer's first objections. Schema is emitted
+// from index.astro (homeFaqs export) via BaseLayout's extraSchemas prop.
+export const homeFaqs = [
+  {
+    question: 'Do your engineers work in US time zones?',
+    answer: 'Yes. Every engagement guarantees at least 4 hours of EST overlap, with standups and reviews scheduled in your working hours.',
+  },
+  {
+    question: 'Who owns the code and IP?',
+    answer: 'You do. We sign your NDA before discovery, and every contract assigns full IP and source-code ownership to the client.',
+  },
+  {
+    question: 'What if an engineer is not the right fit?',
+    answer: 'We replace them at no additional placement cost. You only ever pay for productive time.',
+  },
+  {
+    question: 'How does pricing work?',
+    answer: 'Staff augmentation bills monthly per engineer, dedicated teams at a flat monthly rate, and projects as milestone-based fixed bids. You will get a clear quote after one discovery call.',
+  },
+  {
+    question: 'How fast can we start?',
+    answer: 'Typically within two weeks of the first call: discovery, candidate interviews, and onboarding into your tools included.',
+  },
+];
+---
+
+<section class="relative bg-background">
+  <span class="section-number absolute right-4 top-8 sm:right-8" aria-hidden="true">06</span>
+  <div class="container mx-auto max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">FAQ</p>
+    <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+      Questions buyers <span class="text-primary">ask first</span>
+    </h2>
+    <div class="mt-10 space-y-4">
+      {homeFaqs.map((faq) => (
+        <details class="glass-card group p-6 open:border-primary/35">
+          <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+            {faq.question}
+          </summary>
+          <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

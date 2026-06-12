@@ -3,7 +3,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Button from '@/components/ui/Button.astro';
-import CtaSection from '@/components/sections/CtaSection.astro';
 import { servicePages } from '@/lib/service-pages';
 import type { ServicePage } from '@/lib/service-pages';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
@@ -127,7 +126,6 @@ const extraSchemas = [
       </div>
     </section>
 
-    <CtaSection />
   </main>
   <Footer />
 </BaseLayout>

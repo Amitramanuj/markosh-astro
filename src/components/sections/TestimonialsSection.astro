@@ -1,43 +1,60 @@
-﻿---
+---
+// TODO(content): Replace placeholder testimonials with real, attributable client quotes before launch.
+const pullQuote = {
+  quote: 'Markosh delivered an exceptional team that integrated seamlessly with our own. Their expertise was crucial to our project’s success.',
+  name: 'Jane Doe',
+  title: 'CTO, Tech Solutions Inc.',
+};
+
 const testimonials = [
   {
-    quote: "Markosh delivered an exceptional team that integrated seamlessly with our own. Their expertise was crucial to our project's success.",
-    name: 'Jane Doe',
-    title: 'CTO, Tech Solutions Inc.',
-  },
-  {
-    quote: "The software development services are top-notch. They built a robust and scalable application that exceeded our expectations.",
+    quote: 'The software development services are top-notch. They built a robust and scalable application that exceeded our expectations.',
     name: 'John Smith',
     title: 'CEO, Innovate Co.',
   },
   {
-    quote: "Finding the right talent was a challenge until we partnered with Markosh. Their IT staffing service is efficient and reliable.",
+    quote: 'Finding the right talent was a challenge until we partnered with Markosh. Their IT staffing service is efficient and reliable.',
     name: 'Emily White',
     title: 'Head of HR, Future Systems',
   },
 ];
 ---
 
-<section class="bg-secondary">
+<section class="relative bg-secondary">
+  <span class="section-number absolute right-4 top-8 sm:right-8" aria-hidden="true">05</span>
   <div class="container mx-auto">
-    <div class="mx-auto max-w-3xl text-center">
+    <div class="max-w-2xl">
       <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Testimonials</p>
       <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
         Trusted by <span class="text-primary">teams that ship</span>
       </h2>
     </div>
 
-    <div class="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
+    <!-- Oversized editorial pull-quote -->
+    <figure class="mt-14 border-l-4 border-primary pl-6 sm:pl-10">
+      <blockquote class="max-w-4xl font-headline text-2xl font-bold leading-snug sm:text-4xl">
+        &ldquo;{pullQuote.quote}&rdquo;
+      </blockquote>
+      <figcaption class="mt-6 flex items-center gap-4">
+        <div class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 font-headline font-bold">
+          {pullQuote.name.charAt(0)}
+        </div>
+        <div>
+          <p class="font-semibold">{pullQuote.name}</p>
+          <p class="text-sm text-muted-foreground">{pullQuote.title}</p>
+        </div>
+      </figcaption>
+    </figure>
+
+    <!-- Supporting quotes -->
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
       {testimonials.map((testimonial) => (
         <figure class="glass-card flex flex-col p-8">
-          <svg class="h-8 w-8 text-primary/60" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
-          <blockquote class="mt-6 flex-grow text-lg leading-relaxed text-foreground/90">
-            {testimonial.quote}
+          <blockquote class="flex-grow text-lg leading-relaxed text-foreground/90">
+            &ldquo;{testimonial.quote}&rdquo;
           </blockquote>
-          <figcaption class="mt-8 flex items-center gap-4 border-t border-border pt-6">
-            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 font-headline font-bold text-foreground">
+          <figcaption class="mt-6 flex items-center gap-4 border-t border-border pt-6">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 font-headline font-bold">
               {testimonial.name.charAt(0)}
             </div>
             <div>
@@ -50,6 +67,3 @@ const testimonials = [
     </div>
   </div>
 </section>
-
-
-

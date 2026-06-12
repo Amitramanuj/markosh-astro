@@ -1,9 +1,8 @@
----
+﻿---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
-import CtaSection from '@/components/sections/CtaSection.astro';
 import { whitepapers } from '@/lib/whitepapers';
 
 const papers = [...whitepapers].sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
@@ -57,7 +56,7 @@ const formatDate = (iso: string) =>
                 <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
                   <span>
                     <span class="font-semibold text-foreground">{formatDate(paper.updated ?? paper.published)}</span>
-                    {' '}· ~{paper.readTimeMinutes} min read
+                    {' '}Â· ~{paper.readTimeMinutes} min read
                   </span>
                   <span class="inline-flex items-center gap-2 font-semibold text-primary">
                     Read
@@ -74,7 +73,7 @@ const formatDate = (iso: string) =>
       </section>
     </FadeInSection>
 
-    <CtaSection />
   </main>
   <Footer />
 </BaseLayout>
+

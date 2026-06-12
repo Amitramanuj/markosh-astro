@@ -43,7 +43,7 @@ export default function Header({ currentPath }: HeaderProps) {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img
-            src="/markosh-logo.png"
+            src="/logo-72.png"
             alt="Markosh Logo"
             width={36}
             height={36}
@@ -119,7 +119,7 @@ export default function Header({ currentPath }: HeaderProps) {
                     onClick={closeMobileMenu}
                   >
                     <img
-                      src="/markosh-logo.png"
+                      src="/logo-72.png"
                       alt="Markosh Logo"
                       width={40}
                       height={40}
@@ -160,4 +160,5 @@ export default function Header({ currentPath }: HeaderProps) {
     </header>
   );
 }
+
 

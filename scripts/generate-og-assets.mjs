@@ -23,5 +23,6 @@ await sharp(Buffer.from(ogSvg))
 await sharp(logo).resize(180, 180).png().toFile('public/apple-touch-icon.png');
 await sharp(logo).resize(32, 32).png().toFile('public/favicon-32.png');
 await sharp(logo).resize(16, 16).png().toFile('public/favicon-16.png');
+await sharp(logo).resize(72, 72).png().toFile('public/logo-72.png');
 
-console.log('Generated og-image.png, apple-touch-icon.png, favicon-32.png, favicon-16.png');
+console.log('Generated og-image.png, apple-touch-icon.png, favicon-32.png, favicon-16.png, logo-72.png');

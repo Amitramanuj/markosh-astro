@@ -1,10 +1,9 @@
----
+﻿---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import Button from '@/components/ui/Button.astro';
-import CtaSection from '@/components/sections/CtaSection.astro';
 import { CheckCircle, Users, Code, BrainCircuit, Bot, CloudCog, Smartphone } from '@/components/ui/icons';
 import { Image } from 'astro:assets';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
@@ -223,7 +222,7 @@ const extraSchemas = [
       </section>
     </FadeInSection>
 
-    <CtaSection />
   </main>
   <Footer />
 </BaseLayout>
+

@@ -9,6 +9,9 @@ const stats = [
   { value: '95%', label: 'Client retention' },
   { value: '2 wks', label: 'Avg. team kickoff' },
 ];
+
+// TODO(content): Replace with real client names/logos before launch.
+const clientWordmarks = ['FinPay Co.', 'CareBridge', 'DocuFlow AI', 'ShopLane', 'EduSpark'];
 ---
 
 <section class="relative isolate overflow-hidden pt-10 pb-16 md:pt-20 md:pb-24">
@@ -21,7 +24,7 @@ const stats = [
           IT Staffing · Custom Software · AI
         </p>
 
-        <h1 class="mt-6 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+        <h1 class="mt-6 font-headline text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
           Senior engineers, embedded <span class="text-primary">in your team.</span>
         </h1>
 
@@ -39,6 +42,16 @@ const stats = [
           <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
             Explore Services
           </Button>
+        </div>
+
+        <!-- Client wordmark strip -->
+        <div class="mt-12">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Trusted across industries</p>
+          <ul class="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 lg:justify-start">
+            {clientWordmarks.map((name) => (
+              <li class="font-headline text-lg font-bold text-foreground/35">{name}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
