@@ -4,99 +4,147 @@
 
 @layer base {
   :root {
-    --background: 240 50% 98%; /* #F0F0FA */
-    --foreground: 224 39% 10%;
-    --card: 240 50% 98%;
-    --card-foreground: 224 39% 10%;
-    --popover: 240 50% 98%;
-    --popover-foreground: 224 39% 10%;
-    --primary: 243 55% 58%; /* #4338CA */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 17% 98%;
-    --secondary-foreground: 224 39% 10%;
-    --muted: 220 17% 98%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 239 85% 66%; /* #6366F1 */
-    --accent-foreground: 0 0% 100%;
+    /* Midnight ink design system — dark-first, electric accents */
+    --background: 230 35% 5%;
+    --foreground: 220 25% 96%;
+    --card: 229 30% 8%;
+    --card-foreground: 220 25% 96%;
+    --popover: 229 30% 8%;
+    --popover-foreground: 220 25% 96%;
+    --primary: 243 95% 70%; /* electric indigo */
+    --primary-foreground: 230 35% 5%;
+    --secondary: 229 30% 7%;
+    --secondary-foreground: 220 25% 96%;
+    --muted: 229 25% 12%;
+    --muted-foreground: 225 15% 68%;
+    --accent: 172 85% 55%; /* signal teal */
+    --accent-foreground: 230 35% 5%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 243 55% 58%;
-    --radius: 0.5rem;
+    --border: 228 20% 15%;
+    --input: 228 20% 15%;
+    --ring: 243 95% 70%;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 224 39% 10%;
-    --foreground: 0 0% 98%;
-    --card: 224 39% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 224 39% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 239 85% 66%;
-    --primary-foreground: 224 39% 10%;
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 4% 65%;
-    --accent: 245 58% 52%;
-    --accent-foreground: 0 0% 98%;
+    --background: 230 35% 5%;
+    --foreground: 220 25% 96%;
+    --card: 229 30% 8%;
+    --card-foreground: 220 25% 96%;
+    --popover: 229 30% 8%;
+    --popover-foreground: 220 25% 96%;
+    --primary: 243 95% 70%;
+    --primary-foreground: 230 35% 5%;
+    --secondary: 229 30% 7%;
+    --secondary-foreground: 220 25% 96%;
+    --muted: 229 25% 12%;
+    --muted-foreground: 225 15% 68%;
+    --accent: 172 85% 55%;
+    --accent-foreground: 230 35% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 239 85% 66%;
+    --border: 228 20% 15%;
+    --input: 228 20% 15%;
+    --ring: 243 95% 70%;
   }
 
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
   }
-  
+
   section {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
   }
 }
 
 @layer components {
   .btn-gradient {
-    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] text-primary-foreground;
-    @apply border-none rounded-[var(--radius)] px-6 py-3 font-semibold;
-    @apply transition-all duration-200 ease-in-out;
+    @apply text-white bg-gradient-to-r from-[hsl(243,95%,64%)] via-[hsl(260,90%,62%)] to-[hsl(172,85%,45%)] bg-[length:200%_auto];
+    @apply border-none rounded-full px-6 py-3 font-semibold;
+    @apply transition-all duration-300 ease-out;
   }
-  
+
   .btn-gradient:hover {
-    @apply transform -translate-y-0.5 shadow-lg;
-    box-shadow: 0 10px 25px -5px rgba(67, 56, 202, 0.25);
+    @apply -translate-y-0.5 bg-[position:right_center];
+    box-shadow: 0 12px 35px -8px hsl(243 95% 64% / 0.5);
   }
-  
+
   /* Container utility with responsive padding */
   .container {
     @apply w-full max-w-6xl mx-auto px-4;
   }
-  
+
   @screen sm {
     .container {
       @apply px-6;
     }
   }
-  
+
   @screen lg {
     .container {
       @apply px-8;
     }
   }
-  
+
+  /* Signature gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-[hsl(243,95%,74%)] via-[hsl(260,90%,72%)] to-[hsl(172,85%,55%)] bg-clip-text text-transparent;
+  }
+
+  /* Faint blueprint grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+
+  /* Glass surface for cards */
+  .glass-card {
+    @apply rounded-2xl border border-border bg-card/70 backdrop-blur;
+    background-image: linear-gradient(160deg, hsl(var(--foreground) / 0.04), transparent 40%);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-1;
+    border-color: hsl(var(--primary) / 0.45);
+    box-shadow: 0 20px 50px -20px hsl(243 95% 64% / 0.35);
+  }
+
   /* Animation utilities */
   .animate-accordion-down {
     animation: accordion-down 0.2s ease-out;
   }
-  
+
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
+  }
+
+  /* Industries marquee */
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
   }
 }
 
@@ -119,28 +167,37 @@
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Third-party Widget Customization */
 @layer utilities {
   /* Taskade Widget Styling */
   .taskade-chat-button {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%) !important;
-    box-shadow: 0 10px 25px -5px rgba(67, 56, 202, 0.25) !important;
+    background: linear-gradient(135deg, hsl(243 95% 64%) 0%, hsl(172 85% 45%) 100%) !important;
+    box-shadow: 0 10px 25px -5px hsl(243 95% 64% / 0.35) !important;
     border-radius: 50% !important;
     transition: all 0.3s ease !important;
     z-index: 9999 !important;
   }
-  
+
   .taskade-chat-button:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 15px 35px -5px rgba(67, 56, 202, 0.35) !important;
+    box-shadow: 0 15px 35px -5px hsl(243 95% 64% / 0.45) !important;
   }
-  
+
   .taskade-chat-popup {
     border-radius: 12px !important;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
     border: 1px solid hsl(var(--border)) !important;
   }
-  
+
   /* Force consistent light theme across widgets */
   .taskade-embed-container,
   .taskade-chat-container,
@@ -150,16 +207,16 @@
     background-color: #ffffff !important;
     color: #1a1a1a !important;
   }
-  
+
   .taskade-widget-popup input,
   .taskade-widget-popup textarea {
     background: #ffffff !important;
     color: #1a1a1a !important;
     border: 1px solid #e0e0e0 !important;
   }
-  
+
   /* Performance optimizations */
-  
+
   .font-display-swap {
     font-display: swap;
   }

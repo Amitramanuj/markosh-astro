@@ -1,4 +1,4 @@
-﻿---
+---
 import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
 import { CheckCircle } from '@/components/ui/icons';
@@ -11,41 +11,42 @@ const highlights = [
 ];
 ---
 
-<section class="bg-secondary py-16">
+<section class="relative isolate overflow-hidden bg-secondary">
+  <div class="absolute top-0 right-[-12rem] -z-10 h-[24rem] w-[30rem] rounded-full bg-accent/10 blur-[110px]" aria-hidden="true"></div>
   <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
     <div class="space-y-6 text-center md:text-left">
-      <span class="text-sm font-semibold uppercase tracking-widest text-primary">Careers</span>
-      <h2 class="font-headline text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
-        Shape Your Next Chapter with Markosh
-      </h2>
-      <p class="text-muted-foreground">
+      <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Careers</h2>
+      <p class="font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+        Shape your next chapter <span class="text-gradient">with Markosh</span>
+      </p>
+      <p class="text-lg text-muted-foreground">
         Stay in the loop as we assemble new project teams and announce open roles across engineering, product, and design.
       </p>
       <ul class="space-y-3 text-left">
         {highlights.map((item) => (
           <li class="flex items-start gap-3 text-muted-foreground">
-            <CheckCircle className="mt-1 h-5 w-5 text-primary" />
+            <CheckCircle className="mt-1 h-5 w-5 text-accent" />
             <span>{item}</span>
           </li>
         ))}
       </ul>
       <div class="flex flex-col items-center gap-4 pt-2 md:flex-row md:items-center">
-        <Button href="/career" size="lg" class="btn-gradient font-semibold shadow-lg">
+        <Button href="/career" size="lg" class="btn-gradient h-12 px-8 font-semibold">
           Explore Careers
         </Button>
-        <Button href="/contact" size="lg" variant="outline">
+        <Button href="/contact" size="lg" variant="outline" class="h-12 rounded-full border-border bg-card/60 px-8 backdrop-blur hover:border-primary/50 hover:bg-card">
           Talk to Our Team
         </Button>
       </div>
     </div>
     <div class="relative flex justify-center">
-      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-accent opacity-20 blur-3xl"></div>
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-accent/20 opacity-60 blur-3xl" aria-hidden="true"></div>
       <Image
         src={careerIllustration}
         alt="Team collaborating at Markosh"
         width={600}
         height={450}
-        class="relative z-10 w-full max-w-md rounded-xl shadow-2xl"
+        class="relative z-10 w-full max-w-md rounded-2xl border border-border shadow-2xl"
         loading="lazy"
         format="webp"
         quality={85}

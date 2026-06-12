@@ -1,46 +1,57 @@
-﻿---
-import { Image } from 'astro:assets';
+---
 import Button from '@/components/ui/Button.astro';
+
+const stats = [
+  { value: '120+', label: 'Engineers placed' },
+  { value: '8+', label: 'Industries served' },
+  { value: '95%', label: 'Client retention' },
+  { value: '2-week', label: 'Avg. team kickoff' },
+];
 ---
 
-<section class="bg-background pt-8 pb-16 md:pt-16 md:pb-24">
-  <div class="container mx-auto grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-    <div class="max-w-xl text-center md:text-left">
-      <h1 class="font-headline text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-        Accelerate Your Growth with Elite Tech Talent
-      </h1>
-      <p class="mt-6 text-lg leading-8 text-muted-foreground">
-        Markosh connects innovative companies with top-tier developers, designers, and project managers. Build your dream team and deliver outstanding software products, faster.
+<section class="relative isolate overflow-hidden pt-12 pb-20 md:pt-24 md:pb-28">
+  <!-- Backdrop: blueprint grid + glow orbs -->
+  <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+  <div class="absolute -top-40 left-1/2 -z-10 h-[36rem] w-[60rem] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" aria-hidden="true"></div>
+  <div class="absolute top-40 right-[-10rem] -z-10 h-[24rem] w-[24rem] rounded-full bg-accent/15 blur-[100px]" aria-hidden="true"></div>
+
+  <div class="container mx-auto">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur">
+        <span class="h-2 w-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+        IT Staffing · Custom Software · Agentic AI
       </p>
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
-        <Button href="/contact" size="lg" class="btn-gradient font-semibold shadow-lg">
-          Hire Talent 
-          <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+      <h1 class="mt-8 font-headline text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+        Elite tech talent.
+        <span class="block text-gradient">Software that ships.</span>
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
+        Markosh connects ambitious companies with pre-vetted engineers, designers, and AI specialists — and builds the software your roadmap depends on.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+          Hire Talent
+          <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </Button>
-        <Button href="/services" size="lg" variant="outline">
-          Our Services
-        </Button>
-        <Button href="/career" size="lg" variant="ghost" class="text-primary">
-          Careers
+        <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-border bg-card/60 px-8 text-base backdrop-blur hover:border-primary/50 hover:bg-card">
+          Explore Services
         </Button>
       </div>
     </div>
-    <div class="relative flex justify-center">
-      <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent opacity-10 blur-3xl rounded-full"></div>
-      <Image
-        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc1Mzk4MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080"
-        alt="Professional software development team collaborating on innovative technology solutions"
-        width={600}
-        height={400}
-        densities={[1, 2]}
-        sizes="(max-width: 768px) 100vw, 600px"
-        class="rounded-xl shadow-2xl z-10"
-        loading="eager"
-        quality={80}
-        fetchpriority="high"
-      />
-    </div>
+
+    <!-- Stats strip -->
+    <dl class="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="bg-card/80 px-6 py-6 text-center backdrop-blur">
+          <dd class="font-headline text-3xl font-bold text-gradient">{stat.value}</dd>
+          <dt class="mt-1 text-sm text-muted-foreground">{stat.label}</dt>
+        </div>
+      ))}
+    </dl>
   </div>
 </section>

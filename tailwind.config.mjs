@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['class'],
   content: [
@@ -32,7 +32,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'system-ui', 'sans-serif'],
-        headline: ['Poppins', 'system-ui', 'sans-serif'],
+        headline: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

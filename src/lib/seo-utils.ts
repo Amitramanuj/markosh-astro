@@ -118,16 +118,11 @@ export function generateOrganizationStructuredData() {
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-555-0123",
       "contactType": "customer service",
+      "url": "https://markosh.com/contact",
       "availableLanguage": "English"
     },
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "US"
-    },
     "foundingDate": "2020",
-    "numberOfEmployees": "50-100",
     "industry": "Information Technology",
     "services": [
       "IT Staffing",
@@ -152,11 +147,6 @@ export function generateWebsiteStructuredData() {
     "publisher": {
       "@type": "Organization",
       "name": "Markosh"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://markosh.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
     }
   };
 }

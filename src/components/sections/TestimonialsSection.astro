@@ -1,56 +1,51 @@
 ---
-import Card from '@/components/ui/Card.astro';
-import CardContent from '@/components/ui/CardContent.astro';
-
 const testimonials = [
   {
     quote: "Markosh delivered an exceptional team that integrated seamlessly with our own. Their expertise was crucial to our project's success.",
     name: 'Jane Doe',
     title: 'CTO, Tech Solutions Inc.',
-    avatar: 'https://placehold.co/100x100.png',
   },
   {
     quote: "The software development services are top-notch. They built a robust and scalable application that exceeded our expectations.",
     name: 'John Smith',
     title: 'CEO, Innovate Co.',
-    avatar: 'https://placehold.co/100x100.png',
   },
   {
     quote: "Finding the right talent was a challenge until we partnered with Markosh. Their IT staffing service is efficient and reliable.",
     name: 'Emily White',
     title: 'Head of HR, Future Systems',
-    avatar: 'https://placehold.co/100x100.png',
   },
 ];
 ---
 
 <section class="bg-secondary">
   <div class="container mx-auto">
-    <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-sm font-semibold uppercase tracking-wider text-primary">Testimonials</h2>
-      <p class="mt-2 font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-        What Our Clients Say
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Testimonials</h2>
+      <p class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+        Trusted by <span class="text-gradient">teams that ship</span>
       </p>
     </div>
-    
-    <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3 max-w-6xl mx-auto">
+
+    <div class="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
       {testimonials.map((testimonial) => (
-        <Card class="bg-background">
-          <CardContent class="flex flex-col items-center justify-center p-8 text-center">
-            <p class="text-xl font-medium text-foreground">
-              "{testimonial.quote}"
-            </p>
-            <div class="mt-6 flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
-                {testimonial.name.charAt(0)}
-              </div>
-              <div>
-                <p class="font-semibold">{testimonial.name}</p>
-                <p class="text-sm text-muted-foreground">{testimonial.title}</p>
-              </div>
+        <figure class="glass-card flex flex-col p-8">
+          <svg class="h-8 w-8 text-primary/60" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <blockquote class="mt-6 flex-grow text-lg leading-relaxed text-foreground/90">
+            {testimonial.quote}
+          </blockquote>
+          <figcaption class="mt-8 flex items-center gap-4 border-t border-border pt-6">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary/30 to-accent/30 font-headline font-bold text-foreground">
+              {testimonial.name.charAt(0)}
             </div>
-          </CardContent>
-        </Card>
+            <div>
+              <p class="font-semibold">{testimonial.name}</p>
+              <p class="text-sm text-muted-foreground">{testimonial.title}</p>
+            </div>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </div>

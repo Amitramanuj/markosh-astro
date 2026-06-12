@@ -1,8 +1,9 @@
-// @ts-check
+﻿// @ts-check
 import { defineConfig } from 'astro/config';
 import path from 'path';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
@@ -15,7 +16,8 @@ export default defineConfig({
       // Apply base styles automatically
       applyBaseStyles: false,
     }),
-    react()
+    react(),
+    sitemap()
   ],
   
   // Static site generation for optimal performance
@@ -100,3 +102,4 @@ export default defineConfig({
     checkOrigin: true
   }
 });
+
