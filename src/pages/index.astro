@@ -3,33 +3,18 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
+import TalentShowcase from '@/components/sections/TalentShowcase.astro';
 import ServicesOverview from '@/components/sections/ServicesOverview.astro';
 import EngagementModels from '@/components/sections/EngagementModels.astro';
-import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+import VettingProcess from '@/components/sections/VettingProcess.astro';
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection.astro';
 import TrustSection from '@/components/sections/TrustSection.astro';
-import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
-import IndustriesSection from '@/components/sections/IndustriesSection.astro';
-import WhitepapersTeaser from '@/components/sections/WhitepapersTeaser.astro';
-import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
-import CareerSection from '@/components/sections/CareerSection.astro';
+import RolesGrid from '@/components/sections/RolesGrid.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { pageSEO } from '@/lib/seo-utils';
-
-const extraSchemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: homeFaqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-    })),
-  },
-];
 ---
 
-<BaseLayout {...pageSEO.home} extraSchemas={extraSchemas}>
+<BaseLayout {...pageSEO.home}>
   <Header />
   <main id="main-content">
     <!-- Hero section loads immediately for LCP -->
@@ -37,40 +22,33 @@ const extraSchemas = [
       <HeroSection />
     </FadeInSection>
 
-    <!-- Buyer journey: what we do, how to engage, how we work -->
+    <!-- The product: vetted talent -->
+    <FadeInSection client:visible>
+      <TalentShowcase />
+    </FadeInSection>
+
+    <!-- What you can buy and how -->
     <FadeInSection client:visible>
       <ServicesOverview />
     </FadeInSection>
-    <FadeInSection client:visible>
+    <FadeInSection client:idle>
       <EngagementModels />
     </FadeInSection>
-    <FadeInSection client:idle>
-      <WhyChooseUs />
-    </FadeInSection>
 
-    <!-- Proof -->
+    <!-- Why believe us -->
+    <FadeInSection client:idle>
+      <VettingProcess />
+    </FadeInSection>
     <FadeInSection client:idle>
       <CaseStudiesSection />
     </FadeInSection>
     <FadeInSection client:idle>
       <TrustSection />
     </FadeInSection>
-    <FadeInSection client:idle>
-      <TestimonialsSection />
-    </FadeInSection>
 
-    <!-- Supporting -->
+    <!-- Internal links into the hiring funnel -->
     <FadeInSection client:idle>
-      <IndustriesSection />
-    </FadeInSection>
-    <FadeInSection client:idle>
-      <WhitepapersTeaser />
-    </FadeInSection>
-    <FadeInSection client:idle>
-      <HomeFaq />
-    </FadeInSection>
-    <FadeInSection client:visible>
-      <CareerSection />
+      <RolesGrid />
     </FadeInSection>
   </main>
   <Footer />

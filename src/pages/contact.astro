@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import ContactForm from '@/components/islands/ContactFormCore.tsx';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
 import { Mail, Phone, MapPin } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast.tsx';
 
@@ -12,12 +13,25 @@ const expectations = [
   'A 30-minute discovery call — no sales pitch',
   'We sign your NDA before any detailed discussion',
 ];
+
+const extraSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: homeFaqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+];
 ---
 
 <BaseLayout
   title="Contact Us - Markosh"
   description="Get in touch with Markosh. Let's discuss how we can help your business grow with our IT staffing and software development services."
   canonical="https://markosh.com/contact/"
+  extraSchemas={extraSchemas}
 >
   <Header />
   <main id="main-content">
@@ -95,6 +109,10 @@ const expectations = [
           </div>
         </div>
       </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <HomeFaq />
     </FadeInSection>
 
     <!-- Toast container for notifications -->

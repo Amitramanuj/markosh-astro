@@ -1,0 +1,38 @@
+---
+// TODO(content): Verify funnel percentages reflect your actual vetting numbers.
+const funnel = [
+  { stage: 'Applications reviewed', rate: '100%', detail: 'Every profile is screened by an engineer, not a keyword filter.' },
+  { stage: 'Technical screening', rate: '31%', detail: 'Deep-dive interview on real architecture and code decisions.' },
+  { stage: 'Paid test project', rate: '9%', detail: 'A real-world task evaluated for quality, communication, and speed.' },
+  { stage: 'Join the network', rate: '3%', detail: 'Only engineers we would put on our own projects make it in.' },
+];
+---
+
+<section class="relative bg-background">
+  <span class="section-number absolute right-4 top-8 sm:right-8" aria-hidden="true">03</span>
+  <div class="container mx-auto">
+    <div class="grid gap-14 lg:grid-cols-[1fr,1.4fr] lg:items-start">
+      <div class="lg:sticky lg:top-28">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Vetting</p>
+        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+          Only <span class="text-primary">3%</span> make it in
+        </h2>
+        <p class="mt-5 text-lg text-muted-foreground">
+          "Pre-vetted" means something specific here. Every engineer passes a four-stage funnel before they ever meet a client — so your first interview is with someone already proven.
+        </p>
+      </div>
+
+      <ol class="space-y-4">
+        {funnel.map((step) => (
+          <li class="glass-card flex items-center gap-6 p-6">
+            <span class="w-20 shrink-0 font-headline text-3xl font-bold text-primary">{step.rate}</span>
+            <div>
+              <h3 class="font-headline text-lg font-bold">{step.stage}</h3>
+              <p class="mt-1 text-sm text-muted-foreground">{step.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
