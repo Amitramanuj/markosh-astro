@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu } from '@/components/ui/icons';
 
@@ -28,9 +28,21 @@ export default function Header({ currentPath }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock background page scroll while the mobile menu is open so the page
+  // behind the full-screen overlay can't drift out from under the user.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [isMobileMenuOpen]);
+
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
+    <>
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
@@ -92,73 +104,74 @@ export default function Header({ currentPath }: HeaderProps) {
             <Menu className="h-6 w-6" />
             <span className="sr-only">Open menu</span>
           </button>
-
-          {/* Mobile Menu Overlay */}
-          {isMobileMenuOpen && (
-            <div
-              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
-              onClick={closeMobileMenu}
-            >
-              <div
-                className="fixed right-0 top-0 h-full w-full bg-background"
-                data-testid="mobile-menu"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex flex-col items-center justify-center h-full p-6">
-                  <button
-                    onClick={closeMobileMenu}
-                    className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground"
-                    aria-label="Close menu"
-                  >
-                    <span className="text-3xl">&times;</span>
-                  </button>
-
-                  <a
-                    href="/"
-                    className="mb-10 flex items-center gap-2"
-                    onClick={closeMobileMenu}
-                  >
-                    <img
-                      src="/logo-72.png"
-                      alt="Markosh Logo"
-                      width={40}
-                      height={40}
-                      className="object-contain"
-                    />
-                    <span className="text-2xl font-bold font-headline">Markosh</span>
-                  </a>
-
-                  <nav className="flex flex-col items-center gap-6">
-                    {navLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        onClick={closeMobileMenu}
-                        className={cn(
-                          'px-6 py-2 font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
-                          currentPath === link.href && 'text-primary'
-                        )}
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </nav>
-
-                  <a
-                    href="/contact"
-                    onClick={closeMobileMenu}
-                    className="btn-gradient mt-10 inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-8 font-semibold"
-                  >
-                    Book a Call
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </header>
+
+    {/* Mobile Menu Overlay — rendered outside <header> so the header's
+        backdrop-blur (when scrolled) doesn't become the containing block
+        for these fixed elements. */}
+    {isMobileMenuOpen && (
+      <div
+        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm md:hidden"
+        onClick={closeMobileMenu}
+      >
+        <div
+          className="fixed right-0 top-0 h-full w-full bg-background"
+          data-testid="mobile-menu"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex flex-col items-center justify-center h-full p-6">
+            <button
+              onClick={closeMobileMenu}
+              className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground"
+              aria-label="Close menu"
+            >
+              <span className="text-3xl">&times;</span>
+            </button>
+
+            <a
+              href="/"
+              className="mb-10 flex items-center gap-2"
+              onClick={closeMobileMenu}
+            >
+              <img
+                src="/logo-72.png"
+                alt="Markosh Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+              <span className="text-2xl font-bold font-headline">Markosh</span>
+            </a>
+
+            <nav className="flex flex-col items-center gap-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMobileMenu}
+                  className={cn(
+                    'px-6 py-2 font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
+                    currentPath === link.href && 'text-primary'
+                  )}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <a
+              href="/contact"
+              onClick={closeMobileMenu}
+              className="btn-gradient mt-10 inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-8 font-semibold"
+            >
+              Book a Call
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
-
-
