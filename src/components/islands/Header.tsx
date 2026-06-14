@@ -135,7 +135,7 @@ export default function Header({ currentPath }: HeaderProps) {
                         href={link.href}
                         onClick={closeMobileMenu}
                         className={cn(
-                          'font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
+                          'px-6 py-2 font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
                           currentPath === link.href && 'text-primary'
                         )}
                       >

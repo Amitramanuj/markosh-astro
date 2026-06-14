@@ -19,7 +19,6 @@ declare global {
 
 export default function TaskadeWidget() {
   const scriptRef = useRef<HTMLScriptElement | null>(null);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
   const hasInitializedRef = useRef(false);
 
   const loadTaskadeWidget = useCallback(() => {
@@ -63,30 +62,38 @@ export default function TaskadeWidget() {
   }, []);
 
   useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) {
-      return;
+    // Load the chat widget once — on the first user interaction or after a
+    // short idle delay, whichever comes first. This keeps the heavy embed
+    // script off the initial render path while guaranteeing the button shows
+    // up everywhere (the old version only loaded once you scrolled to the
+    // very bottom of the page, so on long mobile pages it never appeared).
+    let loaded = false;
+    const events: Array<keyof WindowEventMap> = [
+      'pointerdown',
+      'touchstart',
+      'keydown',
+      'scroll',
+    ];
+
+    const trigger = () => {
+      if (loaded) return;
+      loaded = true;
+      cleanup();
+      loadTaskadeWidget();
+    };
+
+    const timer = window.setTimeout(trigger, 3500);
+
+    function cleanup() {
+      window.clearTimeout(timer);
+      events.forEach((event) => window.removeEventListener(event, trigger));
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadTaskadeWidget();
-          }
-        });
-      },
-      {
-        rootMargin: '0px 0px 20% 0px',
-        threshold: 0,
-      }
+    events.forEach((event) =>
+      window.addEventListener(event, trigger, { once: true, passive: true })
     );
 
-    observer.observe(sentinel);
-
-    return () => {
-      observer.disconnect();
-    };
+    return cleanup;
   }, [loadTaskadeWidget]);
 
   useEffect(() => {
@@ -98,17 +105,6 @@ export default function TaskadeWidget() {
     };
   }, []);
 
-  return (
-    <div
-      ref={sentinelRef}
-      aria-hidden="true"
-      style={{
-        position: 'relative',
-        width: '1px',
-        height: '1px',
-        opacity: 0,
-        pointerEvents: 'none',
-      }}
-    />
-  );
+  // No visible markup — the Taskade embed injects its own floating button.
+  return null;
 }
