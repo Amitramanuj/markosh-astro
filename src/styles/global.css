@@ -19,7 +19,7 @@
     --muted-foreground: 222 12% 40%;
     --accent: 244 55% 48%;
     --accent-foreground: 0 0% 100%;
-    --signal: 158 55% 34%;
+    --signal: 158 60% 28%; /* trust green — darkened for AA text contrast on tinted chips */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 40 15% 85%;

@@ -10,11 +10,23 @@ import VettingProcess from '@/components/sections/VettingProcess.astro';
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection.astro';
 import TrustSection from '@/components/sections/TrustSection.astro';
 import RolesGrid from '@/components/sections/RolesGrid.astro';
+import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import { pageSEO } from '@/lib/seo-utils';
+
+// FAQ rich-result schema, built from the same content rendered below.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
-<BaseLayout {...pageSEO.home}>
+<BaseLayout {...pageSEO.home} extraSchemas={[faqSchema]}>
   <Header />
   <main id="main-content">
     <!-- Hero section loads immediately for LCP -->
@@ -44,6 +56,11 @@ import { pageSEO } from '@/lib/seo-utils';
     </FadeInSection>
     <FadeInSection client:idle>
       <TrustSection />
+    </FadeInSection>
+
+    <!-- Answer the buyer's first objections -->
+    <FadeInSection client:idle>
+      <HomeFaq />
     </FadeInSection>
 
     <!-- Internal links into the hiring funnel -->
