@@ -1,0 +1,24 @@
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check markosh.com
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check homepage
+        run: |
+          curl --fail --silent --show-error --location \
+            --max-time 20 \
+            --retry 2 \
+            --retry-delay 5 \
+            https://markosh.com/ > /tmp/markosh-home.html
+          grep -qi "Senior engineers" /tmp/markosh-home.html
