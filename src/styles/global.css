@@ -133,6 +133,8 @@
   .ink-panel {
     background-color: hsl(var(--ink));
     color: hsl(var(--ink-foreground));
+    /* Lift the trust-green so it stays legible against the near-black panel */
+    --signal: 158 55% 58%;
   }
 
   /* Animated underline for inline links */

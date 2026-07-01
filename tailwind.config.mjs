@@ -67,6 +67,11 @@ export default {
         },
         /* Trust / proof accent — reserved for guarantees, pass-rates, and verified signals */
         signal: 'hsl(var(--signal))',
+        /* Dark contrast panel — CTA/footer blocks and the alternating section rhythm */
+        ink: {
+          DEFAULT: 'hsl(var(--ink))',
+          foreground: 'hsl(var(--ink-foreground))',
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
