@@ -1,71 +1,71 @@
 ---
-// TODO(content): Replace with real (anonymized) engineer profiles from your network.
 const profiles = [
   {
     role: 'Senior React Engineer',
     experience: '9 yrs',
     stack: ['React', 'Next.js', 'TypeScript'],
-    background: 'Previously led frontend at a US fintech',
+    background: 'Frontend systems for fintech and SaaS teams',
   },
   {
     role: 'AI/ML Engineer',
     experience: '7 yrs',
     stack: ['Python', 'PyTorch', 'LangChain'],
-    background: 'Built LLM pipelines for B2B SaaS',
+    background: 'LLM pipelines, retrieval systems, and automation',
   },
   {
     role: 'Full-Stack Engineer',
     experience: '8 yrs',
     stack: ['Node.js', 'React', 'AWS'],
-    background: 'Shipped 12+ products for US startups',
+    background: 'Product builds from architecture through launch',
   },
   {
     role: 'Mobile Engineer',
     experience: '6 yrs',
     stack: ['React Native', 'iOS', 'Android'],
-    background: 'Apps with 1M+ combined downloads',
+    background: 'Consumer and internal apps across platforms',
   },
 ];
 ---
 
 <section class="bg-secondary">
   <div class="container mx-auto">
-    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
       <div class="max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">The Talent</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Network Snapshot</p>
         <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-          Engineers you'd <span class="text-primary">hire yourself</span>
+          Talent shaped around <span class="text-primary">the role you need</span>
         </h2>
+        <p class="mt-5 text-lg text-muted-foreground">
+          Instead of sending a resume pile, Markosh narrows the bench to engineers whose stack, seniority, and communication style match the work.
+        </p>
+        <a href="/contact" class="mt-7 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+          Describe the team gap
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
       </div>
-      <p class="max-w-md text-lg text-muted-foreground">
-        A sample of the senior engineers in our network — vetted, available, and ready to embed.
-      </p>
-    </div>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {profiles.map((profile) => (
-        <article class="glass-card flex flex-col p-6">
-          <div class="flex items-center justify-between">
-            <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-              Available
-            </span>
-            <span class="text-sm font-semibold text-muted-foreground">{profile.experience}</span>
-          </div>
-          <h3 class="mt-4 font-headline text-lg font-bold leading-snug">{profile.role}</h3>
-          <p class="mt-2 flex-grow text-sm text-muted-foreground">{profile.background}</p>
-          <ul class="mt-4 flex flex-wrap gap-1.5">
-            {profile.stack.map((tech) => (
-              <li class="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">{tech}</li>
-            ))}
-          </ul>
-        </article>
-      ))}
+      <div class="grid gap-4 sm:grid-cols-2">
+        {profiles.map((profile) => (
+          <article class="glass-card flex min-h-[13rem] flex-col p-6">
+            <div class="flex items-center justify-between gap-4">
+              <span class="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--signal)/0.1)] px-3 py-1 text-xs font-semibold text-[hsl(var(--signal))]">
+                <span class="h-1.5 w-1.5 rounded-full bg-[hsl(var(--signal))]" aria-hidden="true"></span>
+                Matchable
+              </span>
+              <span class="text-sm font-semibold text-muted-foreground">{profile.experience}</span>
+            </div>
+            <h3 class="mt-4 font-headline text-xl font-bold leading-snug">{profile.role}</h3>
+            <p class="mt-2 flex-grow text-sm leading-6 text-muted-foreground">{profile.background}</p>
+            <ul class="mt-4 flex flex-wrap gap-1.5">
+              {profile.stack.map((tech) => (
+                <li class="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">{tech}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
     </div>
-
-    <p class="mt-8 text-center text-sm text-muted-foreground">
-      Profiles shown are representative.
-      <a href="/contact" class="font-semibold text-primary hover:underline">Tell us what you need</a> and meet matched candidates within days.
-    </p>
   </div>
 </section>

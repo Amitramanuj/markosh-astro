@@ -19,6 +19,7 @@
     --muted-foreground: 222 12% 40%;
     --accent: 244 55% 48%;
     --accent-foreground: 0 0% 100%;
+    --signal: 158 55% 34%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 40 15% 85%;
@@ -45,6 +46,7 @@
     --muted-foreground: 225 12% 65%;
     --accent: 244 80% 72%;
     --accent-foreground: 230 30% 7%;
+    --signal: 158 55% 58%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 230 18% 18%;
@@ -116,7 +118,7 @@
 
   /* Editorial card surface */
   .glass-card {
-    @apply rounded-2xl border border-border bg-card;
+    @apply rounded-xl border border-border bg-card;
     box-shadow: 0 1px 2px hsl(222 30% 12% / 0.04);
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }

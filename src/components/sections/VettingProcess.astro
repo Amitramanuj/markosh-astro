@@ -1,35 +1,49 @@
 ---
-// TODO(content): Verify funnel percentages reflect your actual vetting numbers.
+// TODO(content): Verify funnel percentages reflect actual Markosh screening data before launch.
 const funnel = [
   { stage: 'Applications reviewed', rate: '100%', detail: 'Every profile is screened by an engineer, not a keyword filter.' },
-  { stage: 'Technical screening', rate: '31%', detail: 'Deep-dive interview on real architecture and code decisions.' },
-  { stage: 'Paid test project', rate: '9%', detail: 'A real-world task evaluated for quality, communication, and speed.' },
-  { stage: 'Join the network', rate: '3%', detail: 'Only engineers we would put on our own projects make it in.' },
+  { stage: 'Technical screening', rate: '31%', detail: 'Deep-dive interview on architecture, code decisions, and communication.' },
+  { stage: 'Paid test project', rate: '9%', detail: 'A realistic task evaluated for quality, speed, and collaboration style.' },
+  { stage: 'Join the network', rate: '3%', detail: 'Only engineers we would put on our own projects make it into the network.' },
 ];
 ---
 
 <section class="relative bg-background">
   <span class="section-number absolute right-4 top-8 sm:right-8" aria-hidden="true">03</span>
   <div class="container mx-auto">
-    <div class="grid gap-14 lg:grid-cols-[1fr,1.4fr] lg:items-start">
+    <div class="grid gap-12 lg:grid-cols-[0.9fr,1.45fr] lg:items-start">
       <div class="lg:sticky lg:top-28">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Vetting</p>
         <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
           Only <span class="text-primary">3%</span> make it in
         </h2>
         <p class="mt-5 text-lg text-muted-foreground">
-          "Pre-vetted" means something specific here. Every engineer passes a four-stage funnel before they ever meet a client — so your first interview is with someone already proven.
+          "Pre-vetted" has a specific meaning here: by the time you meet a candidate, technical ability, communication, and delivery habits have already been tested.
         </p>
+        <div class="mt-8 rounded-xl border border-border bg-secondary p-5">
+          <p class="font-headline text-lg font-bold">Your first interview should feel like a final screen.</p>
+          <p class="mt-2 text-sm leading-6 text-muted-foreground">
+            We optimize for fewer, stronger introductions instead of sending a large resume batch for your team to sort through.
+          </p>
+        </div>
       </div>
 
-      <ol class="space-y-4">
-        {funnel.map((step) => (
-          <li class="glass-card flex items-center gap-6 p-6">
-            <span class="w-20 shrink-0 font-headline text-3xl font-bold text-primary">{step.rate}</span>
-            <div>
-              <h3 class="font-headline text-lg font-bold">{step.stage}</h3>
-              <p class="mt-1 text-sm text-muted-foreground">{step.detail}</p>
-            </div>
+      <ol class="relative space-y-0 border-l border-border pl-6 sm:pl-8">
+        {funnel.map((step, index) => (
+          <li class="relative pb-9 last:pb-0">
+            <span class="absolute -left-[2.05rem] top-0 flex h-4 w-4 items-center justify-center rounded-full border border-primary bg-background sm:-left-[2.55rem]">
+              <span class="h-2 w-2 rounded-full bg-primary" aria-hidden="true"></span>
+            </span>
+            <article class={`grid gap-5 rounded-xl border border-border bg-card p-6 shadow-sm sm:grid-cols-[8rem,1fr] ${index === funnel.length - 1 ? 'ring-1 ring-primary/25' : ''}`}>
+              <div>
+                <p class="font-headline text-4xl font-bold text-primary">{step.rate}</p>
+                <p class="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">pass point</p>
+              </div>
+              <div>
+                <h3 class="font-headline text-xl font-bold">{step.stage}</h3>
+                <p class="mt-2 leading-7 text-muted-foreground">{step.detail}</p>
+              </div>
+            </article>
           </li>
         ))}
       </ol>
