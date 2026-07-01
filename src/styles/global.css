@@ -148,12 +148,6 @@
     background-size: 100% 2px;
   }
 
-  /* Oversized faint numeral marking each homepage section */
-  .section-number {
-    @apply pointer-events-none select-none font-headline font-bold leading-none text-primary/10;
-    font-size: clamp(4rem, 10vw, 8rem);
-  }
-
   /* Animation utilities */
   .animate-accordion-down {
     animation: accordion-down 0.2s ease-out;
