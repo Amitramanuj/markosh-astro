@@ -95,14 +95,12 @@ const structuredData = generateOrganizationStructuredData();
       .font-headline{font-family:var(--font-display)}
       .btn-gradient{background:hsl(var(--primary));color:#fff;border:none;border-radius:9999px;padding:0.75rem 1.5rem;font-weight:600;transition:all 0.2s ease}
       .btn-gradient:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px hsl(var(--primary) / 0.45)}
-      @font-face{font-family:'Inter';font-display:swap}
-      @font-face{font-family:'Space Grotesk';font-display:swap}
     </style>
     
     <!-- Structured Data for SEO -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
     {extraSchemas.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
     ))}
   </head>
   <body class="min-h-screen font-body antialiased">

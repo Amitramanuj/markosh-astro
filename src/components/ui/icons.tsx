@@ -1,6 +1,6 @@
 /**
  * Optimized icon system that only includes the icons we actually use
- * This reduces bundle size compared to importing from lucide-react
+ * This keeps the client bundle small by shipping only the icons rendered by current pages.
  */
 
 interface IconProps {
@@ -72,40 +72,6 @@ export const Menu = ({ className = "", size = 24 }: IconProps) => (
     <line x1="4" x2="20" y1="18" y2="18" />
   </svg>
 );
-export const Users = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </svg>
-);
-export const Code = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <polyline points="16,18 22,12 16,6" />
-    <polyline points="8,6 2,12 8,18" />
-  </svg>
-);
 export const CheckCircle = ({ className = "", size = 24 }: IconProps) => (
   <svg
     width={size}
@@ -120,134 +86,6 @@ export const CheckCircle = ({ className = "", size = 24 }: IconProps) => (
   >
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
     <polyline points="22,4 12,14.01 9,11.01" />
-  </svg>
-);
-export const Cpu = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect width="16" height="16" x="4" y="4" rx="2" />
-    <rect width="6" height="6" x="9" y="9" rx="1" />
-    <path d="M15 2v2" />
-    <path d="M15 20v2" />
-    <path d="M2 15h2" />
-    <path d="M2 9h2" />
-    <path d="M20 15h2" />
-    <path d="M20 9h2" />
-    <path d="M9 2v2" />
-    <path d="M9 20v2" />
-  </svg>
-);
-export const Workflow = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect width="8" height="8" x="3" y="3" rx="2" />
-    <path d="M7 11v4a2 2 0 0 0 2 2h4" />
-    <rect width="8" height="8" x="13" y="13" rx="2" />
-  </svg>
-);
-export const BrainCircuit = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
-    <path d="M9 13a4.5 4.5 0 0 0 3-4" />
-    <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
-    <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
-    <path d="M6 18a4 4 0 0 1-1.967-.516" />
-    <path d="M12 13h4" />
-    <path d="M12 18h6a2 2 0 0 1 2 2v1" />
-    <path d="M12 8h8" />
-    <path d="M16 8V5a2 2 0 0 1 2-2" />
-    <circle cx="16" cy="13" r=".5" />
-    <circle cx="18" cy="3" r=".5" />
-    <circle cx="20" cy="21" r=".5" />
-    <circle cx="20" cy="8" r=".5" />
-  </svg>
-);
-export const Bot = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M12 8V4H8" />
-    <rect width="16" height="12" x="4" y="8" rx="2" />
-    <path d="M2 14h2" />
-    <path d="M20 14h2" />
-    <path d="M15 13v2" />
-    <path d="M9 13v2" />
-  </svg>
-);
-export const CloudCog = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="12" cy="17" r="3" />
-    <path d="M4.2 15.1A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.2" />
-    <path d="m15.7 18.4-.9-.3" />
-    <path d="m9.2 15.9-.9-.3" />
-    <path d="m10.6 20.7.3-.9" />
-    <path d="m13.1 14.2.3-.9" />
-    <path d="m13.6 20.7-.4-1" />
-    <path d="m10.8 14.3-.4-1" />
-    <path d="m8.3 18.6 1-.4" />
-    <path d="m14.7 15.8 1-.4" />
-  </svg>
-);
-export const Smartphone = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-    <path d="M12 18h.01" />
   </svg>
 );
 export const ShoppingCart = ({ className = "", size = 24 }: IconProps) => (
@@ -418,22 +256,6 @@ export const FileText = ({ className = "", size = 24 }: IconProps) => (
     <path d="M10 9H8" />
     <path d="M16 13H8" />
     <path d="M16 17H8" />
-  </svg>
-);
-export const BookOpen = ({ className = "", size = 24 }: IconProps) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
   </svg>
 );
 export const Newspaper = ({ className = "", size = 24 }: IconProps) => (

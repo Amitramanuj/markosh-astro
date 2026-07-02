@@ -135,11 +135,9 @@ npm run type-check   # Full TypeScript type checking
 npm run lint         # Lint check (same as astro check)
 npm run analyze      # Build with bundle analysis
 
-# Performance Testing
-npm run test:performance  # Run performance validation
-
 # Utility
 npm run clean        # Clean dist and .astro folders
+npm run generate:og  # Regenerate social image and favicon PNGs
 ```
 
 ### **File Naming Conventions**
@@ -190,10 +188,9 @@ import type { ComponentProps } from './types';
 
 ### **Monitoring & Testing**
 
-- Performance validation script: `test-performance.js`
-- Build validation: `test-build.js`
-- Optimization validation: `validate-optimizations.js`
-- Simple development server: `simple-server.js`
+- Use `npm run check` and `npm run type-check` for static validation
+- Use `npm run build` for production build validation
+- Use `npm run preview` for local production preview testing
 
 ## 🔒 Security Guidelines
 
@@ -257,10 +254,7 @@ npm run type-check
 # 2. Build validation
 npm run build
 
-# 3. Performance testing
-npm run test:performance
-
-# 4. Preview testing
+# 3. Preview testing
 npm run preview
 ```
 

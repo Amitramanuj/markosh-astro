@@ -86,8 +86,7 @@ eyebrow + T3 mono system.
 
 ## T6 — Verification & ship
 
-- `npm run check` (only the 3 pre-existing errors in astro.config.mjs,
-  toast.tsx, performance.ts are acceptable), `npm run build`.
+- `npm run check`, `npm run type-check`, and `npm run build`.
 - Preview server: screenshot/snapshot `/`, `/sales`, `/sales-rep-trial`,
   `/services/ai-strategy`, `/services` at desktop + 375px mobile.
 - Fill-alternation audit (DOM check: no two adjacent sections share a fill).
@@ -102,7 +101,7 @@ eyebrow + T3 mono system.
 
 ## Out of scope (tracked separately)
 
-- Contact form backend is still a MOCK (`src/lib/form-utils.ts:120`) — needs a
+- Contact form backend is still a MOCK (`src/lib/form-utils.ts`) — needs a
   real endpoint before launch.
 - Vetting funnel percentages TODO (`VettingProcess.astro:2`) — needs real data
   from the user.

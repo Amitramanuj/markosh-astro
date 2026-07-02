@@ -101,11 +101,6 @@
     }
   }
 
-  /* Accent headline span (class name kept; now a single confident color) */
-  .text-gradient {
-    @apply text-primary;
-  }
-
   /* Faint blueprint grid backdrop */
   .bg-grid {
     background-image:
@@ -155,33 +150,6 @@
     background-size: 100% 2px;
   }
 
-  /* Animation utilities */
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
-  }
-}
-
-/* Keyframes for animations */
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
-}
-
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
 }
 
 /* Third-party Widget Customization */
@@ -223,9 +191,4 @@
     border: 1px solid #e0e0e0 !important;
   }
 
-  /* Performance optimizations */
-
-  .font-display-swap {
-    font-display: swap;
-  }
 }

@@ -55,14 +55,7 @@ export default defineConfig({
         hostname: 'via.placeholder.com'
       }
     ],
-    // Default image optimization settings
-    formats: ['avif', 'webp', 'png', 'jpg'],
-    quality: {
-      avif: 80,
-      webp: 80,
-      png: 80,
-      jpg: 80
-    }
+    // Per-image format and quality are set at the <Image /> call sites.
   },
 
   vite: {

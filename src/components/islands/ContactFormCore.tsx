@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { validateForm, submitForm, contactFormRules, type ValidationError } from '@/lib/form-utils';
+import { validateForm, submitForm, contactFormRules } from '@/lib/form-utils';
 import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 // Outcome options route the enquiry to the right service family.

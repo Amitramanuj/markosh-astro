@@ -97,8 +97,7 @@ function sanitizeInput(input: string): string {
  * Form submission utility with security measures
  */
 export async function submitForm(
-  formData: Record<string, string>,
-  endpoint: string = '/api/contact'
+  formData: Record<string, string>
 ): Promise<{ success: boolean; message: string }> {
   try {
     // Sanitize all form data
@@ -123,7 +122,7 @@ export async function submitForm(
     localStorage.setItem('lastFormSubmission', now.toString());
     
     // Log sanitized data for development
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.log('Form submitted:', sanitizedData);
     }
     
@@ -132,7 +131,7 @@ export async function submitForm(
       message: "Thanks — we received your request. Markosh will review your goals and reply within one business day."
     };
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.error('Form submission error:', error);
     }
     
