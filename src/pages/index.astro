@@ -5,7 +5,6 @@ import Footer from '@/components/layout/Footer.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import TalentShowcase from '@/components/sections/TalentShowcase.astro';
 import ServicesOverview from '@/components/sections/ServicesOverview.astro';
-import EngagementModels from '@/components/sections/EngagementModels.astro';
 import VettingProcess from '@/components/sections/VettingProcess.astro';
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection.astro';
 import TrialOfferBand from '@/components/sections/TrialOfferBand.astro';
@@ -35,17 +34,14 @@ const faqSchema = {
       <HeroSection />
     </FadeInSection>
 
-    <!-- The product: vetted talent -->
-    <FadeInSection client:visible>
-      <TalentShowcase />
-    </FadeInSection>
-
-    <!-- What you can buy and how -->
+    <!-- The map: four service families, one operating model -->
     <FadeInSection client:visible>
       <ServicesOverview />
     </FadeInSection>
-    <FadeInSection client:idle>
-      <EngagementModels />
+
+    <!-- The product: vetted talent -->
+    <FadeInSection client:visible>
+      <TalentShowcase />
     </FadeInSection>
 
     <!-- Why believe us -->
@@ -55,14 +51,13 @@ const faqSchema = {
     <FadeInSection client:idle>
       <CaseStudiesSection />
     </FadeInSection>
-
-    <!-- The Sell family's proof object: the 14-day trial -->
-    <FadeInSection client:idle>
-      <TrialOfferBand />
-    </FadeInSection>
-
     <FadeInSection client:idle>
       <TrustSection />
+    </FadeInSection>
+
+    <!-- The Sell family's conversion moment: the 14-day trial -->
+    <FadeInSection client:idle>
+      <TrialOfferBand />
     </FadeInSection>
 
     <!-- Answer the buyer's first objections -->

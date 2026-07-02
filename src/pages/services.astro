@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import EngagementModels from '@/components/sections/EngagementModels.astro';
 import Button from '@/components/ui/Button.astro';
 import { CheckCircle, Users, Code, BrainCircuit, Bot, CloudCog, Smartphone, Lightbulb, Phone } from '@/components/ui/icons';
 import { Image } from 'astro:assets';
@@ -246,6 +247,10 @@ const extraSchemas = [
           </ol>
         </div>
       </section>
+    </FadeInSection>
+
+    <FadeInSection client:visible>
+      <EngagementModels />
     </FadeInSection>
 
   </main>

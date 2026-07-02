@@ -1,32 +1,37 @@
 ﻿---
 // The four Markosh service families: Strategy, Build, Staff, Sell.
+// Uniform card grammar: verb title + offering name + one-line description.
 const services = [
   {
     num: '01',
     icon: 'brain-circuit',
-    title: 'AI Strategy & Intelligence',
-    description: 'Identify where AI creates real business value — workflow mapping, use-case prioritization, and an execution roadmap your team can actually implement.',
+    title: 'Strategy',
+    offering: 'AI Strategy & Intelligence',
+    description: 'Find where AI actually pays off — mapped workflows, prioritized use cases, and a roadmap built to execute.',
     link: '/services/ai-strategy',
   },
   {
     num: '02',
     icon: 'code',
     title: 'Build',
-    description: 'Custom software, AI and agentic systems, web and mobile apps, and cloud platforms — designed, built, and handed over with full IP ownership.',
+    offering: 'Custom Software & AI Systems',
+    description: 'Web, mobile, and agentic AI systems — shipped in transparent sprints, handed over with full IP.',
     link: '/services/custom-software-development',
   },
   {
     num: '03',
     icon: 'users',
     title: 'Staff',
-    description: 'Vetted engineers, designers, and AI specialists embedded in your team — matched to your stack, your culture, and your working hours.',
+    offering: 'Vetted Engineers & Specialists',
+    description: 'Pre-vetted engineers embedded in your team, matched to your stack and your working hours.',
     link: '/services/it-staffing',
   },
   {
     num: '04',
     icon: 'phone',
     title: 'Sell',
-    description: 'Trained sales reps, lead researchers, and revenue pods using AI-assisted research and human-led outreach to support your B2B pipeline.',
+    offering: 'B2B Sales-as-a-Service',
+    description: 'Trained sales reps and revenue pods — AI-assisted research, human-led outreach, honest reporting.',
     link: '/sales',
   },
 ];
@@ -53,17 +58,17 @@ const getIcon = (iconName: string) => {
 };
 ---
 
-<section class="bg-background">
+<section class="bg-secondary">
   <div class="container mx-auto">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Our Services</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">What We Do</p>
         <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-          Build, staff, and <span class="text-primary">sell with intelligence</span>
+          Four families, <span class="text-primary">one operating model</span>
         </h2>
       </div>
       <p class="max-w-md text-lg text-muted-foreground">
-        Four connected service families, one operating model: research first, AI-assisted intelligence, vetted human talent, managed execution.
+        Research first, AI-assisted planning, vetted talent, managed delivery — the same method whether you need engineers, software, or sales capacity.
       </p>
     </div>
 
@@ -75,6 +80,7 @@ const getIcon = (iconName: string) => {
             <Fragment set:html={getIcon(service.icon)} />
           </div>
           <h3 class="mt-6 font-headline text-2xl font-bold">{service.title}</h3>
+          <p class="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{service.offering}</p>
           <p class="mt-3 flex-grow text-muted-foreground">{service.description}</p>
           <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
             Learn more
