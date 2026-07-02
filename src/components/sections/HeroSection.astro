@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
-import heroTeam from '@/assets/hero-team.jpg';
 
 const stats = [
   { value: '120+', label: 'Engineers placed' },
@@ -18,84 +16,57 @@ const operatingContexts = [
 ];
 
 const deliverySignals = [
-  { label: 'Screened by engineers', detail: 'Technical fit before introductions' },
-  { label: 'Founder-led delivery', detail: 'No account-manager handoff' },
-  { label: 'US-aligned overlap', detail: 'Daily collaboration windows' },
+  'Screened by engineers',
+  'Founder-led delivery',
+  'US-aligned overlap',
 ];
 ---
 
-<section class="relative isolate overflow-hidden pt-8 pb-14 md:pt-20 md:pb-24">
+<section class="relative isolate overflow-hidden pt-10 pb-14 md:pt-24 md:pb-24">
   <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
 
   <div class="container mx-auto">
-    <div class="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr]">
-      <div class="max-w-xl text-center lg:text-left">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-          AI Strategy · Software · Talent · Revenue
-        </p>
+    <div class="max-w-5xl">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">
+        AI Strategy · Software · Talent · Revenue
+      </p>
 
-        <h1 class="mt-5 font-headline text-[2.35rem] font-bold leading-[1.05] tracking-tight sm:text-6xl sm:leading-[1.02] lg:text-7xl">
-          Build smarter. Staff faster. <span class="text-primary">Sell with intelligence.</span>
-        </h1>
+      <h1 class="mt-6 font-headline text-[2.6rem] font-bold leading-[1.04] tracking-tight sm:text-6xl sm:leading-[1.02] md:text-7xl lg:text-8xl">
+        Build smarter. Staff faster. <span class="text-primary">Sell with intelligence.</span>
+      </h1>
 
-        <p class="mt-6 text-lg leading-8 text-muted-foreground">
-          Markosh is an AI-first execution partner. We combine AI-assisted research, vetted human talent, and managed delivery to turn strategy into execution across product, engineering, and revenue.
-        </p>
+      <p class="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
+        Markosh is an AI-first execution partner. We combine AI-assisted research, vetted human talent, and managed delivery to turn strategy into execution across product, engineering, and revenue.
+      </p>
 
-        <div class="mt-9 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-          <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
-            Talk to Markosh
-            <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </Button>
-          <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
-            Explore Services
-          </Button>
-        </div>
-
-        <dl class="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">
-          {stats.map((stat) => (
-            <div class="bg-card px-4 py-4 text-center sm:px-5">
-              <dd class="font-headline text-2xl font-bold text-primary sm:text-3xl">{stat.value}</dd>
-              <dt class="mt-1 text-xs leading-snug text-muted-foreground sm:text-sm">{stat.label}</dt>
-            </div>
-          ))}
-        </dl>
-
-        <div class="mt-8">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Built for</p>
-          <ul class="mt-4 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
-            {operatingContexts.map((name) => (
-              <li class="rounded-full border border-border bg-card px-3 py-1.5 font-headline text-sm font-bold text-muted-foreground">{name}</li>
-            ))}
-          </ul>
-        </div>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+          Talk to Markosh
+          <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </Button>
+        <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+          Explore Services
+        </Button>
       </div>
 
-      <div class="relative mx-auto w-full max-w-lg">
-        <div class="absolute -bottom-4 -right-4 h-full w-full rounded-xl border border-primary/30" aria-hidden="true"></div>
-        <Image
-          src={heroTeam}
-          alt="Markosh engineers collaborating with a client team"
-          width={600}
-          height={400}
-          densities={[1, 2]}
-          sizes="(max-width: 1024px) 100vw, 600px"
-          class="relative z-10 rounded-xl shadow-xl"
-          loading="eager"
-          quality={80}
-          fetchpriority="high"
-        />
+      <dl class="mt-14 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-border pt-8 sm:grid-cols-4">
+        {stats.map((stat) => (
+          <div>
+            <dd class="font-mono text-3xl font-medium tracking-tight sm:text-4xl">{stat.value}</dd>
+            <dt class="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</dt>
+          </div>
+        ))}
+      </dl>
 
-        <div class="relative z-20 mx-auto -mt-6 grid w-[92%] gap-px overflow-hidden rounded-xl border border-border bg-border shadow-lg sm:grid-cols-3">
-          {deliverySignals.map((item) => (
-            <div class="bg-card p-4">
-              <p class="text-sm font-semibold text-foreground">{item.label}</p>
-              <p class="mt-1 text-xs leading-5 text-muted-foreground">{item.detail}</p>
-            </div>
-          ))}
-        </div>
+      <div class="mt-10 space-y-2.5">
+        <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
+          {deliverySignals.join(' · ')}
+        </p>
+        <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
+          <span class="uppercase tracking-[0.14em]">Built for</span> — {operatingContexts.join(' · ')}
+        </p>
       </div>
     </div>
   </div>

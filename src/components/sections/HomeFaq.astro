@@ -31,13 +31,13 @@ export const homeFaqs = [
 
 <section class="bg-background">
   <div class="container mx-auto max-w-3xl">
-    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">FAQ</p>
-    <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+    <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
+    <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
       Questions buyers <span class="text-primary">ask first</span>
     </h2>
-    <div class="mt-10 space-y-4">
+    <div class="mt-10 border-t border-border">
       {homeFaqs.map((faq) => (
-        <details class="glass-card group p-6 open:border-primary/35">
+        <details class="group border-b border-border py-5">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
             <span>{faq.question}</span>
             <svg class="h-5 w-5 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

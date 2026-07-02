@@ -50,8 +50,8 @@ const proofChecks = [
   <div class="container mx-auto">
     <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-end">
       <div class="max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Engagement Patterns</p>
-        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Engagement Patterns</p>
+        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
           Concrete ways <span class="text-primary">work gets delivered</span>
         </h2>
       </div>
@@ -60,21 +60,19 @@ const proofChecks = [
       </p>
     </div>
 
-    <div class="mt-12 grid gap-8 lg:grid-cols-[1.25fr,0.75fr]">
-      <div class="space-y-4">
+    <div class="mt-12 grid gap-12 lg:grid-cols-[1.25fr,0.75fr]">
+      <div class="border-t border-border">
         {engagementPatterns.map((study, index) => (
-          <article class="group grid gap-5 rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-lg md:grid-cols-[4rem,1fr]">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 font-headline text-lg font-bold text-primary">
-              0{index + 1}
-            </div>
+          <article class="grid gap-x-8 gap-y-3 border-b border-border py-8 md:grid-cols-[3.5rem,1fr]">
+            <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">0{index + 1}</span>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{study.sector}</p>
-              <h3 class="mt-2 font-headline text-xl font-bold">{study.title}</h3>
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{study.sector}</p>
+              <h3 class="mt-2 font-headline text-2xl font-bold tracking-tight sm:text-3xl">{study.title}</h3>
               <p class="mt-2 text-muted-foreground">{study.summary}</p>
-              <dl class="mt-5 grid grid-cols-2 gap-4 border-t border-border pt-5">
+              <dl class="mt-5 flex flex-wrap gap-x-12 gap-y-3">
                 {study.results.map((result) => (
                   <div>
-                    <dd class="font-headline text-2xl font-bold text-primary">{result.value}</dd>
+                    <dd class="font-mono text-lg font-medium tracking-tight">{result.value}</dd>
                     <dt class="mt-0.5 text-sm text-muted-foreground">{result.label}</dt>
                   </div>
                 ))}
@@ -84,15 +82,12 @@ const proofChecks = [
         ))}
       </div>
 
-      <aside class="rounded-xl border border-primary/25 bg-background p-7 shadow-sm lg:sticky lg:top-28 lg:self-start">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">What stays true</p>
+      <aside class="border-t-2 border-foreground pt-6 lg:sticky lg:top-28 lg:self-start">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">What stays true</p>
         <h3 class="mt-3 font-headline text-2xl font-bold">Delivery proof buyers can inspect</h3>
-        <ul class="mt-6 space-y-4">
+        <ul class="mt-6 divide-y divide-border border-b border-border">
           {proofChecks.map((item) => (
-            <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
-              <span>{item}</span>
-            </li>
+            <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
           ))}
         </ul>
         <a href="/contact" class="mt-7 inline-flex items-center gap-2 font-semibold text-primary hover:underline">

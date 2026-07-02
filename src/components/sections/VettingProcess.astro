@@ -12,14 +12,14 @@ const funnel = [
   <div class="container mx-auto">
     <div class="grid gap-12 lg:grid-cols-[0.9fr,1.45fr] lg:items-start">
       <div class="lg:sticky lg:top-28">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-signal">Vetting</p>
-        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">03 — Vetting</p>
+        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
           Only <span class="text-signal">3%</span> make it in
         </h2>
-        <p class="mt-5 text-lg text-ink-foreground/70">
+        <p class="mt-6 text-lg text-ink-foreground/70">
           "Pre-vetted" has a specific meaning here: by the time you meet a candidate, technical ability, communication, and delivery habits have already been tested.
         </p>
-        <div class="mt-8 rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-5">
+        <div class="mt-10 border-t border-ink-foreground/20 pt-6">
           <p class="font-headline text-lg font-bold">Your first interview should feel like a final screen.</p>
           <p class="mt-2 text-sm leading-6 text-ink-foreground/70">
             We optimize for fewer, stronger introductions instead of sending a large resume batch for your team to sort through.
@@ -27,22 +27,17 @@ const funnel = [
         </div>
       </div>
 
-      <ol class="relative space-y-0 border-l border-ink-foreground/20 pl-6 sm:pl-8">
-        {funnel.map((step, index) => (
-          <li class="relative pb-9 last:pb-0">
-            <span class="absolute -left-[2.05rem] top-0 flex h-4 w-4 items-center justify-center rounded-full border border-signal bg-ink sm:-left-[2.55rem]">
-              <span class="h-2 w-2 rounded-full bg-signal" aria-hidden="true"></span>
-            </span>
-            <article class={`grid gap-5 rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-6 sm:grid-cols-[8rem,1fr] ${index === funnel.length - 1 ? 'ring-1 ring-signal/50' : ''}`}>
-              <div>
-                <p class="font-headline text-4xl font-bold text-signal">{step.rate}</p>
-                <p class="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-foreground/60">pass point</p>
-              </div>
-              <div>
-                <h3 class="font-headline text-xl font-bold">{step.stage}</h3>
-                <p class="mt-2 leading-7 text-ink-foreground/70">{step.detail}</p>
-              </div>
-            </article>
+      <ol class="border-t border-ink-foreground/20">
+        {funnel.map((step) => (
+          <li class="grid gap-x-8 gap-y-3 border-b border-ink-foreground/20 py-8 sm:grid-cols-[10rem,1fr] sm:py-10">
+            <div>
+              <p class="font-mono text-4xl font-medium tracking-tight text-signal sm:text-5xl">{step.rate}</p>
+              <p class="mt-1.5 font-mono text-xs uppercase tracking-[0.14em] text-ink-foreground/60">pass point</p>
+            </div>
+            <div>
+              <h3 class="font-headline text-xl font-bold sm:text-2xl">{step.stage}</h3>
+              <p class="mt-2 leading-7 text-ink-foreground/70">{step.detail}</p>
+            </div>
           </li>
         ))}
       </ol>

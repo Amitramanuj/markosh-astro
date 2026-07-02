@@ -1,24 +1,24 @@
 ---
 // Homepage band for the 14-day sales rep trial — the proof object for the
-// Sell family, styled to match the site's light card sections.
+// Sell family, promoted to a full-bleed ink band as the conversion moment.
 import Button from '@/components/ui/Button.astro';
 
 const qualifier =
   'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.';
 ---
 
-<section class="bg-secondary !py-14 sm:!py-16">
+<section class="ink-panel">
   <div class="container mx-auto">
-    <div class="glass-card grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.25fr,0.75fr] lg:items-center">
+    <div class="grid gap-10 lg:grid-cols-[1.25fr,0.75fr] lg:items-center">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">New: B2B Sales-as-a-Service</p>
-        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-          Try a Markosh Sales Rep for <span class="text-primary">14 days at no cost</span>
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">06 — New: B2B Sales-as-a-Service</p>
+        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+          Try a Markosh Sales Rep for <span class="text-signal">14 days at no cost</span>
         </h2>
-        <p class="mt-4 max-w-2xl text-muted-foreground">
+        <p class="mt-6 max-w-2xl text-lg text-ink-foreground/70">
           One trained rep, AI-assisted account research, human-led outreach, and daily CRM visibility — so you can judge execution quality before committing to a monthly sales team.
         </p>
-        <p class="mt-4 text-sm font-semibold text-foreground">{qualifier}</p>
+        <p class="mt-8 max-w-2xl border-t border-ink-foreground/20 pt-5 font-mono text-sm leading-6 text-ink-foreground/80">{qualifier}</p>
       </div>
       <div class="flex flex-wrap gap-4 lg:justify-end">
         <Button href="/sales-rep-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
