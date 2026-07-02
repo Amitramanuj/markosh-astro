@@ -165,9 +165,9 @@ const extraSchemas = [
     <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
-        <div class="max-w-3xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">B2B Sales-as-a-Service</p>
-          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+        <div class="max-w-4xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">B2B Sales-as-a-Service</p>
+          <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             AI-assisted research. <span class="text-primary">Human-led sales execution.</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
@@ -192,31 +192,25 @@ const extraSchemas = [
     <section class="bg-secondary">
       <div class="container mx-auto">
         <div class="max-w-2xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">The Service</p>
-          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — The Service</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
             Managed pipeline support, <span class="text-primary">clearly scoped</span>
           </h2>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
-          <div class="glass-card p-7">
-            <h3 class="font-headline text-lg font-bold text-signal">What you get</h3>
-            <ul class="mt-5 space-y-3">
+        <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+          <div>
+            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What you get</h3>
+            <ul class="divide-y divide-border">
               {whatItIs.map((item) => (
-                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
-                  <span>{item}</span>
-                </li>
+                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
               ))}
             </ul>
           </div>
-          <div class="glass-card p-7">
-            <h3 class="font-headline text-lg font-bold">What this is not</h3>
-            <ul class="mt-5 space-y-3">
+          <div>
+            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What this is not</h3>
+            <ul class="divide-y divide-border">
               {whatItIsNot.map((item) => (
-                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
-                  <span>{item}</span>
-                </li>
+                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
               ))}
             </ul>
           </div>
@@ -228,21 +222,23 @@ const extraSchemas = [
     <section class="bg-background">
       <div class="container mx-auto">
         <div class="max-w-2xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Models</p>
-          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Models</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
             Four ways to add <span class="text-primary">sales capacity</span>
           </h2>
         </div>
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="mt-12 border-t border-border">
           {models.map((model) => (
-            <article id={model.id} class="glass-card group relative flex flex-col p-8 scroll-mt-28">
-              <span class="absolute right-8 top-8 font-headline text-5xl font-bold text-muted/80 transition-colors group-hover:text-primary/20" aria-hidden="true">{model.num}</span>
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{model.tagline}</p>
-              <h3 class="mt-3 font-headline text-2xl font-bold">{model.title}</h3>
-              <p class="mt-3 flex-grow text-muted-foreground">{model.description}</p>
-              <p class="mt-5 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
-                <span class="font-semibold text-foreground">Best for:</span> {model.bestFor}
-              </p>
+            <article id={model.id} class="grid scroll-mt-28 gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr]">
+              <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{model.num}</span>
+              <div>
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{model.tagline}</p>
+                <h3 class="mt-2 font-headline text-3xl font-bold tracking-tight sm:text-4xl">{model.title}</h3>
+                <p class="mt-3 max-w-2xl text-muted-foreground">{model.description}</p>
+                <p class="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
+                  <span class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-foreground">Best for</span> — {model.bestFor}
+                </p>
+              </div>
             </article>
           ))}
         </div>
@@ -254,34 +250,28 @@ const extraSchemas = [
       <div class="container mx-auto">
         <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
           <div class="lg:sticky lg:top-28">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Sales Intelligence</p>
-            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Sales Intelligence</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
               AI behind the rep, <span class="text-primary">never instead of one</span>
             </h2>
-            <p class="mt-5 text-lg text-muted-foreground">
+            <p class="mt-6 text-lg text-muted-foreground">
               Our reps are not basic callers. Every conversation is backed by AI-assisted research, account intelligence, and structured reporting — and every conversation is held by a human.
             </p>
           </div>
-          <div class="grid gap-6 sm:grid-cols-2">
-            <div class="glass-card p-7">
-              <h3 class="font-headline text-lg font-bold text-signal">What AI does</h3>
-              <ul class="mt-5 space-y-3">
+          <div class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What AI does</h3>
+              <ul class="divide-y divide-border">
                 {aiDoes.map((item) => (
-                  <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
-                    <span>{item}</span>
-                  </li>
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
                 ))}
               </ul>
             </div>
-            <div class="glass-card p-7">
-              <h3 class="font-headline text-lg font-bold">What AI never does</h3>
-              <ul class="mt-5 space-y-3">
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What AI never does</h3>
+              <ul class="divide-y divide-border">
                 {aiNever.map((item) => (
-                  <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
-                    <span>{item}</span>
-                  </li>
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
                 ))}
               </ul>
             </div>
@@ -293,19 +283,20 @@ const extraSchemas = [
     <!-- Compliance guardrails (ink panel) -->
     <section class="ink-panel">
       <div class="container mx-auto">
-        <div class="max-w-2xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-signal">Operating Guardrails</p>
-          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+        <div class="max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">04 — Operating Guardrails</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
             Compliance-aware <span class="text-signal">by design</span>
           </h2>
-          <p class="mt-5 text-lg text-ink-foreground/70">
+          <p class="mt-6 text-lg text-ink-foreground/70">
             Outbound done badly damages your brand and creates legal exposure. Every Markosh engagement runs on the same guardrails.
           </p>
         </div>
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {guardrails.map((item) => (
-            <div class="rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-6">
-              <h3 class="font-headline text-lg font-bold">{item.title}</h3>
+        <div class="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {guardrails.map((item, index) => (
+            <div class="border-t border-ink-foreground/20 pt-5">
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-foreground/60" aria-hidden="true">0{index + 1}</p>
+              <h3 class="mt-3 font-headline text-lg font-bold">{item.title}</h3>
               <p class="mt-2 text-sm leading-6 text-ink-foreground/70">{item.detail}</p>
             </div>
           ))}
@@ -317,45 +308,35 @@ const extraSchemas = [
     <section class="bg-background">
       <div class="container mx-auto">
         <div class="max-w-2xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Fit</p>
-          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Fit</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
             Who this <span class="text-primary">works for</span>
           </h2>
-          <p class="mt-4 text-lg text-muted-foreground">
+          <p class="mt-5 text-lg text-muted-foreground">
             We support B2B companies where targeted research and human conversation can create meaningful pipeline.
           </p>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
-          <div class="glass-card p-7">
-            <h3 class="font-headline text-lg font-bold text-signal">A strong fit</h3>
-            <ul class="mt-5 space-y-3">
+        <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+          <div>
+            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">A strong fit</h3>
+            <ul class="divide-y divide-border">
               {goodFit.map((item) => (
-                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
-                  <span>{item}</span>
-                </li>
+                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
               ))}
             </ul>
           </div>
-          <div class="glass-card p-7">
-            <h3 class="font-headline text-lg font-bold">Not a fit</h3>
-            <ul class="mt-5 space-y-3">
+          <div>
+            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">Not a fit</h3>
+            <ul class="divide-y divide-border">
               {badFit.map((item) => (
-                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
-                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
-                  <span>{item}</span>
-                </li>
+                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
               ))}
             </ul>
           </div>
         </div>
-        <div class="mt-12">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Where we focus first</p>
-          <ul class="mt-4 flex flex-wrap gap-2.5">
-            {launchNiches.map((niche) => (
-              <li class="rounded-full border border-border bg-card px-5 py-2 font-headline text-sm font-bold text-muted-foreground">{niche}</li>
-            ))}
-          </ul>
+        <div class="mt-14 border-t border-border pt-6">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Where we focus first</p>
+          <p class="mt-3 font-mono text-sm leading-7 text-muted-foreground">{launchNiches.join(' · ')}</p>
         </div>
       </div>
     </section>
@@ -363,16 +344,16 @@ const extraSchemas = [
     <!-- Trial CTA -->
     <section class="bg-secondary">
       <div class="container mx-auto">
-        <div class="glass-card grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
+        <div class="grid gap-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">The Offer</p>
-            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">06 — The Offer</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
               Try a Markosh Sales Rep for <span class="text-primary">14 days at no cost</span>
             </h2>
-            <p class="mt-4 text-muted-foreground">
+            <p class="mt-5 text-muted-foreground">
               See research quality, communication, outreach discipline, and CRM visibility before you commit to a monthly sales team.
             </p>
-            <p class="mt-4 text-sm font-semibold text-foreground">
+            <p class="mt-6 max-w-2xl border-t border-border pt-5 font-mono text-sm leading-6 text-foreground">
               For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.
             </p>
           </div>
@@ -388,10 +369,11 @@ const extraSchemas = [
     <!-- FAQ -->
     <section class="bg-background">
       <div class="container mx-auto max-w-3xl">
-        <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
-        <div class="mt-10 space-y-4">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
+        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
+        <div class="mt-10 border-t border-border">
           {faqs.map((faq) => (
-            <details class="glass-card group p-6 open:border-primary/35">
+            <details class="group border-b border-border py-5">
               <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
                 {faq.question}
               </summary>
