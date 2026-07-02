@@ -4,6 +4,8 @@ import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/space-grotesk/500.css';
 import '@fontsource/space-grotesk/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/600.css';
 import '../styles/global.css';
 import TaskadeWidget from '../components/islands/TaskadeWidget.tsx';
 import { generateOrganizationStructuredData, mergeSEOConfig, type SEOConfig } from '../lib/seo-utils';
@@ -52,7 +54,7 @@ const structuredData = generateOrganizationStructuredData();
     <meta property="twitter:image" content={seoConfig.image} />
     
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M10 85 L10 15 L30 15 L50 55 L70 15 L90 15 L90 85 L75 85 L75 40 L60 75 L40 75 L25 40 L25 85 Z' fill='%232563eb' transform='translate(3,3)'/><path d='M7 82 L7 12 L27 12 L47 52 L67 12 L87 12 L87 82 L72 82 L72 37 L57 72 L37 72 L22 37 L22 82 Z' fill='%237c3aed'/></svg>" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
@@ -77,9 +79,9 @@ const structuredData = generateOrganizationStructuredData();
       :root {
         --background: 220 20% 98%;
         --foreground: 222 30% 12%;
-        --primary: 244 55% 48%;
+        --primary: 222 30% 12%;
         --primary-foreground: 0 0% 100%;
-        --accent: 244 55% 48%;
+        --accent: 222 30% 12%;
         --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
         --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
         --radius: 0.75rem;

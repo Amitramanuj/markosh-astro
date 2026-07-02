@@ -33,6 +33,7 @@ export default {
       fontFamily: {
         body: ['Inter', 'system-ui', 'sans-serif'],
         headline: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

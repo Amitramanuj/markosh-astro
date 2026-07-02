@@ -16,6 +16,22 @@ interface HeaderProps {
   currentPath: string;
 }
 
+/* Monochrome angular arrow mark — renders in currentColor so it stays
+   ink on light surfaces and white on dark ones */
+function LogoMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
+      <path
+        d="M64 9 L91 49 L53 51 L48 94 L9 67 Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Header({ currentPath }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,13 +71,7 @@ export default function Header({ currentPath }: HeaderProps) {
       <div className="container mx-auto flex h-20 items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
-          <img
-            src="/logo-72.png"
-            alt="Markosh Logo"
-            width={36}
-            height={36}
-            className="object-contain"
-          />
+          <LogoMark className="h-9 w-9 text-foreground" />
           <span className="text-2xl font-bold font-headline text-foreground">
             Markosh
           </span>
@@ -136,13 +146,7 @@ export default function Header({ currentPath }: HeaderProps) {
               className="mb-10 flex items-center gap-2"
               onClick={closeMobileMenu}
             >
-              <img
-                src="/logo-72.png"
-                alt="Markosh Logo"
-                width={40}
-                height={40}
-                className="object-contain"
-              />
+              <LogoMark className="h-10 w-10 text-foreground" />
               <span className="text-2xl font-bold font-headline">Markosh</span>
             </a>
 

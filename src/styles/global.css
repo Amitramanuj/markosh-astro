@@ -11,20 +11,20 @@
     --card-foreground: 222 30% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 30% 12%;
-    --primary: 244 55% 48%; /* deep indigo ink */
+    --primary: 222 30% 12%; /* monochrome ink — emphasis via contrast, not hue */
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 94%;
     --secondary-foreground: 222 30% 12%;
     --muted: 220 12% 92%;
     --muted-foreground: 222 12% 40%;
-    --accent: 244 55% 48%;
+    --accent: 222 30% 12%;
     --accent-foreground: 0 0% 100%;
-    --signal: 158 60% 28%; /* trust green — darkened for AA text contrast on tinted chips */
+    --signal: 222 30% 12%; /* stats/proof — full-contrast ink; weight and scale carry emphasis */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 12% 86%;
     --input: 220 12% 86%;
-    --ring: 244 55% 48%;
+    --ring: 222 30% 12%;
     --radius: 0.75rem;
     /* Ink panel — dark contrast blocks (CTA, footer accents) */
     --ink: 230 30% 9%;
@@ -38,20 +38,20 @@
     --card-foreground: 220 20% 96%;
     --popover: 230 25% 10%;
     --popover-foreground: 220 20% 96%;
-    --primary: 244 80% 72%;
+    --primary: 220 20% 96%;
     --primary-foreground: 230 30% 7%;
     --secondary: 230 25% 11%;
     --secondary-foreground: 220 20% 96%;
     --muted: 230 20% 14%;
     --muted-foreground: 225 12% 65%;
-    --accent: 244 80% 72%;
+    --accent: 220 20% 96%;
     --accent-foreground: 230 30% 7%;
-    --signal: 158 55% 58%;
+    --signal: 220 20% 96%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 230 18% 18%;
     --input: 230 18% 18%;
-    --ring: 244 80% 72%;
+    --ring: 220 20% 96%;
   }
 
   * {
@@ -72,7 +72,7 @@
 }
 
 @layer components {
-  /* Primary action button — solid ink-indigo pill (class name kept for reuse across pages) */
+  /* Primary action button — solid ink pill, inverts to white inside .ink-panel (class name kept for reuse across pages) */
   .btn-gradient {
     @apply bg-primary text-primary-foreground;
     @apply border-none rounded-full px-6 py-3 font-semibold;
@@ -129,12 +129,17 @@
     box-shadow: 0 18px 40px -18px hsl(222 30% 12% / 0.18);
   }
 
-  /* Dark ink contrast panel */
+  /* Dark ink contrast panel — inverts the monochrome scale: buttons and
+     highlights flip to white so CTAs stay the highest-contrast element */
   .ink-panel {
     background-color: hsl(var(--ink));
     color: hsl(var(--ink-foreground));
-    /* Lift the trust-green so it stays legible against the near-black panel */
-    --signal: 158 55% 58%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 230 30% 9%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 230 30% 9%;
+    --signal: 0 0% 100%;
+    --ring: 0 0% 100%;
   }
 
   /* Animated underline for inline links */
