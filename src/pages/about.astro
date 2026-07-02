@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import { Lightbulb, Gem, Handshake } from '@/components/ui/icons';
-import AnveshaAvatar from '../../Anvesha.png';
-import AmitAvatar from '../../Amit.png';
+import AnveshaAvatar from '@/assets/founders/anvesha.webp';
+import AmitAvatar from '@/assets/founders/amit.webp';
 
 const teamMembers = [
   { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: AnveshaAvatar },
@@ -43,7 +43,7 @@ const values = [
       </div>
     </section>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
           <div>
@@ -73,9 +73,9 @@ const values = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-background">
         <div class="container mx-auto">
           <div class="max-w-2xl">
@@ -97,9 +97,9 @@ const values = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto text-center">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Leadership</p>
@@ -130,7 +130,7 @@ const values = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
   </main>
   <Footer />

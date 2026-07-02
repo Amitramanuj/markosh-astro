@@ -1,8 +1,198 @@
 ---
-import HeaderIsland from '@/components/islands/Header.tsx';
+const navLinks = [
+  { href: '/services', label: 'Services' },
+  { href: '/sales', label: 'Sales' },
+  { href: '/industries', label: 'Industries' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/career', label: 'Careers' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
 
-// Get the current path from Astro.url
-const currentPath = Astro.url.pathname;
+const normalizePath = (path: string) => {
+  if (path === '/') return '/';
+  return path.replace(/\/$/, '');
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActiveLink = (href: string) => {
+  const normalizedHref = normalizePath(href);
+  return (
+    currentPath === normalizedHref ||
+    (normalizedHref !== '/' && currentPath.startsWith(`${normalizedHref}/`))
+  );
+};
 ---
 
-<HeaderIsland client:load currentPath={currentPath} />
+<header
+  data-site-header
+  class="sticky top-0 z-50 w-full bg-transparent transition-all duration-300"
+>
+  <div class="container mx-auto flex h-20 items-center justify-between">
+    <a href="/" class="flex items-center gap-2" aria-label="Markosh home">
+      <svg viewBox="0 0 100 100" class="h-9 w-9 text-foreground" aria-hidden="true">
+        <path
+          d="M64 9 L91 49 L53 51 L48 94 L9 67 Z"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-width="7"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span class="font-headline text-2xl font-bold text-foreground">Markosh</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-sm font-medium text-muted-foreground underline-offset-8 transition-colors hover:text-foreground',
+            isActiveLink(link.href) && 'text-primary underline decoration-2',
+          ]}
+          aria-current={isActiveLink(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="hidden items-center gap-4 lg:flex">
+      <a
+        href="/contact"
+        data-astro-prefetch="hover"
+        class="btn-gradient inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+      >
+        Book Free Consultation
+      </a>
+    </div>
+
+    <div class="lg:hidden">
+      <button
+        type="button"
+        data-mobile-menu-button
+        data-testid="mobile-menu-button"
+        aria-label="Open mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <span class="sr-only">Open menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  data-mobile-menu
+  class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm lg:hidden"
+  hidden
+>
+  <div
+    data-mobile-menu-panel
+    data-testid="mobile-menu"
+    class="fixed right-0 top-0 h-full w-full bg-background"
+  >
+    <div class="flex h-full flex-col items-center justify-center p-6">
+      <button
+        type="button"
+        data-mobile-menu-close
+        class="absolute right-4 top-4 p-2 text-muted-foreground hover:text-foreground"
+        aria-label="Close menu"
+      >
+        <span class="text-3xl" aria-hidden="true">&times;</span>
+      </button>
+
+      <a href="/" data-mobile-menu-close class="mb-10 flex items-center gap-2">
+        <svg viewBox="0 0 100 100" class="h-10 w-10 text-foreground" aria-hidden="true">
+          <path
+            d="M64 9 L91 49 L53 51 L48 94 L9 67 Z"
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="7"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="font-headline text-2xl font-bold">Markosh</span>
+      </a>
+
+      <nav class="flex flex-col items-center gap-6" aria-label="Mobile navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            data-mobile-menu-close
+            class:list={[
+              'px-6 py-2 font-headline text-2xl font-bold text-muted-foreground transition-colors hover:text-foreground',
+              isActiveLink(link.href) && 'text-primary',
+            ]}
+            aria-current={isActiveLink(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href="/contact"
+        data-mobile-menu-close
+        data-astro-prefetch="hover"
+        class="btn-gradient mt-10 inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-8 font-semibold"
+      >
+        Book Free Consultation
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const header = document.querySelector('[data-site-header]');
+    const menuButton = document.querySelector('[data-mobile-menu-button]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    const closeTargets = document.querySelectorAll('[data-mobile-menu-close]');
+
+    if (!header || !menuButton || !menu) return;
+
+    const scrolledClasses = ['border-b', 'border-border', 'bg-background/70', 'backdrop-blur-xl'];
+    let previousOverflow = '';
+
+    const setScrolledState = () => {
+      const isScrolled = window.scrollY > 10;
+      header.classList.toggle('bg-transparent', !isScrolled);
+      scrolledClasses.forEach((className) => header.classList.toggle(className, isScrolled));
+    };
+
+    const setMenuOpen = (isOpen) => {
+      if (isOpen) {
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        menu.hidden = false;
+      } else {
+        document.body.style.overflow = previousOverflow;
+        menu.hidden = true;
+      }
+
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    menuButton.addEventListener('click', () => setMenuOpen(menu.hidden));
+    closeTargets.forEach((target) => {
+      target.addEventListener('click', () => setMenuOpen(false));
+    });
+    menu.addEventListener('click', (event) => {
+      if (event.target === menu) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) setMenuOpen(false);
+    });
+    window.addEventListener('scroll', setScrolledState, { passive: true });
+
+    setScrolledState();
+  })();
+</script>

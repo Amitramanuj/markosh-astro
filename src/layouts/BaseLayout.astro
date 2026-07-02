@@ -1,13 +1,9 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/700.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/600.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
 import '../styles/global.css';
-import TaskadeWidget from '../components/islands/TaskadeWidget.tsx';
+import TaskadeWidget from '../components/layout/TaskadeWidget.astro';
 import { generateOrganizationStructuredData, mergeSEOConfig, type SEOConfig } from '../lib/seo-utils';
 
 export interface Props extends SEOConfig {
@@ -18,6 +14,17 @@ export interface Props extends SEOConfig {
 const { extraSchemas = [], ...seoProps } = Astro.props;
 const seoConfig = mergeSEOConfig(seoProps, Astro.url.pathname);
 const structuredData = generateOrganizationStructuredData();
+const normalizePath = (path: string) => {
+  if (path === '/') return '/';
+  return path.replace(/\/$/, '');
+};
+const currentPath = normalizePath(Astro.url.pathname);
+const taskadeEnabled =
+  currentPath === '/contact' ||
+  currentPath === '/sales' ||
+  currentPath === '/sales-rep-trial' ||
+  currentPath === '/services' ||
+  currentPath.startsWith('/services/');
 ---
 
 <!doctype html>
@@ -71,7 +78,7 @@ const structuredData = generateOrganizationStructuredData();
     <!-- Accessibility improvements -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <!-- Fonts are self-hosted via @fontsource (imported in frontmatter) -->
+    <!-- Fonts are self-hosted via Latin @fontsource subsets (imported in frontmatter) -->
 
     <!-- Critical CSS inlined for above-the-fold performance -->
     <style>
@@ -109,8 +116,7 @@ const structuredData = generateOrganizationStructuredData();
       Skip to main content
     </a>
     <slot />
-    <!-- Taskade Widget -->
-    <TaskadeWidget client:idle />
+    {taskadeEnabled && <TaskadeWidget />}
   </body>
 </html>
 

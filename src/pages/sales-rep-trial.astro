@@ -133,13 +133,13 @@ const extraSchemas = [
             {qualifier}
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="/contact?outcome=sales-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+            <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
               Apply for the 14-Day Trial
               <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </Button>
-            <Button href="/sales" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+            <Button href="/sales" size="lg" variant="outline" data-astro-prefetch="hover" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
               All Sales Services
             </Button>
           </div>
@@ -244,7 +244,7 @@ const extraSchemas = [
           ))}
         </div>
         <div class="mt-12">
-          <Button href="/contact?outcome=sales-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+          <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
             Apply for the 14-Day Trial
           </Button>
           <p class="mt-5 font-mono text-sm leading-6 text-muted-foreground">{qualifier}</p>

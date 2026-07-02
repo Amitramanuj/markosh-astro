@@ -3,8 +3,49 @@ import { defineConfig } from 'astro/config';
 import path from 'path';
 
 import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+
+const evergreenLastMod = '2026-07-03';
+/** @type {Record<string, Pick<import('@astrojs/sitemap').SitemapItem, 'lastmod' | 'changefreq' | 'priority'>>} */
+const sitemapMetadataByPath = {
+  '/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.WEEKLY, priority: 1.0 },
+  '/about/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.6 },
+  '/career/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.5 },
+  '/contact/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
+  '/industries/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.6 },
+  '/resources/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
+  '/sales/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
+  '/sales-rep-trial/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
+  '/services/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
+  '/services/ai-development/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/services/ai-strategy/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/services/custom-software-development/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/services/it-staffing/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/whitepapers/': { lastmod: '2025-08-04', changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
+  '/whitepapers/ai-coding-isnt-economically-sustainable/': {
+    lastmod: '2025-08-04',
+    changefreq: ChangeFreqEnum.MONTHLY,
+    priority: 0.7,
+  },
+  '/whitepapers/from-sota-to-systems/': {
+    lastmod: '2025-07-12',
+    changefreq: ChangeFreqEnum.MONTHLY,
+    priority: 0.7,
+  },
+  '/whitepapers/llms-have-hit-walls/': {
+    lastmod: '2025-05-18',
+    changefreq: ChangeFreqEnum.MONTHLY,
+    priority: 0.7,
+  },
+};
+
+/** @param {string} url */
+function normalizeSitemapPath(url) {
+  const pathname = new URL(url).pathname;
+  if (pathname === '/') return '/';
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +58,12 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     react(),
-    sitemap()
+    sitemap({
+      serialize(item) {
+        const metadata = sitemapMetadataByPath[normalizeSitemapPath(item.url)];
+        return metadata ? { ...item, ...metadata } : item;
+      },
+    })
   ],
   
   // Static site generation for optimal performance
@@ -85,8 +131,8 @@ export default defineConfig({
   
   // Prefetch configuration for better navigation performance
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport'
+    prefetchAll: false,
+    defaultStrategy: 'hover'
   },
 
 

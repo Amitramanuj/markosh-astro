@@ -18,7 +18,7 @@ export interface ServicePage {
 export const servicePages: ServicePage[] = [
   {
     slug: 'it-staffing',
-    metaTitle: 'IT Staffing Services for US Companies | Hire Vetted Engineers',
+    metaTitle: 'IT Staffing for US Companies | Vetted Engineers',
     metaDescription:
       'Augment your team with pre-vetted senior engineers in under 2 weeks. US time-zone overlap, NDA-first, flexible contracts. IT staffing by Markosh.',
     eyebrow: 'IT Staffing',

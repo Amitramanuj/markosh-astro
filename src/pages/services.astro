@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import EngagementModels from '@/components/sections/EngagementModels.astro';
 import Button from '@/components/ui/Button.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
@@ -139,8 +139,8 @@ const extraSchemas = [
             Four connected service families under one operating model: research first, AI-assisted intelligence, vetted human talent, and managed execution with measurable outcomes.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
-              Book a Call
+            <Button href="/contact" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Book Free Consultation
             </Button>
           </div>
         </div>
@@ -148,7 +148,7 @@ const extraSchemas = [
     </section>
 
     <!-- Typographic service index -->
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Services</p>
@@ -176,9 +176,9 @@ const extraSchemas = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-background">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Tooling</p>
@@ -191,9 +191,9 @@ const extraSchemas = [
           </p>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
           <div class="max-w-2xl">
@@ -213,11 +213,11 @@ const extraSchemas = [
           </ol>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <EngagementModels />
-    </FadeInSection>
+    </RevealSection>
 
   </main>
   <Footer />

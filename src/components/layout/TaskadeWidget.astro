@@ -1,0 +1,67 @@
+<div class="fixed bottom-5 right-5 z-[9998]">
+  <button
+    type="button"
+    data-taskade-chat-trigger
+    data-agent-id="01K1H8Z4KAY5587YF56CR3V3F0"
+    class="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+  >
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+    </svg>
+    <span data-taskade-chat-label>Chat</span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    const trigger = document.querySelector('[data-taskade-chat-trigger]');
+    const label = document.querySelector('[data-taskade-chat-label]');
+    if (!trigger || !label) return;
+
+    let hasLoaded = false;
+
+    const setStatus = (text, disabled = false) => {
+      label.textContent = text;
+      trigger.toggleAttribute('disabled', disabled);
+      trigger.setAttribute('aria-busy', String(disabled));
+    };
+
+    const initWidget = () => {
+      const widget = window.TaskadeEmbed?.AgentPublicChatPopup;
+      if (!widget) {
+        setStatus('Chat unavailable');
+        return;
+      }
+
+      widget.init({
+        publicAgentId: trigger.dataset.agentId,
+        theme: 'light',
+        preferences: {
+          theme: 'light',
+          hideBranding: false,
+        },
+      });
+
+      hasLoaded = true;
+      trigger.closest('div')?.setAttribute('hidden', '');
+    };
+
+    trigger.addEventListener('click', () => {
+      if (hasLoaded || document.querySelector('script[data-taskade-embed]')) {
+        initWidget();
+        return;
+      }
+
+      setStatus('Loading', true);
+
+      const script = document.createElement('script');
+      script.src = 'https://assets.taskade.com/embeds/latest/taskade-embed.min.js';
+      script.async = true;
+      script.defer = true;
+      script.dataset.taskadeEmbed = 'true';
+      script.addEventListener('load', initWidget, { once: true });
+      script.addEventListener('error', () => setStatus('Chat unavailable'), { once: true });
+      document.head.appendChild(script);
+    });
+  })();
+</script>
