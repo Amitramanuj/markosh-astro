@@ -1,0 +1,33 @@
+---
+// Homepage band for the 14-day sales rep trial — the proof object for the
+// Sell family, styled to match the site's light card sections.
+import Button from '@/components/ui/Button.astro';
+
+const qualifier =
+  'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.';
+---
+
+<section class="bg-background !py-14 sm:!py-16">
+  <div class="container mx-auto">
+    <div class="glass-card grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.25fr,0.75fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">New: B2B Sales-as-a-Service</p>
+        <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+          Try a Markosh Sales Rep for <span class="text-primary">14 days at no cost</span>
+        </h2>
+        <p class="mt-4 max-w-2xl text-muted-foreground">
+          One trained rep, AI-assisted account research, human-led outreach, and daily CRM visibility — so you can judge execution quality before committing to a monthly sales team.
+        </p>
+        <p class="mt-4 text-sm font-semibold text-foreground">{qualifier}</p>
+      </div>
+      <div class="flex flex-wrap gap-4 lg:justify-end">
+        <Button href="/sales-rep-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+          See the 14-Day Trial
+          <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

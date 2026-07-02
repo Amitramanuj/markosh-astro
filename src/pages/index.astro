@@ -8,6 +8,7 @@ import ServicesOverview from '@/components/sections/ServicesOverview.astro';
 import EngagementModels from '@/components/sections/EngagementModels.astro';
 import VettingProcess from '@/components/sections/VettingProcess.astro';
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection.astro';
+import TrialOfferBand from '@/components/sections/TrialOfferBand.astro';
 import TrustSection from '@/components/sections/TrustSection.astro';
 import RolesGrid from '@/components/sections/RolesGrid.astro';
 import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
@@ -54,6 +55,12 @@ const faqSchema = {
     <FadeInSection client:idle>
       <CaseStudiesSection />
     </FadeInSection>
+
+    <!-- The Sell family's proof object: the 14-day trial -->
+    <FadeInSection client:idle>
+      <TrialOfferBand />
+    </FadeInSection>
+
     <FadeInSection client:idle>
       <TrustSection />
     </FadeInSection>

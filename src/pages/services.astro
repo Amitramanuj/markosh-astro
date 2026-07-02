@@ -4,11 +4,24 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import FadeInSection from '@/components/islands/FadeInSection.tsx';
 import Button from '@/components/ui/Button.astro';
-import { CheckCircle, Users, Code, BrainCircuit, Bot, CloudCog, Smartphone } from '@/components/ui/icons';
+import { CheckCircle, Users, Code, BrainCircuit, Bot, CloudCog, Smartphone, Lightbulb, Phone } from '@/components/ui/icons';
 import { Image } from 'astro:assets';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
 const services = [
+  {
+    icon: Lightbulb,
+    title: 'AI Strategy & Intelligence',
+    link: '/services/ai-strategy',
+    description: 'Before you invest in AI tools or custom development, we help you identify where AI can create real business value — and build an execution roadmap your team can actually implement.',
+    features: [
+      'AI opportunity and workflow automation mapping',
+      'Data and AI readiness assessment',
+      'Use-case prioritization and build vs. buy guidance',
+      '30/60/90-day execution roadmap',
+    ],
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+  },
   {
     icon: Users,
     title: 'IT Staffing Services',
@@ -87,6 +100,19 @@ const services = [
     ],
     image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MXwxfHNlYXJjaHwxNXx8U29mdHdhcmV8ZW58MHx8fHwxNzUzOTgzMzcxfDA&ixlib=rb-4.1.0&q=80&w=1080',
   },
+  {
+    icon: Phone,
+    title: 'B2B Sales-as-a-Service',
+    link: '/sales',
+    description: 'Trained sales reps, lead researchers, and revenue operators who use AI-assisted research and human-led outreach to help B2B companies create more qualified sales conversations.',
+    features: [
+      'Dedicated sales reps and managed revenue pods',
+      'AI-assisted account research and lead prioritization',
+      'Compliance-aware, human-led outreach',
+      '14-day sales rep trial for approved B2B companies',
+    ],
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+  },
 ];
 
 const techStack = [
@@ -111,7 +137,7 @@ const extraSchemas = [
 
 <BaseLayout
   title="Our Services - Markosh"
-  description="Tailored solutions to meet your unique business needs, from finding the right talent to building world-class software."
+  description="Four connected service families: AI Strategy & Intelligence, custom software development, IT staffing, and B2B Sales-as-a-Service."
   canonical="https://markosh.com/services/"
   extraSchemas={extraSchemas}
 >
@@ -124,10 +150,10 @@ const extraSchemas = [
         <div class="max-w-3xl">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Our Services</p>
           <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            Talent and software, <span class="text-primary">end to end</span>
+            Strategy, build, staff, and sell — <span class="text-primary">one execution partner</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            Tailored solutions to meet your unique business needs, from finding the right talent to building world-class software.
+            Four connected service families under one operating model: research first, AI-assisted intelligence, vetted human talent, and managed execution with measurable outcomes.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">

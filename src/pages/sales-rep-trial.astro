@@ -1,0 +1,270 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import { CheckCircle } from '@/components/ui/icons';
+import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
+
+const metaTitle = 'Try a B2B Sales Rep for 14 Days';
+const metaDescription =
+  'Try a Markosh sales rep for 14 days at no cost. Approved B2B companies can evaluate research quality, outreach discipline, CRM visibility, and fit before committing.';
+const pageUrl = 'https://markosh.com/sales-rep-trial/';
+
+const qualifier =
+  'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.';
+
+const proves = [
+  'Research quality',
+  'ICP understanding',
+  'Rep communication',
+  'Account preparation',
+  'Outreach discipline',
+  'CRM note quality',
+  'Prospect feedback',
+  'Daily visibility',
+];
+
+const included = [
+  'One trained remote sales rep',
+  'One defined ICP and one approved offer',
+  'One target market or territory',
+  'ICP and offer review',
+  'AI-assisted account research',
+  'Talk-track or script setup',
+  'Controlled human-led outreach',
+  'Daily notes or CRM-style reporting',
+  'End-of-trial recommendation',
+];
+
+const excluded = [
+  'Guaranteed appointments, closed deals, or revenue',
+  'Unlimited calling or unlimited lead research',
+  'AI voice outreach or robocalling',
+  'Work outside the agreed ICP',
+  'Unapproved messaging',
+  'Closing deals on your behalf',
+];
+
+const eligible = [
+  'A B2B offer with a clear target customer',
+  'A meaningful average deal value',
+  'A founder, AE, or closer available to take calls',
+  'A defined geographic or industry focus',
+  'A legitimate business website and a real follow-up process',
+  'Willingness to approve ICP, messaging, and compliance rules',
+];
+
+const notEligible = [
+  'No clear ICP or an untested offer',
+  'Average deal value too low to justify outbound',
+  'No one available to take sales conversations',
+  'Expecting guaranteed revenue in 14 days',
+  'Wanting spam-style mass outreach',
+  'Consumer or high-risk offers with extra compliance exposure',
+];
+
+const faqs = [
+  {
+    question: 'Do you guarantee appointments during the trial?',
+    answer: 'No. The trial is designed to show execution quality and market feedback. Appointments may happen, but they are not guaranteed.',
+  },
+  {
+    question: 'Why not offer the first appointment for free?',
+    answer: 'Appointment difficulty varies by niche, buyer seniority, deal size, market timing, and your offer. A controlled sales-rep trial is more transparent and avoids open-ended delivery risk on both sides.',
+  },
+  {
+    question: 'What happens after the 14 days?',
+    answer: 'You get an end-of-trial recommendation: what the rep learned, what the market said, and whether a monthly dedicated rep or a revenue pod makes sense. No obligation either way.',
+  },
+  {
+    question: 'Why do you approve companies before starting?',
+    answer: 'The trial only proves anything if the fundamentals are in place: a clear ICP, a real offer, and someone to take qualified conversations. Approval protects your two weeks as much as ours.',
+  },
+];
+
+const extraSchemas = [
+  generateServiceStructuredData('14-Day Sales Rep Trial', metaDescription),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'B2B Sales-as-a-Service', url: 'https://markosh.com/sales/' },
+    { name: '14-Day Sales Rep Trial', url: pageUrl },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={metaDescription}
+  canonical={pageUrl}
+  extraSchemas={extraSchemas}
+>
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a class="hover:text-primary" href="/">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a class="hover:text-primary" href="/sales">Sales</a></li>
+            <li aria-current="page" class="text-foreground">14-Day Trial</li>
+          </ol>
+        </nav>
+        <div class="mt-8 max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">14-Day Sales Rep Trial</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Try a Markosh sales rep for 14 days, <span class="text-primary">at no cost</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            We assign one trained remote sales rep to work on one ICP and one approved offer. The goal: show you research quality, communication, outreach discipline, and CRM visibility before you commit to a monthly sales team.
+          </p>
+          <p class="mt-6 max-w-2xl rounded-xl border border-primary/25 bg-primary/5 p-4 text-sm font-semibold leading-6 text-foreground">
+            {qualifier}
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <Button href="/contact?outcome=sales-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Apply for the 14-Day Trial
+              <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </Button>
+            <Button href="/sales" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+              All Sales Services
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What the trial proves -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Purpose</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            The trial proves <span class="text-primary">execution quality</span>, not vanity metrics
+          </h2>
+          <p class="mt-4 text-lg text-muted-foreground">
+            Fourteen days is enough to judge how we work — not enough to promise pipeline. Here is what you will be able to evaluate:
+          </p>
+        </div>
+        <ul class="mt-10 flex flex-wrap gap-2.5">
+          {proves.map((item) => (
+            <li class="rounded-full border border-border bg-card px-5 py-2.5 font-headline text-sm font-bold text-muted-foreground">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Included / excluded -->
+    <section class="bg-background">
+      <div class="container mx-auto">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="glass-card p-8">
+            <h2 class="font-headline text-2xl font-bold">What the trial includes</h2>
+            <ul class="mt-6 space-y-3">
+              {included.map((item) => (
+                <li class="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 w-5 h-5 shrink-0 text-signal" />
+                  <span class="text-sm leading-6 text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="glass-card p-8">
+            <h2 class="font-headline text-2xl font-bold">What it deliberately excludes</h2>
+            <ul class="mt-6 space-y-3">
+              {excluded.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-sm leading-6 text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-6 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
+              These limits keep the trial honest. Anyone promising guaranteed meetings in two weeks is guessing with your brand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility (ink panel) -->
+    <section class="ink-panel">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-signal">Eligibility</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+            Approved companies <span class="text-signal">only</span>
+          </h2>
+          <p class="mt-5 text-lg text-ink-foreground/70">
+            We review every application. The trial works when the fundamentals are in place — and wastes everyone's time when they are not.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <div class="rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-7">
+            <h3 class="font-headline text-lg font-bold text-signal">You qualify if you have</h3>
+            <ul class="mt-5 space-y-3">
+              {eligible.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-ink-foreground/70">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-7">
+            <h3 class="font-headline text-lg font-bold">Not a fit right now</h3>
+            <ul class="mt-5 space-y-3">
+              {notEligible.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-ink-foreground/70">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink-foreground/40" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + apply -->
+    <section class="bg-background">
+      <div class="container mx-auto max-w-3xl">
+        <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
+        <div class="mt-10 space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass-card group p-6 open:border-primary/35">
+              <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+                {faq.question}
+              </summary>
+              <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+        <div class="mt-12">
+          <Button href="/contact?outcome=sales-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+            Apply for the 14-Day Trial
+          </Button>
+          <p class="mt-4 text-sm text-muted-foreground">{qualifier}</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

@@ -129,7 +129,7 @@ export async function submitForm(
     
     return {
       success: true,
-      message: "Thanks for reaching out. We'll get back to you within 24 hours."
+      message: "Thanks — we received your request. Markosh will review your goals and reply within one business day."
     };
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -161,6 +161,10 @@ export const contactFormRules = {
   },
   company: {
     maxLength: 100
+  },
+  outcome: {
+    required: true,
+    message: 'Please select the outcome you need'
   },
   message: {
     required: true,

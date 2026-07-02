@@ -1,0 +1,258 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
+
+const metaTitle = 'AI Strategy & Intelligence Services';
+const metaDescription =
+  'Markosh helps companies identify AI opportunities, map workflows, prioritize use cases, and build practical AI execution roadmaps.';
+const pageUrl = 'https://markosh.com/services/ai-strategy/';
+
+const deliverables = [
+  { title: 'AI Opportunity Map', description: 'A prioritized list of where AI can create value across operations, product, engineering, support, sales, and internal workflows.' },
+  { title: 'Workflow Automation Map', description: 'A breakdown of manual workflows, repetitive tasks, handoffs, data sources, bottlenecks, and automation opportunities.' },
+  { title: 'AI Readiness Assessment', description: 'A review of data quality, tools, systems, security needs, team skills, and implementation complexity.' },
+  { title: 'Use Case Prioritization', description: 'A ranked list of AI opportunities based on business value, technical feasibility, data readiness, time-to-impact, and risk.' },
+  { title: 'Implementation Roadmap', description: 'A 30/60/90-day plan showing what to build, automate, test, integrate, or staff first.' },
+  { title: 'Build vs. Buy Recommendation', description: 'Guidance on off-the-shelf AI tools, custom development, internal automation, or a hybrid model.' },
+  { title: 'AI Sales Intelligence Plan', description: 'For revenue teams: ICP research, account scoring, lead prioritization, CRM cleanup, and sales workflow automation.' },
+  { title: 'Team & Resourcing Plan', description: 'The roles needed to execute — AI/ML engineer, automation engineer, data engineer, workflow analyst, sales researcher, and more.' },
+];
+
+const packages = [
+  {
+    step: '01',
+    title: 'AI Intelligence Audit',
+    bestFor: 'Understand where AI can help before committing to a build.',
+    includes: ['Business goal review', 'Workflow discovery', 'AI opportunity map', 'Tool and data review', 'Risk and feasibility notes', 'Next-step roadmap'],
+  },
+  {
+    step: '02',
+    title: 'AI Strategy Roadmap',
+    bestFor: 'A detailed plan for AI adoption across the business.',
+    includes: ['Stakeholder interviews', 'Workflow mapping', 'Use-case prioritization', 'Build/buy/integrate recommendations', '30/60/90-day execution roadmap', 'Suggested team structure'],
+  },
+  {
+    step: '03',
+    title: 'AI Implementation Sprint',
+    bestFor: 'Move from strategy into execution with a working system.',
+    includes: ['AI prototype or automation sprint', 'Workflow automation', 'LLM integration', 'Agentic workflow design', 'Testing and documentation', 'Handoff or managed delivery'],
+  },
+  {
+    step: '04',
+    title: 'AI Operating System Retainer',
+    bestFor: 'Ongoing AI improvement with a standing execution partner.',
+    includes: ['Monthly AI roadmap updates', 'Automation backlog management', 'Workflow optimization', 'AI tool evaluation', 'Team enablement', 'Implementation support'],
+  },
+];
+
+const goodFit = [
+  'B2B companies with manual workflows',
+  'SaaS, agencies, and professional services',
+  'Staffing and recruiting firms',
+  'Operations-heavy companies with fragmented tools and data',
+  'Teams that want an AI roadmap before investing in development',
+  'Companies that may later need AI developers or automation specialists',
+];
+
+const poorFit = [
+  'Looking for vague AI inspiration only',
+  'Expecting instant full automation',
+  'No access to process owners',
+  'Unwilling to share workflow or data context',
+  'Want "AI" as branding without a real business problem',
+];
+
+const faqs = [
+  {
+    question: 'What is AI Strategy & Intelligence?',
+    answer: 'A practical strategy service that helps companies identify where AI can create value, which workflows can be automated, what data is needed, and what execution roadmap should come first.',
+  },
+  {
+    question: 'Is this a workshop or a consulting deck?',
+    answer: 'Neither. Every engagement produces working documents — opportunity maps, prioritized use cases, and a 30/60/90-day roadmap — designed to be executed, not filed away.',
+  },
+  {
+    question: 'Can Markosh also implement the strategy?',
+    answer: 'Yes. Unlike pure consultants, Markosh provides the engineers, AI specialists, automation experts, and operators needed to execute the roadmap — through implementation sprints or managed delivery.',
+  },
+  {
+    question: 'Do we need clean data before starting?',
+    answer: 'No. The readiness assessment reviews your data quality and tools as part of the audit, and the roadmap accounts for whatever gaps we find.',
+  },
+];
+
+const extraSchemas = [
+  generateServiceStructuredData('AI Strategy & Intelligence', metaDescription),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'Services', url: 'https://markosh.com/services/' },
+    { name: 'AI Strategy & Intelligence', url: pageUrl },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={metaDescription}
+  canonical={pageUrl}
+  extraSchemas={extraSchemas}
+>
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a class="hover:text-primary" href="/">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a class="hover:text-primary" href="/services">Services</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-foreground">AI Strategy & Intelligence</li>
+          </ol>
+        </nav>
+        <div class="mt-8 max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">AI Strategy & Intelligence</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            AI strategy that leads to execution, <span class="text-primary">not a slide deck</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            Markosh helps you identify where AI can improve operations, product delivery, sales, research, automation, and decision-making — then turns that strategy into an execution roadmap your team can actually implement.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <Button href="/contact?outcome=ai-strategy" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Book an AI Strategy Audit
+              <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </Button>
+            <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+              All Services
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Deliverables</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">What you walk away with</h2>
+        </div>
+        <dl class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {deliverables.map((item) => (
+            <div class="glass-card p-7">
+              <dt class="font-headline text-lg font-bold">{item.title}</dt>
+              <dd class="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="bg-background">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Engagements</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            Four ways to <span class="text-primary">start</span>
+          </h2>
+          <p class="mt-4 text-lg text-muted-foreground">
+            From a focused audit to an ongoing AI operating rhythm. Each engagement builds on the one before it.
+          </p>
+        </div>
+        <ol class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {packages.map((pkg) => (
+            <li class="glass-card flex flex-col p-7">
+              <span class="font-headline text-xl font-bold text-primary" aria-hidden="true">{pkg.step}</span>
+              <h3 class="mt-3 font-headline text-lg font-bold">{pkg.title}</h3>
+              <p class="mt-2 text-sm text-muted-foreground">{pkg.bestFor}</p>
+              <ul class="mt-5 space-y-2 border-t border-border pt-5">
+                {pkg.includes.map((item) => (
+                  <li class="flex gap-2.5 text-sm leading-6 text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Fit -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Fit</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">Who this is for</h2>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold text-signal">A strong fit if you are</h3>
+            <ul class="mt-5 space-y-3">
+              {goodFit.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold">Probably not a fit if you are</h3>
+            <ul class="mt-5 space-y-3">
+              {poorFit.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-background">
+      <div class="container mx-auto max-w-3xl">
+        <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
+        <div class="mt-10 space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass-card group p-6 open:border-primary/35">
+              <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+                {faq.question}
+              </summary>
+              <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+        <div class="mt-12 flex flex-wrap items-center gap-4">
+          <Button href="/contact?outcome=ai-strategy" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+            Map My AI Opportunities
+          </Button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,404 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
+
+const metaTitle = 'B2B Sales-as-a-Service: Sales Reps & Revenue Pods';
+const metaDescription =
+  'Markosh provides trained sales reps, lead researchers, CRM operators, and revenue pods for B2B companies that need AI-assisted, human-led sales execution.';
+const pageUrl = 'https://markosh.com/sales/';
+
+const whatItIs = [
+  'Trained sales reps, SDRs, and appointment setters',
+  'Lead researchers and CRM operators',
+  'AI-assisted account research and call preparation',
+  'Phone-led outreach with LinkedIn and email support',
+  'CRM notes, reporting, and meeting qualification',
+  'QA, team leads, and managed pod delivery',
+];
+
+const whatItIsNot = [
+  'Not AI voice cold calling or robocalling',
+  'Not a guaranteed appointment factory',
+  'Not a guaranteed revenue service',
+  'Not a replacement for your closer',
+  'Not a "we call anyone for anyone" operation',
+];
+
+const models = [
+  {
+    id: undefined,
+    num: '01',
+    title: 'Dedicated Sales Rep',
+    tagline: 'One trained rep in a controlled outreach motion',
+    description: 'One sales rep with ICP review, prospect research support, CRM notes, daily activity visibility, and a weekly performance review.',
+    bestFor: 'Founder-led B2B companies, agencies, staffing firms, and teams testing outbound for the first time.',
+  },
+  {
+    id: 'revenue-pods',
+    num: '02',
+    title: 'Revenue Pod',
+    tagline: 'A managed outbound team, not just one rep',
+    description: 'Sales rep, lead researcher, CRM operator, and QA/manager with weekly reporting, AI-assisted account research, and a compliance-aware outreach workflow.',
+    bestFor: 'Companies with a proven sales motion and closers, but weak prospecting capacity.',
+  },
+  {
+    id: undefined,
+    num: '03',
+    title: 'Phone Pipeline Pilot',
+    tagline: 'One ICP, one offer, one market',
+    description: 'ICP definition, target-account research, contact enrichment, human-led outreach, meeting qualification, weekly calibration, and a pilot report with a recommendation for scale.',
+    bestFor: 'Companies that want a focused, measurable pilot before scaling outbound.',
+  },
+  {
+    id: undefined,
+    num: '04',
+    title: 'Sales Research & CRM Operations',
+    tagline: 'Cleaner data for your existing sellers',
+    description: 'ICP research, account list building, lead enrichment, buying-signal research, CRM cleanup, pipeline hygiene, and reporting dashboards.',
+    bestFor: 'Companies that already have callers or closers but need better data and sales operations.',
+  },
+];
+
+const aiDoes = [
+  'Market and ICP research',
+  'Account prioritization and lead scoring',
+  'Trigger-event and buyer persona research',
+  'Call preparation notes and objection research',
+  'CRM cleanup and follow-up suggestions',
+  'Talk-track drafts and pipeline reporting',
+];
+
+const aiNever = [
+  'AI voice agents for cold calls',
+  'Prerecorded voice messages or robocalling',
+  'Automated cold-call spam',
+  'Fully automated sales conversations',
+];
+
+const guardrails = [
+  { title: 'Human-initiated dialing', detail: 'Manual, human-initiated calling — no predictive dialing into personal mobile numbers.' },
+  { title: 'DNC and suppression workflows', detail: 'Licensed data with documented provenance, DNC scrubbing, and internal suppression checks.' },
+  { title: 'Approved scripts only', detail: 'You approve the ICP, messaging, and talk tracks before any outreach starts.' },
+  { title: 'Prospect-local calling windows', detail: 'State and time-zone calling controls, with immediate opt-out handling.' },
+  { title: 'Caller ID hygiene', detail: 'Number reputation monitoring so your brand shows up clean, not flagged.' },
+  { title: 'Weekly QA and call review', detail: 'Every engagement has QA review, CRM notes, and an audit trail you can inspect.' },
+];
+
+const launchNiches = [
+  'Technical staffing & recruiting',
+  'Freight brokers & 3PL',
+  'Industrial distribution & automation',
+  'Commercial facility services',
+  'Commercial real estate services',
+  'B2B SaaS & IT services',
+];
+
+const goodFit = [
+  '5–50 sellers or a founder-led sales motion',
+  'A clear B2B offer and a defined ICP',
+  'A founder, AE, or closer available to take qualified conversations',
+  'A meaningful deal size that justifies outbound',
+  'CRM or pipeline discipline, and leadership that reviews weekly feedback',
+];
+
+const badFit = [
+  'Low-ticket consumer offers',
+  'No sales follow-up process or no closer available',
+  'No clear ICP or untested offer',
+  'A demand for "any meetings" at any cost',
+  'A desire for high-volume, spam-style outreach',
+];
+
+const faqs = [
+  {
+    question: 'What is B2B Sales-as-a-Service?',
+    answer: 'A managed sales execution service where Markosh provides trained sales reps, lead researchers, CRM operators, and revenue pods to support outbound sales activity for B2B companies.',
+  },
+  {
+    question: 'Do you use AI voice or automated cold calling?',
+    answer: 'No. Outreach is human-led. AI assists with research, preparation, documentation, prioritization, and reporting — never with the conversation itself.',
+  },
+  {
+    question: 'Do you guarantee appointments or revenue?',
+    answer: 'No. We commit to research quality, outreach discipline, CRM visibility, and honest weekly reporting. Appointments may happen, but they are not guaranteed.',
+  },
+  {
+    question: 'How do the tech and sales businesses fit together?',
+    answer: 'Both use the same operating model: research the problem, design the right team, deploy vetted talent, and manage execution. Some clients need engineers, some need sales reps, and some need a combined pod.',
+  },
+  {
+    question: 'What is the 14-day sales rep trial?',
+    answer: 'For approved B2B companies, Markosh assigns one trained sales rep for a controlled 14-day trial focused on one ICP and one approved offer — so you can evaluate quality before committing to a monthly team.',
+  },
+];
+
+const extraSchemas = [
+  generateServiceStructuredData('B2B Sales-as-a-Service', metaDescription),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'B2B Sales-as-a-Service', url: pageUrl },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={metaDescription}
+  canonical={pageUrl}
+  extraSchemas={extraSchemas}
+>
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">B2B Sales-as-a-Service</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            AI-assisted research. <span class="text-primary">Human-led sales execution.</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            Markosh provides trained sales reps, lead researchers, and revenue operators who use AI-assisted research and human-led outreach to help B2B companies create more qualified sales conversations — without hiring a full internal SDR team.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <Button href="/sales-rep-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Try a Sales Rep for 14 Days
+              <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </Button>
+            <Button href="/contact?outcome=revenue-pod" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+              Build a Revenue Pod
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it is / is not -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">The Service</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            Managed pipeline support, <span class="text-primary">clearly scoped</span>
+          </h2>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold text-signal">What you get</h3>
+            <ul class="mt-5 space-y-3">
+              {whatItIs.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold">What this is not</h3>
+            <ul class="mt-5 space-y-3">
+              {whatItIsNot.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Models -->
+    <section class="bg-background">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Models</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            Four ways to add <span class="text-primary">sales capacity</span>
+          </h2>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          {models.map((model) => (
+            <article id={model.id} class="glass-card group relative flex flex-col p-8 scroll-mt-28">
+              <span class="absolute right-8 top-8 font-headline text-5xl font-bold text-muted/80 transition-colors group-hover:text-primary/20" aria-hidden="true">{model.num}</span>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{model.tagline}</p>
+              <h3 class="mt-3 font-headline text-2xl font-bold">{model.title}</h3>
+              <p class="mt-3 flex-grow text-muted-foreground">{model.description}</p>
+              <p class="mt-5 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
+                <span class="font-semibold text-foreground">Best for:</span> {model.bestFor}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- AI intelligence layer -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
+          <div class="lg:sticky lg:top-28">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Sales Intelligence</p>
+            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+              AI behind the rep, <span class="text-primary">never instead of one</span>
+            </h2>
+            <p class="mt-5 text-lg text-muted-foreground">
+              Our reps are not basic callers. Every conversation is backed by AI-assisted research, account intelligence, and structured reporting — and every conversation is held by a human.
+            </p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div class="glass-card p-7">
+              <h3 class="font-headline text-lg font-bold text-signal">What AI does</h3>
+              <ul class="mt-5 space-y-3">
+                {aiDoes.map((item) => (
+                  <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="glass-card p-7">
+              <h3 class="font-headline text-lg font-bold">What AI never does</h3>
+              <ul class="mt-5 space-y-3">
+                {aiNever.map((item) => (
+                  <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance guardrails (ink panel) -->
+    <section class="ink-panel">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-signal">Operating Guardrails</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+            Compliance-aware <span class="text-signal">by design</span>
+          </h2>
+          <p class="mt-5 text-lg text-ink-foreground/70">
+            Outbound done badly damages your brand and creates legal exposure. Every Markosh engagement runs on the same guardrails.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {guardrails.map((item) => (
+            <div class="rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 p-6">
+              <h3 class="font-headline text-lg font-bold">{item.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-ink-foreground/70">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Fit + niches -->
+    <section class="bg-background">
+      <div class="container mx-auto">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Fit</p>
+          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            We support B2B companies where <span class="text-primary">research and human conversation</span> create meaningful pipeline
+          </h2>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold text-signal">A strong fit</h3>
+            <ul class="mt-5 space-y-3">
+              {goodFit.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="glass-card p-7">
+            <h3 class="font-headline text-lg font-bold">Not a fit</h3>
+            <ul class="mt-5 space-y-3">
+              {badFit.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/50" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Where we focus first</p>
+          <ul class="mt-4 flex flex-wrap gap-2.5">
+            {launchNiches.map((niche) => (
+              <li class="rounded-full border border-border bg-card px-5 py-2 font-headline text-sm font-bold text-muted-foreground">{niche}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trial CTA -->
+    <section class="bg-secondary">
+      <div class="container mx-auto">
+        <div class="glass-card grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">The Offer</p>
+            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+              Try a Markosh Sales Rep for <span class="text-primary">14 days at no cost</span>
+            </h2>
+            <p class="mt-4 text-muted-foreground">
+              See research quality, communication, outreach discipline, and CRM visibility before you commit to a monthly sales team.
+            </p>
+            <p class="mt-4 text-sm font-semibold text-foreground">
+              For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4 lg:justify-end">
+            <Button href="/sales-rep-trial" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+              See the 14-Day Trial
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-background">
+      <div class="container mx-auto max-w-3xl">
+        <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
+        <div class="mt-10 space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass-card group p-6 open:border-primary/35">
+              <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+                {faq.question}
+              </summary>
+              <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

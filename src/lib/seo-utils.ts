@@ -22,7 +22,7 @@ export interface SEOConfig {
  */
 export const defaultSEO: Required<Omit<SEOConfig, 'publishedTime' | 'modifiedTime' | 'author' | 'section' | 'tags'>> = {
   title: 'Markosh',
-  description: 'Markosh provides top-tier IT staffing and custom software development services to help your business scale.',
+  description: 'Markosh helps companies build software, hire vetted talent, deploy AI systems, and grow pipeline through AI-first, research-backed execution teams.',
   image: '/og-image.png',
   canonical: '',
   noindex: false,
@@ -65,8 +65,8 @@ export function generateImageURL(image: string, baseURL: string = 'https://marko
  */
 export const pageSEO = {
   home: {
-    title: 'Elite Tech Talent & Custom Software Development',
-    description: 'Accelerate your growth with Markosh\'s top-tier IT staffing and custom software development services. Connect with pre-vetted professionals and build scalable solutions.',
+    title: 'AI-First Execution Teams for Software, Talent & Revenue',
+    description: 'Markosh helps companies build software, hire vetted talent, deploy AI systems, and grow pipeline through AI-first, research-backed execution teams.',
     type: 'website' as const
   },
   about: {
@@ -75,8 +75,8 @@ export const pageSEO = {
     type: 'website' as const
   },
   services: {
-    title: 'IT Staffing & Software Development Services',
-    description: 'Discover Markosh\'s comprehensive IT staffing, custom software development, AI/ML, and cloud services designed to accelerate your business growth.',
+    title: 'AI Strategy, Software, Staffing & Sales Services',
+    description: 'Discover Markosh\'s four service families: AI Strategy & Intelligence, custom software development, IT staffing, and B2B Sales-as-a-Service.',
     type: 'website' as const
   },
   industries: {
@@ -109,7 +109,7 @@ export function generateOrganizationStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Markosh",
-    "description": "Top-tier IT staffing and custom software development services",
+    "description": "AI-first execution teams for software, talent, and revenue: AI strategy, custom software development, IT staffing, and B2B sales-as-a-service.",
     "url": "https://markosh.com",
     "logo": "https://markosh.com/markosh-logo.png",
     "sameAs": [
@@ -125,11 +125,13 @@ export function generateOrganizationStructuredData() {
     "foundingDate": "2020",
     "industry": "Information Technology",
     "services": [
+      "AI Strategy & Intelligence",
       "IT Staffing",
       "Custom Software Development",
       "Mobile & Web Development",
       "AI & Machine Learning",
-      "Cloud & DevOps"
+      "Cloud & DevOps",
+      "B2B Sales-as-a-Service"
     ]
   };
 }
@@ -143,7 +145,7 @@ export function generateWebsiteStructuredData() {
     "@type": "WebSite",
     "name": "Markosh",
     "url": "https://markosh.com",
-    "description": "Top-tier IT staffing and custom software development services",
+    "description": "AI-first execution teams for software, talent, and revenue",
     "publisher": {
       "@type": "Organization",
       "name": "Markosh"

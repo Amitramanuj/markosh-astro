@@ -4,6 +4,7 @@ import { Menu } from '@/components/ui/icons';
 
 const navLinks = [
   { href: '/services', label: 'Services' },
+  { href: '/sales', label: 'Sales' },
   { href: '/industries', label: 'Industries' },
   { href: '/resources', label: 'Resources' },
   { href: '/career', label: 'Careers' },
@@ -67,7 +68,7 @@ export default function Header({ currentPath }: HeaderProps) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -83,7 +84,7 @@ export default function Header({ currentPath }: HeaderProps) {
         </nav>
 
         {/* Desktop CTA Button */}
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <a
             href="/contact"
             className="btn-gradient inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
@@ -93,7 +94,7 @@ export default function Header({ currentPath }: HeaderProps) {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button
             data-testid="mobile-menu-button"
             aria-label="Open mobile menu"
@@ -113,7 +114,7 @@ export default function Header({ currentPath }: HeaderProps) {
         for these fixed elements. */}
     {isMobileMenuOpen && (
       <div
-        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm md:hidden"
+        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm lg:hidden"
         onClick={closeMobileMenu}
       >
         <div
