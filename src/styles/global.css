@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    /* Editorial consultancy design system — warm paper, ink, one confident accent */
-    --background: 40 33% 97%;
+    /* Bold-minimal design system — cool neutral paper, ink bands, one confident accent */
+    --background: 220 20% 98%;
     --foreground: 222 30% 12%;
     --card: 0 0% 100%;
     --card-foreground: 222 30% 12%;
@@ -13,35 +13,35 @@
     --popover-foreground: 222 30% 12%;
     --primary: 244 55% 48%; /* deep indigo ink */
     --primary-foreground: 0 0% 100%;
-    --secondary: 40 25% 93%;
+    --secondary: 220 14% 94%;
     --secondary-foreground: 222 30% 12%;
-    --muted: 40 20% 91%;
+    --muted: 220 12% 92%;
     --muted-foreground: 222 12% 40%;
     --accent: 244 55% 48%;
     --accent-foreground: 0 0% 100%;
     --signal: 158 60% 28%; /* trust green — darkened for AA text contrast on tinted chips */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 15% 85%;
-    --input: 40 15% 85%;
+    --border: 220 12% 86%;
+    --input: 220 12% 86%;
     --ring: 244 55% 48%;
     --radius: 0.75rem;
     /* Ink panel — dark contrast blocks (CTA, footer accents) */
     --ink: 230 30% 9%;
-    --ink-foreground: 40 33% 97%;
+    --ink-foreground: 220 20% 98%;
   }
 
   .dark {
     --background: 230 30% 7%;
-    --foreground: 40 33% 96%;
+    --foreground: 220 20% 96%;
     --card: 230 25% 10%;
-    --card-foreground: 40 33% 96%;
+    --card-foreground: 220 20% 96%;
     --popover: 230 25% 10%;
-    --popover-foreground: 40 33% 96%;
+    --popover-foreground: 220 20% 96%;
     --primary: 244 80% 72%;
     --primary-foreground: 230 30% 7%;
     --secondary: 230 25% 11%;
-    --secondary-foreground: 40 33% 96%;
+    --secondary-foreground: 220 20% 96%;
     --muted: 230 20% 14%;
     --muted-foreground: 225 12% 65%;
     --accent: 244 80% 72%;
