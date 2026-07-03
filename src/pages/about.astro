@@ -7,6 +7,7 @@ import RevealSection from '@/components/layout/RevealSection.astro';
 import { Lightbulb, Gem, Handshake } from '@/components/ui/icons';
 import AnveshaAvatar from '@/assets/founders/anvesha.webp';
 import AmitAvatar from '@/assets/founders/amit.webp';
+import GrowthImage from '@/assets/about/growth.jpg';
 
 const teamMembers = [
   { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: AnveshaAvatar },
@@ -61,8 +62,8 @@ const values = [
           <div class="relative mx-auto w-full max-w-lg">
             <div class="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-primary/30" aria-hidden="true"></div>
             <Image
-              src="https://images.unsplash.com/photo-1458014854819-1a40aa70211c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBZGQlMjBncm93dGglMjBzdG9yeXxlbnwwfHx8fDE3NTM5ODM4NzV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Our team working"
+              src={GrowthImage}
+              alt="A single seedling sprouting from pale sand"
               width={600}
               height={450}
               class="relative z-10 rounded-2xl shadow-xl"
