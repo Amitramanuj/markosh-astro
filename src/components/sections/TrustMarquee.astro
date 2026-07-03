@@ -1,0 +1,34 @@
+---
+// Slow CSS-only marquee of the stacks our engineers and pods actually work
+// in — proof, not decoration. Loops seamlessly by sliding a track holding
+// two identical groups; pauses on hover, static under prefers-reduced-motion
+// (styles in global.css: .marquee / .marquee-track / .marquee-group).
+const stack = [
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'Python',
+  'PostgreSQL',
+  'AWS',
+  'Azure',
+  'Kubernetes',
+  'LangChain',
+  'Salesforce',
+  'HubSpot',
+];
+---
+
+<div class="marquee border-t border-border pt-8" aria-label="Technology stacks we staff and build with">
+  <div class="marquee-track">
+    {[false, true].map((duplicate) => (
+      <ul class="marquee-group" aria-hidden={duplicate ? 'true' : undefined}>
+        {stack.map((tech) => (
+          <li class="whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground/80">
+            {tech}
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
