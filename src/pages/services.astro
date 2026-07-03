@@ -5,96 +5,67 @@ import Footer from '@/components/layout/Footer.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
 import EngagementModels from '@/components/sections/EngagementModels.astro';
 import Button from '@/components/ui/Button.astro';
-import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
+import { generateServiceStructuredData, generateBreadcrumbStructuredData, pageSEO } from '@/lib/seo-utils';
 
-const services = [
+// The four service families (Strategy / Build / Staff / Sell) — same map as
+// the homepage ServicesOverview, expanded with named offering links.
+const families = [
   {
+    num: '01',
+    family: 'Strategy',
     title: 'AI Strategy & Intelligence',
     link: '/services/ai-strategy',
+    linkLabel: 'AI Strategy & Intelligence',
     description: 'Before you invest in AI tools or custom development, we help you identify where AI can create real business value — and build an execution roadmap your team can actually implement.',
-    features: [
-      'AI opportunity and workflow automation mapping',
-      'Data and AI readiness assessment',
-      'Use-case prioritization and build vs. buy guidance',
-      '30/60/90-day execution roadmap',
+    offerings: [
+      { label: 'AI opportunity and workflow automation mapping' },
+      { label: 'Data and AI readiness assessment' },
+      { label: 'Use-case prioritization and build vs. buy guidance' },
+      { label: '30/60/90-day execution roadmap' },
     ],
   },
   {
+    num: '02',
+    family: 'Build',
+    title: 'Custom Software & AI Systems',
+    link: '/services/custom-software-development',
+    linkLabel: 'Custom Software Development',
+    description: 'Full-cycle development from strategy and design to deployment — web and mobile applications, AI and machine learning systems, and agentic AI that works alongside your team.',
+    offerings: [
+      { label: 'Custom software development', href: '/services/custom-software-development' },
+      { label: 'Mobile & web applications (React, Next.js, iOS, Android)' },
+      { label: 'AI, ML & agentic AI development', href: '/services/ai-development' },
+      { label: 'Cloud & DevOps (AWS, GCP, Azure, CI/CD, IaC)' },
+    ],
+  },
+  {
+    num: '03',
+    family: 'Staff',
     title: 'IT Staffing Services',
     link: '/services/it-staffing',
+    linkLabel: 'IT Staffing Services',
     description: 'Finding the right technical talent is crucial. We connect you with highly skilled, pre-vetted professionals who can seamlessly integrate into your team.',
-    features: [
-      'Access to a pre-vetted talent pool',
-      'Flexible engagement models',
-      'Rapid team augmentation',
-      'Cultural and technical fit matching',
+    offerings: [
+      { label: 'Access to a pre-vetted talent pool' },
+      { label: 'Flexible engagement models' },
+      { label: 'Rapid team augmentation' },
+      { label: 'Cultural and technical fit matching' },
     ],
   },
   {
-    title: 'Custom Software Development',
-    link: '/services/custom-software-development',
-    description: 'We turn your ideas into high-quality software. Our full-cycle development services cover everything from strategy and design to development and deployment.',
-    features: [
-      'End-to-end custom application development',
-      'Agile and transparent workflow',
-      'Scalable and secure architecture',
-      'Ongoing support and maintenance',
-    ],
-  },
-  {
-    title: 'Mobile & Web Development',
-    link: '/services/custom-software-development',
-    description: 'We design and build beautiful, responsive, and high-performing websites and mobile applications for all platforms.',
-    features: [
-      'React & Next.js web applications',
-      'Native iOS & Android development',
-      'Cross-platform solutions (React Native)',
-      'UI/UX design and prototyping',
-    ],
-  },
-  {
-    title: 'AI & Machine Learning',
-    link: '/services/ai-development',
-    description: 'Leverage the power of artificial intelligence to unlock new insights, automate processes, and create intelligent applications that drive business value.',
-    features: [
-      'Custom AI model development',
-      'Natural Language Processing (NLP)',
-      'Computer Vision and Image Analysis',
-      'Predictive analytics and data science',
-    ],
-  },
-  {
-    title: 'Agentic AI Development',
-    link: '/services/ai-development',
-    description: 'Build sophisticated AI agents that can reason, plan, and execute complex tasks. We create autonomous systems that work alongside your team.',
-    features: [
-      'Custom AI agent design & implementation',
-      'Large Language Model (LLM) integration',
-      'Multi-agent systems and simulations',
-      'Tool use and function calling for agents',
-    ],
-  },
-  {
-    title: 'Cloud & DevOps',
-    link: '/contact',
-    description: 'Optimize your infrastructure with our cloud and DevOps expertise. We help you build scalable, resilient systems and accelerate your development lifecycle.',
-    features: [
-      'Cloud migration and strategy (AWS, GCP, Azure)',
-      'CI/CD pipeline implementation',
-      'Infrastructure as Code (IaC)',
-      'Performance monitoring and optimization',
-    ],
-  },
-  {
+    num: '04',
+    family: 'Sell',
     title: 'B2B Sales-as-a-Service',
     link: '/sales',
+    linkLabel: 'B2B Sales-as-a-Service',
     description: 'Trained sales reps, lead researchers, and revenue operators who use AI-assisted research and human-led outreach to help B2B companies create more qualified sales conversations.',
-    features: [
-      'Dedicated sales reps and managed revenue pods',
-      'AI-assisted account research and lead prioritization',
-      'Compliance-aware, human-led outreach',
-      '14-day sales rep trial for approved B2B companies',
+    offerings: [
+      { label: 'Dedicated sales reps and managed revenue pods' },
+      { label: 'AI-assisted account research and lead prioritization' },
+      { label: 'Compliance-aware, human-led outreach' },
+      { label: '14-day sales rep trial', href: '/sales-rep-trial' },
     ],
+    qualifier: 'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.',
   },
 ];
 
@@ -110,7 +81,7 @@ const process = [
 ];
 
 const extraSchemas = [
-  ...services.map((service) => generateServiceStructuredData(service.title, service.description)),
+  ...families.map((family) => generateServiceStructuredData(family.title, family.description)),
   generateBreadcrumbStructuredData([
     { name: 'Home', url: 'https://markosh.com/' },
     { name: 'Services', url: 'https://markosh.com/services/' }
@@ -119,8 +90,8 @@ const extraSchemas = [
 ---
 
 <BaseLayout
-  title="Our Services - Markosh"
-  description="Four connected service families: AI Strategy & Intelligence, custom software development, IT staffing, and B2B Sales-as-a-Service."
+  title={pageSEO.services.title}
+  description={pageSEO.services.description}
   canonical="https://markosh.com/services/"
   extraSchemas={extraSchemas}
 >
@@ -151,26 +122,40 @@ const extraSchemas = [
     <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Services</p>
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Four Families</p>
           <div class="mt-8 border-t border-border">
-            {services.map((service, index) => (
+            {families.map((family) => (
               <div class="grid gap-x-8 gap-y-4 border-b border-border py-10 sm:py-12 md:grid-cols-[3.5rem,1.2fr,1fr]">
-                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">0{index + 1}</span>
+                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{family.num}</span>
                 <div>
-                  <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{service.title}</h2>
-                  <p class="mt-3 max-w-xl text-muted-foreground">{service.description}</p>
-                  <a href={service.link} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
-                    Learn more
+                  <div class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+                    <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{family.family}</h2>
+                    <span class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{family.title}</span>
+                  </div>
+                  <p class="mt-3 max-w-xl text-muted-foreground">{family.description}</p>
+                  <a href={family.link} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                    Explore {family.linkLabel}
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>
                   </a>
                 </div>
-                <ul class="divide-y divide-border md:pt-1">
-                  {service.features.map((feature) => (
-                    <li class="py-2.5 text-sm leading-6 text-muted-foreground">{feature}</li>
-                  ))}
-                </ul>
+                <div class="md:pt-1">
+                  <ul class="divide-y divide-border">
+                    {family.offerings.map((offering) => (
+                      <li class="py-2.5 text-sm leading-6 text-muted-foreground">
+                        {offering.href ? (
+                          <a href={offering.href} class="text-foreground underline-offset-4 hover:text-primary hover:underline">{offering.label}</a>
+                        ) : (
+                          offering.label
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  {family.qualifier && (
+                    <p class="mt-4 font-mono text-xs leading-5 text-muted-foreground">{family.qualifier}</p>
+                  )}
+                </div>
               </div>
             ))}
           </div>

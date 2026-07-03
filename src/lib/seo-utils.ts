@@ -129,9 +129,8 @@ export function generateOrganizationStructuredData() {
       "url": "https://markosh.com/contact",
       "availableLanguage": "English"
     },
-    "foundingDate": "2020",
-    "industry": "Information Technology",
-    "services": [
+    "foundingDate": "2025",
+    "knowsAbout": [
       "AI Strategy & Intelligence",
       "IT Staffing",
       "Custom Software Development",
