@@ -228,6 +228,18 @@
     animation: diagram-appear 0.5s ease-out var(--draw-delay, 0.4s) forwards;
   }
 
+  /* Industry glyphs — hairline line-art beside editorial rows that draws
+     itself when the parent .reveal-section becomes visible. Same
+     pathLength="1" technique as the hero diagram; fully drawn without JS. */
+  html.js .reveal-section .glyph-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  html.js .reveal-section.is-visible .glyph-draw {
+    animation: diagram-draw 1s cubic-bezier(0.16, 1, 0.3, 1) var(--draw-delay, 0.2s) forwards;
+  }
+
   /* Trust marquee — CSS-only continuous loop of stack badges (V3).
      Track holds two identical groups; sliding -50% loops seamlessly. */
   .marquee {
@@ -273,6 +285,13 @@
     }
 
     .hero-diagram .diagram-draw {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+
+    html.js .reveal-section .glyph-draw,
+    html.js .reveal-section.is-visible .glyph-draw {
+      stroke-dasharray: none;
       stroke-dashoffset: 0;
       animation: none;
     }
