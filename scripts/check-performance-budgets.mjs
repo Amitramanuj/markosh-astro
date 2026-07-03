@@ -37,22 +37,6 @@ async function collectFiles(dir) {
   return files;
 }
 
-function htmlRoute(file) {
-  const relative = path.relative(distDir, file).replaceAll(path.sep, '/');
-  if (relative === 'index.html') return '/';
-  return `/${relative.replace(/index\.html$/, '')}`;
-}
-
-function isTaskadeAllowedRoute(route) {
-  return (
-    route === '/contact/' ||
-    route === '/sales/' ||
-    route === '/sales-rep-trial/' ||
-    route === '/services/' ||
-    route.startsWith('/services/')
-  );
-}
-
 function localAssetPath(src) {
   const withoutQuery = src.split('?')[0];
   const normalized = withoutQuery.startsWith('/') ? withoutQuery.slice(1) : withoutQuery;
@@ -62,7 +46,6 @@ function localAssetPath(src) {
 await assertDistExists();
 
 const allFiles = await collectFiles(distDir);
-const htmlFiles = allFiles.filter((file) => file.endsWith('.html'));
 const fontFiles = allFiles.filter((file) => /\.(woff2?|ttf|otf)$/i.test(file));
 const failures = [];
 const warnings = [];
@@ -102,15 +85,6 @@ if (homeHtmlBytes > maxHomeHtmlBytes) {
 
 if (homeJsBytes > maxHomeJsBytes) {
   failures.push(`home JS bytes before third parties: ${homeJsBytes} > ${maxHomeJsBytes}`);
-}
-
-for (const file of htmlFiles) {
-  const html = await readFile(file, 'utf8');
-  const route = htmlRoute(file);
-
-  if (html.includes('assets.taskade.com') && !isTaskadeAllowedRoute(route)) {
-    failures.push(`Taskade script is present on non-intent route ${route}`);
-  }
 }
 
 if (failures.length > 0) {

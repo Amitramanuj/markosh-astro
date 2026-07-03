@@ -14,17 +14,6 @@ export interface Props extends SEOConfig {
 const { extraSchemas = [], ...seoProps } = Astro.props;
 const seoConfig = mergeSEOConfig(seoProps, Astro.url.pathname);
 const structuredData = generateOrganizationStructuredData();
-const normalizePath = (path: string) => {
-  if (path === '/') return '/';
-  return path.replace(/\/$/, '');
-};
-const currentPath = normalizePath(Astro.url.pathname);
-const taskadeEnabled =
-  currentPath === '/contact' ||
-  currentPath === '/sales' ||
-  currentPath === '/sales-rep-trial' ||
-  currentPath === '/services' ||
-  currentPath.startsWith('/services/');
 ---
 
 <!doctype html>
@@ -116,7 +105,7 @@ const taskadeEnabled =
       Skip to main content
     </a>
     <slot />
-    {taskadeEnabled && <TaskadeWidget />}
+    <TaskadeWidget />
   </body>
 </html>
 

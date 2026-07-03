@@ -81,7 +81,7 @@ Current hotspots:
 - `src/components/layout/Header.astro` hydrates `src/components/islands/Header.tsx` with `client:load` on every page.
 - `src/pages/index.astro` wraps the LCP hero in `FadeInSection client:load`.
 - Many static sections are wrapped in `FadeInSection client:visible` or `client:idle`.
-- `src/layouts/BaseLayout.astro` loads `TaskadeWidget client:idle` on every page.
+- `src/layouts/BaseLayout.astro` mounts a framework-free `TaskadeWidget` on every page, then lazy-loads the third-party script after interaction or idle delay.
 
 Why this matters:
 
@@ -104,32 +104,32 @@ Expected impact:
 - Smaller HTML output where repeated island wrappers are removed.
 - Lower risk that non-critical animation delays or hydration affect above-the-fold content.
 
-### P0 - Gate Taskade Instead of Loading It Globally
+### P0 - Lazy Load Taskade Without Adding an Extra Chat Gate
 
 Current behavior:
 
-- `TaskadeWidget` is mounted globally in `BaseLayout.astro`.
+- `TaskadeWidget` is mounted globally in `BaseLayout.astro` because site-wide chat availability is a UX requirement.
 - It injects `https://assets.taskade.com/embeds/latest/taskade-embed.min.js` after first interaction or after a 3.5s timer.
 - The Taskade script is about 271 KB before transfer compression.
 
 Why this matters:
 
 - It may not hurt first Lighthouse paint, but it can affect real-user INP after idle or interaction.
-- It loads on informational pages where chat may not be needed.
 - It introduces a third-party execution dependency on every route.
+- A custom intermediate "Chat" button creates poor UX because visitors must click once to load another launcher, then click again to start chat.
 
 Recommended implementation:
 
-1. Load the widget only on high-intent routes such as `/contact/`, `/sales/`, `/sales-rep-trial/`, and service pages.
-2. Prefer an explicit "Chat" or "Ask us" click before injecting the third-party script.
-3. If global chat is a business requirement, increase the idle delay and never load it before the page is fully settled.
-4. Add a performance budget that fails builds if third-party scripts are added globally without review.
+1. Keep Taskade site-wide, but lazy-load it after first interaction or after the page has settled.
+2. Let Taskade render its own launcher; do not add a Markosh-side pre-chat button.
+3. Keep the implementation framework-free so global chat does not reintroduce a React island on every route.
+4. Treat Taskade as an explicitly approved global third-party script and revisit only if field data shows INP regression.
 
 Expected impact:
 
-- Better INP resilience.
-- Less background network and main-thread work.
-- Lower risk from third-party script regressions.
+- Preserves the simpler site-wide chat UX.
+- Keeps the heavy third-party script off the initial render path.
+- Avoids unnecessary React hydration for the global widget.
 
 ### P1 - Fix Font Payload and Subsetting
 
@@ -338,7 +338,7 @@ Expected impact:
 
 1. Repair whitepaper mojibake and metadata outliers.
 2. Convert header and fade-in wrappers away from global React hydration.
-3. Gate Taskade by route or user intent.
+3. Keep Taskade global for UX, but lazy-load it without a custom pre-chat button.
 4. Subset fonts to Latin and preferably `.woff2` only.
 5. Tune prefetch to explicit links.
 6. Add sitemap `lastmod` and metadata/asset budget checks.
@@ -358,7 +358,7 @@ Suggested guardrails for this repo:
 | Home page LCP lab target | under 1.8s |
 | Home page CLS lab target | under 0.05 |
 | Route HTML size | under 45 KB for normal pages; justify exceptions |
-| Global third-party scripts | 0 without explicit approval |
+| Global third-party scripts | 0 without explicit approval; Taskade is the approved exception |
 
 ## Sources Used
 
@@ -369,4 +369,3 @@ Suggested guardrails for this repo:
 - Google Search Central: robots.txt limitations: https://developers.google.com/search/docs/crawling-indexing/robots/intro
 - web.dev: INP: https://web.dev/articles/inp
 - web.dev: Optimize LCP: https://web.dev/articles/optimize-lcp
-
