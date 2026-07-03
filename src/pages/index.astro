@@ -12,6 +12,7 @@ import TrustSection from '@/components/sections/TrustSection.astro';
 import RolesGrid from '@/components/sections/RolesGrid.astro';
 import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
+import SectionRail from '@/components/layout/SectionRail.astro';
 import { pageSEO } from '@/lib/seo-utils';
 
 // FAQ rich-result schema, built from the same content rendered below.
@@ -68,5 +69,6 @@ const faqSchema = {
       <RolesGrid />
     </RevealSection>
   </main>
+  <SectionRail />
   <Footer />
 </BaseLayout>

@@ -30,12 +30,14 @@ export const homeFaqs = [
 ---
 
 <section class="bg-background">
-  <div class="container mx-auto max-w-3xl">
-    <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
-    <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-      Questions buyers <span class="text-primary">ask first</span>
-    </h2>
-    <div class="mt-10 border-t border-border">
+  <div class="container mx-auto grid gap-10 lg:grid-cols-[0.75fr,1.25fr]">
+    <div>
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
+      <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+        Questions buyers <span class="text-primary">ask first</span>
+      </h2>
+    </div>
+    <div class="border-t border-border">
       {homeFaqs.map((faq) => (
         <details class="group border-b border-border py-5">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
@@ -50,3 +52,4 @@ export const homeFaqs = [
     </div>
   </div>
 </section>
+

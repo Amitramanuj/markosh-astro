@@ -1,0 +1,73 @@
+---
+// Subtle fixed section rail: roman numerals down the left page edge, one per
+// top-level <section> in <main>. The active numeral is bracketed, terminal
+// style. mix-blend-difference keeps the white numerals legible over both
+// paper and ink sections. Desktop (xl+) only; decorative, so it simply
+// never appears without JavaScript.
+---
+
+<nav
+  data-section-rail
+  class="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 mix-blend-difference xl:block"
+  aria-label="Page sections"
+>
+  <ol class="flex flex-col items-start gap-2.5 font-mono text-[0.65rem] leading-none text-white"></ol>
+</nav>
+
+<script is:inline>
+  (() => {
+    const rail = document.querySelector('[data-section-rail]');
+    const list = rail ? rail.querySelector('ol') : null;
+    const sections = Array.from(document.querySelectorAll('main section'));
+    if (!rail || !list || sections.length < 2) return;
+
+    const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+
+    const links = sections.slice(0, numerals.length).map((section, index) => {
+      if (!section.id) section.id = `section-${index + 1}`;
+      const heading = section.querySelector('h1, h2');
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `#${section.id}`;
+      link.title = heading ? heading.textContent.trim().replace(/\s+/g, ' ') : `Section ${numerals[index]}`;
+      link.className = 'flex items-center opacity-35 transition-opacity duration-300 hover:opacity-80';
+      link.innerHTML =
+        '<span class="rail-bracket opacity-0 transition-opacity duration-300">[</span>' +
+        `<span>${numerals[index]}</span>` +
+        '<span class="rail-bracket opacity-0 transition-opacity duration-300">]</span>';
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        section.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+        history.replaceState(null, '', `#${section.id}`);
+      });
+      item.appendChild(link);
+      list.appendChild(item);
+      return link;
+    });
+
+    const setActive = (activeIndex) => {
+      links.forEach((link, index) => {
+        const isActive = index === activeIndex;
+        link.classList.toggle('opacity-100', isActive);
+        link.classList.toggle('opacity-35', !isActive);
+        link.querySelectorAll('.rail-bracket').forEach((bracket) => {
+          bracket.classList.toggle('opacity-0', !isActive);
+        });
+      });
+    };
+
+    // Active section = last one whose top has crossed the viewport middle.
+    const onScroll = () => {
+      const middle = window.innerHeight / 2;
+      let activeIndex = 0;
+      sections.forEach((section, index) => {
+        if (section.getBoundingClientRect().top <= middle) activeIndex = index;
+      });
+      setActive(activeIndex);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>

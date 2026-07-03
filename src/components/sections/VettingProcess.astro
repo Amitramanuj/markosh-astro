@@ -37,6 +37,9 @@ const funnel = [
             <div>
               <h3 class="font-headline text-xl font-bold sm:text-2xl">{step.stage}</h3>
               <p class="mt-2 leading-7 text-ink-foreground/70">{step.detail}</p>
+              <div class="mt-5 h-1.5 overflow-hidden rounded-full bg-ink-foreground/10" aria-hidden="true">
+                <div class="h-full rounded-full bg-signal" style={`width: ${step.rate}`}></div>
+              </div>
             </div>
           </li>
         ))}

@@ -77,6 +77,9 @@
     @apply bg-primary text-primary-foreground;
     @apply border-none rounded-full px-6 py-3 font-semibold;
     @apply transition-all duration-200 ease-out;
+    /* Dark ink CTAs are always pills; light/outline buttons stay rounded-md.
+       !important so the Button component's rounded-md utility can't override. */
+    border-radius: 9999px !important;
   }
 
   .btn-gradient:hover {
