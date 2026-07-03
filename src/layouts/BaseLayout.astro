@@ -1,14 +1,10 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/700.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/600.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
 import '../styles/global.css';
-import TaskadeWidget from '../components/islands/TaskadeWidget.tsx';
-import { generateOrganizationStructuredData, mergeSEOConfig, type SEOConfig } from '../lib/seo-utils';
+import TaskadeWidget from '../components/layout/TaskadeWidget.astro';
+import { generateOrganizationStructuredData, generateWebsiteStructuredData, mergeSEOConfig, type SEOConfig } from '../lib/seo-utils';
 
 export interface Props extends SEOConfig {
   /** Additional JSON-LD schemas to emit on this page (Article, BreadcrumbList, Service, ...) */
@@ -18,6 +14,7 @@ export interface Props extends SEOConfig {
 const { extraSchemas = [], ...seoProps } = Astro.props;
 const seoConfig = mergeSEOConfig(seoProps, Astro.url.pathname);
 const structuredData = generateOrganizationStructuredData();
+const websiteStructuredData = generateWebsiteStructuredData();
 ---
 
 <!doctype html>
@@ -25,6 +22,9 @@ const structuredData = generateOrganizationStructuredData();
   <head>
     <meta charset="UTF-8" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Flags JS availability so scroll-reveal styles only hide content when the observer below will run -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     
     <!-- Primary Meta Tags -->
     <title>{seoConfig.title}</title>
@@ -39,6 +39,9 @@ const structuredData = generateOrganizationStructuredData();
     <meta property="og:title" content={seoConfig.title} />
     <meta property="og:description" content={seoConfig.description} />
     <meta property="og:image" content={seoConfig.image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Markosh — AI-first execution teams for software, talent, and revenue" />
     <meta property="og:site_name" content="Markosh" />
     <meta property="og:locale" content="en_US" />
     {seoConfig.publishedTime && <meta property="article:published_time" content={seoConfig.publishedTime} />}
@@ -47,11 +50,11 @@ const structuredData = generateOrganizationStructuredData();
     {seoConfig.section && <meta property="article:section" content={seoConfig.section} />}
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={seoConfig.canonical} />
-    <meta property="twitter:title" content={seoConfig.title} />
-    <meta property="twitter:description" content={seoConfig.description} />
-    <meta property="twitter:image" content={seoConfig.image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seoConfig.title} />
+    <meta name="twitter:description" content={seoConfig.description} />
+    <meta name="twitter:image" content={seoConfig.image} />
+    <meta name="twitter:image:alt" content="Markosh — AI-first execution teams for software, talent, and revenue" />
     
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -71,7 +74,7 @@ const structuredData = generateOrganizationStructuredData();
     <!-- Accessibility improvements -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <!-- Fonts are self-hosted via @fontsource (imported in frontmatter) -->
+    <!-- Fonts are self-hosted via Latin @fontsource subsets (imported in frontmatter) -->
 
     <!-- Critical CSS inlined for above-the-fold performance -->
     <style>
@@ -99,6 +102,7 @@ const structuredData = generateOrganizationStructuredData();
     
     <!-- Structured Data for SEO -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteStructuredData)}></script>
     {extraSchemas.map((schema) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
     ))}
@@ -109,8 +113,83 @@ const structuredData = generateOrganizationStructuredData();
       Skip to main content
     </a>
     <slot />
-    <!-- Taskade Widget -->
-    <TaskadeWidget client:idle />
+    <TaskadeWidget />
+
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Scroll-triggered section reveals (.reveal-section styles in global.css)
+      const sections = document.querySelectorAll('.reveal-section');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        sections.forEach((section) => section.classList.add('is-visible'));
+      } else {
+        const sectionObserver = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                sectionObserver.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px' }
+        );
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+
+      // Count-up for stats marked with data-countup (values like "120+" or "95%")
+      const stats = document.querySelectorAll('[data-countup]');
+      if (!reduceMotion && 'IntersectionObserver' in window && stats.length > 0) {
+        const countUp = (el: Element) => {
+          const match = /^(\d+)(.*)$/.exec((el.textContent ?? '').trim());
+          if (!match) return;
+          const target = Number(match[1]);
+          const suffix = match[2] ?? '';
+          const duration = 900;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        const statObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              countUp(entry.target);
+              statObserver.unobserve(entry.target);
+            }
+          }
+        });
+        stats.forEach((stat) => statObserver.observe(stat));
+      }
+
+      // Gentle parallax for backdrops marked with data-parallax (speed factor).
+      // Transform-only and rAF-throttled so it never causes layout shift.
+      const parallaxEls = document.querySelectorAll<HTMLElement>('[data-parallax]');
+      if (!reduceMotion && parallaxEls.length > 0) {
+        let ticking = false;
+        const updateParallax = () => {
+          for (const el of parallaxEls) {
+            const speed = Number(el.dataset.parallax) || 0.12;
+            el.style.transform = `translate3d(0, ${Math.round(window.scrollY * speed)}px, 0)`;
+          }
+          ticking = false;
+        };
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(updateParallax);
+            }
+          },
+          { passive: true }
+        );
+      }
+    </script>
   </body>
 </html>
 

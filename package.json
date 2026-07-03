@@ -13,14 +13,16 @@
     "start": "npm run dev",
     "analyze": "astro build --analyze",
     "generate:og": "node scripts/generate-og-assets.mjs",
-    "lint": "astro check"
+    "lint": "astro check",
+    "check:seo": "node scripts/check-text-encoding.mjs && node scripts/audit-seo-metadata.mjs && node scripts/validate-structured-data.mjs && node scripts/check-performance-budgets.mjs",
+    "audit:technical-seo": "npm run type-check && npm run build && npm run check:seo",
+    "lighthouse:summary": "node scripts/extract-lighthouse-summary.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/inter": "^5.2.8",
-    "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
     "@radix-ui/react-slot": "^1.2.3",
     "@types/react": "^19.1.9",

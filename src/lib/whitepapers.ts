@@ -15,8 +15,10 @@ export interface Whitepaper {
   slug: string;
   category: string;
   title: string;
+  seoTitle: string;
   heroSubtitle: string;
   heroSummary: string;
+  seoDescription: string;
   readTimeMinutes: number;
   published: string;
   updated?: string;
@@ -32,9 +34,12 @@ export const whitepapers: Whitepaper[] = [
     category: 'AI Strategy',
     title:
       "AI Coding Isn't (Yet) Economically Sustainable: Why Usage Caps, Token Prices, and Compute Economics Still Favor Low-Cost Outsourcing",
+    seoTitle: 'AI Coding Economics in 2025',
     heroSubtitle: 'Pricing friction, governance controls, and validation costs still keep autonomous coding on the sidelines for large organizations.',
     heroSummary:
       'Market enthusiasm pushed teams to experiment with fully agentic development. Yet in 2025, token pricing, platform caps, and validation overhead continue to make blended human-led delivery the economic default.',
+    seoDescription:
+      'Why token pricing, usage caps, compute costs, and validation overhead still favor blended human-led software delivery in 2025.',
     readTimeMinutes: 8,
     published: '2025-03-19',
     updated: '2025-08-04',
@@ -119,9 +124,12 @@ export const whitepapers: Whitepaper[] = [
     slug: 'from-sota-to-systems',
     category: 'Engineering Operations',
     title: 'From SOTA to Systems: Designing Production-Grade AI Coding Assistants (2025 Playbook)',
+    seoTitle: 'Production AI Coding Assistants',
     heroSubtitle: 'Winning teams moved beyond raw model quality and built deliberate systems around planning, guardrails, and human factors.',
     heroSummary:
       'The 2025 playbook focuses on orchestration, governance, and enablement. Teams that treat assistants as part of a larger socio-technical system see faster onboarding, safer deployments, and higher quality output.',
+    seoDescription:
+      'A practical 2025 playbook for production AI coding assistants, including planning, guardrails, governance, and human enablement.',
     readTimeMinutes: 10,
     published: '2025-04-07',
     updated: '2025-07-12',
@@ -195,9 +203,12 @@ export const whitepapers: Whitepaper[] = [
     slug: 'llms-have-hit-walls',
     category: 'Market Intelligence',
     title: 'LLMs Have Hit Walls: Why Productivity Gains Now Depend on Systems, Not Just Model Upgrades',
+    seoTitle: 'LLM Productivity Depends on Systems',
     heroSubtitle: 'Model quality still matters, but diminishing returns make orchestration, tooling, and process the primary levers in 2025.',
     heroSummary:
       'Teams that waited for the next benchmark leap lost momentum. The leaders paired capable—but not cutting-edge—models with systems thinking to unlock production-grade productivity gains.',
+    seoDescription:
+      'Why AI productivity gains now depend more on orchestration, evaluation, context, and process than the next model upgrade.',
     readTimeMinutes: 9,
     published: '2025-05-18',
     summary:

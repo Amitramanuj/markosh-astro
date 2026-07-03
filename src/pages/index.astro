@@ -11,7 +11,7 @@ import TrialOfferBand from '@/components/sections/TrialOfferBand.astro';
 import TrustSection from '@/components/sections/TrustSection.astro';
 import RolesGrid from '@/components/sections/RolesGrid.astro';
 import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import { pageSEO } from '@/lib/seo-utils';
 
 // FAQ rich-result schema, built from the same content rendered below.
@@ -30,45 +30,43 @@ const faqSchema = {
   <Header />
   <main id="main-content">
     <!-- Hero section loads immediately for LCP -->
-    <FadeInSection client:load>
-      <HeroSection />
-    </FadeInSection>
+    <HeroSection />
 
     <!-- The map: four service families, one operating model -->
-    <FadeInSection client:visible>
+    <RevealSection>
       <ServicesOverview />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- The product: vetted talent -->
-    <FadeInSection client:visible>
+    <RevealSection>
       <TalentShowcase />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- Why believe us -->
-    <FadeInSection client:idle>
+    <RevealSection>
       <VettingProcess />
-    </FadeInSection>
-    <FadeInSection client:idle>
+    </RevealSection>
+    <RevealSection>
       <CaseStudiesSection />
-    </FadeInSection>
-    <FadeInSection client:idle>
+    </RevealSection>
+    <RevealSection>
       <TrustSection />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- The Sell family's conversion moment: the 14-day trial -->
-    <FadeInSection client:idle>
+    <RevealSection>
       <TrialOfferBand />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- Answer the buyer's first objections -->
-    <FadeInSection client:idle>
+    <RevealSection>
       <HomeFaq />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- Internal links into the hiring funnel -->
-    <FadeInSection client:idle>
+    <RevealSection>
       <RolesGrid />
-    </FadeInSection>
+    </RevealSection>
   </main>
   <Footer />
 </BaseLayout>

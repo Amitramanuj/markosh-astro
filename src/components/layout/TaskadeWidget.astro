@@ -1,0 +1,75 @@
+<script is:inline>
+  (() => {
+    const agentId = '01K1H8Z4KAY5587YF56CR3V3F0';
+    const scriptSrc = 'https://assets.taskade.com/embeds/latest/taskade-embed.min.js';
+    const events = ['pointerdown', 'touchstart', 'keydown', 'scroll'];
+
+    let hasRequestedLoad = false;
+    let timerId;
+
+    const initWidget = () => {
+      const widget = window.TaskadeEmbed?.AgentPublicChatPopup;
+
+      if (!widget) {
+        console.warn('TaskadeEmbed not available after script load');
+        return;
+      }
+
+      try {
+        widget.init({
+          publicAgentId: agentId,
+          theme: 'light',
+          preferences: {
+            theme: 'light',
+            hideBranding: false,
+          },
+        });
+      } catch (error) {
+        console.error('Failed to initialize Taskade widget:', error);
+      }
+    };
+
+    const cleanup = () => {
+      window.clearTimeout(timerId);
+      events.forEach((event) => window.removeEventListener(event, loadTaskadeWidget));
+    };
+
+    function loadTaskadeWidget() {
+      if (hasRequestedLoad || document.getElementById(`taskade-agent-popup-${agentId}`)) {
+        return;
+      }
+
+      const existingScript = document.querySelector('script[data-taskade-embed]');
+      if (existingScript) {
+        hasRequestedLoad = true;
+        cleanup();
+        if (window.TaskadeEmbed?.AgentPublicChatPopup) {
+          initWidget();
+        } else {
+          existingScript.addEventListener('load', initWidget, { once: true });
+        }
+        return;
+      }
+
+      hasRequestedLoad = true;
+      cleanup();
+
+      const script = document.createElement('script');
+      script.src = scriptSrc;
+      script.async = true;
+      script.defer = true;
+      script.dataset.taskadeEmbed = 'true';
+      script.addEventListener('load', initWidget, { once: true });
+      script.addEventListener('error', () => {
+        console.error('Failed to load Taskade widget script');
+      }, { once: true });
+
+      document.head.appendChild(script);
+    }
+
+    timerId = window.setTimeout(loadTaskadeWidget, 3500);
+    events.forEach((event) =>
+      window.addEventListener(event, loadTaskadeWidget, { once: true, passive: true })
+    );
+  })();
+</script>

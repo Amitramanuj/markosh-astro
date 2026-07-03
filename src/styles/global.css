@@ -111,6 +111,13 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
   }
 
+  /* Hero variant — slightly stronger lines so the parallax depth reads */
+  .bg-grid-strong {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.9) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.9) 1px, transparent 1px);
+  }
+
   /* Editorial card surface */
   .glass-card {
     @apply rounded-xl border border-border bg-card;
@@ -150,6 +157,178 @@
     background-size: 100% 2px;
   }
 
+  /* Scroll-triggered section reveal — hidden state only applies once JS adds
+     the `js` class to <html>, so content stays visible without JavaScript.
+     The IntersectionObserver in BaseLayout adds .is-visible on scroll. */
+  html.js .reveal-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.js .reveal-section.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Cascade: direct children of a .reveal-stagger group enter one after
+     another once their parent section becomes visible */
+  html.js .reveal-section .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.js .reveal-section.is-visible .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.js .reveal-section.is-visible .reveal-stagger > :nth-child(1) { transition-delay: 0.1s; }
+  html.js .reveal-section.is-visible .reveal-stagger > :nth-child(2) { transition-delay: 0.2s; }
+  html.js .reveal-section.is-visible .reveal-stagger > :nth-child(3) { transition-delay: 0.3s; }
+  html.js .reveal-section.is-visible .reveal-stagger > :nth-child(4) { transition-delay: 0.4s; }
+  html.js .reveal-section.is-visible .reveal-stagger > :nth-child(n + 5) { transition-delay: 0.5s; }
+
+  /* Hero entrance — pure CSS so it never blocks render without JS.
+     .hero-rise animates transform only (no opacity) to keep LCP intact;
+     per-phrase stagger via --rise-delay for the kinetic headline. */
+  .hero-rise {
+    animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--rise-delay, 0s) both;
+  }
+
+  .hero-fade {
+    animation: hero-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--enter-delay, 0s) both;
+  }
+
+  /* Eyebrow type-in — a left-to-right steps() clip so the mono label reads
+     like terminal output. Clip-path only: no layout shift, no opacity. */
+  .hero-type {
+    clip-path: inset(0 100% 0 0);
+    animation: hero-type 1s steps(28, end) 0.15s forwards;
+  }
+
+  /* Hero operating-model diagram — self-drawing line work (V2). Every
+     stroked element carries pathLength="1" so one rule drives the draw. */
+  .hero-diagram .diagram-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: diagram-draw 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--draw-delay, 0.4s) forwards;
+  }
+
+  .hero-diagram .diagram-node {
+    opacity: 0;
+    animation: diagram-appear 0.5s ease-out var(--draw-delay, 0.4s) forwards;
+  }
+
+  /* Trust marquee — CSS-only continuous loop of stack badges (V3).
+     Track holds two identical groups; sliding -50% loops seamlessly. */
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 42s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js .reveal-section,
+    html.js .reveal-section .reveal-stagger > * {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .hero-rise,
+    .hero-fade {
+      animation: none;
+    }
+
+    .hero-type {
+      animation: none;
+      clip-path: none;
+    }
+
+    .hero-diagram .diagram-draw {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+
+    .hero-diagram .diagram-node {
+      opacity: 1;
+      animation: none;
+    }
+
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(28px);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-type {
+  to {
+    clip-path: inset(0 -2% 0 0);
+  }
+}
+
+@keyframes diagram-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes diagram-appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Third-party Widget Customization */

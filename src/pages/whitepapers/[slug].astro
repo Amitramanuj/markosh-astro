@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import { whitepapers } from '@/lib/whitepapers';
 import type { Whitepaper } from '@/lib/whitepapers';
 import { generateArticleStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
@@ -44,8 +44,8 @@ const extraSchemas = [
 ---
 
 <BaseLayout
-  title={`${paper.title} - Markosh White Papers`}
-  description={paper.heroSummary}
+  title={paper.seoTitle}
+  description={paper.seoDescription}
   canonical={`https://markosh.com/whitepapers/${paper.slug}/`}
   type="article"
   publishedTime={paper.published}
@@ -55,7 +55,7 @@ const extraSchemas = [
 >
   <Header />
   <main id="main-content" class="bg-background">
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
   <div class="container mx-auto py-5">
           <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
@@ -87,9 +87,9 @@ const extraSchemas = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="py-6">
         <div class="container mx-auto grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <article class="space-y-4">
@@ -206,7 +206,7 @@ const extraSchemas = [
           </aside>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
   </main>
   <Footer />
 </BaseLayout>

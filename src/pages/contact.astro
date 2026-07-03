@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import ContactForm from '@/components/islands/ContactFormCore.tsx';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
 import { Mail, Phone, MapPin } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast.tsx';
@@ -51,7 +51,7 @@ const extraSchemas = [
       </div>
     </section>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto grid gap-12 md:grid-cols-2">
           <div>
@@ -109,11 +109,11 @@ const extraSchemas = [
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <HomeFaq />
-    </FadeInSection>
+    </RevealSection>
 
     <!-- Toast container for notifications -->
     <Toaster client:load />

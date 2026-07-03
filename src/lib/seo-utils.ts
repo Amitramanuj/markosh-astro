@@ -33,10 +33,17 @@ export const defaultSEO: Required<Omit<SEOConfig, 'publishedTime' | 'modifiedTim
  * Generate full title with site name
  */
 export function generateTitle(title?: string): string {
-  if (!title || title === defaultSEO.title) {
+  const trimmedTitle = title?.trim();
+
+  if (!trimmedTitle || trimmedTitle === defaultSEO.title) {
     return defaultSEO.title;
   }
-  return `${title} | ${defaultSEO.title}`;
+
+  if (new RegExp(`\\b${defaultSEO.title}\\b`, 'i').test(trimmedTitle)) {
+    return trimmedTitle;
+  }
+
+  return `${trimmedTitle} | ${defaultSEO.title}`;
 }
 
 /**
@@ -70,7 +77,7 @@ export const pageSEO = {
     type: 'website' as const
   },
   about: {
-    title: 'About Markosh - Your Technology Partner',
+    title: 'About Markosh',
     description: 'Learn about Markosh\'s mission to connect businesses with elite tech talent and deliver custom software solutions that drive growth and innovation.',
     type: 'website' as const
   },
@@ -80,17 +87,17 @@ export const pageSEO = {
     type: 'website' as const
   },
   industries: {
-    title: 'Industries We Serve - Technology Solutions',
+    title: 'Industries We Serve',
     description: 'Markosh serves diverse industries including e-commerce, SaaS, healthcare, finance, education, and manufacturing with tailored technology solutions.',
     type: 'website' as const
   },
   contact: {
-    title: 'Contact Markosh - Get Started Today',
+    title: 'Contact Markosh',
     description: 'Ready to accelerate your growth? Contact Markosh today to discuss your IT staffing needs or custom software development project.',
     type: 'website' as const
   },
   resources: {
-    title: 'Resources - Case Studies, White Papers & Blog',
+    title: 'Resources',
     description: 'Explore Markosh\'s resources including case studies, white papers, and blog articles on software development, IT staffing, and business growth.',
     type: 'website' as const
   },
@@ -122,9 +129,8 @@ export function generateOrganizationStructuredData() {
       "url": "https://markosh.com/contact",
       "availableLanguage": "English"
     },
-    "foundingDate": "2020",
-    "industry": "Information Technology",
-    "services": [
+    "foundingDate": "2025",
+    "knowsAbout": [
       "AI Strategy & Intelligence",
       "IT Staffing",
       "Custom Software Development",

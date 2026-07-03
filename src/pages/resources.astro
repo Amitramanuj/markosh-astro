@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import FadeInSection from '@/components/islands/FadeInSection.tsx';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import WhitepapersTeaser from '@/components/sections/WhitepapersTeaser.astro';
 import { FileText, Newspaper } from "@/components/ui/icons";
 ---
@@ -30,11 +30,11 @@ import { FileText, Newspaper } from "@/components/ui/icons";
       </div>
     </section>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <WhitepapersTeaser />
-    </FadeInSection>
+    </RevealSection>
 
-    <FadeInSection client:visible>
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
           <div class="grid gap-6 md:grid-cols-2">
@@ -59,7 +59,7 @@ import { FileText, Newspaper } from "@/components/ui/icons";
           </div>
         </div>
       </section>
-    </FadeInSection>
+    </RevealSection>
 
   </main>
   <Footer />

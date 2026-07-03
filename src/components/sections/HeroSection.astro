@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/ui/Button.astro';
+import TrustMarquee from '@/components/sections/TrustMarquee.astro';
 
 const stats = [
   { value: '120+', label: 'Engineers placed' },
@@ -23,50 +24,86 @@ const deliverySignals = [
 ---
 
 <section class="relative isolate overflow-hidden pt-10 pb-14 md:pt-24 md:pb-24">
-  <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+  <!-- Backdrop grid: stronger lines + gentle parallax (extends above the
+       section so the transform never exposes a bare edge) -->
+  <div class="absolute inset-x-0 -top-24 bottom-0 -z-10 bg-grid bg-grid-strong will-change-transform" data-parallax="0.12" aria-hidden="true"></div>
 
   <div class="container mx-auto">
     <div class="max-w-5xl">
-      <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">
+      <p class="hero-type font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">
         AI Strategy · Software · Talent · Revenue
       </p>
 
+      <!-- Kinetic headline: each phrase rises in sequence. Transform-only
+           (no opacity), so the LCP paint is unaffected. -->
       <h1 class="mt-6 font-headline text-[2.6rem] font-bold leading-[1.04] tracking-tight sm:text-6xl sm:leading-[1.02] md:text-7xl lg:text-8xl">
-        Build smarter. Staff faster. <span class="text-primary">Sell with intelligence.</span>
+        <span class="hero-rise inline-block">Build smarter.</span>
+        <span class="hero-rise inline-block" style="--rise-delay: 0.12s">Staff faster.</span>
+        <span class="hero-rise inline-block text-primary" style="--rise-delay: 0.24s">Sell with intelligence.</span>
       </h1>
 
-      <p class="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
+      <p class="hero-fade mt-8 max-w-2xl text-lg leading-8 text-muted-foreground" style="--enter-delay: 0.15s">
         Markosh is an AI-first execution partner. We combine AI-assisted research, vetted human talent, and managed delivery to turn strategy into execution across product, engineering, and revenue.
       </p>
 
-      <div class="mt-10 flex flex-wrap items-center gap-4">
-        <Button href="/contact" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+      <div class="hero-fade mt-10 flex flex-wrap items-center gap-4" style="--enter-delay: 0.25s">
+        <Button href="/contact" size="lg" data-astro-prefetch="hover" class="btn-gradient group h-12 px-8 text-base font-semibold">
           Talk to Markosh
-          <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="ml-1 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </Button>
-        <Button href="/services" size="lg" variant="outline" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+        <Button href="/services" size="lg" variant="outline" data-astro-prefetch="hover" class="h-12 rounded-full border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
           Explore Services
         </Button>
       </div>
 
-      <dl class="mt-14 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-border pt-8 sm:grid-cols-4">
-        {stats.map((stat) => (
-          <div>
-            <dd class="font-mono text-3xl font-medium tracking-tight sm:text-4xl">{stat.value}</dd>
-            <dt class="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</dt>
-          </div>
-        ))}
-      </dl>
+      <div class="mt-14 border-t border-border pt-8 lg:flex lg:items-start lg:justify-between lg:gap-16">
+        <div class="min-w-0 flex-1">
+          <dl class="hero-fade grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4" style="--enter-delay: 0.35s">
+            {stats.map((stat) => (
+              <div>
+                <dd class="font-mono text-3xl font-medium tracking-tight sm:text-4xl" data-countup>{stat.value}</dd>
+                <dt class="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
 
-      <div class="mt-10 space-y-2.5">
-        <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
-          {deliverySignals.join(' · ')}
-        </p>
-        <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
-          <span class="uppercase tracking-[0.14em]">Built for</span> — {operatingContexts.join(' · ')}
-        </p>
+          <div class="hero-fade mt-10 space-y-2.5" style="--enter-delay: 0.45s">
+            <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
+              {deliverySignals.join(' · ')}
+            </p>
+            <p class="font-mono text-xs leading-6 text-muted-foreground sm:text-sm">
+              <span class="uppercase tracking-[0.14em]">Built for</span> — {operatingContexts.join(' · ')}
+            </p>
+          </div>
+        </div>
+
+        <!-- Operating-model diagram: research → talent → delivery. Decorative,
+             self-drawing (stroke-dashoffset via pathLength=1), desktop only. -->
+        <div class="hero-fade hidden lg:block lg:shrink-0" style="--enter-delay: 0.5s" aria-hidden="true">
+          <svg class="hero-diagram" width="232" height="252" viewBox="0 0 232 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="diagram-draw" style="--draw-delay: 0.6s" cx="30" cy="30" r="13" pathLength="1" stroke="hsl(var(--foreground) / 0.4)" stroke-width="1.5" />
+            <circle class="diagram-node" style="--draw-delay: 0.7s" cx="30" cy="30" r="3.5" fill="hsl(var(--foreground) / 0.7)" />
+            <text class="diagram-node font-mono" style="--draw-delay: 0.8s" x="58" y="34" font-size="11" letter-spacing="1.5" fill="hsl(var(--foreground) / 0.6)">RESEARCH</text>
+
+            <line class="diagram-draw" style="--draw-delay: 1s" x1="30" y1="45" x2="30" y2="111" pathLength="1" stroke="hsl(var(--foreground) / 0.3)" stroke-width="1.5" stroke-linecap="round" />
+
+            <circle class="diagram-draw" style="--draw-delay: 1.4s" cx="30" cy="126" r="13" pathLength="1" stroke="hsl(var(--foreground) / 0.4)" stroke-width="1.5" />
+            <circle class="diagram-node" style="--draw-delay: 1.5s" cx="30" cy="126" r="3.5" fill="hsl(var(--foreground) / 0.7)" />
+            <text class="diagram-node font-mono" style="--draw-delay: 1.6s" x="58" y="130" font-size="11" letter-spacing="1.5" fill="hsl(var(--foreground) / 0.6)">TALENT</text>
+
+            <line class="diagram-draw" style="--draw-delay: 1.8s" x1="30" y1="141" x2="30" y2="207" pathLength="1" stroke="hsl(var(--foreground) / 0.3)" stroke-width="1.5" stroke-linecap="round" />
+
+            <circle class="diagram-draw" style="--draw-delay: 2.2s" cx="30" cy="222" r="13" pathLength="1" stroke="hsl(var(--foreground) / 0.4)" stroke-width="1.5" />
+            <circle class="diagram-node" style="--draw-delay: 2.3s" cx="30" cy="222" r="3.5" fill="hsl(var(--foreground) / 0.7)" />
+            <text class="diagram-node font-mono" style="--draw-delay: 2.4s" x="58" y="226" font-size="11" letter-spacing="1.5" fill="hsl(var(--foreground) / 0.6)">DELIVERY</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-fade mt-12" style="--enter-delay: 0.55s">
+        <TrustMarquee />
       </div>
     </div>
   </div>
