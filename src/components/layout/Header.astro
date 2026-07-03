@@ -42,12 +42,12 @@ const isActiveLink = (href: string) => {
       <span class="font-headline text-2xl font-bold text-foreground">Markosh</span>
     </a>
 
-    <nav class="hidden items-center gap-7 rounded-md border border-border bg-background px-5 py-2 lg:flex" aria-label="Primary navigation">
+    <nav class="hidden h-10 items-center gap-7 rounded-md border border-border bg-background px-5 lg:flex" aria-label="Primary navigation">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            'text-sm font-medium text-muted-foreground underline-offset-8 transition-colors hover:text-foreground',
+            'text-[0.9375rem] font-medium text-muted-foreground underline-offset-8 transition-colors hover:text-foreground',
             isActiveLink(link.href) && 'text-primary underline decoration-2',
           ]}
           aria-current={isActiveLink(link.href) ? 'page' : undefined}
