@@ -22,7 +22,7 @@ export interface SEOConfig {
  */
 export const defaultSEO: Required<Omit<SEOConfig, 'publishedTime' | 'modifiedTime' | 'author' | 'section' | 'tags'>> = {
   title: 'Markosh',
-  description: 'Markosh helps companies build software, hire vetted talent, deploy AI systems, and grow pipeline through AI-first, research-backed execution teams.',
+  description: 'Markosh is an intelligence lab for business execution — serious AI leverage plus research-backed delivery across B2B sales, vetted technical talent, and software.',
   image: '/og-image.png',
   canonical: '',
   noindex: false,
@@ -72,8 +72,8 @@ export function generateImageURL(image: string, baseURL: string = 'https://marko
  */
 export const pageSEO = {
   home: {
-    title: 'AI-First Execution Teams for Software, Talent & Revenue',
-    description: 'Markosh helps companies build software, hire vetted talent, deploy AI systems, and grow pipeline through AI-first, research-backed execution teams.',
+    title: 'The Intelligence Lab for Revenue, Talent & Software',
+    description: 'Markosh is an intelligence lab for business execution — serious AI leverage plus research-backed delivery across B2B sales, vetted technical talent, and software.',
     type: 'website' as const
   },
   about: {
@@ -116,7 +116,7 @@ export function generateOrganizationStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Markosh",
-    "description": "AI-first execution teams for software, talent, and revenue: AI strategy, custom software development, IT staffing, and B2B sales-as-a-service.",
+    "description": "An intelligence lab for business execution — B2B sales-as-a-service, IT staffing, custom software development, and AI strategy.",
     "url": "https://markosh.com",
     "logo": "https://markosh.com/markosh-logo.png",
     "sameAs": [
@@ -151,7 +151,7 @@ export function generateWebsiteStructuredData() {
     "@type": "WebSite",
     "name": "Markosh",
     "url": "https://markosh.com",
-    "description": "AI-first execution teams for software, talent, and revenue",
+    "description": "An intelligence lab for business execution — revenue, talent, and software",
     "publisher": {
       "@type": "Organization",
       "name": "Markosh"

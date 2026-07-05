@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { validateForm, submitForm, contactFormRules } from '@/lib/form-utils';
 import { withErrorBoundary } from '@/components/ErrorBoundary';
@@ -14,13 +14,14 @@ const outcomeOptions = [
   { value: 'talent', label: 'Hire technical talent' },
   { value: 'ai-strategy', label: 'Create an AI strategy' },
   { value: 'automation', label: 'Automate a workflow' },
-  { value: 'sales-trial', label: 'Try a sales rep for 14 days' },
-  { value: 'revenue-pod', label: 'Build a revenue pod' },
+  { value: 'sales-trial', label: 'Experience a sales rep for 14 days' },
+  { value: 'sales-models', label: 'Add B2B sales capacity (retained rep, appointments, revenue share)' },
+  { value: 'mvp-pilot', label: 'Apply for "Your MVP, On Us"' },
   { value: 'combined', label: 'Build a combined tech + sales execution team' },
   { value: 'unsure', label: 'Not sure yet' },
 ];
 
-const salesOutcomes = ['sales-trial', 'revenue-pod', 'combined'];
+const salesOutcomes = ['sales-trial', 'sales-models', 'combined'];
 const aiOutcomes = ['ai-strategy', 'automation'];
 
 interface FormData {
@@ -152,13 +153,10 @@ function ContactFormCore() {
   }, [formData, toast]);
 
   return (
-    <Card className="bg-secondary/50">
-      <CardHeader>
-        <CardTitle className="font-headline text-2xl">Send us a message</CardTitle>
-        <CardDescription>Fill out the form and we will get back to you within one business day.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <div>
+      <h2 className="font-headline text-2xl font-bold tracking-tight">Send us a message</h2>
+      <p className="mt-1.5 text-sm text-muted-foreground">Fill out the form and we will get back to you within one business day.</p>
+      <form onSubmit={handleSubmit} className="mt-6 space-y-6" noValidate>
           <div>
             <Label htmlFor="name">Full Name *</Label>
             <Input
@@ -297,7 +295,7 @@ function ContactFormCore() {
                 />
               </div>
               <div>
-                <Label htmlFor="salesInterest">Are you interested in the 14-day trial or a monthly pod?</Label>
+                <Label htmlFor="salesInterest">Which engagement are you interested in?</Label>
                 <select
                   id="salesInterest"
                   value={formData.salesInterest}
@@ -305,8 +303,10 @@ function ContactFormCore() {
                   className={selectClassName}
                 >
                   <option value="">Select…</option>
-                  <option value="trial">14-day trial</option>
-                  <option value="monthly">Monthly rep or pod</option>
+                  <option value="trial">14-day sales rep experience</option>
+                  <option value="retained">Retained dedicated rep</option>
+                  <option value="appointments">Appointment setting</option>
+                  <option value="revenue-share">Revenue-share partnership</option>
                   <option value="unsure">Not sure yet</option>
                 </select>
               </div>
@@ -435,8 +435,7 @@ function ContactFormCore() {
             {isSubmitting ? 'Submitting form...' : 'Form ready to submit'}
           </div>
         </form>
-      </CardContent>
-    </Card>
+    </div>
   );
 }
 

@@ -1,19 +1,29 @@
 ---
-// The four Markosh service families: Strategy, Build, Staff, Sell.
+// The four Markosh service families, ordered by current business focus:
+// Sell and Staff lead, Build and Strategy support.
 // Typographic sequence: numbered rows with rules, oversized family verb,
 // mono offering label, situation lead, one-line description, proof line, arrow link.
 const services = [
   {
     num: '01',
-    title: 'Strategy',
-    offering: 'AI Strategy & Intelligence',
-    situation: 'You know AI matters, but not where it pays off first.',
-    description: 'Find where AI actually pays off — mapped workflows, prioritized use cases, and a roadmap built to execute.',
-    proof: 'Use-case map · Automation backlog · Execution plan',
-    link: '/services/ai-strategy',
+    title: 'Sell',
+    offering: 'B2B Sales-as-a-Service',
+    situation: 'You need more qualified conversations, not more sales theory.',
+    description: 'Premier B2B tech sales reps in three models — retained reps, appointment setting, and revenue-share partnerships — backed by deep contact intelligence and human-led outreach.',
+    proof: 'ICP · CRM visibility · Weekly outreach QA',
+    link: '/sales',
   },
   {
     num: '02',
+    title: 'Staff',
+    offering: 'Vetted Engineers & Specialists',
+    situation: 'Your roadmap is blocked by missing technical capacity.',
+    description: 'Pre-vetted engineers embedded in your team — including the scarcest pools: AI/ML, data, and security — matched to your stack and your working hours.',
+    proof: 'Engineer screen · Stack match · Onboarding plan',
+    link: '/services/it-staffing',
+  },
+  {
+    num: '03',
     title: 'Build',
     offering: 'Custom Software & AI Systems',
     situation: 'You need a product or internal system shipped without hiring a full team.',
@@ -22,22 +32,13 @@ const services = [
     link: '/services/custom-software-development',
   },
   {
-    num: '03',
-    title: 'Staff',
-    offering: 'Vetted Engineers & Specialists',
-    situation: 'Your roadmap is blocked by missing technical capacity.',
-    description: 'Pre-vetted engineers embedded in your team, matched to your stack and your working hours.',
-    proof: 'Engineer screen · Stack match · Onboarding plan',
-    link: '/services/it-staffing',
-  },
-  {
     num: '04',
-    title: 'Sell',
-    offering: 'B2B Sales-as-a-Service',
-    situation: 'You need more qualified conversations, not more sales theory.',
-    description: 'Trained sales reps and revenue pods — AI-assisted research, human-led outreach, honest reporting.',
-    proof: 'ICP · CRM visibility · Weekly outreach QA',
-    link: '/sales',
+    title: 'Strategy',
+    offering: 'AI Strategy & Intelligence',
+    situation: 'You know AI matters, but not where it pays off first.',
+    description: 'Find where AI actually pays off — mapped workflows, prioritized use cases, and a roadmap built to execute.',
+    proof: 'Use-case map · Automation backlog · Execution plan',
+    link: '/services/ai-strategy',
   },
 ];
 ---
@@ -52,7 +53,7 @@ const services = [
         </h2>
       </div>
       <p class="max-w-md text-lg text-muted-foreground">
-        Research first, AI-assisted planning, vetted talent, managed delivery — the same method whether you need engineers, software, or sales capacity.
+        Research first, AI leverage at every step, vetted talent, managed delivery — the same lab method whether you need sales capacity, engineers, or software.
       </p>
     </div>
 

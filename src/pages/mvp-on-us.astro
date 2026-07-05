@@ -5,89 +5,80 @@ import Footer from '@/components/layout/Footer.astro';
 import Button from '@/components/ui/Button.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
-const metaTitle = 'The 14-Day Sales Rep Experience';
+const metaTitle = 'Your MVP, On Us — A Basic MVP Built at Our Investment';
 const metaDescription =
-  'Approved B2B companies get a trained Markosh sales rep for 14 days — at our investment — to evaluate research quality, outreach discipline, CRM visibility, and fit before committing to any model.';
-const pageUrl = 'https://markosh.com/sales-rep-trial/';
+  'Approved businesses get a basic MVP built by Markosh at our investment — one core workflow, shipped as working software with full source and IP — so you can judge our engineering before committing.';
+const pageUrl = 'https://markosh.com/mvp-on-us/';
 
 const qualifier =
-  'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.';
+  'For approved businesses only. One product, one core workflow. Pilot-grade build, not a production launch. No obligation afterward.';
 
 const proves = [
-  'Research quality',
-  'ICP understanding',
-  'Rep communication',
-  'Account preparation',
-  'Outreach discipline',
-  'CRM note quality',
-  'Prospect feedback',
-  'Daily visibility',
+  'Scoping discipline',
+  'Product judgment',
+  'Architecture choices',
+  'Code quality',
+  'Communication cadence',
+  'Speed to working software',
+  'Handover completeness',
+  'Honest recommendations',
 ];
 
 const included = [
-  'One trained remote sales rep',
-  'One defined ICP and one approved offer',
-  'One target market or territory',
-  'ICP and offer review',
-  'AI-assisted account research',
-  'Talk-track or script setup',
-  'Controlled human-led outreach',
-  'Daily notes or CRM-style reporting',
-  'End-of-trial recommendation',
+  'A discovery workshop to strip the idea down to one core workflow worth building first',
+  'A basic MVP covering that workflow — a web app, internal tool, or automation',
+  'A working deployment you can demo to users or stakeholders',
+  'Full source code and documentation, handed over with IP',
+  'An end-of-build recommendation: what a production v1 would actually take',
 ];
 
 const excluded = [
-  'Guaranteed appointments, closed deals, or revenue',
-  'Unlimited calling or unlimited lead research',
-  'AI voice outreach or robocalling',
-  'Work outside the agreed ICP',
-  'Unapproved messaging',
-  'Closing deals on your behalf',
+  'A production launch, SLA, or on-call support',
+  'Multi-workflow product buildouts',
+  'Unlimited features or open-ended revisions',
+  'Ongoing maintenance (available afterward, separately)',
+  'Native mobile apps within pilot scope',
 ];
 
 const eligible = [
-  'A B2B offer with a clear target customer',
-  'A meaningful average deal value',
-  'A founder, AE, or closer available to take calls',
-  'A defined geographic or industry focus',
-  'A legitimate business website and a real follow-up process',
-  'Willingness to approve ICP, messaging, and compliance rules',
+  'An operating business with meaningful software or operations spend, or real scale',
+  'A product or internal-tool idea tied to a workflow you actually run today',
+  'A decision-maker available for discovery and weekly reviews',
+  'Willingness to scope down to one core workflow and judge the result honestly',
 ];
 
 const notEligible = [
-  'No clear ICP or an untested offer',
-  'Average deal value too low to justify outbound',
-  'No one available to take sales conversations',
-  'Expecting guaranteed revenue in 14 days',
-  'Wanting spam-style mass outreach',
-  'Consumer or high-risk offers with extra compliance exposure',
+  'Ideas-stage projects with no operating business behind them',
+  'Expecting a full production product at no cost',
+  'No one available to review the work as it ships',
+  'A scope that cannot be cut down to one core workflow',
 ];
 
 const faqs = [
   {
-    question: 'Do you guarantee appointments during the trial?',
-    answer: 'No. The trial is designed to show execution quality and market feedback. Appointments may happen, but they are not guaranteed.',
+    question: 'Why would you build an MVP at no cost?',
+    answer: 'For the same reason we offer the 14-day sales rep experience: we would rather be judged on working software than on a pitch deck. A tightly scoped MVP shows you our product judgment, code quality, and communication — and shows us whether a longer build engagement makes sense for both sides.',
   },
   {
-    question: 'Why not offer the first appointment for free?',
-    answer: 'Appointment difficulty varies by niche, buyer seniority, deal size, market timing, and your offer. A controlled sales-rep trial is more transparent and avoids open-ended delivery risk on both sides.',
+    question: 'What counts as a "basic" MVP?',
+    answer: 'One core workflow, built properly. Typical agency MVPs run eight to fourteen weeks of paid work; this is deliberately smaller — a focused discovery, then a working build of the single workflow that matters most. The point is proof of build quality, not a finished product.',
   },
   {
-    question: 'What happens after the 14 days?',
-    answer: 'You get an end-of-engagement recommendation: what the rep learned, what the market said, and whether a retained dedicated rep, an appointment-setting program, or a revenue-share partnership makes sense. No obligation either way.',
+    question: 'Why do you approve businesses before starting?',
+    answer: 'Build time is the most expensive thing we have. The offer only works when there is a real business, a real workflow, and someone to evaluate the result — approval keeps it honest and keeps it available.',
   },
   {
-    question: 'Why do you approve companies before starting?',
-    answer: 'The trial only proves anything if the fundamentals are in place: a clear ICP, a real offer, and someone to take qualified conversations. Approval protects your two weeks as much as ours.',
+    question: 'What happens after the MVP?',
+    answer: 'You keep the software, the source code, and the documentation regardless. If you want to take it to production — hardening, more workflows, a full v1 — we scope that as a normal engagement. No obligation either way.',
   },
 ];
 
 const extraSchemas = [
-  generateServiceStructuredData('14-Day Sales Rep Experience', metaDescription),
+  generateServiceStructuredData('Your MVP, On Us — Basic MVP Build', metaDescription),
   generateBreadcrumbStructuredData([
     { name: 'Home', url: 'https://markosh.com/' },
-    { name: 'B2B Sales-as-a-Service', url: 'https://markosh.com/sales/' },
-    { name: '14-Day Sales Rep Experience', url: pageUrl },
+    { name: 'Services', url: 'https://markosh.com/services/' },
+    { name: 'Your MVP, On Us', url: pageUrl },
   ]),
   {
     '@context': 'https://schema.org',
@@ -117,46 +108,46 @@ const extraSchemas = [
           <ol class="flex flex-wrap items-center gap-2">
             <li><a class="hover:text-primary" href="/">Home</a></li>
             <li aria-hidden="true">/</li>
-            <li><a class="hover:text-primary" href="/sales">Sales</a></li>
-            <li aria-current="page" class="text-foreground">14-Day Experience</li>
+            <li><a class="hover:text-primary" href="/services">Services</a></li>
+            <li aria-current="page" class="text-foreground">Your MVP, On Us</li>
           </ol>
         </nav>
         <div class="mt-8 max-w-4xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">The 14-Day Sales Rep Experience</p>
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Your MVP, On Us</p>
           <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            Fourteen days with a Markosh rep — <span class="text-primary">our investment, your evaluation</span>
+            Your first MVP, built by Markosh — <span class="text-primary">our investment, your evaluation</span>
           </h1>
           <p class="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-            This is not a freemium teaser. It is an audition, at our expense: one trained rep works one ICP and one approved offer so you can judge research quality, communication, outreach discipline, and CRM visibility the only way that means anything — by watching real work in your market.
+            The build-side twin of our 14-day sales rep experience. For approved businesses, we scope and ship a basic MVP — one core workflow, built as working software — so you can judge our engineering the only way that means anything: by using what we build.
           </p>
           <p class="mt-8 max-w-2xl border-y border-border py-4 font-mono text-sm leading-6 text-foreground">
             {qualifier}
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
-              Apply for the 14-Day Experience
+            <Button href="/contact?outcome=mvp-pilot" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Apply for Your MVP
               <svg class="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </Button>
-            <Button href="/sales" size="lg" variant="outline" data-astro-prefetch="hover" class="h-12 border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
-              All Sales Services
+            <Button href="/services/custom-software-development" size="lg" variant="outline" data-astro-prefetch="hover" class="h-12 border-foreground/20 bg-transparent px-8 text-base hover:border-primary hover:bg-primary/5 hover:text-primary">
+              All Build Services
             </Button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What the trial proves -->
+    <!-- What the build proves -->
     <section class="bg-secondary">
       <div class="container mx-auto">
         <div class="max-w-2xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Purpose</p>
           <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            The trial proves <span class="text-primary">execution quality</span>, not vanity metrics
+            The build proves <span class="text-primary">engineering quality</span>, not slideware
           </h2>
           <p class="mt-5 text-lg text-muted-foreground">
-            Fourteen days is enough to judge how we work — not enough to promise pipeline. Here is what you will be able to evaluate:
+            One scoped workflow is enough to judge how we build — not enough to be your finished product. Here is what you will be able to evaluate:
           </p>
         </div>
         <ul class="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
@@ -173,7 +164,7 @@ const extraSchemas = [
         <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Scope</p>
         <div class="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
           <div>
-            <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What the trial includes</h2>
+            <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What the build includes</h2>
             <ul class="divide-y divide-border">
               {included.map((item) => (
                 <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
@@ -188,7 +179,7 @@ const extraSchemas = [
               ))}
             </ul>
             <p class="mt-6 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
-              These limits keep the trial honest. Anyone promising guaranteed meetings in two weeks is guessing with your brand.
+              These limits keep the offer honest. A tightly scoped workflow that works beats a sprawling product that never ships.
             </p>
           </div>
         </div>
@@ -201,10 +192,10 @@ const extraSchemas = [
         <div class="max-w-3xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">03 — Eligibility</p>
           <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-            Approved companies <span class="text-signal">only</span>
+            Approved businesses <span class="text-signal">only</span>
           </h2>
           <p class="mt-6 text-lg text-ink-foreground/70">
-            We review every application. The trial works when the fundamentals are in place — and wastes everyone's time when they are not.
+            We review every application. The build works when there is a real business, a real workflow, and someone to evaluate the result — and wastes everyone's time when there is not.
           </p>
         </div>
         <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-2">
@@ -244,8 +235,8 @@ const extraSchemas = [
           ))}
         </div>
         <div class="mt-12">
-          <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
-            Apply for the 14-Day Experience
+          <Button href="/contact?outcome=mvp-pilot" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
+            Apply for Your MVP
           </Button>
           <p class="mt-5 font-mono text-sm leading-6 text-muted-foreground">{qualifier}</p>
         </div>

@@ -5,8 +5,13 @@ import Footer from '@/components/layout/Footer.astro';
 import ContactForm from '@/components/islands/ContactFormCore.tsx';
 import RevealSection from '@/components/layout/RevealSection.astro';
 import HomeFaq, { homeFaqs } from '@/components/sections/HomeFaq.astro';
-import { Mail, Phone, MapPin } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast.tsx';
+
+const contactMethods = [
+  { label: 'Email', value: 'business@markosh.com', detail: 'General Inquiries', href: 'mailto:business@markosh.com' },
+  { label: 'Phone', value: '+91 94084 94084', detail: 'Mon–Fri from 9am to 5pm', href: 'tel:+919408494084' },
+  { label: 'Office', value: 'Saket, New Delhi', detail: null, href: null },
+];
 
 const expectations = [
   'A reply within one business day',
@@ -56,40 +61,20 @@ const extraSchemas = [
         <div class="container mx-auto grid gap-12 md:grid-cols-2">
           <div>
             <h2 class="font-headline text-3xl font-bold tracking-tight">Get in touch</h2>
-            <div class="mt-8 space-y-4">
-              <div class="glass-card flex items-start gap-4 p-6">
-                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                  <Mail className="w-6 h-6" />
+            <div class="mt-8">
+              {contactMethods.map((method) => (
+                <div class="border-t border-border py-6 last:border-b">
+                  <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{method.label}</p>
+                  {method.href ? (
+                    <a href={method.href} class="mt-2 inline-block font-headline text-xl font-bold tracking-tight transition-colors hover:text-primary sm:text-2xl">
+                      {method.value}
+                    </a>
+                  ) : (
+                    <p class="mt-2 font-headline text-xl font-bold tracking-tight sm:text-2xl">{method.value}</p>
+                  )}
+                  {method.detail && <p class="mt-1 text-sm text-muted-foreground">{method.detail}</p>}
                 </div>
-                <div>
-                  <h3 class="font-headline text-lg font-bold">Email</h3>
-                  <p class="text-sm text-muted-foreground">General Inquiries</p>
-                  <a href="mailto:business@markosh.com" class="font-semibold text-primary hover:underline">
-                    business@markosh.com
-                  </a>
-                </div>
-              </div>
-              <div class="glass-card flex items-start gap-4 p-6">
-                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 class="font-headline text-lg font-bold">Phone</h3>
-                  <p class="text-sm text-muted-foreground">Mon-Fri from 9am to 5pm</p>
-                  <a href="tel:+919408494084" class="font-semibold text-primary hover:underline">
-                    +91 94084 94084
-                  </a>
-                </div>
-              </div>
-              <div class="glass-card flex items-start gap-4 p-6">
-                <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 class="font-headline text-lg font-bold">Office</h3>
-                  <p class="text-muted-foreground">Saket, New Delhi</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div class="mt-8">

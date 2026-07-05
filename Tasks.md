@@ -1,82 +1,79 @@
-# Markosh Visual Polish — Task Plan
+# Booking Calendar + Google Calendar Auth Tasks
 
-> Follow-up to the scroll-animation work on the `SEO` branch (2026-07-03).
-> V2–V4 implemented 2026-07-03 (validated against 2026 B2B design-trend
-> research: monochrome + purposeful CSS-only motion + proof-over-decoration).
-> Constraint: preserve the bold-minimal monochrome aesthetic; motion stays
-> restrained and respects `prefers-reduced-motion` (pattern already in
-> `global.css` + `BaseLayout.astro`).
+## Summary
 
-## V1 — Single accent color — ❌ REJECTED 2026-07-03
+Replace the zcal experiment with a native Markosh booking flow: static Astro page, small React scheduler island, and server-side Google Calendar API calls through Cloudflare Pages Functions. The UI must stay monochrome, fast, and fully brand-matched.
 
-Implemented (electric blue on CTA + `--signal`) and immediately reverted at
-the user's request: the site stays 100% monochrome ink. Emphasis comes from
-size, weight, and ink panels — never hue. **Do not re-suggest accent colors.**
+## Key Changes
 
-## V2 — Animated hero visual (technical-capability signal) — ✅ DONE 2026-07-03
+- Build `/book-a-call` as a static Astro page with a native calendar section: meeting details, month picker, date grid, time slots, booking questions, and confirmation state.
+- Add a small `BookingScheduler` React island only for interactivity; do not load zcal, iframe schedulers, Calendly, Google frontend scripts, or other third-party scheduler UI.
+- Use Cloudflare Pages Functions for:
+  - `GET /api/booking/availability?date=YYYY-MM-DD`
+  - `POST /api/booking/create`
+- Use Google Calendar API server-side only:
+  - `freeBusy.query` to calculate blocked times.
+  - `events.insert` with `conferenceData.createRequest` to create Google Meet.
+  - `sendUpdates=all` so both host and guest receive invites.
+- Add a local auth helper script that prints a Google OAuth refresh token without writing secrets to tracked files.
 
-**Files:** `src/components/sections/HeroSection.astro`, `src/styles/global.css`
+## Calendar Section Design
 
-- Self-drawing research → talent → delivery diagram, right of the hero stats
-  row (`.hero-diagram`, `hidden lg:block`, `aria-hidden`).
-- Draw-on via `pathLength="1"` + `stroke-dashoffset` keyframes, staggered
-  with `--draw-delay`; monochrome strokes only, no JS.
-- Reduced motion: strokes render fully drawn, no animation. LCP untouched.
+- Match the existing Markosh visual system: off-white page, white content panels, dark ink CTA, monochrome accents, 8-12px radius where appropriate, no blue Google styling.
+- Desktop layout: left panel for meeting context and trust notes, right panel for calendar/date/time/form workflow.
+- Mobile layout: single-column step flow: date, time, details, confirm.
+- Default meeting rules:
+  - Duration: 30 minutes.
+  - Availability window: Monday-Friday, 9:00 AM-1:00 PM `America/New_York`.
+  - Slot interval: 30 minutes.
+  - Buffer: 15 minutes after each meeting.
+  - Minimum notice: 12 hours.
+  - Booking window: next 30 days.
+  - Visitor sees times in their local browser timezone.
+- Booking questions:
+  - Name
+  - Work email
+  - Company
+  - Company website
+  - What would you like to discuss?
+  - Timeline
+  - Additional context
+- Confirmation view shows selected date/time, Google Meet expectation, and "calendar invite sent" messaging.
 
-## V3 — Trust marquee under hero stats — ✅ DONE 2026-07-03
+## Auth Script
 
-**Files:** `src/components/sections/TrustMarquee.astro` (new),
-`src/styles/global.css`, `src/components/sections/HeroSection.astro`
+- Add `scripts/google-calendar-auth.mjs`.
+- Inputs: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, optional redirect URI defaulting to `http://localhost:8787/oauth/callback`.
+- Scopes:
+  - `https://www.googleapis.com/auth/calendar.events`
+  - `https://www.googleapis.com/auth/calendar.freebusy`
+- Script flow:
+  - Prints Google OAuth URL.
+  - User opens it, approves access, and pastes the returned code.
+  - Script exchanges code for tokens.
+  - Script prints `GOOGLE_REFRESH_TOKEN`.
+  - Script does not write secrets by default.
+- Required deployment secrets:
+  - `GOOGLE_CLIENT_ID`
+  - `GOOGLE_CLIENT_SECRET`
+  - `GOOGLE_REFRESH_TOKEN`
+  - `GOOGLE_CALENDAR_ID=primary`
+  - `BOOKING_HOST_NAME=Markosh`
+  - `BOOKING_HOST_EMAIL=business@markosh.com`
 
-- CSS-only marquee of 12 monochrome stack badges (`.marquee` /
-  `.marquee-track`), two duplicated groups sliding `-50%` for a seamless
-  42s loop; edge fade via `mask-image`.
-- Pauses on hover; static under `prefers-reduced-motion`; second group is
-  `aria-hidden`.
+## Test Plan
 
-## V4 — Hero grid depth (subtle parallax) — ✅ DONE 2026-07-03
+- Run `npm run type-check`.
+- Run `npm run build`.
+- Verify `/book-a-call` renders without loading third-party scheduler scripts.
+- Test availability API with mock Google responses for busy slots, empty calendar, and fully booked day.
+- Test booking API validation: missing fields, invalid email, unavailable slot, and valid booking.
+- Test successful event payload includes attendee, Google Meet creation, custom answers in description, and `sendUpdates=all`.
+- Browser-check desktop and mobile layouts for no overlap, clean wrapping, and accessible focus states.
 
-**Files:** `src/styles/global.css`, `src/components/sections/HeroSection.astro`,
-`src/layouts/BaseLayout.astro` (script)
+## Assumptions
 
-- `.bg-grid-strong` variant (line alpha 0.7 → 0.9) applied to the hero grid,
-  which extends `-top-24` so the transform never exposes a bare edge.
-- Generic `[data-parallax]` handler in BaseLayout: speed 0.12, transform-only,
-  rAF-throttled, passive scroll listener, skipped under reduced motion.
-
-## V5 — Hero headline kinetic package — ✅ DONE 2026-07-03 (user-requested)
-
-**Files:** `src/components/sections/HeroSection.astro`, `src/styles/global.css`
-
-- Eyebrow: terminal-style type-in via `clip-path` + `steps(28)` (`.hero-type`)
-  — no opacity, no layout shift.
-- Headline: three phrases as `inline-block` spans rising in sequence
-  (`--rise-delay` 0 / 0.12s / 0.24s), transform-only so LCP is unaffected.
-  Side benefit: lines now wrap at phrase boundaries, not mid-phrase.
-- Primary CTA: arrow nudges right on hover (`group-hover:translate-x-1`).
-- All three off under `prefers-reduced-motion`.
-
-## Ideas discussed but NOT approved (implement only if asked)
-
-- Ambient pulse dot traveling down the hero diagram after draw-in (~6s CSS
-  loop). Offered 2026-07-03 as the only tasteful "more hero animation"
-  candidate; user has not approved it. Hero is otherwise at motion budget.
-
-## Verification (every task)
-
-- `npm run type-check` and `npm run build`.
-- Preview server: screenshot `/` at desktop + 375px mobile.
-- Reduced-motion check: emulate `prefers-reduced-motion` and confirm all
-  motion is off.
-
-## Rejected
-
-- Section-number scroll progress indicator — rejected 2026-07-03; clutters
-  the clean aesthetic. Do not re-suggest.
-
-## Out of scope (carried over — still open pre-launch items)
-
-- Contact form backend is still a MOCK (`src/lib/form-utils.ts`) — needs a
-  real endpoint before launch.
-- Vetting funnel percentages TODO (`VettingProcess.astro:2`) — needs real
-  data from the user.
+- Implementation targets Cloudflare Pages with Pages Functions while preserving static Astro rendering for the public page.
+- OAuth refresh token is for the owner's Google account, not a service account.
+- Secrets are never committed.
+- The first version does not support rescheduling, cancellation, payment, multi-host routing, or multiple meeting types.

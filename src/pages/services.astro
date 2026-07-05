@@ -7,11 +7,56 @@ import EngagementModels from '@/components/sections/EngagementModels.astro';
 import Button from '@/components/ui/Button.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData, pageSEO } from '@/lib/seo-utils';
 
-// The four service families (Strategy / Build / Staff / Sell) — same map as
-// the homepage ServicesOverview, expanded with named offering links.
+// The four service families, ordered by current business focus (Sell and
+// Staff lead, Build and Strategy support) — same map as the homepage
+// ServicesOverview, expanded with named offering links.
 const families = [
   {
     num: '01',
+    family: 'Sell',
+    title: 'B2B Sales-as-a-Service',
+    link: '/sales',
+    linkLabel: 'B2B Sales-as-a-Service',
+    description: 'Premier B2B tech and services sales reps — fluent in modern enrichment tooling, backed by deep contact intelligence — in three engagement models: retained reps, appointment setting, and revenue-share partnerships.',
+    offerings: [
+      { label: 'Retained dedicated sales reps' },
+      { label: 'Appointment-setting programs' },
+      { label: 'Revenue-share sales partnerships' },
+      { label: '14-day sales rep experience', href: '/sales-rep-trial' },
+    ],
+    qualifier: 'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.',
+  },
+  {
+    num: '02',
+    family: 'Staff',
+    title: 'IT Staffing Services',
+    link: '/services/it-staffing',
+    linkLabel: 'IT Staffing Services',
+    description: 'The market has split: general development talent is plentiful, while AI/ML, data, and security specialists are scarce and getting scarcer. We vet for both — and match on stack, working hours, and culture, not just keywords.',
+    offerings: [
+      { label: 'Pre-vetted engineers, with deep benches in AI/ML, data, and security' },
+      { label: 'Contract, contract-to-hire, and direct-hire models' },
+      { label: 'Rapid team augmentation' },
+      { label: 'Cultural and technical fit matching' },
+    ],
+  },
+  {
+    num: '03',
+    family: 'Build',
+    title: 'Custom Software & AI Systems',
+    link: '/services/custom-software-development',
+    linkLabel: 'Custom Software Development',
+    description: 'Full-cycle development from strategy and design to deployment — web and mobile applications, AI and machine learning systems, and agentic AI that works alongside your team.',
+    offerings: [
+      { label: 'Custom software development', href: '/services/custom-software-development' },
+      { label: 'Mobile & web applications (React, Next.js, iOS, Android)' },
+      { label: 'AI, ML & agentic AI development', href: '/services/ai-development' },
+      { label: 'Cloud & DevOps (AWS, GCP, Azure, CI/CD, IaC)' },
+      { label: 'Your MVP, On Us — a basic MVP at our investment', href: '/mvp-on-us' },
+    ],
+  },
+  {
+    num: '04',
     family: 'Strategy',
     title: 'AI Strategy & Intelligence',
     link: '/services/ai-strategy',
@@ -24,53 +69,10 @@ const families = [
       { label: '30/60/90-day execution roadmap' },
     ],
   },
-  {
-    num: '02',
-    family: 'Build',
-    title: 'Custom Software & AI Systems',
-    link: '/services/custom-software-development',
-    linkLabel: 'Custom Software Development',
-    description: 'Full-cycle development from strategy and design to deployment — web and mobile applications, AI and machine learning systems, and agentic AI that works alongside your team.',
-    offerings: [
-      { label: 'Custom software development', href: '/services/custom-software-development' },
-      { label: 'Mobile & web applications (React, Next.js, iOS, Android)' },
-      { label: 'AI, ML & agentic AI development', href: '/services/ai-development' },
-      { label: 'Cloud & DevOps (AWS, GCP, Azure, CI/CD, IaC)' },
-    ],
-  },
-  {
-    num: '03',
-    family: 'Staff',
-    title: 'IT Staffing Services',
-    link: '/services/it-staffing',
-    linkLabel: 'IT Staffing Services',
-    description: 'Finding the right technical talent is crucial. We connect you with highly skilled, pre-vetted professionals who can seamlessly integrate into your team.',
-    offerings: [
-      { label: 'Access to a pre-vetted talent pool' },
-      { label: 'Flexible engagement models' },
-      { label: 'Rapid team augmentation' },
-      { label: 'Cultural and technical fit matching' },
-    ],
-  },
-  {
-    num: '04',
-    family: 'Sell',
-    title: 'B2B Sales-as-a-Service',
-    link: '/sales',
-    linkLabel: 'B2B Sales-as-a-Service',
-    description: 'Trained sales reps, lead researchers, and revenue operators who use AI-assisted research and human-led outreach to help B2B companies create more qualified sales conversations.',
-    offerings: [
-      { label: 'Dedicated sales reps and managed revenue pods' },
-      { label: 'AI-assisted account research and lead prioritization' },
-      { label: 'Compliance-aware, human-led outreach' },
-      { label: '14-day sales rep trial', href: '/sales-rep-trial' },
-    ],
-    qualifier: 'For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.',
-  },
 ];
 
 const techStack = [
-  'React', 'Next.js', 'Node.js', 'Python', 'Genkit', 'LangChain', 'TensorFlow', 'PyTorch', 'Java', 'Go', 'iOS', 'Android', 'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes'
+  'React', 'Next.js', 'Node.js', 'TypeScript', 'Python', 'PyTorch', 'LangChain', 'LangGraph', 'RAG', 'Fine-tuning (LoRA/QLoRA)', 'vLLM', 'Hugging Face', 'Java', 'Go', 'iOS', 'Android', 'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes'
 ];
 
 const process = [
@@ -104,10 +106,10 @@ const extraSchemas = [
         <div class="max-w-4xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Our Services</p>
           <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            Strategy, build, staff, and sell — <span class="text-primary">one execution partner</span>
+            Sell, staff, build, and strategy — <span class="text-primary">one execution partner</span>
           </h1>
           <p class="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-            Four connected service families under one operating model: research first, AI-assisted intelligence, vetted human talent, and managed execution with measurable outcomes.
+            Four connected service families, one lab method: research first, AI leverage at every step, vetted human execution, and measurable outcomes.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <Button href="/contact" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
