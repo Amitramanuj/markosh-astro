@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Button from '@/components/ui/Button.astro';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
 const metaTitle = 'B2B Sales-as-a-Service: Retained Reps, Appointment Setting & Revenue Partnerships';
@@ -200,205 +201,219 @@ const extraSchemas = [
     </section>
 
     <!-- What it is / is not -->
-    <section class="bg-secondary">
-      <div class="container mx-auto">
-        <div class="max-w-2xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — The Service</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            Managed pipeline support, <span class="text-primary">clearly scoped</span>
-          </h2>
-        </div>
-        <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
-          <div>
-            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What you get</h3>
-            <ul class="divide-y divide-border">
-              {whatItIs.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — The Service</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              Managed pipeline support, <span class="text-primary">clearly scoped</span>
+            </h2>
           </div>
-          <div>
-            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What this is not</h3>
-            <ul class="divide-y divide-border">
-              {whatItIsNot.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
+          <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What you get</h3>
+              <ul class="divide-y divide-border">
+                {whatItIs.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What this is not</h3>
+              <ul class="divide-y divide-border">
+                {whatItIsNot.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- Models -->
-    <section class="bg-background">
-      <div class="container mx-auto">
-        <div class="max-w-2xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Models</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            Three commercial models, <span class="text-primary">one operations layer</span>
-          </h2>
+    <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Models</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              Three commercial models, <span class="text-primary">one operations layer</span>
+            </h2>
+          </div>
+          <div class="mt-12 border-t border-border">
+            {models.map((model) => (
+              <article id={model.id} class="grid scroll-mt-28 gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr]">
+                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{model.num}</span>
+                <div>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{model.tagline}</p>
+                  <h3 class="mt-2 font-headline text-3xl font-bold tracking-tight sm:text-4xl">{model.title}</h3>
+                  <p class="mt-3 max-w-2xl text-muted-foreground">{model.description}</p>
+                  <p class="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
+                    <span class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-foreground">Best for</span> — {model.bestFor}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-        <div class="mt-12 border-t border-border">
-          {models.map((model) => (
-            <article id={model.id} class="grid scroll-mt-28 gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr]">
-              <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{model.num}</span>
-              <div>
-                <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{model.tagline}</p>
-                <h3 class="mt-2 font-headline text-3xl font-bold tracking-tight sm:text-4xl">{model.title}</h3>
-                <p class="mt-3 max-w-2xl text-muted-foreground">{model.description}</p>
-                <p class="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
-                  <span class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-foreground">Best for</span> — {model.bestFor}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- AI intelligence layer -->
-    <section class="bg-secondary">
-      <div class="container mx-auto">
-        <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
-          <div class="lg:sticky lg:top-28">
-            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Sales Intelligence</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              AI behind the rep, <span class="text-primary">never instead of one</span>
-            </h2>
-            <p class="mt-6 text-lg text-muted-foreground">
-              Our reps are not basic callers. Every conversation is backed by AI-assisted research, account intelligence, and structured reporting — and every conversation is held by a human.
-            </p>
-            <ul class="mt-8 divide-y divide-border border-t border-border">
-              {researchEngine.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
-            <div>
-              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What AI does</h3>
-              <ul class="divide-y divide-border">
-                {aiDoes.map((item) => (
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
+            <div class="lg:sticky lg:top-28">
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Sales Intelligence</p>
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+                AI behind the rep, <span class="text-primary">never instead of one</span>
+              </h2>
+              <p class="mt-6 text-lg text-muted-foreground">
+                Our reps are not basic callers. Every conversation is backed by AI-assisted research, account intelligence, and structured reporting — and every conversation is held by a human.
+              </p>
+              <ul class="mt-8 divide-y divide-border border-t border-border">
+                {researchEngine.map((item) => (
                   <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
                 ))}
               </ul>
             </div>
-            <div>
-              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What AI never does</h3>
-              <ul class="divide-y divide-border">
-                {aiNever.map((item) => (
-                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-                ))}
-              </ul>
+            <div class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+              <div>
+                <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">What AI does</h3>
+                <ul class="divide-y divide-border">
+                  {aiDoes.map((item) => (
+                    <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">What AI never does</h3>
+                <ul class="divide-y divide-border">
+                  {aiNever.map((item) => (
+                    <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- Compliance guardrails (ink panel) -->
-    <section class="ink-panel">
-      <div class="container mx-auto">
-        <div class="max-w-3xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">04 — Operating Guardrails</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-            Compliance-aware <span class="text-signal">by design</span>
-          </h2>
-          <p class="mt-6 text-lg text-ink-foreground/70">
-            Outbound done badly damages your brand and creates real legal exposure — DNC violations alone carry five-figure penalties per incident. Every Markosh engagement runs on the same guardrails.
-          </p>
+    <RevealSection>
+      <section class="ink-panel">
+        <div class="container mx-auto">
+          <div class="max-w-3xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">04 — Operating Guardrails</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+              Compliance-aware <span class="text-signal">by design</span>
+            </h2>
+            <p class="mt-6 text-lg text-ink-foreground/70">
+              Outbound done badly damages your brand and creates real legal exposure — DNC violations alone carry five-figure penalties per incident. Every Markosh engagement runs on the same guardrails.
+            </p>
+          </div>
+          <div class="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {guardrails.map((item, index) => (
+              <div class="border-t border-ink-foreground/20 pt-5">
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-foreground/60" aria-hidden="true">0{index + 1}</p>
+                <h3 class="mt-3 font-headline text-lg font-bold">{item.title}</h3>
+                <p class="mt-2 text-sm leading-6 text-ink-foreground/70">{item.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {guardrails.map((item, index) => (
-            <div class="border-t border-ink-foreground/20 pt-5">
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-foreground/60" aria-hidden="true">0{index + 1}</p>
-              <h3 class="mt-3 font-headline text-lg font-bold">{item.title}</h3>
-              <p class="mt-2 text-sm leading-6 text-ink-foreground/70">{item.detail}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- Fit + niches -->
-    <section class="bg-background">
-      <div class="container mx-auto">
-        <div class="max-w-2xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Fit</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            Who this <span class="text-primary">works for</span>
-          </h2>
-          <p class="mt-5 text-lg text-muted-foreground">
-            We support B2B companies where targeted research and human conversation can create meaningful pipeline.
-          </p>
-        </div>
-        <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
-          <div>
-            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">A strong fit</h3>
-            <ul class="divide-y divide-border">
-              {goodFit.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
+    <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Fit</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              Who this <span class="text-primary">works for</span>
+            </h2>
+            <p class="mt-5 text-lg text-muted-foreground">
+              We support B2B companies where targeted research and human conversation can create meaningful pipeline.
+            </p>
           </div>
-          <div>
-            <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">Not a fit</h3>
-            <ul class="divide-y divide-border">
-              {badFit.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
+          <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold text-signal">A strong fit</h3>
+              <ul class="divide-y divide-border">
+                {goodFit.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="border-b-2 border-foreground pb-3 font-headline text-lg font-bold">Not a fit</h3>
+              <ul class="divide-y divide-border">
+                {badFit.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div class="mt-14 border-t border-border pt-6">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Where we focus first</p>
+            <p class="mt-3 font-mono text-sm leading-7 text-muted-foreground">{launchNiches.join(' · ')}</p>
           </div>
         </div>
-        <div class="mt-14 border-t border-border pt-6">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Where we focus first</p>
-          <p class="mt-3 font-mono text-sm leading-7 text-muted-foreground">{launchNiches.join(' · ')}</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- Trial CTA -->
-    <section class="bg-secondary">
-      <div class="container mx-auto">
-        <div class="grid gap-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
-          <div>
-            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">06 — Proof of Capability</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              Experience a Markosh rep on your market — <span class="text-primary">14 days, our investment</span>
-            </h2>
-            <p class="mt-5 text-muted-foreground">
-              Not a freebie — an audition. We put a trained rep on your ICP and let the work make the case: research quality, communication, outreach discipline, and CRM visibility, before you commit to any model.
-            </p>
-            <p class="mt-6 max-w-2xl border-t border-border pt-5 font-mono text-sm leading-6 text-foreground">
-              For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-4 lg:justify-end">
-            <Button href="/sales-rep-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
-              See the 14-Day Experience
-            </Button>
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="grid gap-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
+            <div>
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">06 — Proof of Capability</p>
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+                Experience a Markosh rep on your market — <span class="text-primary">14 days, our investment</span>
+              </h2>
+              <p class="mt-5 text-muted-foreground">
+                Not a freebie — an audition. We put a trained rep on your ICP and let the work make the case: research quality, communication, outreach discipline, and CRM visibility, before you commit to any model.
+              </p>
+              <p class="mt-6 max-w-2xl border-t border-border pt-5 font-mono text-sm leading-6 text-foreground">
+                For approved B2B companies only. One rep. One ICP. Capped activity. No appointment or closed-deal guarantee.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-4 lg:justify-end">
+              <Button href="/sales-rep-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
+                See the 14-Day Experience
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- FAQ -->
-    <section class="bg-background">
-      <div class="container mx-auto max-w-3xl">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
-        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
-        <div class="mt-10 border-t border-border">
-          {faqs.map((faq) => (
-            <details class="group border-b border-border py-5">
-              <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
-                {faq.question}
-              </summary>
-              <p class="mt-3 text-muted-foreground">{faq.answer}</p>
-            </details>
-          ))}
+    <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
+          <div class="mt-10 border-t border-border">
+            {faqs.map((faq) => (
+              <details class="group border-b border-border py-5">
+                <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+                  {faq.question}
+                </summary>
+                <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
   </main>
   <Footer />

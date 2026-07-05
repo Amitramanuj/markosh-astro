@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Button from '@/components/ui/Button.astro';
+import RevealSection from '@/components/layout/RevealSection.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
 const metaTitle = 'The 14-Day Sales Rep Experience';
@@ -148,109 +149,117 @@ const extraSchemas = [
     </section>
 
     <!-- What the trial proves -->
-    <section class="bg-secondary">
-      <div class="container mx-auto">
-        <div class="max-w-2xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Purpose</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            The trial proves <span class="text-primary">execution quality</span>, not vanity metrics
-          </h2>
-          <p class="mt-5 text-lg text-muted-foreground">
-            Fourteen days is enough to judge how we work — not enough to promise pipeline. Here is what you will be able to evaluate:
-          </p>
-        </div>
-        <ul class="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
-          {proves.map((item) => (
-            <li class="border-t border-border pt-4 font-headline text-base font-bold">{item}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <!-- Included / excluded -->
-    <section class="bg-background">
-      <div class="container mx-auto">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Scope</p>
-        <div class="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
-          <div>
-            <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What the trial includes</h2>
-            <ul class="divide-y divide-border">
-              {included.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What it deliberately excludes</h2>
-            <ul class="divide-y divide-border">
-              {excluded.map((item) => (
-                <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
-              ))}
-            </ul>
-            <p class="mt-6 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
-              These limits keep the trial honest. Anyone promising guaranteed meetings in two weeks is guessing with your brand.
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Purpose</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              The trial proves <span class="text-primary">execution quality</span>, not vanity metrics
+            </h2>
+            <p class="mt-5 text-lg text-muted-foreground">
+              Fourteen days is enough to judge how we work — not enough to promise pipeline. Here is what you will be able to evaluate:
             </p>
           </div>
+          <ul class="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
+            {proves.map((item) => (
+              <li class="border-t border-border pt-4 font-headline text-base font-bold">{item}</li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
+
+    <!-- Included / excluded -->
+    <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Scope</p>
+          <div class="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            <div>
+              <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What the trial includes</h2>
+              <ul class="divide-y divide-border">
+                {included.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What it deliberately excludes</h2>
+              <ul class="divide-y divide-border">
+                {excluded.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+              <p class="mt-6 border-t border-border pt-5 text-sm leading-6 text-muted-foreground">
+                These limits keep the trial honest. Anyone promising guaranteed meetings in two weeks is guessing with your brand.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </RevealSection>
 
     <!-- Eligibility (ink panel) -->
-    <section class="ink-panel">
-      <div class="container mx-auto">
-        <div class="max-w-3xl">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">03 — Eligibility</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-            Approved companies <span class="text-signal">only</span>
-          </h2>
-          <p class="mt-6 text-lg text-ink-foreground/70">
-            We review every application. The trial works when the fundamentals are in place — and wastes everyone's time when they are not.
-          </p>
-        </div>
-        <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-2">
-          <div>
-            <h3 class="border-b-2 border-ink-foreground/60 pb-3 font-headline text-lg font-bold text-signal">You qualify if you have</h3>
-            <ul class="divide-y divide-ink-foreground/15">
-              {eligible.map((item) => (
-                <li class="py-3 text-sm leading-6 text-ink-foreground/70">{item}</li>
-              ))}
-            </ul>
+    <RevealSection>
+      <section class="ink-panel">
+        <div class="container mx-auto">
+          <div class="max-w-3xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-signal sm:text-sm">03 — Eligibility</p>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+              Approved companies <span class="text-signal">only</span>
+            </h2>
+            <p class="mt-6 text-lg text-ink-foreground/70">
+              We review every application. The trial works when the fundamentals are in place — and wastes everyone's time when they are not.
+            </p>
           </div>
-          <div>
-            <h3 class="border-b-2 border-ink-foreground/60 pb-3 font-headline text-lg font-bold">Not a fit right now</h3>
-            <ul class="divide-y divide-ink-foreground/15">
-              {notEligible.map((item) => (
-                <li class="py-3 text-sm leading-6 text-ink-foreground/70">{item}</li>
-              ))}
-            </ul>
+          <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            <div>
+              <h3 class="border-b-2 border-ink-foreground/60 pb-3 font-headline text-lg font-bold text-signal">You qualify if you have</h3>
+              <ul class="divide-y divide-ink-foreground/15">
+                {eligible.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-ink-foreground/70">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="border-b-2 border-ink-foreground/60 pb-3 font-headline text-lg font-bold">Not a fit right now</h3>
+              <ul class="divide-y divide-ink-foreground/15">
+                {notEligible.map((item) => (
+                  <li class="py-3 text-sm leading-6 text-ink-foreground/70">{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
     <!-- FAQ + apply -->
-    <section class="bg-background">
-      <div class="container mx-auto max-w-3xl">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — FAQ</p>
-        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
-        <div class="mt-10 border-t border-border">
-          {faqs.map((faq) => (
-            <details class="group border-b border-border py-5">
-              <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
-                {faq.question}
-              </summary>
-              <p class="mt-3 text-muted-foreground">{faq.answer}</p>
-            </details>
-          ))}
+    <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — FAQ</p>
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
+          <div class="mt-10 border-t border-border">
+            {faqs.map((faq) => (
+              <details class="group border-b border-border py-5">
+                <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
+                  {faq.question}
+                </summary>
+                <p class="mt-3 text-muted-foreground">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          <div class="mt-12">
+            <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Apply for the 14-Day Experience
+            </Button>
+            <p class="mt-5 font-mono text-sm leading-6 text-muted-foreground">{qualifier}</p>
+          </div>
         </div>
-        <div class="mt-12">
-          <Button href="/contact?outcome=sales-trial" size="lg" data-astro-prefetch="hover" class="btn-gradient h-12 px-8 text-base font-semibold">
-            Apply for the 14-Day Experience
-          </Button>
-          <p class="mt-5 font-mono text-sm leading-6 text-muted-foreground">{qualifier}</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
 
   </main>
   <Footer />
