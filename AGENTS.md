@@ -24,11 +24,13 @@ markosh.com-astro/
 │   │   ├── layout/           # Astro layout components
 │   │   ├── sections/         # Page section components
 │   │   └── ErrorBoundary.tsx # React error boundary
+│   ├── content/              # Content collections (blog/, case-studies/ markdown)
 │   ├── layouts/              # Astro layouts
 │   ├── pages/                # Astro pages (routes)
-│   ├── lib/                  # Utilities and helpers
+│   ├── lib/                  # Utilities and helpers (incl. whitepapers.ts data)
 │   ├── hooks/                # React custom hooks
-│   └── styles/               # Global styles
+│   ├── styles/               # Global styles
+│   └── content.config.ts     # Collection schemas (zod)
 ├── public/                   # Static assets
 ├── scripts/                  # Build and test scripts
 └── dist/                     # Build output (auto-generated)
@@ -89,8 +91,9 @@ markosh.com-astro/
    - Example: `bg-primary text-primary-foreground`
 
 3. **Typography**:
-   - Headlines: `font-headline` (Poppins)
+   - Headlines: `font-headline` (Space Grotesk)
    - Body text: `font-body` (Inter)
+   - Data/eyebrows/tags: `font-mono` (system mono) — numbered section eyebrows use the pattern `01 — Section Name`
    - Consistent spacing using Tailwind scale
 
 4. **Responsive Design**:
@@ -197,7 +200,7 @@ import type { ComponentProps } from './types';
 1. **Configuration**:
    - Origin checking enabled
    - No external script execution
-   - Trusted image domains defined
+   - All imagery self-hosted (no remote image domains)
 
 2. **Form Security**:
    - Client-side validation with Zod
@@ -244,6 +247,7 @@ import type { ComponentProps } from './types';
 2. **New Component**: Choose Astro (server) or React (interactive)
 3. **New Utility**: Add to `src/lib/` with proper TypeScript types
 4. **New Hook**: Add to `src/hooks/` following React patterns
+5. **New Blog Post / Case Study**: Add a `.md` file to `src/content/blog/` or `src/content/case-studies/` (schemas in `src/content.config.ts`); publishing = commit + push. Case-study copy must follow the compliance rules: anonymized, structural facts only, no invented client outcomes.
 
 ### **Testing New Changes**
 
@@ -268,7 +272,7 @@ npm run preview
 
 ---
 
-**Last Updated**: December 2024
+**Last Updated**: July 2026
 **Astro Version**: 5.12.9
 **Node Version**: 18+ required
 **Package Manager**: npm (lockfile: package-lock.json)

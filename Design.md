@@ -1,9 +1,15 @@
 # Markosh Visual Redesign — Design Direction
 
-> Status: **approved direction, not yet implemented.** Written 2026-07-02 after the
-> content rebrand landed on `re-branindg` (commits `04de64a`, `b0d9850`).
-> Execute via [Tasks.md](Tasks.md). Copy, IA, and compliance language are LOCKED —
-> this is a visual-language change only.
+> Status: **IMPLEMENTED** (landed on `main` 2026-07-03) — kept as the design-direction
+> record. Two later decisions supersede parts of this document:
+> 1. **Monochrome mandate (2026-07-03):** the indigo primary was replaced with ink
+>    (`--primary: 222 30% 12%`) and `--signal` green was collapsed to ink too — the
+>    site is 100% monochrome. Where §4 says "keep indigo primary / signal green",
+>    read "ink". `src/styles/global.css` is the token source of truth (mirrored in
+>    BaseLayout.astro's critical CSS — keep both in sync).
+> 2. **Numbered mono eyebrows are now site-wide (2026-07-05):** about, career,
+>    contact, resources, whitepapers, and service detail pages included.
+> Copy, IA, and compliance language remain LOCKED as described below.
 
 ## 1. The brief in one line
 

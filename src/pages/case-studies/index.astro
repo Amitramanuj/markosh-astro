@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import RevealSection from '@/components/layout/RevealSection.astro';
+
+const studies = (await getCollection('case-studies', ({ data }) => !data.draft)).sort(
+  (a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
+);
+---
+
+<BaseLayout
+  title="Case Studies - Markosh"
+  description="Anonymized engagement summaries across sales pods, embedded engineering teams, and AI workflow builds — structure and process, not inflated numbers."
+  canonical="https://markosh.com/case-studies/"
+>
+  <Header />
+  <main id="main-content">
+    <!-- Editorial hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <div class="max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Case Studies</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            How engagements <span class="text-primary">actually run</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            We sign NDAs before discovery, so these summaries are anonymized: sector, engagement structure, and process — never invented numbers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="border-t border-border">
+            {studies.map((study, index) => (
+              <article class="grid gap-x-8 gap-y-3 border-b border-border py-8 md:grid-cols-[3.5rem,1fr]">
+                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">0{index + 1}</span>
+                <div>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                    {study.data.sector} · {study.data.family}
+                  </p>
+                  <h2 class="mt-2 font-headline text-2xl font-bold tracking-tight sm:text-3xl">
+                    <a href={`/case-studies/${study.id}/`} class="transition-colors hover:text-primary">{study.data.title}</a>
+                  </h2>
+                  <p class="mt-2 max-w-3xl text-muted-foreground">{study.data.description}</p>
+                  <dl class="mt-5 flex flex-wrap gap-x-12 gap-y-3">
+                    {study.data.results.map((result) => (
+                      <div>
+                        <dd class="font-mono text-lg font-medium tracking-tight">{result.value}</dd>
+                        <dt class="mt-0.5 text-sm text-muted-foreground">{result.label}</dt>
+                      </div>
+                    ))}
+                  </dl>
+                  <a href={`/case-studies/${study.id}/`} class="mt-5 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+                    Read the engagement summary
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+  </main>
+  <Footer />
+</BaseLayout>

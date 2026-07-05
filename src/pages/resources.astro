@@ -1,25 +1,25 @@
-﻿---
+---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
 import WhitepapersTeaser from '@/components/sections/WhitepapersTeaser.astro';
 
-const upcoming = [
-  {
-    title: 'Case Studies',
-    description: "Real-world examples of how we've helped our clients succeed. Coming soon - check back to see our success stories.",
-  },
-  {
-    title: 'Blog',
-    description: 'Articles on software development, IT staffing, and business growth. Launching soon.',
-  },
-];
+const studies = (await getCollection('case-studies', ({ data }) => !data.draft)).sort(
+  (a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
+);
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
+);
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
 
 <BaseLayout
   title="Resources - Markosh"
-  description="Explore our insights, research, and success stories."
+  description="White papers, anonymized case studies, and field notes on B2B sales, technical talent, and AI in production."
   canonical="https://markosh.com/resources/"
 >
   <Header />
@@ -29,12 +29,12 @@ const upcoming = [
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-3xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Resources</p>
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Resources</p>
           <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Insights, research, <span class="text-primary">and results</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            Explore our insights, research, and success stories.
+            Research white papers, anonymized engagement case studies, and field notes from live work.
           </p>
         </div>
       </div>
@@ -45,15 +45,71 @@ const upcoming = [
     </RevealSection>
 
     <RevealSection>
+      <section class="bg-background">
+        <div class="container mx-auto">
+          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="max-w-2xl">
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Case Studies</p>
+              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+                How engagements <span class="text-primary">actually run</span>
+              </h2>
+            </div>
+            <a href="/case-studies/" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+              All case studies
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="mt-12 border-t border-border">
+            {studies.map((study) => (
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                  {study.data.sector} · {study.data.family}
+                </p>
+                <div>
+                  <h3 class="font-headline text-xl font-bold tracking-tight sm:text-2xl">
+                    <a href={`/case-studies/${study.id}/`} class="transition-colors hover:text-primary">{study.data.title}</a>
+                  </h3>
+                  <p class="mt-2 max-w-3xl text-muted-foreground">{study.data.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+
+    <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
-          <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
-            {upcoming.map((item) => (
-              <div class="border-t border-border pt-6">
-                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Coming Soon</p>
-                <h2 class="mt-4 font-headline text-3xl font-bold tracking-tight">{item.title}</h2>
-                <p class="mt-3 leading-7 text-muted-foreground">{item.description}</p>
-              </div>
+          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="max-w-2xl">
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Blog</p>
+              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+                Field notes from <span class="text-primary">the lab</span>
+              </h2>
+            </div>
+            <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+              All posts
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="mt-12 border-t border-border">
+            {posts.map((post) => (
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                  {post.data.category} · {formatDate(post.data.published)}
+                </p>
+                <div>
+                  <h3 class="font-headline text-xl font-bold tracking-tight sm:text-2xl">
+                    <a href={`/blog/${post.id}/`} class="transition-colors hover:text-primary">{post.data.title}</a>
+                  </h3>
+                  <p class="mt-2 max-w-3xl text-muted-foreground">{post.data.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -63,4 +119,3 @@ const upcoming = [
   </main>
   <Footer />
 </BaseLayout>
-

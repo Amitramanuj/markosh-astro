@@ -7,8 +7,10 @@ const assetDir = path.join(distDir, '_astro');
 const maxGeneratedFontFiles = 20;
 const maxGeneratedFontBytes = 180 * 1024;
 const maxHomeJsBytes = 45 * 1024;
-const targetHomeHtmlBytes = 45 * 1024;
-const maxHomeHtmlBytes = 55 * 1024;
+// Home grew to ~70KB raw (nine content sections + FAQ JSON-LD) during the 2026-07
+// redesign; it gzips to ~15KB over the wire. Budget re-based 2026-07-05.
+const targetHomeHtmlBytes = 64 * 1024;
+const maxHomeHtmlBytes = 76 * 1024;
 
 async function assertDistExists() {
   try {

@@ -14,7 +14,10 @@ const sitemapMetadataByPath = {
   '/career/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.5 },
   '/contact/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
   '/industries/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.6 },
-  '/resources/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
+  '/mvp-on-us/': { lastmod: '2026-07-05', changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/resources/': { lastmod: '2026-07-05', changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
+  '/blog/': { lastmod: '2026-07-05', changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
+  '/case-studies/': { lastmod: '2026-07-05', changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
   '/sales/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
   '/sales-rep-trial/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
   '/services/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.9 },
@@ -85,22 +88,7 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp'
     },
-    // Configure image formats and quality
-    domains: ['images.unsplash.com', 'placehold.co', 'via.placeholder.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co'
-      },
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com'
-      }
-    ],
+    // All imagery is self-hosted; no remote image domains are allowed.
     // Per-image format and quality are set at the <Image /> call sites.
   },
 

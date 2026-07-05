@@ -1,0 +1,141 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import RevealSection from '@/components/layout/RevealSection.astro';
+import { generateArticleStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
+const { Content } = await render(post);
+
+const updatedDate = post.data.updated ?? post.data.published;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+const pageUrl = `https://markosh.com/blog/${post.id}/`;
+const extraSchemas = [
+  generateArticleStructuredData({
+    title: post.data.title,
+    description: post.data.description,
+    url: pageUrl,
+    publishedTime: post.data.published,
+    modifiedTime: updatedDate,
+    section: post.data.category,
+  }),
+  generateBreadcrumbStructuredData([
+    { name: 'Home', url: 'https://markosh.com/' },
+    { name: 'Blog', url: 'https://markosh.com/blog/' },
+    { name: post.data.title, url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  canonical={pageUrl}
+  type="article"
+  publishedTime={post.data.published}
+  modifiedTime={updatedDate}
+  section={post.data.category}
+  extraSchemas={extraSchemas}
+>
+  <Header />
+  <main id="main-content">
+    <section class="relative isolate overflow-hidden pt-10 pb-8 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a class="hover:text-primary" href="/">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a class="hover:text-primary" href="/blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-foreground">{post.data.title}</li>
+          </ol>
+        </nav>
+        <div class="mt-8 max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">{post.data.category}</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            {post.data.title}
+          </h1>
+          <p class="mt-5 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            {formatDate(post.data.published)} · ~{post.data.readTimeMinutes} min read
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <article class="article-body max-w-3xl">
+            <Content />
+          </article>
+          <div class="mt-12 max-w-3xl border-t border-border pt-8">
+            <a href="/blog/" class="inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+              All posts
+              <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style is:global>
+  /* Markdown body styling — mirrors whitepaper article rhythm */
+  .article-body :is(h2) {
+    margin-top: 2.5rem;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .article-body :is(h3) {
+    margin-top: 2rem;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .article-body p {
+    margin-top: 1rem;
+    line-height: 1.75;
+  }
+  .article-body > p:first-child {
+    margin-top: 0;
+    font-size: 1.125rem;
+    color: hsl(var(--foreground));
+  }
+  .article-body em {
+    color: hsl(var(--muted-foreground));
+  }
+  .article-body ul,
+  .article-body ol {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    display: grid;
+    gap: 0.5rem;
+    line-height: 1.7;
+  }
+  .article-body ul { list-style: disc; }
+  .article-body ol { list-style: decimal; }
+  .article-body strong { font-weight: 600; }
+  .article-body a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
