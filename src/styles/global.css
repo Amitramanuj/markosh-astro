@@ -107,18 +107,39 @@
   /* Faint blueprint grid backdrop */
   .bg-grid {
     background-image:
-      linear-gradient(hsl(var(--border) / 0.7) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.7) 1px, transparent 1px);
+      linear-gradient(hsl(var(--border) / 0.85) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.85) 1px, transparent 1px);
     background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 96% 72% at 50% 0%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 96% 72% at 50% 0%, black 30%, transparent 75%);
+  }
+
+  /* Home hero only — one-time spread-from-center reveal on load. Standalone
+     `scale` composes with the inline `transform` set by the parallax script,
+     so the two never conflict. */
+  .bg-grid-reveal {
+    transform-origin: 50% 50%;
+    animation: grid-spread 1.1s ease-out;
+  }
+
+  @keyframes grid-spread {
+    from {
+      scale: 0.88;
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg-grid-reveal {
+      animation: none;
+    }
   }
 
   /* Hero variant — slightly stronger lines so the parallax depth reads */
   .bg-grid-strong {
     background-image:
-      linear-gradient(hsl(var(--border) / 0.9) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.9) 1px, transparent 1px);
+      linear-gradient(hsl(var(--border) / 1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 1) 1px, transparent 1px);
   }
 
   /* Editorial card surface */
