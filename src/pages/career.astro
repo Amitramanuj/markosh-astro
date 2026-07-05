@@ -94,12 +94,12 @@ const talentHighlights = [
               These highlighted opportunities are in planning and will open soon. Express your interest now to be among the first to interview.
             </p>
           </div>
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-3">
             {upcomingRoles.map((role) => (
-              <article class="glass-card flex flex-col p-8">
-                <p class="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Opening soon</p>
-                <h3 class="mt-3 font-headline text-xl font-bold">{role.title}</h3>
-                <p class="mt-3 text-muted-foreground">{role.description}</p>
+              <article class="border-t border-border pt-6">
+                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Opening Soon</p>
+                <h3 class="mt-4 font-headline text-2xl font-bold tracking-tight">{role.title}</h3>
+                <p class="mt-3 leading-7 text-muted-foreground">{role.description}</p>
               </article>
             ))}
           </div>
