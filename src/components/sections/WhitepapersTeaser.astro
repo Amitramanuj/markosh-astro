@@ -21,15 +21,19 @@ const featured = whitepapers.slice(0, 3);
       </a>
     </div>
 
-    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+    <div class="mt-12 border-t border-border">
       {featured.map((paper) => (
-        <a href={`/whitepapers/${paper.slug}/`} class="glass-card group flex flex-col p-8">
-          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-primary">{paper.category}</p>
-          <h3 class="mt-3 flex-grow font-headline text-lg font-bold leading-snug group-hover:text-primary">
-            {paper.title}
-          </h3>
-          <p class="mt-4 text-sm text-muted-foreground">~{paper.readTimeMinutes} min read</p>
-        </a>
+        <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            {paper.category} · ~{paper.readTimeMinutes} min
+          </p>
+          <div>
+            <h3 class="font-headline text-xl font-bold tracking-tight sm:text-2xl">
+              <a href={`/whitepapers/${paper.slug}/`} class="transition-colors hover:text-primary">{paper.title}</a>
+            </h3>
+            <p class="mt-2 max-w-3xl text-muted-foreground">{paper.summary}</p>
+          </div>
+        </article>
       ))}
     </div>
   </div>
