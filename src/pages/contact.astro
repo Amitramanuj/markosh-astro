@@ -52,9 +52,6 @@ const extraSchemas = [
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
             We'd love to hear from you. Let's discuss how we can help your business grow.
           </p>
-          <p class="mt-4 text-muted-foreground">
-            Prefer not to fill a form? The AI assistant on this site — an agent we operate and trained on our services — answers questions about engagements and fit instantly.
-          </p>
         </div>
       </div>
     </section>
@@ -95,6 +92,32 @@ const extraSchemas = [
           <div class="glass-card p-8">
             <ContactForm client:load />
           </div>
+        </div>
+      </section>
+    </RevealSection>
+
+    <RevealSection>
+      <section class="border-t border-border">
+        <div class="container mx-auto grid items-center gap-8 md:grid-cols-[1fr_auto]">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Live demonstration</p>
+            <h2 class="mt-4 font-headline text-3xl font-bold tracking-tight">Talk to the agent we built for ourselves</h2>
+            <p class="mt-4 text-muted-foreground">
+              This is the kind of system we build for clients. Ours is trained on everything Markosh does — services, engagement models, fit. Ask it anything, right now.
+            </p>
+            <p class="mt-2 text-sm text-muted-foreground">
+              It's also the chat bubble in the corner of every page on this site.
+            </p>
+          </div>
+          <a
+            href="https://www.taskade.com/a/01K1H8Z4KAY5587YF56CR3V3F0"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="if (window.markoshOpenAgent) { event.preventDefault(); window.markoshOpenAgent(); }"
+            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Start a conversation
+          </a>
         </div>
       </section>
     </RevealSection>

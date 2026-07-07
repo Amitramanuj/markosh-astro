@@ -7,6 +7,39 @@
     let hasRequestedLoad = false;
     let timerId;
 
+    // Taskade renders its launcher inside a closed shadow root, so capture the
+    // root as it's created — it's the only way to reach the launcher button.
+    let agentShadowRoot = null;
+    const originalAttachShadow = Element.prototype.attachShadow;
+    Element.prototype.attachShadow = function (options) {
+      const root = originalAttachShadow.call(this, options);
+      if (this.id === `taskade-agent-popup-${agentId}`) {
+        agentShadowRoot = root;
+        Element.prototype.attachShadow = originalAttachShadow;
+      }
+      return root;
+    };
+
+    // Used by "talk to the agent" CTAs (e.g. on /contact/). Falls back to the
+    // full-page chat if the launcher can't be found in time.
+    window.markoshOpenAgent = () => {
+      loadTaskadeWidget();
+      const deadline = Date.now() + 4000;
+      const tryOpen = () => {
+        const launcher = agentShadowRoot?.querySelector('button');
+        if (launcher) {
+          launcher.click();
+          return;
+        }
+        if (Date.now() < deadline) {
+          window.setTimeout(tryOpen, 150);
+          return;
+        }
+        window.open(`https://www.taskade.com/a/${agentId}`, '_blank', 'noopener');
+      };
+      tryOpen();
+    };
+
     const initWidget = () => {
       const widget = window.TaskadeEmbed?.AgentPublicChatPopup;
 
