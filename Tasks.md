@@ -1,79 +1,72 @@
-# Booking Calendar + Google Calendar Auth Tasks
+# Markosh Site — Task Backlog
 
-## Summary
+> Updated 2026-07-07. This replaces the native booking-calendar spec that previously
+> lived here (see git history, commit `bf622e0` and earlier) — **superseded** by the
+> decision to buy a business suite (Zoho or similar) that covers email, forms, and
+> scheduling in one product.
 
-Replace the zcal experiment with a native Markosh booking flow: static Astro page, small React scheduler island, and server-side Google Calendar API calls through Cloudflare Pages Functions. The UI must stay monochrome, fast, and fully brand-matched.
+## 1. Blocked on business decision — pick and buy the suite
 
-## Key Changes
+The owner is evaluating suites (Zoho One or equivalent). One purchase resolves three
+former build items at once:
 
-- Build `/book-a-call` as a static Astro page with a native calendar section: meeting details, month picker, date grid, time slots, booking questions, and confirmation state.
-- Add a small `BookingScheduler` React island only for interactivity; do not load zcal, iframe schedulers, Calendly, Google frontend scripts, or other third-party scheduler UI.
-- Use Cloudflare Pages Functions for:
-  - `GET /api/booking/availability?date=YYYY-MM-DD`
-  - `POST /api/booking/create`
-- Use Google Calendar API server-side only:
-  - `freeBusy.query` to calculate blocked times.
-  - `events.insert` with `conferenceData.createRequest` to create Google Meet.
-  - `sendUpdates=all` so both host and guest receive invites.
-- Add a local auth helper script that prints a Google OAuth refresh token without writing secrets to tracked files.
+- [ ] **Contact form backend** — form is currently a mock (`src/lib/form-utils.ts`,
+      submissions go nowhere). Wire `ContactFormCore.tsx` to the suite's form/CRM
+      endpoint once chosen. This is the highest-impact gap on the site.
+- [ ] **Business email** — route `business@markosh.com` / `talent@markosh.com`
+      through the suite.
+- [ ] **Scheduling / book-a-call** — use the suite's booking product instead of the
+      custom Google-Calendar build. Requirement that survives from the old spec:
+      the booking UI must stay monochrome and brand-matched — if the suite's embed
+      can't be styled acceptably, fall back to a styled link-out rather than an
+      off-brand iframe.
 
-## Calendar Section Design
+## 2. Next conversation queue (approved, ready to execute)
 
-- Match the existing Markosh visual system: off-white page, white content panels, dark ink CTA, monochrome accents, 8-12px radius where appropriate, no blue Google styling.
-- Desktop layout: left panel for meeting context and trust notes, right panel for calendar/date/time/form workflow.
-- Mobile layout: single-column step flow: date, time, details, confirm.
-- Default meeting rules:
-  - Duration: 30 minutes.
-  - Availability window: Monday-Friday, 9:00 AM-1:00 PM `America/New_York`.
-  - Slot interval: 30 minutes.
-  - Buffer: 15 minutes after each meeting.
-  - Minimum notice: 12 hours.
-  - Booking window: next 30 days.
-  - Visitor sees times in their local browser timezone.
-- Booking questions:
-  - Name
-  - Work email
-  - Company
-  - Company website
-  - What would you like to discuss?
-  - Timeline
-  - Additional context
-- Confirmation view shows selected date/time, Google Meet expectation, and "calendar invite sent" messaging.
+- [ ] **Whitepapers library page** (`src/pages/whitepapers/index.astro`) — still uses
+      glass cards; convert to the editorial rule-row style now used by
+      WhitepapersTeaser and the Resources/blog/case-studies listings.
+- [ ] **Copy work — 5 items.** Process rule: draft 2–3 options per item, owner picks;
+      never publish directly. Compliance rules in Design.md §7 apply to all of them.
+  - [ ] Homepage **manifesto band** — short "why we exist" beat between HeroSection
+        and ServicesOverview (post-AI market shifted; tools cheap, judgment scarce;
+        Markosh sells trained judgment amplified by AI). Ink band, 2–3 sentences.
+  - [ ] Homepage **Sell-side proof beat** — the outbound-pod equivalent of the
+        vetting funnel (ICP → research → human outreach → QA → CRM visibility), so
+        the page middle stops reading staffing-first (business is 60% sales).
+  - [ ] Homepage **section reorder** — move TrustSection (founders) earlier; demote
+        RolesGrid so TrialOfferBand is the unambiguous closing CTA.
+  - [ ] **/services/ai-strategy reframe** — from "you don't know where AI pays off"
+        to "your pilots didn't stick — we production-ize" (2026 buyer reality).
+  - [ ] **/sales human-led argument** — one short block on *why* no AI voice
+        outreach (deliverability, FCC robocall classification, brand safety);
+        link the existing blog post "Why a Human Makes Every Call".
 
-## Auth Script
+## 3. Waiting on owner
 
-- Add `scripts/google-calendar-auth.mjs`.
-- Inputs: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, optional redirect URI defaulting to `http://localhost:8787/oauth/callback`.
-- Scopes:
-  - `https://www.googleapis.com/auth/calendar.events`
-  - `https://www.googleapis.com/auth/calendar.freebusy`
-- Script flow:
-  - Prints Google OAuth URL.
-  - User opens it, approves access, and pastes the returned code.
-  - Script exchanges code for tokens.
-  - Script prints `GOOGLE_REFRESH_TOKEN`.
-  - Script does not write secrets by default.
-- Required deployment secrets:
-  - `GOOGLE_CLIENT_ID`
-  - `GOOGLE_CLIENT_SECRET`
-  - `GOOGLE_REFRESH_TOKEN`
-  - `GOOGLE_CALENDAR_ID=primary`
-  - `BOOKING_HOST_NAME=Markosh`
-  - `BOOKING_HOST_EMAIL=business@markosh.com`
+- [ ] **Case-study review** — the 3 anonymized summaries in
+      `src/content/case-studies/` were AI-drafted (structural facts only) and need
+      owner sign-off; they are live-on-next-push.
+- [ ] **Social profile URLs** — profiles are being created; when ready, re-add footer
+      social links (Footer.astro TODO) and correct/confirm the `sameAs` URLs in
+      `generateOrganizationStructuredData()` (`src/lib/seo-utils.ts`), which
+      currently guess `linkedin.com/company/markosh` and `twitter.com/markosh`.
 
-## Test Plan
+## 4. Small cleanups (fold into any session)
 
-- Run `npm run type-check`.
-- Run `npm run build`.
-- Verify `/book-a-call` renders without loading third-party scheduler scripts.
-- Test availability API with mock Google responses for busy slots, empty calendar, and fully booked day.
-- Test booking API validation: missing fields, invalid email, unavailable slot, and valid booking.
-- Test successful event payload includes attendee, Google Meet creation, custom answers in description, and `sendUpdates=all`.
-- Browser-check desktop and mobile layouts for no overlap, clean wrapping, and accessible focus states.
+- [ ] Delete the two stale `TODO(content)` comments — owner confirmed 2026-07-07 that
+      the vetting-funnel process (`VettingProcess.astro`) and the operational
+      commitments (`TrustSection.astro`) reflect actual practice/SOP. Note: funnel
+      claims are "we try to follow it" — keep percentages directionally framed if
+      copy is ever revised.
 
-## Assumptions
+## Resolved log (2026-07-05 → 07)
 
-- Implementation targets Cloudflare Pages with Pages Functions while preserving static Astro rendering for the public page.
-- OAuth refresh token is for the owner's Google account, not a service account.
-- Secrets are never committed.
-- The first version does not support rescheduling, cancellation, payment, multi-host routing, or multiple meeting types.
+- Full SEO/perf audit green (26 pages); meta-length fixes; perf budget re-based.
+- Dead code cleanup; docs refreshed (CLAUDE.md/AGENTS.md/Design.md/README).
+- Eyebrow consistency site-wide; WhitepapersTeaser converted to editorial rows.
+- Blog + case-studies content collections shipped; Resources page completed.
+- AI agent surfaced in FAQ/contact/ai-strategy copy. Voice agent: **deferred**.
+- 200M+ contact-base claim confirmed real; provenance stays vague (never name
+  sources, never say "licensed"). Reps briefed by owner.
+- No CMS/backend for content by decision — markdown + git.
