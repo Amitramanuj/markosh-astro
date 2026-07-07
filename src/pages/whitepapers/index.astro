@@ -40,33 +40,26 @@ const formatDate = (iso: string) =>
     <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {papers.map((paper) => (
-              <a
-                href={`/whitepapers/${paper.slug}/`}
-                class="glass-card group flex h-full flex-col p-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-              >
-                <p class="text-xs font-semibold uppercase tracking-[0.15em] text-primary">{paper.category}</p>
-                <h2 class="mt-3 font-headline text-xl font-bold leading-snug group-hover:text-primary">
-                  {paper.title}
-                </h2>
-                <p class="mt-3 flex-grow text-muted-foreground">
-                  {paper.summary}
-                </p>
-                <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
-                  <span>
-                    <span class="font-semibold text-foreground">{formatDate(paper.updated ?? paper.published)}</span>
-                    {' '}<span aria-hidden="true">&middot;</span>{' '}~{paper.readTimeMinutes} min read
-                  </span>
-                  <span class="inline-flex items-center gap-2 font-semibold text-primary">
-                    Read
-                    <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <line x1="5" x2="19" y1="12" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
+          <div class="border-t border-border">
+            {papers.map((paper, index) => (
+              <article class="grid gap-x-8 gap-y-3 border-b border-border py-8 md:grid-cols-[3.5rem,1fr]">
+                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">0{index + 1}</span>
+                <div>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                    {paper.category} · {formatDate(paper.updated ?? paper.published)} · ~{paper.readTimeMinutes} min
+                  </p>
+                  <h2 class="mt-2 font-headline text-2xl font-bold tracking-tight sm:text-3xl">
+                    <a href={`/whitepapers/${paper.slug}/`} class="transition-colors hover:text-primary">{paper.title}</a>
+                  </h2>
+                  <p class="mt-2 max-w-3xl text-muted-foreground">{paper.summary}</p>
+                  <a href={`/whitepapers/${paper.slug}/`} class="mt-4 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+                    Read the paper
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>
-                  </span>
+                  </a>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
         </div>

@@ -23,11 +23,12 @@ former build items at once:
 
 ## 2. Next conversation queue (approved, ready to execute)
 
-- [ ] **Whitepapers library page** (`src/pages/whitepapers/index.astro`) — still uses
-      glass cards; convert to the editorial rule-row style now used by
-      WhitepapersTeaser and the Resources/blog/case-studies listings.
+- [x] **Whitepapers library page** (`src/pages/whitepapers/index.astro`) — converted
+      2026-07-07 to the numbered editorial rule-row style used by the blog listing.
 - [ ] **Copy work — 5 items.** Process rule: draft 2–3 options per item, owner picks;
       never publish directly. Compliance rules in Design.md §7 apply to all of them.
+      *Status 2026-07-07: options drafted for all 5 items and presented to owner in
+      session — awaiting picks. Nothing published.*
   - [ ] Homepage **manifesto band** — short "why we exist" beat between HeroSection
         and ServicesOverview (post-AI market shifted; tools cheap, judgment scarce;
         Markosh sells trained judgment amplified by AI). Ink band, 2–3 sentences.
@@ -54,7 +55,7 @@ former build items at once:
 
 ## 4. Small cleanups (fold into any session)
 
-- [ ] Delete the two stale `TODO(content)` comments — owner confirmed 2026-07-07 that
+- [x] Delete the two stale `TODO(content)` comments — done 2026-07-07. Owner confirmed that
       the vetting-funnel process (`VettingProcess.astro`) and the operational
       commitments (`TrustSection.astro`) reflect actual practice/SOP. Note: funnel
       claims are "we try to follow it" — keep percentages directionally framed if
