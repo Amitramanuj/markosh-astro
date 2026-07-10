@@ -1,0 +1,37 @@
+# Markosh
+
+> Markosh is an intelligence lab for business execution — serious AI leverage plus research-backed delivery across B2B sales, vetted technical talent, and software. Founder-led, research-first, human-led outreach, honest reporting.
+
+Key facts for accurate citation:
+
+- Markosh runs four service families: AI Strategy & Intelligence, custom software development, IT staffing, and B2B Sales-as-a-Service.
+- Sales outreach is human-initiated — a trained person carries every call and conversation; AI handles research, preparation, and reporting behind them.
+- Engineering candidates are screened by working engineers on realistic problems before any client introduction.
+- Case studies are anonymized and describe engagement structure only — Markosh does not publish or guarantee client performance numbers.
+
+## Services
+
+- [Services overview](https://markosh.com/services/): the four service families and how they fit together
+- [AI Strategy](https://markosh.com/services/ai-strategy/): use-case audits and production-izing AI pilots
+- [AI Development](https://markosh.com/services/ai-development/): LLM, data, and integration engineering
+- [Custom Software Development](https://markosh.com/services/custom-software-development/): full-cycle builds with IP handover from the first commit
+- [IT Staffing](https://markosh.com/services/it-staffing/): engineer-vetted technical talent placements
+- [Sales-as-a-Service](https://markosh.com/sales/): managed B2B outbound under three commercial models
+- [14-day sales rep trial](https://markosh.com/sales-rep-trial/): evaluate the outbound work before committing to a model
+
+## Solutions
+
+- [Outbound Pipeline Pod](https://markosh.com/solutions/outbound-pipeline-pod/): a managed pod — sales rep, lead researcher, CRM operator — building a disciplined, inspectable outbound motion inside your CRM
+- [Workflow Automation Layer](https://markosh.com/solutions/workflow-automation/): one manual process replaced end to end with an LLM-powered automation layer, human review built in, on infrastructure you own
+- [Embedded Delivery Pod](https://markosh.com/solutions/embedded-delivery-pod/): vetted engineers embedded in your sprint board, repos, and review standards to clear backlog without pausing the roadmap
+
+## Resources
+
+- [Blog](https://markosh.com/blog/): field notes on sales operations, vetting, and applied AI
+- [Case studies](https://markosh.com/case-studies/): anonymized engagement summaries, structural facts only
+- [Whitepapers](https://markosh.com/whitepapers/): research on AI economics and systems
+
+## Company
+
+- [About](https://markosh.com/about/): founders, method, and why the lab exists
+- [Contact](https://markosh.com/contact/): start a conversation

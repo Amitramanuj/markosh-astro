@@ -91,14 +91,6 @@ Never confirmed against production:
 3. Re-run production Lighthouse on `/`, `/services/`, `/contact/`, `/sales/`
    (baseline above is from 2026-07-03 with 17 pages).
 
-### P2 — Sitemap `lastmod` for content collections (small code task)
-
-Static routes have honest `lastmod` values, but blog posts and case studies fall
-through the manual `sitemapMetadataByPath` map with no `lastmod` at all. Derive it
-from collection frontmatter (`publishDate`/`updatedDate`) in the sitemap
-`serialize()` hook. Also note: the map is manual — every new page must be added by
-hand (documented in CLAUDE.md/AGENTS.md).
-
 ### P2 — Organization `sameAs` URLs are guesses (waiting on owner)
 
 `generateOrganizationStructuredData()` in `src/lib/seo-utils.ts` claims
@@ -111,8 +103,6 @@ social links).
 - **Drop `.woff` fallbacks**: 3 legacy `.woff` files (~77 KB) ship in every deploy
   but are never requested by browsers that can run this site. Custom `@font-face`
   with `.woff2`-only sources would remove them.
-- **`llms.txt`**: cheap addition that helps AI crawlers cite the site correctly —
-  on-brand for an intelligence lab.
 - **Home HTML weight**: watch the 73.6 KB (target 64 KB, hard limit 76 KB); next
   copy addition to the home page may need an offsetting trim.
 
@@ -146,6 +136,8 @@ risk-free trial, honest case studies. Gaps, in impact order:
 | P2 Source-image weight in dist | Only WebP ships; PNG originals no longer emitted |
 | P2 CSS strategy | Stylesheet 63.7 KB → 38.5 KB; critical CSS stays small and inline |
 | P3 Browserslist / Tailwind experiment / audit tooling | No staleness warning in current builds; `optimizeUniversalDefaults` removed; `audit:technical-seo` + `lighthouse:summary` scripts added |
+| P2 Content-collection sitemap `lastmod` (opened 2026-07-11) | `collectContentLastmod()` in `astro.config.mjs` reads `updated`/`published` frontmatter; all blog + case-study URLs now carry `lastmod` (static pages still need manual `sitemapMetadataByPath` entries) |
+| P3 `llms.txt` (opened 2026-07-11) | `public/llms.txt` following llmstxt.org format — summary, citation facts, and annotated links to services/solutions/resources, using existing site copy only |
 
 ## Performance Budget Guardrails
 

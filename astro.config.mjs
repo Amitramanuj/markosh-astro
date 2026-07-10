@@ -1,10 +1,44 @@
 ﻿// @ts-check
 import { defineConfig } from 'astro/config';
+import fs from 'node:fs';
 import path from 'path';
 
 import react from '@astrojs/react';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+
+/**
+ * Sitemap lastmod for git-markdown content (blog posts, case studies),
+ * read from each file's frontmatter: `updated` if present, else `published`.
+ * @returns {Record<string, Pick<import('@astrojs/sitemap').SitemapItem, 'lastmod' | 'changefreq' | 'priority'>>}
+ */
+function collectContentLastmod() {
+  /** @type {ReturnType<typeof collectContentLastmod>} */
+  const entries = {};
+  const collections = [
+    { dir: 'src/content/blog', route: '/blog/' },
+    { dir: 'src/content/case-studies', route: '/case-studies/' },
+  ];
+
+  for (const { dir, route } of collections) {
+    for (const file of fs.readdirSync(dir)) {
+      if (!file.endsWith('.md')) continue;
+      const source = fs.readFileSync(path.join(dir, file), 'utf8');
+      if (/^draft:\s*true/m.test(source)) continue;
+      const published = source.match(/^published:\s*'?(\d{4}-\d{2}-\d{2})'?/m)?.[1];
+      const updated = source.match(/^updated:\s*'?(\d{4}-\d{2}-\d{2})'?/m)?.[1];
+      const lastmod = updated ?? published;
+      if (!lastmod) continue;
+      entries[`${route}${file.replace(/\.md$/, '')}/`] = {
+        lastmod,
+        changefreq: ChangeFreqEnum.MONTHLY,
+        priority: 0.6,
+      };
+    }
+  }
+
+  return entries;
+}
 
 const evergreenLastMod = '2026-07-03';
 /** @type {Record<string, Pick<import('@astrojs/sitemap').SitemapItem, 'lastmod' | 'changefreq' | 'priority'>>} */
@@ -45,6 +79,7 @@ const sitemapMetadataByPath = {
     changefreq: ChangeFreqEnum.MONTHLY,
     priority: 0.7,
   },
+  ...collectContentLastmod(),
 };
 
 /** @param {string} url */
