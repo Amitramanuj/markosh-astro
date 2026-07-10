@@ -2,8 +2,9 @@
  * Content for the solution pages at /solutions/<slug>/
  *
  * Solutions are capability-framed: the problem, how we run the engagement,
- * and its structural shape. Each links to a real anonymized case study as
- * proof — never invented client stories or outcome numbers.
+ * and its structural shape. Each links to a structural engagement walkthrough
+ * (the /case-studies/ collection) — never invented client stories or outcome
+ * numbers.
  */
 
 export interface Solution {
@@ -76,7 +77,7 @@ export const solutions: Solution[] = [
     caseStudy: {
       title: 'Standing Up an Outbound Revenue Pod for a B2B SaaS Team',
       description:
-        'How a managed pod takes a SaaS company from no outbound motion to a disciplined, inspectable one — anonymized, structural facts only.',
+        'How a managed pod takes a SaaS company from no outbound motion to a disciplined, inspectable one — a structural walkthrough, no client stories or numbers.',
       href: '/case-studies/outbound-revenue-pod-b2b-saas/',
     },
     related: { label: 'Sales-as-a-Service — the three commercial models', href: '/sales/' },
@@ -133,7 +134,7 @@ export const solutions: Solution[] = [
     caseStudy: {
       title: 'Replacing a Manual Process with a Workflow Automation Layer',
       description:
-        'LLM, data, and integration work focused on one slow manual business process — anonymized, structural facts only.',
+        'LLM, data, and integration work focused on one slow manual business process — a structural walkthrough, no client stories or numbers.',
       href: '/case-studies/workflow-automation-layer/',
     },
     related: { label: 'AI Development — the full service', href: '/services/ai-development/' },
@@ -190,7 +191,7 @@ export const solutions: Solution[] = [
     caseStudy: {
       title: 'Clearing a Product Backlog Without Pausing the Roadmap',
       description:
-        'An embedded engineering pod for teams whose backlog has outgrown their headcount — anonymized, structural facts only.',
+        'An embedded engineering pod for teams whose backlog has outgrown their headcount — a structural walkthrough, no client stories or numbers.',
       href: '/case-studies/backlog-acceleration-embedded-pod/',
     },
     related: { label: 'IT Staffing — single-engineer placements', href: '/services/it-staffing/' },

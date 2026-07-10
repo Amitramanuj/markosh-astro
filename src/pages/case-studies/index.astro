@@ -12,7 +12,7 @@ const studies = (await getCollection('case-studies', ({ data }) => !data.draft))
 
 <BaseLayout
   title="Case Studies | Markosh"
-  description="Anonymized engagement summaries across sales pods, embedded engineering teams, and AI workflow builds — structure and process, not inflated numbers."
+  description="Structural walkthroughs of how our engagements run — sales pods, embedded engineering teams, and AI workflow builds: roles, guardrails, and process."
   canonical="https://markosh.com/case-studies/"
 >
   <Header />
@@ -27,7 +27,7 @@ const studies = (await getCollection('case-studies', ({ data }) => !data.draft))
             How engagements <span class="text-primary">actually run</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            We sign NDAs before discovery, so these summaries are anonymized: sector, engagement structure, and process — never invented numbers.
+            Each walkthrough shows the structure of an engagement: the roles, the guardrails, and the operating rhythm. No client names, no client stories, and never invented numbers.
           </p>
         </div>
       </div>
@@ -57,7 +57,7 @@ const studies = (await getCollection('case-studies', ({ data }) => !data.draft))
                     ))}
                   </dl>
                   <a href={`/case-studies/${study.id}/`} class="mt-5 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
-                    Read the engagement summary
+                    Read the walkthrough
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>

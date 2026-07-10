@@ -11,24 +11,22 @@ results:
 draft: false
 ---
 
-*Anonymized engagement summary. Client-identifying details are withheld, and the figures shown describe how the engagement was structured — not client efficiency outcomes, which remain confidential.*
+*A structural walkthrough of this engagement as we run it: the scope rules, the architecture stance, and the operating rhythm. This is not a client account. We do not publish client names, stories, or performance numbers.*
 
-## The situation
+## The starting point
 
-A services business ran a critical internal process the way most companies still do: a person reading incoming documents, extracting what mattered, re-keying it into other systems, and flagging exceptions by email. The process worked — which is exactly why it had never been fixed — but it consumed skilled staff hours daily and scaled linearly with volume.
+This engagement targets a process most companies still run manually: a person reads incoming documents, extracts what matters, re-keys it into other systems, and flags exceptions by email. The process works, which is exactly why it never gets fixed. It also consumes skilled staff hours every day and scales linearly with volume.
 
-## The approach
+## How the build runs
 
-We applied the one-workflow rule: scope a single process end to end rather than "exploring AI opportunities" broadly. Discovery mapped the real workflow — including the undocumented judgment calls the team made without noticing — before any architecture was drawn.
+We apply a one-workflow rule: scope a single process end to end instead of exploring AI opportunities broadly. Discovery maps the workflow as it actually runs, including the undocumented judgment calls the team makes without noticing, before any architecture is drawn.
 
-The build itself was an integration project with a model in the middle: document intake, LLM-based extraction with confidence thresholds, validation against existing systems of record, and a human review queue for anything below threshold. The people who ran the manual process reviewed and corrected outputs from the first week, which both built trust and produced the evaluation data the system was tuned against.
+The build itself is an integration project with a model in the middle: document intake, LLM-based extraction with confidence thresholds, validation against existing systems of record, and a human review queue for anything below threshold. The people who run the process manually review and correct outputs from the first week. That builds trust with the team the system affects most, and their corrections become the evaluation data the system is tuned against.
 
 ## The architecture stance
 
-- **API-first** — every capability exposed as an endpoint, so the client's own team can extend it without us.
-- **Client-owned infrastructure** — deployed in the client's cloud accounts, under their access controls, from day one.
-- **Human escalation path** — low-confidence cases route to people by design; the goal is redirected hours, not a headless process.
+Every capability is exposed as an API endpoint so the client's own team can extend the system without us. It deploys in the client's cloud accounts, under their access controls, from day one. Low-confidence cases route to people by design; the goal is redirected hours, not a headless process.
 
 ## What the client owns
 
-Source, documentation, prompts, evaluation datasets, and the infrastructure itself. Nothing about the system requires Markosh to operate it — which we consider a feature of the engagement, not a threat to it.
+Source, documentation, prompts, evaluation datasets, and the infrastructure itself. Nothing about the system requires Markosh to operate it. We consider that a feature of the engagement.

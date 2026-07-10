@@ -45,9 +45,12 @@ former build items at once:
 
 ## 3. Waiting on owner
 
-- [ ] **Case-study review** — the 3 anonymized summaries in
-      `src/content/case-studies/` were AI-drafted (structural facts only) and need
-      owner sign-off; they are live-on-next-push.
+- [x] **Case-study review** — resolved 2026-07-11. Owner confirmed the 3 entries in
+      `src/content/case-studies/` are NOT real engagements; they were reframed as
+      present-tense structural walkthroughs (explicit "not a client account"
+      disclaimer on each), all "real/anonymized case study" claims across the site
+      were corrected, and the humanizer pass was applied. Rule going forward: never
+      frame illustrative content as a past client engagement.
 - [ ] **Social profile URLs** — profiles are being created; when ready, re-add footer
       social links (Footer.astro TODO) and correct/confirm the `sameAs` URLs in
       `generateOrganizationStructuredData()` (`src/lib/seo-utils.ts`), which

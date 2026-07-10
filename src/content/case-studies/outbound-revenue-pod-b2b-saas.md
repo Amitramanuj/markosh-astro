@@ -11,22 +11,26 @@ results:
 draft: false
 ---
 
-*Anonymized engagement summary. Client-identifying details are withheld, and the figures shown describe how the engagement was structured — not client revenue outcomes, which remain confidential.*
+*A structural walkthrough of this engagement as we run it: the roles, the guardrails, and the operating rhythm. This is not a client account. We do not publish client names, stories, or performance numbers.*
 
-## The situation
+## The starting point
 
-A B2B SaaS company with a working product and steady inbound interest had no outbound motion at all. The founders were doing ad-hoc outreach between other responsibilities, there was no ICP definition written down anywhere, and the CRM was a contact graveyard nobody trusted. Hiring a full sales team was premature; doing nothing was costing them the segment of their market that never searches.
+This engagement is built for a B2B SaaS company with a working product, steady inbound interest, and no outbound motion at all. The founders do ad-hoc outreach between other responsibilities. No written ICP exists, and nobody trusts what is in the CRM. Hiring a full sales team would be premature at this stage. Doing nothing leaves the part of the market that never searches completely unreached.
 
-## The approach
+## How the pod runs
 
-We deployed our standard pod structure: one trained sales rep, one lead researcher, and one CRM operator, working against a single ICP.
+The pod is three people working against a single ICP: a trained sales rep, a lead researcher, and a CRM operator.
 
-The first weeks were research, not outreach. The researcher built the account universe from our contact-intelligence base, the pod drafted ICP and messaging documents, and nothing went out until the client had approved the targeting, the talk tracks, and the suppression rules in writing. Outreach itself followed our operating guardrails: human-initiated calls inside prospect-local windows, DNC scrubbing on the required cycle, and no automation anywhere near a conversation.
+The first weeks are research, not outreach. The researcher builds the account universe from our contact-intelligence base while the pod drafts ICP and messaging documents. Nothing goes out until the client has approved the targeting, the talk tracks, and the suppression rules in writing.
+
+Outreach then follows our operating guardrails: a person initiates every call inside prospect-local windows, DNC lists are scrubbed on the required cycle, and no automation touches a conversation.
 
 ## What the client owns
 
-Everything the pod produces lives in the client's CRM, not ours: the account research, the contact intelligence, activity logging, meeting notes, and the weekly reporting pack. Weekly calibration sessions review call QA and — more valuably — what the market said back: objections, timing signals, and the vocabulary prospects actually use, which fed straight back into the client's own positioning.
+Everything the pod produces lives in the client's CRM, not ours: account research, contact intelligence, activity logging, meeting notes, and the weekly reporting pack. If the engagement ended tomorrow, the client keeps the entire asset.
+
+A weekly calibration session reviews call QA and, more valuably, what the market said back. Objections, timing signals, and the vocabulary prospects actually use feed straight into the client's own positioning.
 
 ## Why this shape
 
-One ICP per pod is a deliberate cap. Splitting a pod across segments halves the research depth behind every conversation, and research depth is the entire premise. When a second segment matters enough, it gets its own pod — not a diluted one.
+One ICP per pod is a deliberate cap. Splitting a pod across segments halves the research depth behind every conversation, and research depth is the premise of the whole engagement. When a second segment matters enough, it gets its own pod.
