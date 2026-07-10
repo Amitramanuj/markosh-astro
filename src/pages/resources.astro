@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
 import WhitepapersTeaser from '@/components/sections/WhitepapersTeaser.astro';
+import { solutions } from '@/lib/solutions';
 
 const studies = (await getCollection('case-studies', ({ data }) => !data.draft)).sort(
   (a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
@@ -18,8 +19,8 @@ const formatDate = (iso: string) =>
 ---
 
 <BaseLayout
-  title="Resources - Markosh"
-  description="White papers, anonymized case studies, and field notes on B2B sales, technical talent, and AI in production."
+  title="Resources | Markosh"
+  description="White papers, named solution engagements, anonymized case studies, and field notes on B2B sales, technical talent, and AI in production."
   canonical="https://markosh.com/resources/"
 >
   <Header />
@@ -34,7 +35,7 @@ const formatDate = (iso: string) =>
             Insights, research, <span class="text-primary">and results</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            Research white papers, anonymized engagement case studies, and field notes from live work.
+            Research white papers, the engagements we run on repeat, anonymized case studies, and field notes from live work.
           </p>
         </div>
       </div>
@@ -49,7 +50,41 @@ const formatDate = (iso: string) =>
         <div class="container mx-auto">
           <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
-              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Case Studies</p>
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Solutions</p>
+              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+                Engagements we run <span class="text-primary">on repeat</span>
+              </h2>
+            </div>
+            <a href="/solutions/" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+              All solutions
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="mt-12 border-t border-border">
+            {solutions.map((solution) => (
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{solution.category}</p>
+                <div>
+                  <h3 class="font-headline text-xl font-bold tracking-tight sm:text-2xl">
+                    <a href={`/solutions/${solution.slug}/`} class="transition-colors hover:text-primary">{solution.name}</a>
+                  </h3>
+                  <p class="mt-2 max-w-3xl text-muted-foreground">{solution.intro}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="max-w-2xl">
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Case Studies</p>
               <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
                 How engagements <span class="text-primary">actually run</span>
               </h2>
@@ -81,11 +116,11 @@ const formatDate = (iso: string) =>
     </RevealSection>
 
     <RevealSection>
-      <section class="bg-secondary">
+      <section class="bg-background">
         <div class="container mx-auto">
           <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
-              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Blog</p>
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Blog</p>
               <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
                 Field notes from <span class="text-primary">the lab</span>
               </h2>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import RevealSection from '@/components/layout/RevealSection.astro';
+import { solutions } from '@/lib/solutions';
+---
+
+<BaseLayout
+  title="Solutions | Markosh"
+  description="Named, repeatable engagements — how we run outbound pipeline, workflow automation, and embedded delivery, each backed by a real anonymized case study."
+  canonical="https://markosh.com/solutions/"
+>
+  <Header />
+  <main id="main-content">
+    <!-- Editorial hero -->
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <div class="max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Solutions</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Engagements we run <span class="text-primary">on repeat</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            Not a menu of everything we could do — the specific engagements we have run enough times to name.
+            Each page describes the problem, how the engagement works, and links to a real anonymized case study.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution index -->
+    <RevealSection>
+      <section class="bg-secondary">
+        <div class="container mx-auto">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Three Engagements</p>
+          <div class="mt-8 border-t border-border">
+            {solutions.map((solution, i) => (
+              <a
+                href={`/solutions/${solution.slug}/`}
+                data-astro-prefetch="hover"
+                class="group grid gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr,1.1fr]"
+              >
+                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{`0${i + 1}`}</span>
+                <div>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{solution.category}</p>
+                  <h2 class="mt-2 font-headline text-3xl font-bold tracking-tight group-hover:text-primary sm:text-4xl">
+                    {solution.name}
+                  </h2>
+                </div>
+                <div class="md:pt-2">
+                  <p class="max-w-xl text-muted-foreground">{solution.intro}</p>
+                  <span class="link-underline mt-4 inline-block font-semibold">How it works</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+
+  </main>
+  <Footer />
+</BaseLayout>

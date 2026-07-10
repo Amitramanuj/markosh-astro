@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+
+// Served with a real 404 status by Cloudflare Pages (dist/404.html).
+// Without this file Pages falls back to SPA mode and answers every
+// unknown URL with index.html and a 200 — a soft-404 for crawlers.
+---
+
+<BaseLayout title="Page Not Found | Markosh" description="This page does not exist or has moved." noindex={true}>
+  <Header />
+  <main id="main-content">
+    <section class="relative isolate overflow-hidden pt-10 pb-16 md:pt-16">
+      <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+      <div class="container mx-auto">
+        <div class="max-w-3xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">404</p>
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            This page <span class="text-primary">does not exist</span>
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            The URL may have changed, or the link that brought you here is out of date.
+            The pages people usually want:
+          </p>
+          <ul class="mt-6 space-y-3 text-muted-foreground">
+            <li><a href="/services/" class="link-underline font-semibold text-foreground">Services</a> — the four service families</li>
+            <li><a href="/solutions/" class="link-underline font-semibold text-foreground">Solutions</a> — the engagements we run on repeat</li>
+            <li><a href="/case-studies/" class="link-underline font-semibold text-foreground">Case studies</a> — how engagements actually run</li>
+          </ul>
+          <div class="mt-10">
+            <Button href="/" size="lg" class="btn-gradient h-12 px-8 text-base font-semibold">
+              Back to home
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

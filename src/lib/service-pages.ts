@@ -13,6 +13,8 @@ export interface ServicePage {
   benefits: { title: string; description: string }[];
   process: { step: string; title: string; description: string }[];
   faqs: { question: string; answer: string }[];
+  /** Forward link to the solution playbook or offer this service is proven by */
+  related: { label: string; href: string };
 }
 
 export const servicePages: ServicePage[] = [
@@ -43,6 +45,7 @@ export const servicePages: ServicePage[] = [
       { question: 'What if the engineer is not a fit?', answer: 'We replace them at no additional placement cost. You only pay for productive time.' },
       { question: 'Who owns the work product?', answer: 'You do. Every contract assigns full IP ownership to the client, and we sign your NDA before discovery.' },
     ],
+    related: { label: 'Embedded Delivery Pod — how a full pod runs inside your process', href: '/solutions/embedded-delivery-pod/' },
   },
   {
     slug: 'custom-software-development',
@@ -71,6 +74,7 @@ export const servicePages: ServicePage[] = [
       { question: 'Can you take over an existing codebase?', answer: 'Yes. We start with a paid technical audit so both sides know exactly what state the code is in before committing.' },
       { question: 'How do you handle security and compliance?', answer: 'Least-privilege access, client-owned infrastructure and secrets, and compliance-aligned practices (HIPAA, SOC 2 controls) when your industry requires them.' },
     ],
+    related: { label: 'Your MVP, On Us — a basic MVP built at our investment', href: '/mvp-on-us/' },
   },
   {
     slug: 'ai-development',
@@ -99,5 +103,6 @@ export const servicePages: ServicePage[] = [
       { question: 'How do you measure whether the AI actually works?', answer: 'Every project ships with an evaluation suite measuring accuracy on your real data — defined before we build, reported honestly throughout.' },
       { question: 'What does an AI project typically cost?', answer: 'Proof-of-concept engagements typically start at a few weeks of a small team. We scope a fixed-price PoC first so you can validate before committing further.' },
     ],
+    related: { label: 'Workflow Automation Layer — one process automated end to end', href: '/solutions/workflow-automation/' },
   },
 ];

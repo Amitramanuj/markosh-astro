@@ -9,7 +9,7 @@ draft: false
 
 A résumé tells you where someone has been. It has always been a weak proxy for what they can do, but in 2026 it is weaker than ever — because AI assistance has made the *artifacts* of competence (polished portfolios, articulate cover letters, even take-home submissions) cheap to produce.
 
-The industry has noticed. Skills-based hiring — evaluating candidates on demonstrated ability rather than pedigree — has moved from HR-conference talking point to standard practice at roughly half of IT organizations. We built Markosh's staffing arm on that premise from day one.
+The industry has noticed. Skills-based hiring — evaluating candidates on demonstrated ability rather than pedigree — has moved from HR-conference talking point to standard practice at roughly half of IT organizations. We built [Markosh's staffing arm](/services/it-staffing/) on that premise from day one.
 
 ## What engineer-led vetting actually means
 
@@ -19,7 +19,7 @@ Every candidate who enters the Markosh network is screened by a working engineer
 
 **Can they do the work with AI?** This is the newest filter and increasingly the most predictive one. We evaluate how candidates direct AI tooling: whether they can decompose a problem, verify generated output, and catch the confident nonsense. An engineer who treats AI output as finished work fails this screen; an engineer who treats it as a fast first draft from a junior colleague tends to excel everywhere else too.
 
-**Can they work inside a client's team?** Communication in written form, expectation-setting, and the discipline of weekly demos. Embedded engineers succeed or fail on this more often than on raw technical depth.
+**Can they work inside a client's team?** Communication in written form, expectation-setting, and the discipline of weekly demos. [Embedded engineers](/solutions/embedded-delivery-pod/) succeed or fail on this more often than on raw technical depth.
 
 ## Why the funnel is narrow on purpose
 

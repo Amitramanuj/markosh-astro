@@ -76,34 +76,9 @@ export const pageSEO = {
     description: 'Markosh is an intelligence lab for business execution — serious AI leverage plus research-backed delivery across B2B sales, vetted technical talent, and software.',
     type: 'website' as const
   },
-  about: {
-    title: 'About Markosh',
-    description: 'Learn about Markosh\'s mission to connect businesses with elite tech talent and deliver custom software solutions that drive growth and innovation.',
-    type: 'website' as const
-  },
   services: {
     title: 'AI Strategy, Software, Staffing & Sales Services',
     description: 'Discover Markosh\'s four service families: AI Strategy & Intelligence, custom software development, IT staffing, and B2B Sales-as-a-Service.',
-    type: 'website' as const
-  },
-  industries: {
-    title: 'Industries We Serve',
-    description: 'Markosh serves diverse industries including e-commerce, SaaS, healthcare, finance, education, and manufacturing with tailored technology solutions.',
-    type: 'website' as const
-  },
-  contact: {
-    title: 'Contact Markosh',
-    description: 'Ready to accelerate your growth? Contact Markosh today to discuss your IT staffing needs or custom software development project.',
-    type: 'website' as const
-  },
-  resources: {
-    title: 'Resources',
-    description: 'Explore Markosh\'s resources including case studies, white papers, and blog articles on software development, IT staffing, and business growth.',
-    type: 'website' as const
-  },
-  career: {
-    title: 'Careers at Markosh',
-    description: 'Stay updated on upcoming career opportunities and join the Markosh talent network for exclusive roles.',
     type: 'website' as const
   }
 } as const;

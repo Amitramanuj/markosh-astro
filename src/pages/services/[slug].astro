@@ -110,6 +110,9 @@ const extraSchemas = [
               </li>
             ))}
           </ol>
+          <p class="mt-10 text-sm text-muted-foreground">
+            Related: <a href={page.related.href} data-astro-prefetch="hover" class="link-underline text-foreground">{page.related.label}</a>
+          </p>
         </div>
       </section>
     </RevealSection>

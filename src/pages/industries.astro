@@ -3,16 +3,36 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
+import { solutions } from '@/lib/solutions';
 
 // Glyph parts are stroke elements (24-grid, lucide-derived like ui/icons.tsx).
 // Each gets pathLength="1" + .glyph-draw so it draws itself on reveal.
 type GlyphPart = Record<string, string | number>;
+
+interface IndustrySolution {
+  name: string;
+  text: string;
+  /** Route to the solution page that runs this as a named engagement */
+  href: string;
+}
+
+// Sketch parts share the glyph technique on a wide 560x72 canvas. Parts with
+// a stroke-dasharray are "projected/future" strokes: they render statically
+// dashed (pathLength="1" would rescale the dash pattern into a solid line).
+interface Sketch {
+  parts: GlyphPart[];
+  caption: string;
+}
 
 interface Industry {
   num: string;
   name: string;
   description: string;
   glyph: GlyphPart[];
+  /** How engagements in this sector usually go — one or two sentences */
+  narrative: string;
+  solutions: IndustrySolution[];
+  sketch: Sketch;
 }
 
 const industries: Industry[] = [
@@ -25,6 +45,35 @@ const industries: Industry[] = [
       { tag: 'circle', cx: 8, cy: 21, r: 1 },
       { tag: 'circle', cx: 19, cy: 21, r: 1 },
     ],
+    narrative:
+      'E-commerce engagements usually start on one of two fronts: opening a wholesale pipeline beyond the D2C channel, or automating the back-office work that grows linearly with order volume.',
+    solutions: [
+      {
+        name: 'D2C-to-wholesale outbound',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'A structured outbound motion that opens retail and B2B wholesale accounts for brands that started direct-to-consumer.',
+      },
+      {
+        name: 'Back-office workflow automation',
+        href: '/solutions/workflow-automation/',
+        text: 'Order, catalog, and returns paperwork read, extracted, and routed by an automation layer — your team reviews the exceptions instead of re-keying the routine.',
+      },
+      {
+        name: 'Storefront & platform backlog',
+        href: '/solutions/embedded-delivery-pod/',
+        text: 'An embedded pod clearing the integration and replatforming backlog your roadmap keeps deferring — inside your own repos and review standards.',
+      },
+    ],
+    sketch: {
+      caption: 'demand history and forecast band — solid is observed, dashed is projected',
+      parts: [
+        { tag: 'path', d: 'M8 52 C80 48 140 58 200 42 S300 32 340 26' },
+        { tag: 'path', d: 'M340 8 V64', 'stroke-dasharray': '3 5' },
+        { tag: 'path', d: 'M340 26 C400 20 470 16 548 12', 'stroke-dasharray': '5 4' },
+        { tag: 'path', d: 'M340 26 C400 14 470 8 548 4', 'stroke-dasharray': '2 5' },
+        { tag: 'path', d: 'M340 26 C400 26 470 25 548 24', 'stroke-dasharray': '2 5' },
+      ],
+    },
   },
   {
     num: '02',
@@ -35,6 +84,42 @@ const industries: Industry[] = [
       { tag: 'path', d: 'M2 9h20' },
       { tag: 'path', d: 'M5 6.5h.01M8 6.5h.01' },
     ],
+    narrative:
+      'SaaS is where our engagements are most proven: both the outbound pod and the embedded delivery pod case studies come from B2B SaaS teams.',
+    solutions: [
+      {
+        name: 'Outbound pipeline pods',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Vetted SDR teams running research, sequencing, and qualification so your calendar fills with real evaluations, not noise.',
+      },
+      {
+        name: 'Backlog acceleration',
+        href: '/solutions/embedded-delivery-pod/',
+        text: 'A pod of vetted engineers inside your sprint board and review standards, clearing integrations and long-promised features without pausing the roadmap.',
+      },
+      {
+        name: 'Internal ops automation',
+        href: '/solutions/workflow-automation/',
+        text: 'Onboarding, support triage, and reporting workflows automated with a model in the middle and your team reviewing the exceptions.',
+      },
+    ],
+    sketch: {
+      caption: 'metered usage across billing periods — recent periods solid, projected dashed',
+      parts: [
+        { tag: 'path', d: 'M8 62 H552' },
+        { tag: 'path', d: 'M40 62 V50' },
+        { tag: 'path', d: 'M88 62 V44' },
+        { tag: 'path', d: 'M136 62 V48' },
+        { tag: 'path', d: 'M184 62 V38' },
+        { tag: 'path', d: 'M232 62 V32' },
+        { tag: 'path', d: 'M280 62 V36' },
+        { tag: 'path', d: 'M328 62 V26' },
+        { tag: 'path', d: 'M376 62 V20' },
+        { tag: 'path', d: 'M424 62 V22', 'stroke-dasharray': '3 3' },
+        { tag: 'path', d: 'M472 62 V14', 'stroke-dasharray': '3 3' },
+        { tag: 'path', d: 'M520 62 V8', 'stroke-dasharray': '3 3' },
+      ],
+    },
   },
   {
     num: '03',
@@ -44,6 +129,33 @@ const industries: Industry[] = [
       { tag: 'path', d: 'M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5Z' },
       { tag: 'path', d: 'M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27' },
     ],
+    narrative:
+      'Healthcare work concentrates where the paperwork is heaviest: the intake and authorization workflows that consume staff hours, and the long, multi-stakeholder sales cycles health-tech vendors face.',
+    solutions: [
+      {
+        name: 'Intake & triage automation',
+        href: '/solutions/workflow-automation/',
+        text: 'Symptom intake, routing, and benefits verification handled before the visit, so staff time goes to care instead of forms.',
+      },
+      {
+        name: 'Prior-auth & claims intelligence',
+        href: '/solutions/workflow-automation/',
+        text: 'Document intelligence that assembles and pre-checks authorization requests — the next front as payers automate their side of the exchange.',
+      },
+      {
+        name: 'Provider & clinic outreach',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Pipeline development for health-tech vendors selling into practices, clinics, and hospital systems with long, multi-stakeholder cycles.',
+      },
+    ],
+    sketch: {
+      caption: 'continuous vitals stream — the flagged beat is routed for clinician review',
+      parts: [
+        { tag: 'path', d: 'M8 40 h56 l7 -14 l7 24 l7 -10 h64 l7 -14 l7 24 l7 -10 h64' },
+        { tag: 'path', d: 'M234 40 h64 l7 -24 l7 40 l7 -16 h64 l7 -14 l7 24 l7 -10 h78' },
+        { tag: 'circle', cx: 312, cy: 36, r: 16, 'stroke-dasharray': '3 4' },
+      ],
+    },
   },
   {
     num: '04',
@@ -54,6 +166,41 @@ const industries: Industry[] = [
       { tag: 'circle', cx: 12, cy: 12, r: 2 },
       { tag: 'path', d: 'M6 12h.01M18 12h.01' },
     ],
+    narrative:
+      'In regulated finance the pattern is consistent: document-heavy operations that reward automation with human review built in, and long-cycle B2B pipelines that reward outreach discipline.',
+    solutions: [
+      {
+        name: 'Document intelligence for underwriting',
+        href: '/solutions/workflow-automation/',
+        text: 'Extracting and verifying data from statements, filings, and contracts so credit decisions take hours instead of weeks.',
+      },
+      {
+        name: 'Agentic back-office operations',
+        href: '/solutions/workflow-automation/',
+        text: 'Exception handling, dispute preparation, and compliance reports drafted by agents and reviewed by people — where regulated operations are heading.',
+      },
+      {
+        name: 'Fintech B2B pipeline',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Outbound into banks, brokers, and finance teams, with the long-cycle nurture that regulated buyers actually require.',
+      },
+    ],
+    sketch: {
+      caption: 'payment stream with outliers flagged for analyst review',
+      parts: [
+        { tag: 'path', d: 'M8 44 C100 40 200 46 300 40 S480 36 552 38' },
+        { tag: 'circle', cx: 76, cy: 42, r: 2 },
+        { tag: 'circle', cx: 148, cy: 46, r: 2 },
+        { tag: 'circle', cx: 220, cy: 40, r: 2 },
+        { tag: 'circle', cx: 296, cy: 44, r: 2 },
+        { tag: 'circle', cx: 384, cy: 40, r: 2 },
+        { tag: 'circle', cx: 472, cy: 40, r: 2 },
+        { tag: 'circle', cx: 184, cy: 16, r: 2 },
+        { tag: 'circle', cx: 184, cy: 16, r: 9, 'stroke-dasharray': '3 4' },
+        { tag: 'circle', cx: 420, cy: 12, r: 2 },
+        { tag: 'circle', cx: 420, cy: 12, r: 9, 'stroke-dasharray': '3 4' },
+      ],
+    },
   },
   {
     num: '05',
@@ -64,6 +211,33 @@ const industries: Industry[] = [
       { tag: 'path', d: 'M22 10v6' },
       { tag: 'path', d: 'M6 12.5V16a6 3 0 0 0 12 0v-3.5' },
     ],
+    narrative:
+      'Education engagements pair committee-driven institutional sales with the workflow automation that gives instructors their hours back.',
+    solutions: [
+      {
+        name: 'Institutional B2B sales',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Selling into schools, universities, and corporate L&D — committee-driven cycles that reward structure and patience.',
+      },
+      {
+        name: 'AI-assisted grading & feedback',
+        href: '/solutions/workflow-automation/',
+        text: 'First-pass scoring and feedback drafts with instructor oversight — richer feedback for students, saner workloads for teachers.',
+      },
+      {
+        name: 'Platform & integration backlog',
+        href: '/solutions/embedded-delivery-pod/',
+        text: 'LMS builds and LTI/SCORM integrations delivered by an embedded pod that joins your stack and standards instead of fighting them.',
+      },
+    ],
+    sketch: {
+      caption: 'two learner paths adapting toward the same mastery line at different speeds',
+      parts: [
+        { tag: 'path', d: 'M8 14 H552', 'stroke-dasharray': '2 6' },
+        { tag: 'path', d: 'M8 58 C150 54 300 30 540 17' },
+        { tag: 'path', d: 'M8 64 C200 62 360 44 540 20' },
+      ],
+    },
   },
   {
     num: '06',
@@ -73,6 +247,33 @@ const industries: Industry[] = [
       { tag: 'path', d: 'M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z' },
       { tag: 'path', d: 'M7 18h1M12 18h1M17 18h1' },
     ],
+    narrative:
+      'Manufacturing engagements start where the paper is: supply-chain documents that get re-keyed daily, systems-integration backlogs, and distributor networks that grow on trade-show serendipity.',
+    solutions: [
+      {
+        name: 'Distributor & channel outreach',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Building or reviving distributor networks with systematic prospecting instead of trade-show serendipity.',
+      },
+      {
+        name: 'Supply-chain document automation',
+        href: '/solutions/workflow-automation/',
+        text: 'Purchase orders, invoices, and shipping documents extracted and reconciled automatically, with exceptions routed to your team for review.',
+      },
+      {
+        name: 'Systems-integration backlog',
+        href: '/solutions/embedded-delivery-pod/',
+        text: 'MES, ERP, and shop-floor integration work cleared by an embedded pod, so production data flows between systems without anyone re-keying it.',
+      },
+    ],
+    sketch: {
+      caption: 'sensor amplitude climbing to a maintenance intervention, then stable',
+      parts: [
+        { tag: 'path', d: 'M8 40 l18 -3 l18 5 l18 -7 l18 9 l18 -11 l18 13 l18 -15 l18 17 l18 -19 l18 21 l18 -23 l18 25 l18 -27 l18 29 l18 -31 l18 33' },
+        { tag: 'path', d: 'M336 6 V66', 'stroke-dasharray': '3 5' },
+        { tag: 'path', d: 'M348 40 l26 -3 l26 4 l26 -3 l26 3 l26 -3 l26 3 l26 -2' },
+      ],
+    },
   },
   {
     num: '07',
@@ -82,6 +283,30 @@ const industries: Industry[] = [
       { tag: 'path', d: 'm3 11 18-5v12L3 14v-3z' },
       { tag: 'path', d: 'M11.6 16.8a3 3 0 1 1-5.8-1.6' },
     ],
+    narrative:
+      'For agencies and marketing teams the engagements are commercial first: a repeatable new-business motion, and automation for the content and reporting operations that eat delivery hours.',
+    solutions: [
+      {
+        name: 'Agency new-business pipeline',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Outbound for agencies and studios whose growth still depends on referrals — a repeatable motion instead of feast-and-famine.',
+      },
+      {
+        name: 'Content & reporting operations',
+        href: '/solutions/workflow-automation/',
+        text: 'Review-gated content workflows and reporting pipelines automated end to end, so the team’s hours go to strategy instead of assembly.',
+      },
+    ],
+    sketch: {
+      caption: 'stage-by-stage funnel — width is the volume surviving each stage',
+      parts: [
+        { tag: 'path', d: 'M8 10 H552' },
+        { tag: 'path', d: 'M8 26 H396' },
+        { tag: 'path', d: 'M8 42 H240' },
+        { tag: 'path', d: 'M8 58 H124' },
+        { tag: 'path', d: 'M8 6 V62' },
+      ],
+    },
   },
   {
     num: '08',
@@ -91,13 +316,48 @@ const industries: Industry[] = [
       { tag: 'path', d: 'm3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' },
       { tag: 'path', d: 'M9 22V12h6v10' },
     ],
+    narrative:
+      'Real-estate engagements run on documents and relationships: portfolios full of leases nobody has read twice, and B2B pipelines that grow on trust and references.',
+    solutions: [
+      {
+        name: 'Lease & document intelligence',
+        href: '/solutions/workflow-automation/',
+        text: 'Extraction of terms, dates, and obligations across a whole portfolio — critical dates surface themselves instead of hiding in PDFs.',
+      },
+      {
+        name: 'PropTech B2B sales',
+        href: '/solutions/outbound-pipeline-pod/',
+        text: 'Pipeline development into brokerages, property managers, and developers — a market that buys on trust and references.',
+      },
+    ],
+    sketch: {
+      caption: 'comparables scattered around a modeled price trend',
+      parts: [
+        { tag: 'path', d: 'M8 52 C150 46 350 32 552 18' },
+        { tag: 'circle', cx: 70, cy: 44, r: 2 },
+        { tag: 'circle', cx: 130, cy: 54, r: 2 },
+        { tag: 'circle', cx: 200, cy: 38, r: 2 },
+        { tag: 'circle', cx: 268, cy: 48, r: 2 },
+        { tag: 'circle', cx: 330, cy: 30, r: 2 },
+        { tag: 'circle', cx: 396, cy: 38, r: 2 },
+        { tag: 'circle', cx: 458, cy: 22, r: 2 },
+        { tag: 'circle', cx: 516, cy: 28, r: 2 },
+      ],
+    },
   },
 ];
+
+// Maps a solution route back to its engagement name for the card eyebrow.
+const engagementName = (href: string) =>
+  solutions.find((solution) => href.includes(solution.slug))?.name ?? '';
+
+// Renders a sketch/glyph part. Dashed parts skip the draw animation:
+// pathLength="1" would rescale their dash pattern into a solid stroke.
 ---
 
 <BaseLayout
-  title="Industries We Serve - Markosh"
-  description="We combine our technology expertise with deep industry knowledge to deliver solutions that drive real business value."
+  title="Industries We Serve | Markosh"
+  description="How our named solution engagements — outbound pipeline pods, workflow automation, embedded delivery — apply across eight sectors."
   canonical="https://markosh.com/industries/"
 >
   <Header />
@@ -112,7 +372,7 @@ const industries: Industry[] = [
             Sector knowledge, <span class="text-primary">built in</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            We combine our technology expertise with deep industry knowledge to deliver solutions that drive real business value.
+            The same three engagements — outbound pods, workflow automation, embedded delivery — run differently in different sectors. This page shows how each one lands in the eight we work in most.
           </p>
         </div>
       </div>
@@ -123,40 +383,100 @@ const industries: Industry[] = [
       <section class="bg-secondary">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Eight Sectors</p>
+          <p class="mt-4 max-w-2xl text-muted-foreground">
+            Select a sector to see how engagements there usually run and which of our named solutions
+            apply — each one an engagement we have run before, backed by an anonymized case study.
+          </p>
           <div class="mt-8 border-t border-border">
             {industries.map((industry, row) => (
-              <div class="grid gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr,1.1fr,4rem]">
-                <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{industry.num}</span>
-                <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{industry.name}</h2>
-                <p class="max-w-xl text-muted-foreground md:pt-2">{industry.description}</p>
-                <div class="hidden items-start justify-end md:flex md:pt-1">
+              <details class="group border-b border-border">
+                <summary class="relative block cursor-pointer list-none py-8 pr-10 sm:py-10 [&::-webkit-details-marker]:hidden">
+                  <div class="grid gap-x-8 gap-y-3 md:grid-cols-[3.5rem,1fr,1.1fr,4rem]">
+                    <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{industry.num}</span>
+                    <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{industry.name}</h2>
+                    <p class="max-w-xl text-muted-foreground md:pt-2">{industry.description}</p>
+                    <div class="hidden items-start justify-end md:flex md:pt-1">
+                      <svg
+                        class="h-10 w-10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="hsl(var(--foreground) / 0.5)"
+                        stroke-width="0.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        {industry.glyph.map((part, i) => {
+                          const { tag, ...attrs } = part;
+                          // astro-ignore: string-based dynamic tags type as bare
+                          // IntrinsicAttributes, rejecting valid SVG attributes
+                          const Tag = tag as any;
+                          return (
+                            <Tag
+                              {...attrs}
+                              pathLength="1"
+                              class="glyph-draw"
+                              style={`--draw-delay: ${(0.15 + row * 0.1 + i * 0.3).toFixed(2)}s`}
+                            />
+                          );
+                        })}
+                      </svg>
+                    </div>
+                  </div>
                   <svg
-                    class="h-10 w-10"
+                    class="absolute right-0 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground transition-transform duration-300 group-open:rotate-45"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="hsl(var(--foreground) / 0.5)"
-                    stroke-width="0.9"
+                    stroke="currentColor"
+                    stroke-width="1.25"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </summary>
+                <div class="pb-10 md:pl-[5.5rem]">
+                  <svg
+                    class="h-14 w-full max-w-2xl sm:h-16"
+                    viewBox="0 0 560 72"
+                    preserveAspectRatio="xMinYMid meet"
+                    fill="none"
+                    stroke="hsl(var(--foreground) / 0.45)"
+                    stroke-width="1"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     aria-hidden="true"
                   >
-                    {industry.glyph.map((part, i) => {
+                    {industry.sketch.parts.map((part, i) => {
                       const { tag, ...attrs } = part;
-                      // astro-ignore: string-based dynamic tags type as bare
-                      // IntrinsicAttributes, rejecting valid SVG attributes
                       const Tag = tag as any;
-                      return (
+                      return 'stroke-dasharray' in attrs ? (
+                        <Tag {...attrs} stroke="hsl(var(--foreground) / 0.3)" />
+                      ) : (
                         <Tag
                           {...attrs}
                           pathLength="1"
                           class="glyph-draw"
-                          style={`--draw-delay: ${(0.15 + row * 0.1 + i * 0.3).toFixed(2)}s`}
+                          style={`--draw-delay: ${(0.1 + i * 0.12).toFixed(2)}s`}
                         />
                       );
                     })}
                   </svg>
+                  <p class="mt-2 font-mono text-xs text-muted-foreground">Illustrative — {industry.sketch.caption}</p>
+                  <p class="mt-8 max-w-2xl text-muted-foreground">{industry.narrative}</p>
+                  <div class="mt-8 grid gap-10 md:grid-cols-3">
+                    {industry.solutions.map((item) => (
+                      <div>
+                        <h3 class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary">{engagementName(item.href)}</h3>
+                        <a href={item.href} data-astro-prefetch="hover" class="link-underline mt-4 inline-block font-semibold leading-snug">
+                          {item.name}
+                        </a>
+                        <p class="mt-1 text-sm leading-6 text-muted-foreground">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </details>
             ))}
           </div>
         </div>

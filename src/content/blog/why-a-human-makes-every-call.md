@@ -7,7 +7,7 @@ readTimeMinutes: 5
 draft: false
 ---
 
-The loudest pitch in B2B sales right now is the AI SDR: an agent that writes the emails, makes the calls, and books the meetings while you sleep. We build agentic systems for clients, so we understand the appeal. And yet every conversation a Markosh rep has — every call, every reply — is initiated and carried by a trained human.
+The loudest pitch in B2B sales right now is the AI SDR: an agent that writes the emails, makes the calls, and books the meetings while you sleep. We [build agentic systems for clients](/services/ai-development/), so we understand the appeal. And yet every conversation a Markosh rep has — every call, every reply — is initiated and carried by a trained human.
 
 That is not nostalgia. It is a position we hold for three practical reasons.
 
@@ -21,7 +21,7 @@ Our operating guardrails are built the other way around: manual, human-initiated
 
 The first wave of AI-written outbound trained every buyer to recognize it. Reply rates on templated sequences collapsed precisely because the marginal cost of sending them collapsed. When every inbox is full of synthetic personalization, the scarce asset is no longer volume — it is a message that could only have been written by someone who actually studied the account.
 
-That is where AI genuinely earns its keep in our pods: research, not conversation. Account mapping, buying-signal analysis, contact enrichment, pre-call briefs, CRM hygiene, reporting. The machine compresses hours of homework into minutes; the human spends those reclaimed hours on the part buyers still respond to — a real conversation with someone who understood their situation before dialing.
+That is where AI genuinely earns its keep in [our outbound pods](/solutions/outbound-pipeline-pod/): research, not conversation. Account mapping, buying-signal analysis, contact enrichment, pre-call briefs, CRM hygiene, reporting. The machine compresses hours of homework into minutes; the human spends those reclaimed hours on the part buyers still respond to — a real conversation with someone who understood their situation before dialing.
 
 ## 3. The conversation is the product
 
@@ -31,7 +31,7 @@ This is what we mean when we say Markosh is intelligence-first rather than autom
 
 ## What this looks like in practice
 
-Every Markosh sales engagement — retained rep, appointment setting, or revenue-share — runs on the same division of labor:
+Every Markosh sales engagement — [retained rep, appointment setting, or revenue-share](/sales/) — runs on the same division of labor:
 
 - **AI handles**: ICP research, account and contact intelligence, signal monitoring, call prep, CRM operations, reporting.
 - **Humans handle**: every call, every written reply, every judgment about whether a prospect is actually a fit.

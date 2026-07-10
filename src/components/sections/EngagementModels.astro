@@ -1,8 +1,7 @@
 ---
-import Button from '@/components/ui/Button.astro';
-
 const models = [
   {
+    num: '01',
     name: 'Staff Augmentation',
     tagline: 'Add engineers to your team',
     description: 'Pre-vetted engineers join your standups, your repos, and your tools. You direct the work; we guarantee the fit.',
@@ -14,6 +13,7 @@ const models = [
     featured: false,
   },
   {
+    num: '02',
     name: 'Dedicated Team',
     tagline: 'A squad with a lead, run by us',
     description: 'A full cross-functional team with a technical lead who owns delivery. You set priorities; we run the sprints.',
@@ -25,6 +25,7 @@ const models = [
     featured: true,
   },
   {
+    num: '03',
     name: 'Project Delivery',
     tagline: 'Fixed scope, fixed bid',
     description: 'A defined outcome with a defined price. We scope it, build it, and hand over documented, tested software.',
@@ -50,28 +51,33 @@ const models = [
       </p>
     </div>
 
-    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+    <div class="mt-12 border-t border-border">
       {models.map((model) => (
-        <article class={`glass-card relative flex flex-col p-8 ${model.featured ? 'border-primary/50 shadow-[0_18px_40px_-18px_hsl(244_55%_48%/0.25)]' : ''}`}>
-          {model.featured && (
-            <span class="absolute -top-3 left-8 rounded-full bg-primary px-4 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
-              Most popular
-            </span>
-          )}
-          <h3 class="font-headline text-2xl font-bold">{model.name}</h3>
-          <p class="mt-1 text-sm font-semibold text-primary">{model.tagline}</p>
-          <p class="mt-4 text-muted-foreground">{model.description}</p>
-          <ul class="mt-6 flex-grow space-y-3">
-            {model.points.map((point) => (
-              <li class="flex items-start gap-3 text-sm text-muted-foreground">
-                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-          <Button href="/contact" size="lg" class={`mt-8 h-11 font-semibold ${model.featured ? 'btn-gradient' : 'border border-foreground/20 bg-transparent text-foreground hover:border-primary hover:bg-primary/5 hover:text-primary'}`}>
-            Discuss this model
-          </Button>
+        <article class="grid gap-x-8 gap-y-4 border-b border-border py-10 sm:py-12 md:grid-cols-[3.5rem,1.2fr,1fr]">
+          <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{model.num}</span>
+          <div>
+            <div class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+              <h3 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{model.name}</h3>
+              {model.featured && (
+                <span class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Most popular</span>
+              )}
+            </div>
+            <p class="mt-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{model.tagline}</p>
+            <p class="mt-3 max-w-xl text-muted-foreground">{model.description}</p>
+            <a href="/contact" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+              Discuss this model
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="md:pt-1">
+            <ul class="divide-y divide-border">
+              {model.points.map((point) => (
+                <li class="py-2.5 text-sm leading-6 text-muted-foreground">{point}</li>
+              ))}
+            </ul>
+          </div>
         </article>
       ))}
     </div>

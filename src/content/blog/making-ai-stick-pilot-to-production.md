@@ -7,7 +7,7 @@ readTimeMinutes: 5
 draft: false
 ---
 
-Two years ago the standard AI strategy question was *where do we start?* Today it is quieter and more uncomfortable: *we started — why didn't it stick?*
+Two years ago the standard [AI strategy](/services/ai-strategy/) question was *where do we start?* Today it is quieter and more uncomfortable: *we started — why didn't it stick?*
 
 The pattern is remarkably consistent across companies we talk to. A promising pilot, real enthusiasm, a demo that impressed leadership — and then six months later the team is back to the old spreadsheet, and the pilot lives on only as a line item nobody wants to cancel. The problem is rarely the model. It is almost always one of four things.
 
@@ -15,7 +15,7 @@ The pattern is remarkably consistent across companies we talk to. A promising pi
 
 Pilots get scoped around what shows well: a chatbot over documents, a summarizer, a content generator. Production value lives somewhere less photogenic — inside a specific, repeated, measurable business process with an owner, an input queue, and a definition of done. If you cannot name the person whose Tuesday changes when the system ships, you scoped a demo.
 
-**The fix:** pick one core workflow — singular — and follow it end to end. One input, one transformation, one output someone consumes. Everything we build, from client automation layers to our own internal tooling, starts with this constraint, and it is the same discipline behind scoping an MVP to one core workflow.
+**The fix:** pick one core workflow — singular — and follow it end to end. One input, one transformation, one output someone consumes. Everything we build, from [client automation layers](/solutions/workflow-automation/) to our own internal tooling, starts with this constraint, and it is the same discipline behind [scoping an MVP to one core workflow](/mvp-on-us/).
 
 ## 2. Nobody owned the last mile
 

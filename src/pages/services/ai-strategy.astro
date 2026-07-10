@@ -6,9 +6,9 @@ import Button from '@/components/ui/Button.astro';
 import RevealSection from '@/components/layout/RevealSection.astro';
 import { generateServiceStructuredData, generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 
-const metaTitle = 'AI Strategy & Intelligence Services';
+const metaTitle = 'AI Strategy Consulting | Audits & AI Roadmaps';
 const metaDescription =
-  'Markosh helps companies identify AI opportunities, map workflows, prioritize use cases, and build practical AI execution roadmaps.';
+  'AI strategy consulting from Markosh: identify AI opportunities, map workflows, prioritize use cases, and build a practical 30/60/90-day execution roadmap.';
 const pageUrl = 'https://markosh.com/services/ai-strategy/';
 
 const deliverables = [
@@ -256,6 +256,10 @@ const extraSchemas = [
               Map My AI Opportunities
             </Button>
           </div>
+          <p class="mt-8 text-sm text-muted-foreground">
+            Related: <a href="/services/ai-development/" data-astro-prefetch="hover" class="link-underline text-foreground">AI Development — where the roadmap gets built</a>
+            · <a href="/solutions/workflow-automation/" data-astro-prefetch="hover" class="link-underline text-foreground">Workflow Automation Layer — one process, end to end</a>
+          </p>
         </div>
       </section>
     </RevealSection>

@@ -6,31 +6,58 @@ import RevealSection from '@/components/layout/RevealSection.astro';
 import Button from '@/components/ui/Button.astro';
 import { CheckCircle } from '@/components/ui/icons';
 
-const upcomingRoles = [
+const talentHighlights = [
+  'Your work is reviewed by a practitioner in your field — never a keyword filter or an ATS',
+  'Real client engagements, contract and full-time, across sales, engineering, and product',
+  'Human-led, AI-assisted work: AI handles research, prep, and reporting — you handle the judgment',
+];
+
+const practiceAreas = [
   {
-    title: 'Senior Full-Stack Engineer',
-    description: 'Lead product squads across modern web stacks, cloud services, and AI-assisted tooling.',
+    num: '01',
+    title: 'Sell',
+    description: 'Sales reps and researchers who run real conversations. AI does the research and reporting — people do the selling.',
   },
   {
-    title: 'Product Designer',
-    description: 'Craft intuitive experiences for global software platforms and enterprise applications.',
+    num: '02',
+    title: 'Staff',
+    description: 'Engineers who can pass a screen run by another engineer. Placed with clients on contract or full-time.',
   },
   {
-    title: 'Technical Project Manager',
-    description: 'Orchestrate distributed teams and deliver critical milestones for high-growth clients.',
+    num: '03',
+    title: 'Build',
+    description: 'Full-stack engineers, designers, and product managers who ship working software, not slide decks.',
+  },
+  {
+    num: '04',
+    title: 'Strategy',
+    description: 'Analysts and operators who turn market research into plans a client can execute on Monday.',
   },
 ];
 
-const talentHighlights = [
-  'Access exclusive contract and full-time engagements',
-  'Collaborate with global teams building category-defining products',
-  'Get early visibility into openings that match your craft',
+const vettingSteps = [
+  {
+    stage: 'Work review',
+    detail: "A practitioner in your field reviews what you've built, sold, or shipped. No resume scoring, no buzzword matching.",
+  },
+  {
+    stage: 'Skills deep-dive',
+    detail: 'A working interview on the real decisions behind your work — architecture, deals, trade-offs — not trivia.',
+  },
+  {
+    stage: 'Paid test project',
+    detail: "A realistic task evaluated for quality, speed, and collaboration. We pay for your time — we don't ask for free work.",
+  },
+  {
+    stage: 'Join the network',
+    detail: "Pass, and you're in. We only introduce people we would put on our own projects.",
+  },
 ];
 ---
 
 <BaseLayout
   title="Careers at Markosh"
-  description="Stay updated on upcoming career opportunities and join the Markosh talent network for exclusive roles."
+  description="Markosh hires for proof, not pedigree. Join a skills-vetted network of sales reps, engineers, builders, and strategists working on real client engagements."
   canonical="https://markosh.com/career/"
 >
   <Header />
@@ -42,10 +69,10 @@ const talentHighlights = [
         <div class="max-w-3xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Careers</p>
           <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            Do your best work, <span class="text-primary">anywhere</span>
+            We hire for proof, <span class="text-primary">not pedigree</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
-            We are expanding our roster of engineers, designers, and product leaders. Join the Markosh talent network to get notified when new openings go live and match your expertise.
+            Show us what you can build, sell, or ship. That's the whole application. Markosh runs a skills-vetted network of sales reps, engineers, builders, and strategists — and when a role opens, the network hears first.
           </p>
           <ul class="mt-6 space-y-3">
             {talentHighlights.map((item) => (
@@ -71,20 +98,20 @@ const talentHighlights = [
       <section class="bg-secondary">
         <div class="container mx-auto">
           <div class="max-w-2xl">
-            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Open Soon</p>
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — What We Hire For</p>
             <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
-              Upcoming <span class="text-primary">roles</span>
+              Four practices, <span class="text-primary">one bar</span>
             </h2>
             <p class="mt-5 text-lg text-muted-foreground">
-              These highlighted opportunities are in planning and will open soon. Express your interest now to be among the first to interview.
+              We don't post ghost listings. These are the four areas we hire into — join the network and you're first in line when a real role opens.
             </p>
           </div>
-          <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-3">
-            {upcomingRoles.map((role) => (
+          <div class="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {practiceAreas.map((area) => (
               <article class="border-t border-border pt-6">
-                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Opening Soon</p>
-                <h3 class="mt-4 font-headline text-2xl font-bold tracking-tight">{role.title}</h3>
-                <p class="mt-3 leading-7 text-muted-foreground">{role.description}</p>
+                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{area.num}</p>
+                <h3 class="mt-4 font-headline text-2xl font-bold tracking-tight">{area.title}</h3>
+                <p class="mt-3 leading-7 text-muted-foreground">{area.description}</p>
               </article>
             ))}
           </div>
@@ -94,23 +121,51 @@ const talentHighlights = [
 
     <RevealSection>
       <section class="bg-background">
+        <div class="container mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — How We Vet</p>
+            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+              What to <span class="text-primary">expect</span>
+            </h2>
+            <p class="mt-5 text-lg text-muted-foreground">
+              The same funnel our clients trust is the one you go through — and it's built to respect your time as much as theirs.
+            </p>
+          </div>
+          <ol class="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {vettingSteps.map((step, index) => (
+              <li class="border-t border-border pt-6">
+                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Step {index + 1}</p>
+                <h3 class="mt-4 font-headline text-2xl font-bold tracking-tight">{step.stage}</h3>
+                <p class="mt-3 leading-7 text-muted-foreground">{step.detail}</p>
+              </li>
+            ))}
+          </ol>
+          <p class="mt-12 text-muted-foreground">
+            Why we work this way: <a href="/blog/skills-based-vetting-over-resume-screening/" class="font-semibold text-primary underline underline-offset-4 hover:opacity-80" data-astro-prefetch="hover">Skills-based vetting over resume screening</a>
+          </p>
+        </div>
+      </section>
+    </RevealSection>
+
+    <RevealSection>
+      <section class="bg-secondary">
         <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
           <div>
-            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Talent Network</p>
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Talent Network</p>
             <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
               How it <span class="text-primary">works</span>
             </h2>
             <p class="mt-5 text-lg text-muted-foreground">
-              Share your portfolio, preferred roles, and availability. Our team will keep you posted on tailored opportunities, interview timelines, and curated updates.
+              Share your portfolio, the roles you want, and your availability. When something genuinely matches, you hear from a person — not a drip campaign.
             </p>
             <p class="mt-4 text-muted-foreground">
-              We respect your time; only relevant roles hit your inbox, and you can opt out anytime.
+              No newsletters, no fake urgency. Only relevant roles hit your inbox, and you can opt out anytime.
             </p>
           </div>
           <div class="glass-card p-8">
-            <h3 class="font-headline text-2xl font-bold">Be first in line</h3>
+            <h3 class="font-headline text-2xl font-bold">Get on the list</h3>
             <p class="mt-3 text-muted-foreground">
-              Send us a quick note with your latest CV or portfolio link and the types of challenges you love solving.
+              Email your CV or portfolio link and a line about the work you want to do. That's it — the work does the talking from there.
             </p>
             <div class="mt-6 flex flex-col gap-4 sm:flex-row">
               <Button href="mailto:talent@markosh.com" size="lg" class="btn-gradient h-12 px-8 font-semibold">

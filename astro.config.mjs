@@ -25,6 +25,10 @@ const sitemapMetadataByPath = {
   '/services/ai-strategy/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
   '/services/custom-software-development/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
   '/services/it-staffing/': { lastmod: evergreenLastMod, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/solutions/': { lastmod: '2026-07-07', changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/solutions/outbound-pipeline-pod/': { lastmod: '2026-07-07', changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/solutions/workflow-automation/': { lastmod: '2026-07-07', changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
+  '/solutions/embedded-delivery-pod/': { lastmod: '2026-07-07', changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 },
   '/whitepapers/': { lastmod: '2025-08-04', changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 },
   '/whitepapers/ai-coding-isnt-economically-sustainable/': {
     lastmod: '2025-08-04',
@@ -62,6 +66,7 @@ export default defineConfig({
     }),
     react(),
     sitemap({
+      filter: (page) => !page.includes('/404'),
       serialize(item) {
         const metadata = sitemapMetadataByPath[normalizeSitemapPath(item.url)];
         return metadata ? { ...item, ...metadata } : item;
