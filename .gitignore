@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Cygwin/MSYS crash dumps
+*.stackdump

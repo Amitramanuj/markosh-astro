@@ -30,7 +30,7 @@ Blog posts and case studies are git-based markdown — no CMS, no backend:
 - `src/content/case-studies/*.md` — anonymized engagement summaries
 - Schemas live in `src/content.config.ts`; publishing = commit + push (Cloudflare Pages rebuilds automatically)
 
-Whitepapers are typed data in `src/lib/whitepapers.ts`.
+Whitepapers are typed data in `src/lib/whitepapers.ts`; solution playbooks (`/solutions/<slug>/`) are typed data in `src/lib/solutions.ts`.
 
 ## Required reading
 

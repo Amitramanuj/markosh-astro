@@ -61,6 +61,15 @@ former build items at once:
       claims are "we try to follow it" — keep percentages directionally framed if
       copy is ever revised.
 
+## Resolved log (2026-07-11)
+
+- Detached-HEAD worktree reattached to `main`; solutions-section work preserved.
+- Full `audit:technical-seo` pipeline green again (31 pages): trimmed two meta
+  descriptions over the 170-char budget (about page, embedded-delivery-pod solution).
+- Deleted `grep.exe.stackdump` residue; `*.stackdump` added to `.gitignore`.
+- Docs refreshed: CLAUDE.md/AGENTS.md (solutions data file, real prefetch strategy,
+  SEO audit commands), README (solutions.ts pointer).
+
 ## Resolved log (2026-07-05 → 07)
 
 - Full SEO/perf audit green (26 pages); meta-length fixes; perf budget re-based.

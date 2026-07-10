@@ -27,7 +27,7 @@ markosh.com-astro/
 │   ├── content/              # Content collections (blog/, case-studies/ markdown)
 │   ├── layouts/              # Astro layouts
 │   ├── pages/                # Astro pages (routes)
-│   ├── lib/                  # Utilities and helpers (incl. whitepapers.ts data)
+│   ├── lib/                  # Utilities and helpers (incl. whitepapers.ts and solutions.ts data)
 │   ├── hooks/                # React custom hooks
 │   ├── styles/               # Global styles
 │   └── content.config.ts     # Collection schemas (zod)
@@ -137,6 +137,8 @@ npm run check        # Astro check for errors
 npm run type-check   # Full TypeScript type checking
 npm run lint         # Lint check (same as astro check)
 npm run analyze      # Build with bundle analysis
+npm run check:seo    # Encoding, SEO metadata, structured data, perf budgets (needs a build)
+npm run audit:technical-seo  # Full pipeline: type-check → build → all SEO checks
 
 # Utility
 npm run clean        # Clean dist and .astro folders
@@ -180,9 +182,9 @@ import type { ComponentProps } from './types';
    - Compressed HTML output
 
 2. **Runtime Optimizations**:
-   - Prefetch all links with viewport strategy
-   - Hoisted script optimization
-   - Content intellisense for better caching
+   - Link prefetch on hover (`prefetch.defaultStrategy: 'hover'`, `prefetchAll: false`)
+   - Interaction/idle-gated Taskade widget (no third-party JS on first paint)
+   - React hydration limited to the contact page (`client:load` islands)
 
 3. **Asset Management**:
    - Sharp service for image processing
@@ -248,6 +250,7 @@ import type { ComponentProps } from './types';
 3. **New Utility**: Add to `src/lib/` with proper TypeScript types
 4. **New Hook**: Add to `src/hooks/` following React patterns
 5. **New Blog Post / Case Study**: Add a `.md` file to `src/content/blog/` or `src/content/case-studies/` (schemas in `src/content.config.ts`); publishing = commit + push. Case-study copy must follow the compliance rules: anonymized, structural facts only, no invented client outcomes.
+6. **New Solution page**: Add an entry to `src/lib/solutions.ts` (renders at `/solutions/<slug>/` via `src/pages/solutions/[slug].astro`) and register the path in `sitemapMetadataByPath` in `astro.config.mjs`. Same compliance rules as case studies.
 
 ### **Testing New Changes**
 
