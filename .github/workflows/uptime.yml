@@ -21,4 +21,4 @@ jobs:
             --retry 2 \
             --retry-delay 5 \
             https://markosh.com/ > /tmp/markosh-home.html
-          grep -qi "Senior engineers" /tmp/markosh-home.html
+          grep -qi "intelligence lab" /tmp/markosh-home.html
