@@ -46,14 +46,14 @@ const models = [
       <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
         Work with us <span class="text-primary">your way</span>
       </h2>
-      <p class="mt-6 text-lg text-muted-foreground">
+      <p class="mt-6 text-lg leading-8 text-muted-foreground">
         Three ways to engage, one standard of delivery. Not sure which fits? That's what the first call is for.
       </p>
     </div>
 
     <div class="mt-12 border-t border-border">
       {models.map((model) => (
-        <article class="grid gap-x-8 gap-y-4 border-b border-border py-10 sm:py-12 md:grid-cols-[3.5rem,1.2fr,1fr]">
+        <article class="grid gap-x-8 gap-y-4 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1.2fr,1fr]">
           <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{model.num}</span>
           <div>
             <div class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
@@ -64,7 +64,7 @@ const models = [
             </div>
             <p class="mt-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{model.tagline}</p>
             <p class="mt-3 max-w-xl text-muted-foreground">{model.description}</p>
-            <a href="/contact" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+            <a href="/contact" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
               Discuss this model
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

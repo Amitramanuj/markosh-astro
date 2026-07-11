@@ -26,7 +26,7 @@ const formatDate = (iso: string) =>
   <Header />
   <main id="main-content">
     <!-- Editorial hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-3xl">
@@ -51,7 +51,7 @@ const formatDate = (iso: string) =>
           <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
               <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Solutions</p>
-              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
                 Engagements we run <span class="text-primary">on repeat</span>
               </h2>
             </div>
@@ -64,7 +64,7 @@ const formatDate = (iso: string) =>
           </div>
           <div class="mt-12 border-t border-border">
             {solutions.map((solution) => (
-              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-6 md:grid-cols-[14rem,1fr] md:items-baseline">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{solution.category}</p>
                 <div>
                   <h3 class="font-headline text-xl font-bold tracking-tight sm:text-2xl">
@@ -85,7 +85,7 @@ const formatDate = (iso: string) =>
           <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
               <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Case Studies</p>
-              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
                 How engagements <span class="text-primary">actually run</span>
               </h2>
             </div>
@@ -98,7 +98,7 @@ const formatDate = (iso: string) =>
           </div>
           <div class="mt-12 border-t border-border">
             {studies.map((study) => (
-              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-6 md:grid-cols-[14rem,1fr] md:items-baseline">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
                   {study.data.sector} · {study.data.family}
                 </p>
@@ -121,7 +121,7 @@ const formatDate = (iso: string) =>
           <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
               <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Blog</p>
-              <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
                 Field notes from <span class="text-primary">the lab</span>
               </h2>
             </div>
@@ -134,7 +134,7 @@ const formatDate = (iso: string) =>
           </div>
           <div class="mt-12 border-t border-border">
             {posts.map((post) => (
-              <article class="grid gap-x-8 gap-y-2 border-b border-border py-7 md:grid-cols-[14rem,1fr] md:items-baseline">
+              <article class="grid gap-x-8 gap-y-2 border-b border-border py-6 md:grid-cols-[14rem,1fr] md:items-baseline">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
                   {post.data.category} · {formatDate(post.data.published)}
                 </p>

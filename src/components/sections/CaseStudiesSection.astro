@@ -48,22 +48,20 @@ const proofChecks = [
 
 <section class="bg-secondary">
   <div class="container mx-auto">
-    <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-end">
-      <div class="max-w-2xl">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Engagement Patterns</p>
-        <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-          Concrete ways <span class="text-primary">work gets delivered</span>
-        </h2>
-      </div>
-      <p class="max-w-xl text-lg text-muted-foreground lg:justify-self-end">
+    <div class="max-w-2xl">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Engagement Patterns</p>
+      <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+        Concrete ways <span class="text-primary">work gets delivered</span>
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-muted-foreground">
         Here is how engagements actually take shape: what you can engage us for, how the team forms around it, and the delivery artifacts you walk away owning.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-12 lg:grid-cols-[1.25fr,0.75fr]">
+    <div class="mt-12 grid gap-12 lg:grid-cols-[1.5fr,1fr]">
       <div class="border-t border-border">
         {engagementPatterns.map((study, index) => (
-          <article class="grid gap-x-8 gap-y-3 border-b border-border py-8 md:grid-cols-[3.5rem,1fr]">
+          <article class="grid gap-x-8 gap-y-3 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr]">
             <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">0{index + 1}</span>
             <div>
               <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{study.sector}</p>

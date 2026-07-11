@@ -102,7 +102,7 @@ const extraSchemas = [
   <Header />
   <main id="main-content">
     <!-- Hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
@@ -115,7 +115,7 @@ const extraSchemas = [
         </nav>
         <div class="mt-8 max-w-4xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Your MVP, On Us</p>
-          <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             Your first MVP, built by Markosh — <span class="text-primary">our investment, your evaluation</span>
           </h1>
           <p class="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
@@ -145,10 +145,10 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Purpose</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               The build proves <span class="text-primary">engineering quality</span>, not slideware
             </h2>
-            <p class="mt-5 text-lg text-muted-foreground">
+            <p class="mt-6 text-lg leading-8 text-muted-foreground">
               One scoped workflow is enough to judge how we build — not enough to be your finished product. Here is what you will be able to evaluate:
             </p>
           </div>
@@ -166,7 +166,7 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Scope</p>
-          <div class="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
+          <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             <div>
               <h2 class="border-b-2 border-foreground pb-3 font-headline text-2xl font-bold">What the build includes</h2>
               <ul class="divide-y divide-border">
@@ -200,11 +200,11 @@ const extraSchemas = [
             <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Approved businesses <span class="text-signal">only</span>
             </h2>
-            <p class="mt-6 text-lg text-ink-foreground/70">
+            <p class="mt-6 text-lg leading-8 text-ink-foreground/70">
               We review every application. The build works when there is a real business, a real workflow, and someone to evaluate the result — and wastes everyone's time when there is not.
             </p>
           </div>
-          <div class="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-2">
+          <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             <div>
               <h3 class="border-b-2 border-ink-foreground/60 pb-3 font-headline text-lg font-bold text-signal">You qualify if you have</h3>
               <ul class="divide-y divide-ink-foreground/15">
@@ -231,10 +231,10 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto max-w-3xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — FAQ</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
-          <div class="mt-10 border-t border-border">
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Frequently asked questions</h2>
+          <div class="mt-12 border-t border-border">
             {faqs.map((faq) => (
-              <details class="group border-b border-border py-5">
+              <details class="group border-b border-border py-6">
                 <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
                   {faq.question}
                 </summary>

@@ -14,7 +14,7 @@ import { solutions } from '@/lib/solutions';
   <Header />
   <main id="main-content">
     <!-- Editorial hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-3xl">
@@ -35,7 +35,7 @@ import { solutions } from '@/lib/solutions';
       <section class="bg-secondary">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Three Engagements</p>
-          <div class="mt-8 border-t border-border">
+          <div class="mt-12 border-t border-border">
             {solutions.map((solution, i) => (
               <a
                 href={`/solutions/${solution.slug}/`}
@@ -45,7 +45,7 @@ import { solutions } from '@/lib/solutions';
                 <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{`0${i + 1}`}</span>
                 <div>
                   <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{solution.category}</p>
-                  <h2 class="mt-2 font-headline text-3xl font-bold tracking-tight group-hover:text-primary sm:text-4xl">
+                  <h2 class="mt-2 font-headline text-2xl font-bold tracking-tight group-hover:text-primary sm:text-3xl">
                     {solution.name}
                   </h2>
                 </div>

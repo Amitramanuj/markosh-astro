@@ -9,8 +9,18 @@ import AmitAvatar from '@/assets/founders/amit.webp';
 import GrowthImage from '@/assets/about/growth.jpg';
 
 const teamMembers = [
-  { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: AnveshaAvatar },
-  { name: 'Amit Ramanuj', title: 'Co-founder', avatar: AmitAvatar },
+  {
+    name: 'Anvesha Bhatore',
+    title: 'Co-founder',
+    avatar: AnveshaAvatar,
+    description: 'First-principles engineer who delivers elegant solutions in simple ways.',
+  },
+  {
+    name: 'Amit Ramanuj',
+    title: 'Co-founder',
+    avatar: AmitAvatar,
+    description: 'Systems designer and optimization obsessive. Turns cross-domain research into knowledge your team keeps.',
+  },
 ];
 
 const values = [
@@ -28,7 +38,7 @@ const values = [
   <Header />
   <main id="main-content">
     <!-- Editorial hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-3xl">
@@ -48,13 +58,13 @@ const values = [
         <div class="container mx-auto grid items-center gap-12 md:grid-cols-2">
           <div>
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Our Story</p>
-            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Built to close the <span class="text-primary">talent gap</span>
             </h2>
-            <p class="mt-5 text-lg text-muted-foreground">
+            <p class="mt-6 text-lg leading-8 text-muted-foreground">
               Markosh started in 2025 with a narrow observation: companies were hiring engineers off résumés and paying for it later. So we built the staffing arm around engineer-led vetting — every candidate screened by a working engineer on realistic problems before a client ever meets them.
             </p>
-            <p class="mt-4 text-lg text-muted-foreground">
+            <p class="mt-4 text-lg leading-8 text-muted-foreground">
               Today the same operating model extends beyond engineering, and we are deliberate about the sequence: we are starting with the two engines every business needs first — B2B sales execution and technical talent — with custom software and AI systems supporting both. The long-term ambition is complete business solutions across every department of a company, delivered through one lab method: research first, AI leverage at every step, vetted human execution, and honest reporting.
             </p>
           </div>
@@ -80,11 +90,11 @@ const values = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Our Values</p>
-            <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               What we <span class="text-primary">stand for</span>
             </h2>
           </div>
-          <div class="reveal-stagger mt-14 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-3">
+          <div class="reveal-stagger mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-3">
             {values.map(value => (
               <div class="border-t border-border pt-6">
                 <p class="font-mono text-sm text-muted-foreground" aria-hidden="true">{value.num}</p>
@@ -101,11 +111,11 @@ const values = [
       <section class="bg-secondary">
         <div class="container mx-auto text-center">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Leadership</p>
-          <h2 class="mt-3 font-headline text-3xl font-bold tracking-tight sm:text-5xl">Meet the team</h2>
-          <p class="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Meet the team</h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
             The two co-founders who run the lab day to day.
           </p>
-          <div class="mx-auto mt-14 grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
+          <div class="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
             {teamMembers.map((member) => (
               <div class="flex flex-col items-center border-t border-border pt-8">
                 <div class="h-32 w-32 overflow-hidden rounded-full border border-border md:h-36 md:w-36">
@@ -123,6 +133,7 @@ const values = [
                 </div>
                 <h3 class="mt-6 font-headline text-xl font-bold tracking-tight">{member.name}</h3>
                 <p class="mt-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{member.title}</p>
+                <p class="mt-3 text-sm leading-6 text-muted-foreground">{member.description}</p>
               </div>
             ))}
           </div>

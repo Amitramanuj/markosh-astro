@@ -37,7 +37,7 @@ const extraSchemas = [
   <Header />
   <main id="main-content">
     <!-- Hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
@@ -91,9 +91,9 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — How We Run It</p>
-          <div class="mt-8 border-t border-border">
+          <div class="mt-12 border-t border-border">
             {solution.steps.map((step) => (
-              <div class="grid gap-x-8 gap-y-2 border-b border-border py-8 md:grid-cols-[3.5rem,1fr]">
+              <div class="grid gap-x-8 gap-y-2 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1fr]">
                 <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{step.num}</span>
                 <div>
                   <h2 class="font-headline text-2xl font-bold tracking-tight sm:text-3xl">{step.title}</h2>
@@ -111,7 +111,7 @@ const extraSchemas = [
       <section class="bg-secondary">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — The Shape of It</p>
-          <dl class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <dl class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {solution.shape.map((fact) => (
               <div class="border-t border-border pt-4">
                 <dt class="font-headline text-3xl font-bold tracking-tight">{fact.value}</dt>
@@ -131,7 +131,7 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — Proof</p>
-          <div class="mt-8 max-w-3xl">
+          <div class="mt-12 max-w-3xl">
             <a href={solution.caseStudy.href} data-astro-prefetch="hover" class="group block border-t border-border pt-6">
               <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Case study</p>
               <h2 class="mt-3 font-headline text-2xl font-bold tracking-tight group-hover:text-primary sm:text-3xl">

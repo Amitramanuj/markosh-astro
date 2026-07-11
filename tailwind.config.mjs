@@ -4,24 +4,12 @@ export default {
   content: [
     './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
   ],
+  /* .container is defined once in global.css (max-w-6xl, px-5/6/8);
+     the core plugin is disabled so two competing definitions can't drift. */
+  corePlugins: {
+    container: false,
+  },
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '1.5rem',
-        lg: '2rem',
-        xl: '2rem',
-        '2xl': '2rem',
-      },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1400px',
-      },
-    },
     extend: {
       fontFamily: {
         body: ['Inter', 'system-ui', 'sans-serif'],

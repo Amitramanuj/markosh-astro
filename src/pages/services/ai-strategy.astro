@@ -113,7 +113,7 @@ const extraSchemas = [
   <Header />
   <main id="main-content">
     <!-- Hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground">
@@ -127,7 +127,7 @@ const extraSchemas = [
         </nav>
         <div class="mt-8 max-w-4xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">AI Strategy & Intelligence</p>
-          <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             AI strategy that leads to execution, <span class="text-primary">not a slide deck</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
@@ -157,11 +157,11 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Deliverables</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">What you walk away with</h2>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">What you walk away with</h2>
           </div>
           <dl class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {deliverables.map((item, index) => (
-              <div class="border-t-2 border-foreground pt-4">
+              <div class="border-t-2 border-foreground pt-6">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Deliverable 0{index + 1}</p>
                 <dt class="mt-3 font-headline text-lg font-bold">{item.title}</dt>
                 <dd class="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</dd>
@@ -178,10 +178,10 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Engagements</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Four ways to <span class="text-primary">start</span>
             </h2>
-            <p class="mt-5 text-lg text-muted-foreground">
+            <p class="mt-6 text-lg leading-8 text-muted-foreground">
               From a focused audit to an ongoing AI operating rhythm. Each engagement builds on the one before it.
             </p>
           </div>
@@ -211,7 +211,7 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Fit</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Who this is for</h2>
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Who this is for</h2>
           </div>
           <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             <div>
@@ -240,10 +240,10 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto max-w-3xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">04 — FAQ</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
-          <div class="mt-10 border-t border-border">
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Frequently asked questions</h2>
+          <div class="mt-12 border-t border-border">
             {faqs.map((faq) => (
-              <details class="group border-b border-border py-5">
+              <details class="group border-b border-border py-6">
                 <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
                   {faq.question}
                 </summary>

@@ -5,8 +5,8 @@ import AmitAvatar from '@/assets/founders/amit.webp';
 
 const commitments = [
   {
-    title: 'US time-zone overlap',
-    description: 'Guaranteed 4+ hours of EST overlap with daily standups in your working hours.',
+    title: 'Your time-zone overlap',
+    description: 'Guaranteed 4+ hours of overlap with your working day, with daily standups in your hours.',
   },
   {
     title: 'NDA-first, IP yours',
@@ -23,20 +23,30 @@ const commitments = [
 ];
 
 const founders = [
-  { name: 'Anvesha Bhatore', title: 'Co-founder', avatar: AnveshaAvatar },
-  { name: 'Amit Ramanuj', title: 'Co-founder', avatar: AmitAvatar },
+  {
+    name: 'Anvesha Bhatore',
+    title: 'Co-founder',
+    avatar: AnveshaAvatar,
+    description: 'First-principles engineer who delivers elegant solutions in simple ways.',
+  },
+  {
+    name: 'Amit Ramanuj',
+    title: 'Co-founder',
+    avatar: AmitAvatar,
+    description: 'Systems designer and optimization obsessive. Turns cross-domain research into knowledge your team keeps.',
+  },
 ];
 ---
 
 <section class="bg-background">
   <div class="container mx-auto">
-    <div class="grid gap-14 lg:grid-cols-[1.4fr,1fr] lg:items-start">
+    <div class="grid gap-12 lg:grid-cols-[1.5fr,1fr] lg:items-start">
       <div>
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Why US Companies Work With Us</p>
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Why Clients Work With Us</p>
         <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-          Global engineering, <span class="text-primary">US-aligned delivery</span>
+          Global engineering, <span class="text-primary">delivery in your time zone</span>
         </h2>
-        <p class="mt-6 text-lg text-muted-foreground">
+        <p class="mt-6 text-lg leading-8 text-muted-foreground">
           We know what working with a remote partner needs to feel like: responsive, transparent, and contractually safe. Here is how we run every engagement.
         </p>
 
@@ -51,31 +61,34 @@ const founders = [
       </div>
 
       <div class="border-t-2 border-foreground pt-6 lg:sticky lg:top-28">
-        <h3 class="font-headline text-xl font-bold">Founder-led, by design</h3>
+        <h3 class="font-headline text-2xl font-bold">Founder-led, by design</h3>
         <p class="mt-2 text-muted-foreground">
           Every engagement is overseen directly by our founders — no account managers in between.
         </p>
         <ul class="mt-8 space-y-6">
           {founders.map((founder) => (
-            <li class="flex items-center gap-4">
-              <Image
-                src={founder.avatar}
-                alt={`${founder.name}, ${founder.title} of Markosh`}
-                width={112}
-                height={112}
-                class="h-14 w-14 rounded-full border border-border object-cover"
-                loading="lazy"
-                format="webp"
-                quality={85}
-              />
-              <div>
-                <p class="font-semibold">{founder.name}</p>
-                <p class="font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">{founder.title}</p>
+            <li>
+              <div class="flex items-center gap-4">
+                <Image
+                  src={founder.avatar}
+                  alt={`${founder.name}, ${founder.title} of Markosh`}
+                  width={112}
+                  height={112}
+                  class="h-14 w-14 rounded-full border border-border object-cover"
+                  loading="lazy"
+                  format="webp"
+                  quality={85}
+                />
+                <div>
+                  <p class="font-semibold">{founder.name}</p>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{founder.title}</p>
+                </div>
               </div>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground sm:pl-[4.5rem]">{founder.description}</p>
             </li>
           ))}
         </ul>
-        <a href="/about" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+        <a href="/about" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
           Meet the team
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

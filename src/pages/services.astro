@@ -103,12 +103,12 @@ const extraSchemas = [
   <Header />
   <main id="main-content">
     <!-- Editorial hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-4xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">Our Services</p>
-          <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             Sell, staff, build, and strategy — <span class="text-primary">one execution partner</span>
           </h1>
           <p class="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
@@ -128,17 +128,17 @@ const extraSchemas = [
       <section class="bg-secondary">
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — Four Families</p>
-          <div class="mt-8 border-t border-border">
+          <div class="mt-12 border-t border-border">
             {families.map((family) => (
-              <div class="grid gap-x-8 gap-y-4 border-b border-border py-10 sm:py-12 md:grid-cols-[3.5rem,1.2fr,1fr]">
+              <div class="grid gap-x-8 gap-y-4 border-b border-border py-8 sm:py-10 md:grid-cols-[3.5rem,1.2fr,1fr]">
                 <span class="font-mono text-sm text-muted-foreground" aria-hidden="true">{family.num}</span>
                 <div>
                   <div class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-                    <h2 class="font-headline text-3xl font-bold tracking-tight sm:text-4xl">{family.family}</h2>
+                    <h2 class="font-headline text-4xl font-bold tracking-tight sm:text-5xl">{family.family}</h2>
                     <span class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{family.title}</span>
                   </div>
                   <p class="mt-3 max-w-xl text-muted-foreground">{family.description}</p>
-                  <a href={family.link} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                  <a href={family.link} class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
                     Explore {family.linkLabel}
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -173,7 +173,7 @@ const extraSchemas = [
         <div class="container mx-auto">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Tooling</p>
           <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Our technology stack</h2>
-          <p class="mt-5 max-w-2xl text-lg text-muted-foreground">
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
             We work with a wide range of modern technologies to build robust and scalable solutions.
           </p>
           <p class="mt-10 max-w-4xl border-t border-border pt-6 font-mono text-sm leading-8 text-muted-foreground">

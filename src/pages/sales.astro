@@ -174,12 +174,12 @@ const extraSchemas = [
   <Header />
   <main id="main-content">
     <!-- Hero -->
-    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16">
+    <section class="relative isolate overflow-hidden pt-10 pb-12 md:pt-16 lg:pb-16">
       <div class="absolute inset-0 -z-10 bg-grid" aria-hidden="true"></div>
       <div class="container mx-auto">
         <div class="max-w-4xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">B2B Sales-as-a-Service</p>
-          <h1 class="mt-5 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+          <h1 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             Intelligence behind every rep. <span class="text-primary">A human on every call.</span>
           </h1>
           <p class="mt-6 text-lg leading-8 text-muted-foreground">
@@ -206,7 +206,7 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">01 — The Service</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Managed pipeline support, <span class="text-primary">clearly scoped</span>
             </h2>
           </div>
@@ -238,7 +238,7 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">02 — Models</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Three commercial models, <span class="text-primary">one operations layer</span>
             </h2>
           </div>
@@ -265,13 +265,13 @@ const extraSchemas = [
     <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
-          <div class="grid gap-10 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
+          <div class="grid gap-12 lg:grid-cols-[1fr,1.5fr] lg:items-start">
             <div class="lg:sticky lg:top-28">
               <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">03 — Sales Intelligence</p>
-              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
                 AI behind the rep, <span class="text-primary">never instead of one</span>
               </h2>
-              <p class="mt-6 text-lg text-muted-foreground">
+              <p class="mt-6 text-lg leading-8 text-muted-foreground">
                 Our reps are not basic callers. Every conversation is backed by AI-assisted research, account intelligence, and structured reporting — and every conversation is held by a human.
               </p>
               <ul class="mt-8 divide-y divide-border border-t border-border">
@@ -312,11 +312,11 @@ const extraSchemas = [
             <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Compliance-aware <span class="text-signal">by design</span>
             </h2>
-            <p class="mt-6 text-lg text-ink-foreground/70">
+            <p class="mt-6 text-lg leading-8 text-ink-foreground/70">
               Outbound done badly damages your brand and creates real legal exposure — DNC violations alone carry five-figure penalties per incident. Every Markosh engagement runs on the same guardrails.
             </p>
           </div>
-          <div class="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {guardrails.map((item, index) => (
               <div class="border-t border-ink-foreground/20 pt-5">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-foreground/60" aria-hidden="true">0{index + 1}</p>
@@ -335,10 +335,10 @@ const extraSchemas = [
         <div class="container mx-auto">
           <div class="max-w-2xl">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">05 — Fit</p>
-            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Who this <span class="text-primary">works for</span>
             </h2>
-            <p class="mt-5 text-lg text-muted-foreground">
+            <p class="mt-6 text-lg leading-8 text-muted-foreground">
               We support B2B companies where targeted research and human conversation can create meaningful pipeline.
             </p>
           </div>
@@ -360,7 +360,7 @@ const extraSchemas = [
               </ul>
             </div>
           </div>
-          <div class="mt-14 border-t border-border pt-6">
+          <div class="mt-12 border-t border-border pt-6">
             <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Where we focus first</p>
             <p class="mt-3 font-mono text-sm leading-7 text-muted-foreground">{launchNiches.join(' · ')}</p>
           </div>
@@ -372,13 +372,13 @@ const extraSchemas = [
     <RevealSection>
       <section class="bg-secondary">
         <div class="container mx-auto">
-          <div class="grid gap-10 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
+          <div class="grid gap-12 lg:grid-cols-[1.5fr,1fr] lg:items-center">
             <div>
               <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">06 — Proof of Capability</p>
-              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
                 Experience a Markosh rep on your market — <span class="text-primary">14 days, our investment</span>
               </h2>
-              <p class="mt-5 text-muted-foreground">
+              <p class="mt-6 text-muted-foreground">
                 Not a freebie — an audition. We put a trained rep on your ICP and let the work make the case: research quality, communication, outreach discipline, and CRM visibility, before you commit to any model.
               </p>
               <p class="mt-6 max-w-2xl border-t border-border pt-5 font-mono text-sm leading-6 text-foreground">
@@ -400,10 +400,10 @@ const extraSchemas = [
       <section class="bg-background">
         <div class="container mx-auto max-w-3xl">
           <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
-          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Frequently asked questions</h2>
-          <div class="mt-10 border-t border-border">
+          <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">Frequently asked questions</h2>
+          <div class="mt-12 border-t border-border">
             {faqs.map((faq) => (
-              <details class="group border-b border-border py-5">
+              <details class="group border-b border-border py-6">
                 <summary class="cursor-pointer list-none font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
                   {faq.question}
                 </summary>

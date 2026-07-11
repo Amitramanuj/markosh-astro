@@ -3,8 +3,8 @@
 // from index.astro (homeFaqs export) via BaseLayout's extraSchemas prop.
 export const homeFaqs = [
   {
-    question: 'Do your engineers work in US time zones?',
-    answer: 'Yes. Every engagement guarantees at least 4 hours of EST overlap, with standups and reviews scheduled in your working hours.',
+    question: 'Do your engineers work in our time zone?',
+    answer: 'Yes. Every engagement guarantees at least 4 hours of overlap with your working day — whether you are in the US, UK, Europe, or Australia — with standups and reviews scheduled in your hours.',
   },
   {
     question: 'Who owns the code and IP?',
@@ -34,7 +34,7 @@ export const homeFaqs = [
 ---
 
 <section class="bg-background">
-  <div class="container mx-auto grid gap-10 lg:grid-cols-[0.75fr,1.25fr]">
+  <div class="container mx-auto grid gap-12 lg:grid-cols-[1fr,1.5fr]">
     <div>
       <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">07 — FAQ</p>
       <h2 class="mt-4 font-headline text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
@@ -43,7 +43,7 @@ export const homeFaqs = [
     </div>
     <div class="border-t border-border">
       {homeFaqs.map((faq) => (
-        <details class="group border-b border-border py-5">
+        <details class="group border-b border-border py-6">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-headline text-lg font-bold marker:content-none [&::-webkit-details-marker]:hidden">
             <span>{faq.question}</span>
             <svg class="h-5 w-5 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
