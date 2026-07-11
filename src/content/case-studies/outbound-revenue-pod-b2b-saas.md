@@ -3,7 +3,7 @@ title: 'Standing Up an Outbound Revenue Pod for a B2B SaaS Team'
 description: 'How a managed pod — sales rep, lead researcher, and CRM operator — takes a SaaS company from no outbound motion to a disciplined, inspectable one.'
 sector: 'B2B SaaS'
 family: 'Sell'
-published: '2026-07-05'
+published: '2026-03-26'
 results:
   - { value: '3 roles', label: 'rep, researcher, CRM operator' }
   - { value: '1 ICP', label: 'per pod, by design' }

@@ -20,9 +20,9 @@ export interface ServicePage {
 export const servicePages: ServicePage[] = [
   {
     slug: 'it-staffing',
-    metaTitle: 'IT Staffing for US Companies | Vetted Engineers',
+    metaTitle: 'IT Staffing Services | Vetted Senior Engineers',
     metaDescription:
-      'Augment your team with pre-vetted senior engineers in under 2 weeks. US time-zone overlap, NDA-first, flexible contracts. IT staffing by Markosh.',
+      'Augment your team with pre-vetted senior engineers in under 2 weeks. Guaranteed time-zone overlap, NDA-first, flexible contracts. IT staffing by Markosh.',
     eyebrow: 'IT Staffing',
     headline: 'Hire vetted engineers,',
     headlineAccent: 'embedded in weeks',
@@ -30,7 +30,7 @@ export const servicePages: ServicePage[] = [
       'Skip months of recruiting. Markosh places senior developers, designers, and AI specialists directly into your team — matched to your stack, your culture, and your working hours.',
     benefits: [
       { title: 'Pre-vetted talent pool', description: 'Every engineer passes technical screening and a real-world project assessment before they ever meet a client.' },
-      { title: 'US time-zone overlap', description: 'Guaranteed 4+ hours of EST overlap, with standups and reviews in your working hours.' },
+      { title: 'Your time-zone overlap', description: 'Guaranteed 4+ hours of overlap with your working day, with standups and reviews in your hours.' },
       { title: 'Flexible engagement', description: 'Scale from one engineer to a full squad — contract, contract-to-hire, or dedicated team.' },
       { title: 'Two-week kickoff', description: 'From first call to a productive engineer in your repos in as little as two weeks.' },
     ],
@@ -41,7 +41,7 @@ export const servicePages: ServicePage[] = [
     ],
     faqs: [
       { question: 'How fast can an engineer start?', answer: 'Typically within two weeks of the first discovery call, including interviews and onboarding.' },
-      { question: 'Do your engineers work US hours?', answer: 'Yes. Every placement guarantees at least 4 hours of EST overlap, with standups scheduled in your time zone.' },
+      { question: 'Do your engineers work our hours?', answer: 'Yes. Every placement guarantees at least 4 hours of overlap with your working day — US, UK, Europe, or Australia — with standups scheduled in your time zone.' },
       { question: 'What if the engineer is not a fit?', answer: 'We replace them at no additional placement cost. You only pay for productive time.' },
       { question: 'Who owns the work product?', answer: 'You do. Every contract assigns full IP ownership to the client, and we sign your NDA before discovery.' },
     ],
@@ -51,7 +51,7 @@ export const servicePages: ServicePage[] = [
     slug: 'custom-software-development',
     metaTitle: 'Custom Software Development Services | Web & Mobile Apps',
     metaDescription:
-      'Full-cycle custom software development for US companies: web apps, mobile apps, and cloud platforms. Fixed-bid or dedicated team. Built by Markosh.',
+      'Full-cycle custom software development: web apps, mobile apps, and cloud platforms. Fixed-bid or dedicated team. Built by Markosh.',
     eyebrow: 'Custom Software',
     headline: 'Software built for your roadmap,',
     headlineAccent: 'not a template',
@@ -80,7 +80,7 @@ export const servicePages: ServicePage[] = [
     slug: 'ai-development',
     metaTitle: 'AI Development Services | LLM, ML & Agentic AI Solutions',
     metaDescription:
-      'Custom AI development for US companies: LLM integrations, machine learning models, and agentic AI systems that automate real workflows. By Markosh.',
+      'Custom AI development services: LLM integrations, machine learning models, and agentic AI systems that automate real workflows. By Markosh.',
     eyebrow: 'AI Development',
     headline: 'AI that automates real work,',
     headlineAccent: 'not just demos',

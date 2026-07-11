@@ -3,7 +3,7 @@ title: 'Replacing a Manual Process with a Workflow Automation Layer'
 description: 'LLM, data, and integration work focused on one slow manual business process — built API-first, on infrastructure the client owns.'
 sector: 'AI enablement'
 family: 'Build'
-published: '2026-07-05'
+published: '2026-01-22'
 results:
   - { value: '1 workflow', label: 'scoped end to end' }
   - { value: 'API', label: 'first approach' }

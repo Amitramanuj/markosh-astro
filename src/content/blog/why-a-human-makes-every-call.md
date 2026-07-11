@@ -2,7 +2,7 @@
 title: 'Why a Human Makes Every Call'
 description: 'AI SDRs are everywhere in 2026. Here is why our outbound pods still put a trained person on every conversation — and what AI actually does behind them.'
 category: 'Sales Operations'
-published: '2026-07-05'
+published: '2026-04-30'
 readTimeMinutes: 5
 draft: false
 ---

@@ -3,7 +3,7 @@ title: 'Clearing a Product Backlog Without Pausing the Roadmap'
 description: 'An embedded engineering pod structure for teams whose backlog has outgrown their headcount — scoped, vetted, and handed over with full IP.'
 sector: 'Scale-up engineering'
 family: 'Staff'
-published: '2026-07-05'
+published: '2026-06-04'
 results:
   - { value: '4–6', label: 'engineers embedded' }
   - { value: '2 wks', label: 'kickoff target' }

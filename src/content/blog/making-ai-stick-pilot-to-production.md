@@ -2,7 +2,7 @@
 title: 'Making AI Stick: From Stalled Pilot to Production Workflow'
 description: 'Most companies are past asking where to start with AI and stuck on why the pilot did not stick. A field guide to getting one workflow into production.'
 category: 'AI Strategy'
-published: '2026-07-05'
+published: '2026-02-17'
 readTimeMinutes: 5
 draft: false
 ---
